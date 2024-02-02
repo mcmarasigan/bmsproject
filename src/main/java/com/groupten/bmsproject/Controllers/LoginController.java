@@ -1,10 +1,12 @@
-package com.groupten.bmsproject;
+package com.groupten.bmsproject.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.groupten.bmsproject.Admin.Admincontroller;
 
 @Component
 public class LoginController {

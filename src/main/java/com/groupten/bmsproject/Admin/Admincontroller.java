@@ -1,4 +1,4 @@
-package com.groupten.bmsproject;
+package com.groupten.bmsproject.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
