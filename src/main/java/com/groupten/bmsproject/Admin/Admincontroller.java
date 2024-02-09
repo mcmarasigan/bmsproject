@@ -11,9 +11,9 @@ public class Admincontroller {
     private Adminrepository adminrepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewAdmin (@RequestParam String name, @RequestParam String email) {
+    public @ResponseBody String addNewAdmin (@RequestParam String username, @RequestParam String email) {
         Adminentity n = new Adminentity();
-        n.setName(name);
+        n.setuserName(username);
         n.setEmail(email);
         adminrepository.save(n);
         return "Saved";

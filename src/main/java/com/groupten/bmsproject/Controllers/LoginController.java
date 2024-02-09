@@ -20,6 +20,9 @@ public class LoginController {
     @FXML
     private Button submitButton;
 
+    @FXML
+    private TextField unameField;
+
     // Autowire the Admincontroller directly
     @Autowired
     private Admincontroller adminController;
@@ -28,8 +31,9 @@ public class LoginController {
     @FXML
     private void handleSubmitButton() {
         String email = emailField.getText();
+        String username = unameField.getText();
         // Call the Admincontroller method to add a new admin
-        String result = adminController.addNewAdmin("Admin Name", email);
+        String result = adminController.addNewAdmin(username, email);
 
         // You can handle the result as needed, e.g., display a message
         System.out.println(result);
