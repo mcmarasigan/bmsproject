@@ -11,11 +11,15 @@ public class EmailService {
     @Autowired
     private JavaMailSender eMailSender;
 
-    public void sendVerificationEmail (String to, String otp) {
+    public void sendVerificationEmail (String toEmail, String subject, String body, String otp) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject("OTP Verification");
-        message.setText("Your OTP is: "+ otp);
+        message.setFrom("krisdrewsimeon@gmail.com");
+        message.setTo(toEmail);
+        message.setSubject(subject);
+        message.setText(body + "Your OTP is: "+ otp);
+
         eMailSender.send(message);
+
+        System.out.println("Mail sent successfully.");
     }
 }

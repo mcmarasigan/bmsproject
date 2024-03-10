@@ -7,9 +7,11 @@ import javafx.scene.control.TextField;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.Admin.Admincontroller;
+import com.groupten.bmsproject.OTP.EmailService;
 import com.groupten.bmsproject.OTP.OTPGenerator;
 import com.groupten.bmsproject.OTP.OTPService;
 
@@ -40,6 +42,9 @@ public class RegisterController {
 
     @Autowired
     private OTPGenerator otpGenerator;
+
+    @Autowired
+    private EmailService eMailSender;
     
     // Method to handle the submit button action
     @FXML
@@ -60,6 +65,8 @@ public class RegisterController {
         LocalDateTime time = LocalDateTime.now();
 
         String result = otpService.addOTP(email, otp, time);
+
+        eMailSender.sendVerificationEmail("","OTP Verification Code","",otp);
 
         System.out.println(result);
     }
