@@ -11,10 +11,11 @@ public class Admincontroller {
     private Adminrepository adminrepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewAdmin (@RequestParam String username, @RequestParam String email) {
+    public @ResponseBody String addNewAdmin (@RequestParam String username, @RequestParam String email, @RequestParam String password) {
         Adminentity n = new Adminentity();
         n.setuserName(username);
         n.setEmail(email);
+        n.setPassword(password);
         adminrepository.save(n);
         return "Saved";
     }

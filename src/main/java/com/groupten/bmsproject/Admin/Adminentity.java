@@ -14,6 +14,7 @@ public class Adminentity {
     private Integer id;
     private String username;
     private String email;
+    private String password;
 
     public Integer getID(){
         return id;
@@ -37,6 +38,14 @@ public class Adminentity {
 
     public void setEmail(String email){
         this.email = email;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 
 }
