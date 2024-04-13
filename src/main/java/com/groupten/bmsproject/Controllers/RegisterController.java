@@ -3,9 +3,13 @@ package com.groupten.bmsproject.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +24,17 @@ import com.groupten.bmsproject.OTP.OTPService;
 @Component
 public class RegisterController {
 
+    private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+    private final Pattern emailpattern = Pattern.compile(EMAIL_REGEX);
+
+    private static final String PASSWORD_REGEX = "^(?=.*[A-Z]).{8,}$";
+    private final Pattern passwordpattern = Pattern.compile(PASSWORD_REGEX);
+
     @FXML
     private TextField emailField;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
     @FXML
     private Button submitButton;
@@ -67,6 +77,22 @@ public class RegisterController {
             alert.showAndWait();
         }
 
+        if (!isEmailValid(email)){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid E-mail format.");
+            alert.showAndWait();
+        }
+
+        if (!isPasswordValid(password)){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Password should have atleast eight characters and one uppercase letter.");
+            alert.showAndWait();
+        }
+
         // Call a method to verify the OTP
         boolean isOtpValid = verifyOtp(email, otp);
 
@@ -92,6 +118,16 @@ public class RegisterController {
         String sql = "SELECT otp FROM otpentity WHERE email = ?";
         String storedOtp = jdbcTemplate.queryForObject(sql, String.class, email);
         return otp.equals(storedOtp);
+    }
+
+    private boolean isEmailValid(String email){
+        Matcher matcher = emailpattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isPasswordValid(String password){
+        Matcher matcher = passwordpattern.matcher(password);
+        return matcher.matches();
     }
 
     @FXML
