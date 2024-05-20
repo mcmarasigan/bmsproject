@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Component
-public class Admincontroller {
+public class AdminService {
     @Autowired
     private Adminrepository adminrepository;
 
@@ -20,3 +20,4 @@ public class Admincontroller {
         return "Saved";
     }
 }
+

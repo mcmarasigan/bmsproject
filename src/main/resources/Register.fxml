@@ -13,7 +13,8 @@
       <Button fx:id="submitButton" layoutX="275.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
       <TextField fx:id="unameField" layoutX="226.0" layoutY="120.0" promptText="Username" />
       <TextField fx:id="otpField" layoutX="225.0" layoutY="243.0" promptText="Enter OTP code:" />
-      <Button layoutX="135.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleOTPButton" text="Send OTP:" />
-      <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="200.0" />
+      <Button fx:id="otpButton" layoutX="135.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleOTPButton" text="Send OTP:" />
+      <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="200.0" promptText="Enter Password" />
+      <Button fx:id="submitButton1" layoutX="56.0" layoutY="337.0" mnemonicParsing="false" onAction="#handlebackButton" text="Back to login" />
    </children>
 </AnchorPane>

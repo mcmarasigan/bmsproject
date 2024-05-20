@@ -1,5 +1,20 @@
 package com.groupten.bmsproject.Controllers;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import com.groupten.bmsproject.Admin.AdminService;
+import com.groupten.bmsproject.Admin.PasswordService;
+import com.groupten.bmsproject.OTP.EmailService;
+import com.groupten.bmsproject.OTP.OTPGenerator;
+import com.groupten.bmsproject.OTP.OTPService;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,25 +26,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Component;
-
-import com.groupten.bmsproject.Admin.AdminService;
-import com.groupten.bmsproject.OTP.EmailService;
-import com.groupten.bmsproject.OTP.OTPGenerator;
-import com.groupten.bmsproject.OTP.OTPService;
-
 @Component
-public class RegisterController {
-
+public class ForgotpassController {
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     private final Pattern emailpattern = Pattern.compile(EMAIL_REGEX);
 
@@ -40,23 +38,28 @@ public class RegisterController {
     private TextField emailField;
 
     @FXML
+    private TextField otpField;
+
+    @FXML
     private PasswordField passwordField;
+
+    @FXML
+    private PasswordField newpassField;
+
+    @FXML
+    private Button otpButton;
 
     @FXML
     private Button submitButton;
 
     @FXML
-    private TextField unameField;
+    private Button backButton;
 
-    @FXML
-    private TextField otpField;
-
-    @FXML
-    private Button otpButton;
-
-    // Autowire the adminService directly
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private PasswordService passwordService;
 
     @Autowired
     private OTPService otpService;
@@ -69,16 +72,14 @@ public class RegisterController {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
-    // Method to handle the submit button action
+
     @FXML
     private void handleSubmitButton() {
         String email = emailField.getText();
-        String username = unameField.getText();
         String password = passwordField.getText();
         String otp = otpField.getText();
 
-        if (email.isEmpty() || username.isEmpty() || password.isEmpty() || otp.isEmpty()){
+        if (email.isEmpty() || password.isEmpty() || otp.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -115,7 +116,7 @@ public class RegisterController {
         
         else {
         // Call the adminService method to add a new admin
-        String result = adminService.addNewAdmin(username, email, password);
+        String result = passwordService.updatePassword(email, password);
         // You can handle the result as needed, e.g., display a message
         System.out.println(result);
         }
@@ -141,17 +142,16 @@ public class RegisterController {
 
     @FXML
     private void handleOTPButton () {
-        String username = unameField.getText();
         String email = emailField.getText();
         String pasword = passwordField.getText();
         String otp = otpGenerator.generatedOTP();
         LocalDateTime time = LocalDateTime.now();
 
-        if (username.isEmpty() || email.isEmpty() || pasword.isEmpty()){
+        if (email.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill the corresponding fields.");
+            alert.setContentText("Please enter your email.");
             alert.showAndWait();
         } else {
 
