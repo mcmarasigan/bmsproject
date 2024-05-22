@@ -11,9 +11,9 @@
       <Text fx:id="Logintxt" layoutX="253.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" textAlignment="CENTER" wrappingWidth="94.13671875" />
       <TextField fx:id="emailField" layoutX="226.0" layoutY="115.0" promptText="Username or E-mail" />
       <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="163.0" promptText="Password" />
-      <Button fx:id="forgotPasswordbtn" layoutX="100.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleForgotpassbtn" text="Forgot Password?" />
+      <Button fx:id="forgotPasswordbtn" layoutX="100.0" layoutY="163.0" mnemonicParsing="false" text="Forgot Password?" />
       <Button fx:id="Loginbtn" layoutX="277.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleLoginButton" text="Login" />
-      <Button fx:id="Registerbtn" layoutX="270.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRegisterButton" text="Register" />
+      <Button fx:id="Registerbtn" layoutX="270.0" layoutY="316.0" mnemonicParsing="false" text="Register" />
       <Text layoutX="239.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
    </children>
 </AnchorPane>

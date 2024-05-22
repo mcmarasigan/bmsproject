@@ -1,23 +1,24 @@
 package com.groupten.bmsproject.Admin;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-@Component
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class AdminService {
+
     @Autowired
     private Adminrepository adminrepository;
 
-    @PostMapping(path="/add")
-    public @ResponseBody String addNewAdmin (@RequestParam String username, @RequestParam String email, @RequestParam String password) {
-        Adminentity n = new Adminentity();
-        n.setuserName(username);
-        n.setEmail(email);
-        n.setPassword(password);
-        adminrepository.save(n);
+    public String addNewAdmin(String username, String email, String password) {
+        Adminentity existingAdmin = adminrepository.findByEmail(email);
+        if (existingAdmin != null) {
+            return "Admin with this email already exists!";
+        }
+        Adminentity newAdmin = new Adminentity();
+        newAdmin.setuserName(username);
+        newAdmin.setEmail(email);
+        newAdmin.setPassword(password);
+        adminrepository.save(newAdmin);
         return "Saved";
     }
 }
-

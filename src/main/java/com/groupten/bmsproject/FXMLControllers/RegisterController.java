@@ -1,4 +1,4 @@
-package com.groupten.bmsproject.Controllers;
+package com.groupten.bmsproject.FXMLControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -162,18 +162,5 @@ public class RegisterController {
         }
     }
 
-    @FXML
-    private void handlebackButton(ActionEvent event) throws IOException {
-        // Load the new FXML file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
-        Parent root = loader.load();
-
-        // Get the current stage
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-
-        // Set the new scene
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    
 }
