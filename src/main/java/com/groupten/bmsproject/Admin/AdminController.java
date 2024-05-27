@@ -11,7 +11,7 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/addAdmin")
     public String addNewAdmin(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
         return adminService.addNewAdmin(username, email, password);
     }
