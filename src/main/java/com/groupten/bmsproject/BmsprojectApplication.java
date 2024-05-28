@@ -26,7 +26,7 @@ public class BmsprojectApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayInventory.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayIngredients.fxml"));
 
         // Set the Spring context for the FXMLLoader
         loader.setControllerFactory(applicationContext::getBean);
