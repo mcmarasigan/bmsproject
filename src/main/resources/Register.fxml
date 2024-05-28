@@ -27,12 +27,12 @@
       <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="251.0" promptText="Enter Password" />
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/DrewBakes.png" />
+            <Image url="@Images/banners/DrewBakes.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/navigator.png" />
+            <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
       <Button fx:id="submitButton1" layoutX="40.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #96735b;" text="Back to login" textFill="WHITE">

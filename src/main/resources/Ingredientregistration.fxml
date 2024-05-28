@@ -21,19 +21,19 @@
          </font></Button>
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/DrewBakes.png" />
+            <Image url="@Images/banners/landscape_image.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/navigator.png" />
+            <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
       <Button fx:id="backbutton" layoutY="-1.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="28.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/backbtn.png" />
+                  <Image url="@Images/buttons/backbtn.png" />
                </image>
             </ImageView>
          </graphic></Button>

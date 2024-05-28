@@ -29,19 +29,19 @@
       <TextField fx:id="quantity" layoutX="375.0" layoutY="217.0" onAction="#handleSaveButton" />
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/DrewBakes.png" />
+            <Image url="@Images/banners/DrewBakes.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/navigator.png" />
+            <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
       <Button layoutY="2.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="29.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/backbtn.png" />
+                  <Image url="@Images/buttons/backbtn.png" />
                </image>
             </ImageView>
          </graphic>

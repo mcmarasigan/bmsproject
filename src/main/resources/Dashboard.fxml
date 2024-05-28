@@ -4,7 +4,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -12,7 +11,7 @@
          <graphic>
             <ImageView fitHeight="111.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/Inventory_btn.png" />
+                  <Image url="@Images/buttons/Inventory_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -20,7 +19,7 @@
          <graphic>
             <ImageView fitHeight="102.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/Registration_btn.png" />
+                  <Image url="@Images/buttons/Registration_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -28,7 +27,7 @@
          <graphic>
             <ImageView fitHeight="108.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/OrderManagement_btn.png" />
+                  <Image url="@Images/buttons/OrderManagement_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -36,7 +35,7 @@
          <graphic>
             <ImageView fitHeight="113.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/production_btn.png" />
+                  <Image url="@Images/buttons/production_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -44,28 +43,30 @@
          <graphic>
             <ImageView fitHeight="118.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/sales_btn.png" />
+                  <Image url="@Images/buttons/sales_btn.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+         <image>
+            <Image url="@Images/buttons/sales_btn.png" />
+         </image></Button>
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/navigator.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/DrewBakes.png" />
+         </image>
+      </ImageView>
       <Button layoutX="310.0" layoutY="262.0" mnemonicParsing="false" prefHeight="133.0" prefWidth="124.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="100.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/report_and_analytics_btn.png" />
+                  <Image url="@Images/buttons/report_and_analytics_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Text layoutX="281.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../SoftEng2/DrewBakes.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../SoftEng2/navigator.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

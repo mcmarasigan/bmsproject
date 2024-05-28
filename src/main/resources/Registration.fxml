@@ -12,19 +12,26 @@
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/product_btn.png" />
+                  <Image url="@Images/buttons/product_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="invregButton" layoutX="235.0" layoutY="288.0" mnemonicParsing="false" text="Inventory Registration" />
+      <Button fx:id="invregButton" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="77.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/inventoryreg_btn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/DrewBakes.png" />
+            <Image url="@Images/banners/DrewBakes.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../SoftEng2/navigator.png" />
+            <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
       <Text fx:id="regText" fill="WHITE" layoutX="50.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="76.2578125" />
@@ -32,7 +39,7 @@
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../SoftEng2/backbtn.png" />
+                  <Image url="@Images/buttons/backbtn.png" />
                </image>
             </ImageView>
          </graphic></Button>
