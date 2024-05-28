@@ -4,17 +4,41 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.RegisterController">
    <children>
-      <Label layoutX="240.0" layoutY="65.0" prefHeight="18.0" prefWidth="122.0" text="Register new admin:" />
-      <TextField fx:id="emailField" layoutX="227.0" layoutY="159.0" promptText="E-mail" />
-      <Button fx:id="submitButton" layoutX="275.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
-      <TextField fx:id="unameField" layoutX="226.0" layoutY="120.0" promptText="Username" />
-      <TextField fx:id="otpField" layoutX="225.0" layoutY="243.0" promptText="Enter OTP code:" />
-      <Button fx:id="otpButton" layoutX="135.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleOTPButton" text="Send OTP:" />
-      <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="200.0" promptText="Enter Password" />
-      <Button fx:id="submitButton1" layoutX="56.0" layoutY="337.0" mnemonicParsing="false" text="Back to login" />
+      <Label layoutX="239.0" layoutY="149.0" prefHeight="18.0" prefWidth="122.0" text="Register new admin:" />
+      <TextField fx:id="emailField" layoutX="225.0" layoutY="214.0" promptText="E-mail" />
+      <Button fx:id="submitButton" layoutX="394.0" layoutY="324.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #96735b;" text="Submit" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="unameField" layoutX="225.0" layoutY="181.0" promptText="Username" />
+      <TextField fx:id="otpField" layoutX="225.0" layoutY="287.0" promptText="Enter OTP code:" />
+      <Button fx:id="otpButton" layoutX="154.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleOTPButton" style="-fx-background-color: #96735b;" text="Send OTP:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font></Button>
+      <PasswordField fx:id="passwordField" layoutX="225.0" layoutY="251.0" promptText="Enter Password" />
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../SoftEng2/DrewBakes.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../SoftEng2/navigator.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="submitButton1" layoutX="40.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #96735b;" text="Back to login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Text fill="WHITE" layoutX="23.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Registration" />
    </children>
 </AnchorPane>
