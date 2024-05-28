@@ -7,6 +7,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @Entity
 public class InventoryEntity {
@@ -59,5 +67,24 @@ public class InventoryEntity {
     public void setExpiry(LocalDateTime expiryTime) {
         this.expiryTime = expiryTime;
     }
+ // Property methods for JavaFX TableView binding
+     public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
 
+    public StringProperty IngredientProperty() {
+        return new SimpleStringProperty(ingredient);
+    }
+
+     public DoubleProperty priceProperty() {
+        return new SimpleDoubleProperty(price);
+    }
+
+    public IntegerProperty quantityIngredientProperty() {
+        return new SimpleIntegerProperty(quantity);
+    }
+
+    public ObjectProperty<LocalDateTime> expiryTimeProperty() {
+        return new SimpleObjectProperty<>(expiryTime);
+    }
 }
