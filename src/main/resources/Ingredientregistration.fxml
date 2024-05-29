@@ -29,7 +29,7 @@
             <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
-      <Button fx:id="backbutton" layoutY="-1.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="28.0" style="-fx-background-color: none;">
+      <Button fx:id="backbutton" layoutY="-1.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="8.0" prefWidth="28.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                <image>

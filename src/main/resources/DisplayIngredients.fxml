@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="924.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
    <children>
-      <TableView fx:id="IngredientTable" layoutX="14.0" layoutY="100.0" prefHeight="292.0" prefWidth="901.0" snapToPixel="false">
+      <TableView fx:id="IngredientTable" layoutX="15.0" layoutY="132.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="43.0" text="Id" />
           <TableColumn fx:id="IngredientNameColumn" prefWidth="275.0" text="Ingredient Name" />
@@ -19,6 +20,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="40.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." style="-fx-background-color: white;" />
+      <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="86.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
+      <Button layoutX="15.0" layoutY="24.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE" />
+      <Button layoutX="642.0" layoutY="86.0" mnemonicParsing="false" onAction="#proceedtoIngredientreg" style="-fx-background-color: #96735b;" text="Register new Ingredient" textFill="WHITE" />
    </children>
 </AnchorPane>

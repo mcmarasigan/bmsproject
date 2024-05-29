@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.RegistrationFXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
    <children>
-      <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
+      <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoAddOrders" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -16,7 +16,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="invregButton" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" onAction="#proceedtoIngredient" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
+      <Button fx:id="invregButton" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" onAction="#proceedtoManageOrders" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="77.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,7 +34,7 @@
             <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
-      <Text fx:id="regText" fill="WHITE" layoutX="50.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="76.2578125" />
+      <Text fx:id="regText" fill="WHITE" layoutX="37.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Orders" wrappingWidth="100.2578125" />
       <Button fx:id="backButton" layoutX="-8.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
