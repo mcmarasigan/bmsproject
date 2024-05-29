@@ -8,11 +8,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.OrdersFXMLController">
    <children>
-      <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoAddOrders" style="-fx-background-color: none;">
+      <Button fx:id="prdctregButton" layoutX="179.0" layoutY="176.0" mnemonicParsing="false" onAction="#proceedtoAddOrders" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/buttons/product_btn.png" />
+                  <Image url="@Images/buttons/addOrder_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
@@ -20,7 +20,7 @@
          <graphic>
             <ImageView fitHeight="77.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/buttons/inventoryreg_btn.png" />
+                  <Image url="@Images/buttons/OrderHistory_img.png" />
                </image>
             </ImageView>
          </graphic></Button>
