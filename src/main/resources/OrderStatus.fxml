@@ -35,12 +35,14 @@
             <Image url="@Images/banners/bar.png" />
          </image>
       </ImageView>
-      <Button layoutX="5.0" layoutY="2.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="23.0" style="-fx-background-color: none;" />
-      <ImageView fitHeight="17.0" fitWidth="23.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/buttons/backbtn.png" />
-         </image>
-      </ImageView>
+      <Button layoutX="-4.0" layoutY="-4.0" mnemonicParsing="false" onAction="#backtoOrders" prefHeight="16.0" prefWidth="23.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Text fill="WHITE" layoutX="28.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Order" />
    </children>
 </AnchorPane>

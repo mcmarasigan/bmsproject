@@ -18,7 +18,7 @@ public class OrdersFXMLController {
     @FXML
     private void proceedtoAddOrders() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayOrder.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OrderStatus.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
@@ -31,7 +31,7 @@ public class OrdersFXMLController {
     @FXML
     private void proceedtoManageOrders() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OrderStatus.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayOrder.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
