@@ -5,7 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
+
+import com.groupten.bmsproject.BmsprojectApplication;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javafx.fxml.FXML;
@@ -30,6 +35,9 @@ public class LoginController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private ForgotpassController forgotpassController;
+
     @FXML
     private void handleLoginButton(){
         String email = emailField.getText();
@@ -42,6 +50,12 @@ public class LoginController {
         
         if (isValidCredentials(email, password)){
             System.out.println("Login Succeed");
+            try {
+                proceedtoDashboard();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         } else {
             showAlert("Invalid email or password");
         }
@@ -64,14 +78,38 @@ public class LoginController {
 
     @FXML
     private void handleForgotpassbtn(ActionEvent event) throws IOException {
-        // Load the new FXML file
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Forgotpassword.fxml"));
+        loader.setControllerFactory(context::getBean);
+
         Parent root = loader.load();
-
-        // Get the current stage
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        // Set the new scene
+    @FXML
+    private void handleRegisterbtn(ActionEvent event) throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Register.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void proceedtoDashboard() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

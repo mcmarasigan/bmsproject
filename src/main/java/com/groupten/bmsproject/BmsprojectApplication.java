@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 public class BmsprojectApplication extends Application {
 
     private static ConfigurableApplicationContext applicationContext;
+    private static Stage primaryStage;
 
     public static void main(String[] args) {
         applicationContext = SpringApplication.run(BmsprojectApplication.class, args);
@@ -26,7 +27,8 @@ public class BmsprojectApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        primaryStage = stage;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
 
         // Set the Spring context for the FXMLLoader
         loader.setControllerFactory(applicationContext::getBean);
@@ -43,5 +45,13 @@ public class BmsprojectApplication extends Application {
     public void stop() throws Exception {
         super.stop();
         applicationContext.close();
+    }
+
+    public static ConfigurableApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 }

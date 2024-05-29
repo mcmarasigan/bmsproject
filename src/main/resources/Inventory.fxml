@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
+   <children>
+      <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/product_btn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="invregButton" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="77.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/inventoryreg_btn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/DrewBakes.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/navigator.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="regText" fill="WHITE" layoutX="37.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory" wrappingWidth="100.2578125" />
+      <Button fx:id="backButton" layoutX="-8.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+   </children>
+</AnchorPane>

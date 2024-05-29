@@ -4,10 +4,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DashboardController">
    <children>
-      <Button layoutX="72.0" layoutY="149.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: none;">
+      <Button layoutX="72.0" layoutY="149.0" mnemonicParsing="false" onAction="#proceedtoInventory" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="111.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -46,20 +47,7 @@
                   <Image url="@Images/buttons/sales_btn.png" />
                </image>
             </ImageView>
-         </graphic>
-         <image>
-            <Image url="@Images/buttons/sales_btn.png" />
-         </image></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/DrewBakes.png" />
-         </image>
-      </ImageView>
+         </graphic></Button>
       <Button layoutX="310.0" layoutY="262.0" mnemonicParsing="false" prefHeight="133.0" prefWidth="124.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="100.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
@@ -68,5 +56,16 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Text layoutX="281.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/DrewBakes.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/navigator.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -18,7 +18,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 @Component
-public class InvregistrationController {
+public class IngredientRegController {
      @FXML
     private TextField ingredienttxt;
 

@@ -11,25 +11,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.LoginController">
    <children>
-      <Text fx:id="Logintxt" fill="#96735b" layoutX="277.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="110.0">
+      <Text fx:id="Logintxt" fill="#96735b" layoutX="320.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" wrappingWidth="110.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Text>
-      <TextField fx:id="emailField" layoutX="406.0" layoutY="144.0" promptText="Username or E-mail" />
-      <PasswordField fx:id="passwordField" layoutX="406.0" layoutY="188.0" promptText="Password" />
-      <Button fx:id="forgotPasswordbtn" layoutX="282.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Forgot Password?" textFill="WHITE">
+      <TextField fx:id="emailField" layoutX="300.0" layoutY="127.0" promptText="Username or E-mail" />
+      <PasswordField fx:id="passwordField" layoutX="300.0" layoutY="174.0" promptText="Password" />
+      <Button fx:id="forgotPasswordbtn" layoutX="470.0" layoutY="174.0" mnemonicParsing="false" onAction="#handleForgotpassbtn" style="-fx-background-color: #96735b;" text="Forgot Password?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="Loginbtn" layoutX="509.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleLoginButton" style="-fx-background-color: #96735b;" text="Login" textFill="WHITE">
+      <Button fx:id="Loginbtn" layoutX="351.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleLoginButton" style="-fx-background-color: #96735b;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="Registerbtn" layoutX="302.0" layoutY="317.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Register" textFill="WHITE">
+      <Button fx:id="Registerbtn" layoutX="344.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRegisterbtn" style="-fx-background-color: #96735b;" text="Register" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Text fill="#96735b" layoutX="275.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+      <Text fill="#96735b" layoutX="313.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
       <ImageView fitHeight="502.0" fitWidth="304.0" layoutX="-65.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/banners/image_security.png" />

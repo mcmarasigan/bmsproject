@@ -37,7 +37,7 @@
             <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
-      <Button layoutY="2.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="29.0" style="-fx-background-color: none;">
+      <Button layoutY="2.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="16.0" prefWidth="29.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

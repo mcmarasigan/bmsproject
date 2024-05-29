@@ -19,9 +19,11 @@ import java.util.regex.Pattern;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
+import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Admin.AdminService;
 import com.groupten.bmsproject.OTP.EmailService;
 import com.groupten.bmsproject.OTP.OTPGenerator;
@@ -160,6 +162,19 @@ public class RegisterController {
 
         System.out.println(result);
         }
+    }
+
+    @FXML
+    private void handleBackbtn(ActionEvent event) throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     
