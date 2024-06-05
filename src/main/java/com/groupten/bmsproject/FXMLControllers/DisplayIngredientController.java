@@ -7,12 +7,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +51,23 @@ public class DisplayIngredientController {
     private TableColumn<InventoryEntity, LocalDateTime> ExpiryDateColumn;
 
     @FXML
+    private StackPane editPane;
+
+    @FXML
+    private TextField editNamefield;
+
+    @FXML
+    private TextField editPricefield;
+
+    @FXML
+    private TextField editQuantityfield;
+
+    @FXML
+    private DatePicker editExpiryfield;
+
+    private InventoryEntity selectedIngredient;
+
+    @FXML
     private TextField SearchTextfield;
 
     private final InventoryService inventoryService;
@@ -63,36 +86,73 @@ public class DisplayIngredientController {
         QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityIngredientProperty().asObject());
         ExpiryDateColumn.setCellValueFactory(cellData -> cellData.getValue().expiryTimeProperty());
 
-        // Populate the masterData list with data from the inventory service
-        masterData.addAll(inventoryService.getAllProducts());
+        populateTable();
 
-        // Wrap the ObservableList in a FilteredList
-        FilteredList<InventoryEntity> filteredData = new FilteredList<>(masterData, p -> true);
-
-        // Add a listener to the SearchTextField to filter the data
-        SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(ingredient -> {
-                // If the search field is empty, display all ingredients
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
+        // Add a listener to capture the selected row
+        IngredientTable.setRowFactory(tv -> {
+            TableRow<InventoryEntity> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
+                    selectedIngredient = row.getItem();
                 }
-
-                // Compare ingredient details with the filter text
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (ingredient.getIngredient().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches ingredient name
-                } else if (ingredient.getPrice().toString().contains(lowerCaseFilter)) {
-                    return true; // Filter matches price
-                } else if (ingredient.getQuantity().toString().contains(lowerCaseFilter)) {
-                    return true; // Filter matches quantity
-                }
-                return false; // Does not match
             });
+            return row;
         });
 
-        // Bind the FilteredList to the TableView
-        IngredientTable.setItems(filteredData);
+    }
+
+    private void populateTable() {
+        IngredientTable.getItems().addAll(inventoryService.getAllProducts());
+    }
+
+    @FXML
+    private void handleEditButton() {
+        if (selectedIngredient != null) {
+            // Fill the fields with the selected ingredient details
+            editNamefield.setText(selectedIngredient.getIngredient());
+            editPricefield.setText(selectedIngredient.getPrice().toString());
+            editQuantityfield.setText(selectedIngredient.getQuantity().toString());
+            editExpiryfield.setValue(selectedIngredient.getExpiry().toLocalDate());
+            // Show the edit pane
+            editPane.setVisible(true);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Ingredient Selected");
+            alert.setContentText("Please select an ingredient in the table.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleSaveButton() {
+        Integer id = selectedIngredient.getID();
+        String ingredient = editNamefield.getText();
+        String priceString = editPricefield.getText();
+        Double price = Double.parseDouble(priceString);
+        String quantityString = editQuantityfield.getText();
+        int quantity = Integer.parseInt(quantityString);
+
+        // Retrieve the selected date from the DatePicker
+        LocalDate expiryDate = editExpiryfield.getValue();
+
+        // Set the expiry time to the selected date at midnight
+        LocalDateTime productexpiry = expiryDate.atStartOfDay();
+
+        String result = inventoryService.updateIngredient(id, ingredient, price, quantity, productexpiry);
+
+        System.out.println(result);
+        
+        // Refresh the table to show the updated details
+        IngredientTable.refresh();
+        // Hide the edit pane
+        editPane.setVisible(false);
+    }
+
+    @FXML
+    private void handleCancelButton() {
+        // Hide the edit pane without saving
+        editPane.setVisible(false);
     }
 
     @FXML

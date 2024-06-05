@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayProductController">
    <children>
-      <TableView fx:id="inventoryTable" layoutX="16.0" layoutY="124.0" prefHeight="263.0" prefWidth="769.0">
+      <TableView fx:id="inventoryTable" layoutX="15.0" layoutY="132.0" prefHeight="263.0" prefWidth="769.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="45.0" text="id" />
           <TableColumn fx:id="descriptionColumn" prefWidth="142.0" text="description" />
@@ -22,8 +22,10 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTxt" layoutX="16.0" layoutY="81.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
-      <Button layoutX="643.0" layoutY="81.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Register new Product" textFill="WHITE" />
-      <Button layoutX="16.0" layoutY="24.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE" />
+      <TextField fx:id="SearchTxt" layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
+      <Button layoutX="164.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Register new Product" textFill="WHITE" />
+      <Button layoutX="15.0" layoutY="24.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE" />
+      <Button layoutX="14.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Delete row" textFill="WHITE" />
+      <Button layoutX="97.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE" />
    </children>
 </AnchorPane>

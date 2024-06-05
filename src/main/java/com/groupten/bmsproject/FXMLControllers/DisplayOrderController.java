@@ -75,41 +75,15 @@ public class DisplayOrderController {
         PaymentColumn.setCellValueFactory(cellData -> cellData.getValue().paymentStatusProperty());
         DeliveryColumn.setCellValueFactory(cellData -> cellData.getValue().deliveryStatusProperty());
 
-        // Populate the masterData list with data from the order service
-        masterData.addAll(orderService.getAllProducts());
+        populateTable();
 
-        // Wrap the ObservableList in a FilteredList
-        FilteredList<OrderEntity> filteredData = new FilteredList<>(masterData, p -> true);
-
-        // Add a listener to the SearchTextField to filter the data
-        SearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(order -> {
-                // If the search field is empty, display all orders
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                // Compare order details with the filter text
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (order.getorderCustomerName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches customer name
-                } else if (order.getorderAddress().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches address
-                } else if (order.getorderProductOrder().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches product order
-                } else if (order.getorderPaymentStatus().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches payment status
-                } else if (order.getorderDeliveryStatus().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches delivery status
-                }
-                return false; // Does not match
-            });
-        });
-
-        // Bind the FilteredList to the TableView
-        OrderTable.setItems(filteredData);
     }
+    
+        private void populateTable() {
+        // Populate the masterData list with data from the order service
+        OrderTable.getItems().addAll(orderService.getAllProducts());
+        }
+        
 
     @FXML
     private void proceedtoAddOrders() throws IOException {

@@ -18,6 +18,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -25,6 +27,9 @@ import javafx.event.ActionEvent;
 
 @Component
 public class LoginController {
+
+    private static final int MAX_FAILED_ATTEMPTS = 3;
+    private int failedLoginAttempts = 0;
 
     @FXML
     private TextField emailField;
@@ -51,14 +56,20 @@ public class LoginController {
         if (isValidCredentials(email, password)){
             System.out.println("Login Succeed");
             try {
+                failedLoginAttempts = 0; // Reset the counter on successful login
                 proceedtoDashboard();
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         } else {
+            failedLoginAttempts++;
+            if (failedLoginAttempts >= MAX_FAILED_ATTEMPTS) {
+                suggestForgotPassword();
+            } else {
             showAlert("Invalid email or password");
         }
+    }
 
     }
 
@@ -113,6 +124,38 @@ public class LoginController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void suggestForgotPassword() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Login Failed");
+        alert.setHeaderText(null);
+        alert.setContentText("You have failed to login 3 times. Would you like to reset your password?");
+
+        ButtonType okButton = new ButtonType("OK", ButtonData.OK_DONE);
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(okButton, cancelButton);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == okButton) {
+                try {
+                    ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Forgotpassword.fxml"));
+                    loader.setControllerFactory(context::getBean);
+
+                    Parent root = loader.load();
+                    Stage stage = BmsprojectApplication.getPrimaryStage();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                    failedLoginAttempts = 0;
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     
