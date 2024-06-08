@@ -1,12 +1,20 @@
 package com.groupten.bmsproject.FXMLControllers;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+
+import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -51,5 +59,18 @@ public class OrderingController {
 
         String result = orderService.addNewOrder(customerName, address, dateOrder, productOrder, quantityOrder, paymentStatus, deliveryStatus);
         System.out.println(result);
+    }
+
+    @FXML
+    private void backtoOrders() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Orders.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

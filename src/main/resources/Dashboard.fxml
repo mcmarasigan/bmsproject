@@ -16,7 +16,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="187.0" layoutY="155.0" mnemonicParsing="false" style="-fx-background-color: none;">
+      <Button layoutX="187.0" layoutY="155.0" mnemonicParsing="false" onAction="#proceedtoRegistration" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="102.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +24,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="300.0" layoutY="150.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="109.0" style="-fx-background-color: none;">
+      <Button layoutX="300.0" layoutY="150.0" mnemonicParsing="false" onAction="#proceedtoOrders" prefHeight="120.0" prefWidth="109.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="108.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -67,5 +67,6 @@
             <Image url="@Images/banners/navigator.png" />
          </image>
       </ImageView>
+      <Button layoutX="274.0" layoutY="98.0" mnemonicParsing="false" onAction="#search" text="Search" />
    </children>
 </AnchorPane>

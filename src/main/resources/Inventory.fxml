@@ -16,11 +16,11 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="invregButton" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
+      <Button fx:id="invregButton" layoutX="182.0" layoutY="248.0" mnemonicParsing="false" onAction="#proceedtoIngredient" prefHeight="101.0" prefWidth="239.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="77.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/buttons/inventoryreg_btn.png" />
+                  <Image url="@Images/buttons/ingredient_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>

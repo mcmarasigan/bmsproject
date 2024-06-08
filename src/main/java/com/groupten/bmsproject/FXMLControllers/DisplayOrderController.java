@@ -4,15 +4,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 
+import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Order.OrderEntity;
 import com.groupten.bmsproject.Order.OrderService;
 
@@ -68,39 +75,39 @@ public class DisplayOrderController {
         PaymentColumn.setCellValueFactory(cellData -> cellData.getValue().paymentStatusProperty());
         DeliveryColumn.setCellValueFactory(cellData -> cellData.getValue().deliveryStatusProperty());
 
+        populateTable();
+
+    }
+    
+        private void populateTable() {
         // Populate the masterData list with data from the order service
-        masterData.addAll(orderService.getAllProducts());
+        OrderTable.getItems().addAll(orderService.getAllProducts());
+        }
+        
 
-        // Wrap the ObservableList in a FilteredList
-        FilteredList<OrderEntity> filteredData = new FilteredList<>(masterData, p -> true);
+    @FXML
+    private void proceedtoAddOrders() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/OrderStatus.fxml"));
+        loader.setControllerFactory(context::getBean);
 
-        // Add a listener to the SearchTextField to filter the data
-        SearchTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(order -> {
-                // If the search field is empty, display all orders
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
-                // Compare order details with the filter text
-                String lowerCaseFilter = newValue.toLowerCase();
+    @FXML
+    private void backtoOrders() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Orders.fxml"));
+        loader.setControllerFactory(context::getBean);
 
-                if (order.getorderCustomerName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches customer name
-                } else if (order.getorderAddress().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches address
-                } else if (order.getorderProductOrder().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches product order
-                } else if (order.getorderPaymentStatus().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches payment status
-                } else if (order.getorderDeliveryStatus().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches delivery status
-                }
-                return false; // Does not match
-            });
-        });
-
-        // Bind the FilteredList to the TableView
-        OrderTable.setItems(filteredData);
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

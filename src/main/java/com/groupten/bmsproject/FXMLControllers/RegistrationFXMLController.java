@@ -14,11 +14,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 @Component
-public class InventoryFXMLController {
+public class RegistrationFXMLController {
     @FXML
     private void proceedtoProduct() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayProducts.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Productregistration.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
@@ -31,7 +31,7 @@ public class InventoryFXMLController {
     @FXML
     private void proceedtoIngredient() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayIngredients.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ingredientregistration.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
