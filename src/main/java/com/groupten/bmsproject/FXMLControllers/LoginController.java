@@ -103,7 +103,7 @@ public class LoginController {
     @FXML
     private void handleRegisterbtn(ActionEvent event) throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Register.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminRegister.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
