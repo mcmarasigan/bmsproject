@@ -29,4 +29,8 @@ public class ProductService {
     public List<ProductEntity> getAllProducts() {
         return productRepository.findAll();
     }
+
+    public List<ProductEntity> findAll() {
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
 }
