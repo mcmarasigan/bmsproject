@@ -213,6 +213,23 @@ public class DisplayOrderController {
         stage.show();
     }
 
+    //Retrives the search text from the Ingredient search then 
+    public void setSearchTextField(String result) {
+        SearchTextfield.setText(result);
+    }
+
+    //Sets the selected Order as the row retrieved from the order search
+    public void setSelectedOrder(OrderEntity selectedOrder) {
+        this.selectedOrder = selectedOrder;
+        displaySelectedOrder();
+    }
+
+    //Displays the selected row
+    private void displaySelectedOrder() {
+        // Set the table's items to only the selected order
+        OrderTable.setItems(FXCollections.observableArrayList(selectedOrder));
+    }
+
     @FXML
     private void backtoOrders() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context

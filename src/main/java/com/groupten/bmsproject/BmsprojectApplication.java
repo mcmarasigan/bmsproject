@@ -28,7 +28,7 @@ public class BmsprojectApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayProductionSchedule.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
 
         // Set the Spring context for the FXMLLoader
         loader.setControllerFactory(applicationContext::getBean);

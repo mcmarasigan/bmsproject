@@ -19,7 +19,6 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryEntity;
 import com.groupten.bmsproject.Order.OrderEntity;
 import com.groupten.bmsproject.Order.OrderService;
 
@@ -90,8 +89,14 @@ public class OrderSearchTabController {
         ordersTable.setRowFactory(tv -> {
             TableRow<OrderEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
+                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
                     selectedOrder = row.getItem();
+                    try {
+                        proceedtoOrder();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             });
             return row;
@@ -130,8 +135,7 @@ public class OrderSearchTabController {
 
     @FXML
     private String getsearchText() {
-        String result = searchField.getText();
-        return result;
+        return searchField.getText();
     }
 
     @FXML
@@ -143,9 +147,9 @@ public class OrderSearchTabController {
         Parent root = loader.load();
 
         // Get the controller and set the search text
-        DisplayIngredientController controller = loader.getController();
+        DisplayOrderController controller = loader.getController();
         controller.setSearchTextField(getsearchText());
-        //controller.setSelectedOrder(selectedOrder);
+        controller.setSelectedOrder(selectedOrder);
 
         Stage stage = BmsprojectApplication.getPrimaryStage();
         Scene scene = new Scene(root);
