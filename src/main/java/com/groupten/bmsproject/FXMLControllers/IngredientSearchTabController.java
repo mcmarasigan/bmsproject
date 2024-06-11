@@ -65,6 +65,7 @@ public class IngredientSearchTabController {
 
     @FXML
     private void initialize() {
+        // Retrieve from database
         ingredientID.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         ingredientName.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
         ingredientPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
@@ -77,8 +78,14 @@ public class IngredientSearchTabController {
         ingredientsTable.setRowFactory(tv -> {
             TableRow<InventoryEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
+                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
                     selectedIngredient = row.getItem();
+                    try {
+                        proceedtoInventory();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             });
             return row;
@@ -88,13 +95,14 @@ public class IngredientSearchTabController {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> searchIngredients(newValue));
 
     }
-
+    // Populates the table
     private void populateTable() {
         // Initialize inventoryList with data from inventoryService
         inventoryList = FXCollections.observableArrayList(inventoryService.getAllProducts());
         ingredientsTable.getItems().addAll(inventoryService.getAllProducts());
     }
 
+    // Searches the table
     private void searchIngredients(String query) {
         List<InventoryEntity> filteredList = inventoryList.stream()
                 .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
@@ -109,6 +117,30 @@ public class IngredientSearchTabController {
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private String getsearchText() {
+        return searchField.getText();
+    }
+
+    @FXML
+    private void proceedtoInventory() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayIngredients.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+
+        // Get the controller and set the search text
+        DisplayIngredientController controller = loader.getController();
+        controller.setSearchTextField(getsearchText());
+        controller.setSelectedIngredient(selectedIngredient);
+
         Stage stage = BmsprojectApplication.getPrimaryStage();
         Scene scene = new Scene(root);
         stage.setScene(scene);

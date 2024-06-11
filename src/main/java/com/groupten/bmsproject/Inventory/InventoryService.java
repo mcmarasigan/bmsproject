@@ -1,7 +1,6 @@
 package com.groupten.bmsproject.Inventory;
 
 import java.time.LocalDateTime;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,6 @@ public class InventoryService {
         newInventory.setPrice(price);
         newInventory.setQuantity(quantity);
         newInventory.setExpiry(expiryTime);
-
         inventoryRepository.save(newInventory);
 
         return "Saved";

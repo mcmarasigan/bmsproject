@@ -3,8 +3,12 @@ package com.groupten.bmsproject.Order;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.groupten.bmsproject.Inventory.InventoryEntity;
 
 
 
@@ -28,6 +32,25 @@ public class OrderService {
 
     return "Saved";
     }
+
+    public String updateOrder(Integer id, String customername, String address, LocalDateTime dateorder,String productorder, Integer quantityorder, String paymentstatus, String deliverystatus) {
+        Optional<OrderEntity> optionalOrderEntity = orderRepository.findById(id);
+
+        if (optionalOrderEntity.isPresent()) {
+            // Update existing inventory item
+            OrderEntity orderEntity = optionalOrderEntity.get();
+            orderEntity.setorderCustomerName(customername);
+            orderEntity.setorderaddress(address);
+            orderEntity.setorderDateOrder (dateorder);
+            orderEntity.setorderProductOrder (productorder);
+            orderEntity.setorderQuantityOrder (quantityorder);
+            orderEntity.setorderPaymentStatus (paymentstatus);
+            orderEntity.setorderDeliveryStatus (deliverystatus);
+            orderRepository.save(orderEntity);
+        } 
+        return "Updated";
+    }
+
     public List<OrderEntity> getAllProducts() {
         return orderRepository.findAll();
     }

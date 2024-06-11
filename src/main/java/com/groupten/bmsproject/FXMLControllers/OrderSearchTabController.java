@@ -19,6 +19,7 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.Inventory.InventoryEntity;
 import com.groupten.bmsproject.Order.OrderEntity;
 import com.groupten.bmsproject.Order.OrderService;
 
@@ -57,7 +58,7 @@ public class OrderSearchTabController {
     @FXML
     private TableColumn<OrderEntity, String> orderDeliverystatus;
 
-    private OrderEntity selectedorder;
+    private OrderEntity selectedOrder;
 
     @FXML
     private TextField searchField;
@@ -90,7 +91,7 @@ public class OrderSearchTabController {
             TableRow<OrderEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
-                    selectedorder = row.getItem();
+                    selectedOrder = row.getItem();
                 }
             });
             return row;
@@ -121,6 +122,31 @@ public class OrderSearchTabController {
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private String getsearchText() {
+        String result = searchField.getText();
+        return result;
+    }
+
+    @FXML
+    private void proceedtoOrder() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayOrder.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+
+        // Get the controller and set the search text
+        DisplayIngredientController controller = loader.getController();
+        controller.setSearchTextField(getsearchText());
+        //controller.setSelectedOrder(selectedOrder);
+
         Stage stage = BmsprojectApplication.getPrimaryStage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
