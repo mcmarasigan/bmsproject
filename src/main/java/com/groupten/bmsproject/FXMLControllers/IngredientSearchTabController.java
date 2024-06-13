@@ -104,9 +104,17 @@ public class IngredientSearchTabController {
 
     // Searches the table
     private void searchIngredients(String query) {
-        List<InventoryEntity> filteredList = inventoryList.stream()
-                .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
-                .collect(Collectors.toList());
+        List<InventoryEntity> filteredList;
+        try {
+            int id = Integer.parseInt(query);
+            filteredList = inventoryList.stream()
+                    .filter(ingredient -> ingredient.getID() == id)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            filteredList = inventoryList.stream()
+                    .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
         ingredientsTable.setItems(FXCollections.observableArrayList(filteredList));
     }
 
