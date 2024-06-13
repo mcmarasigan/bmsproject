@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.groupten.bmsproject.BmsprojectApplication;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,9 +83,14 @@ public class LoginController {
     }
 
     private boolean isValidCredentials(String email, String password){
-        String sql = "SELECT * FROM adminentity WHERE email = ? AND password = ?";
-        List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql, email, password);
-        return !rows.isEmpty();
+        String sql = "SELECT password FROM adminentity WHERE email = ?";
+        try {
+            String storedHashedPassword = jdbcTemplate.queryForObject(sql, new Object[]{email}, String.class);
+            return BCrypt.checkpw(password, storedHashedPassword);
+        } catch (Exception e) {
+            // Handle exception, e.g., user not found
+            return false;
+        }
     }
 
     @FXML

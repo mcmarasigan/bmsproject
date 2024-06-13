@@ -86,13 +86,12 @@ public class DisplayOrderController {
     @FXML
     private TextField editDeliveryfield;
 
-    private OrderEntity selectedOrder;
-
     @FXML
     private TextField SearchTextfield;
 
     private final OrderService orderService;
     private ObservableList<OrderEntity> orderList;
+    private OrderEntity selectedOrder;
     private ObservableList<OrderEntity> masterData = FXCollections.observableArrayList();
 
     @Autowired

@@ -21,6 +21,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
@@ -116,9 +117,11 @@ public class RegisterController {
         }
         
         else {
-        // Call the adminService method to add a new admin
-        String result = adminService.addNewAdmin(username, email, password);
-        // You can handle the result as needed, e.g., display a message
+        // Hash the password before saving it
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+        // Call the adminService method to add a new admin with the hashed password
+        String result = adminService.addNewAdmin(username, email, hashedPassword);
         System.out.println(result);
         }
     }
