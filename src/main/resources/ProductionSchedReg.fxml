@@ -5,18 +5,34 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="224.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
    <children>
-      <ChoiceBox fx:id="productChoiceBox" layoutX="14.0" layoutY="63.0" prefWidth="150.0" />
-      <Text layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product" />
-      <DatePicker fx:id="dateofproductionPicker" layoutX="11.0" layoutY="185.0" promptText="Date of Production" />
-      <DatePicker fx:id="expdatePicker" layoutX="11.0" layoutY="228.0" promptText="Expiration Date" />
-      <Button fx:id="savebutton" layoutX="69.0" layoutY="259.0" mnemonicParsing="false" text="Save" />
-      <Label layoutX="14.0" layoutY="90.0" text="Quantity" />
-      <Text fx:id="levelOfStockField" layoutX="19.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Stock: N/A" />
-      <TextField fx:id="quantityField" layoutX="15.0" layoutY="107.0" />
+      <ChoiceBox fx:id="productChoiceBox" layoutX="299.0" layoutY="109.0" prefWidth="150.0" />
+      <Text layoutX="300.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product:" />
+      <DatePicker fx:id="dateofproductionPicker" layoutX="300.0" layoutY="240.0" promptText="Date of Production" />
+      <DatePicker fx:id="expdatePicker" layoutX="300.0" layoutY="280.0" promptText="Expiration Date" />
+      <Button fx:id="savebutton" layoutX="507.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label layoutX="300.0" layoutY="145.0" text="Quantity:" />
+      <Text fx:id="levelOfStockField" layoutX="300.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Stock: N/A" />
+      <TextField fx:id="quantityField" layoutX="299.0" layoutY="162.0" prefHeight="25.0" prefWidth="150.0" />
+      <ImageView fitHeight="502.0" fitWidth="304.0" layoutX="-57.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/image_security.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="500.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/logos/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
