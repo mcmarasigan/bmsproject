@@ -18,11 +18,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 @Component
 public class IngredientRegController {
@@ -43,6 +45,32 @@ public class IngredientRegController {
 
     @Autowired
     private InventoryService inventoryService;
+
+    @FXML
+    private void initialize() {
+        // Disable past dates in the DatePicker
+        expirydate.setDayCellFactory(getDateCellFactory());
+    }
+
+    private Callback<DatePicker, DateCell> getDateCellFactory() {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        // Disable all past dates
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                        }
+                    }
+                };
+            }
+        };
+    }
 
     @FXML
     private void handleSaveButton() {

@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Order.OrderEntity;
+import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
+import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
 
 import javafx.collections.FXCollections;
@@ -52,10 +54,10 @@ public class OrderSearchTabController {
     private TableColumn<OrderEntity, Integer> orderQuantity;
 
     @FXML
-    private TableColumn<OrderEntity, String> orderPaymentstatus;
+    private TableColumn<OrderEntity, PaymentStatus> orderPaymentstatus;
 
     @FXML
-    private TableColumn<OrderEntity, String> orderDeliverystatus;
+    private TableColumn<OrderEntity, DeliveryStatus> orderDeliverystatus;
 
     private OrderEntity selectedOrder;
 
