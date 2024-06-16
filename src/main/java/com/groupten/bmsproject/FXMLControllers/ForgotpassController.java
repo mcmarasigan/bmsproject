@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
@@ -47,7 +48,7 @@ public class ForgotpassController {
     private PasswordField passwordField;
 
     @FXML
-    private PasswordField newpassField;
+    private PasswordField confirmpassField;
 
     @FXML
     private Button otpButton;
@@ -83,89 +84,89 @@ public class ForgotpassController {
     private void handleSubmitButton() {
         String email = emailField.getText();
         String password = passwordField.getText();
+        String confirmedpass = confirmpassField.getText();
         String otp = otpField.getText();
 
-        if (email.isEmpty() || password.isEmpty() || otp.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill the corresponding fields.");
-            alert.showAndWait();
+        if (email.isEmpty() || password.isEmpty() || confirmedpass.isEmpty() || otp.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please fill all the fields.");
+            return;
         }
 
-        if (!isEmailValid(email)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid E-mail format.");
-            alert.showAndWait();
+        if (!isEmailValid(email)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid E-mail format.");
+            return;
         }
 
-        if (!isPasswordValid(password)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Password should have atleast eight characters and one uppercase letter.");
-            alert.showAndWait();
+        if (!isPasswordValid(password)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Password should have at least eight characters and one uppercase letter.");
+            return;
         }
 
-        // Call a method to verify the OTP
+        if (!isPasswordSame(password, confirmedpass)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Passwords do not match.");
+            return;
+        }
+
         boolean isOtpValid = verifyOtp(email, otp);
 
-        if (!isOtpValid){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid OTP.");
-            alert.showAndWait();
+        if (!isOtpValid) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid OTP.");
+            return;
         }
-        
-        else {
-        // Call the adminService method to add a new admin
-        String result = passwordService.updatePassword(email, password);
-        // You can handle the result as needed, e.g., display a message
-        System.out.println(result);
-        }
+
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        String result = passwordService.updatePassword(email, hashedPassword);
+        showAlert(Alert.AlertType.INFORMATION, "Success", result);
     }
 
     private boolean verifyOtp(String email, String otp) {
-        // Implement code to verify OTP against the email in your database (MySQL)
-        // Return true if OTP is valid for the email, otherwise return false
         String sql = "SELECT otp FROM otpentity WHERE email = ?";
-        String storedOtp = jdbcTemplate.queryForObject(sql, String.class, email);
-        return otp.equals(storedOtp);
+        try {
+            String storedOtp = jdbcTemplate.queryForObject(sql, String.class, email);
+            return otp.equals(storedOtp);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    private boolean isEmailValid(String email){
+    private boolean isEmailValid(String email) {
         Matcher matcher = emailpattern.matcher(email);
         return matcher.matches();
     }
 
-    private boolean isPasswordValid(String password){
+    private boolean isPasswordValid(String password) {
         Matcher matcher = passwordpattern.matcher(password);
         return matcher.matches();
     }
 
+    private boolean isPasswordSame(String password, String confirmedPassword) {
+        return password.equals(confirmedPassword);
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     @FXML
-    private void handleOTPButton () {
+    private void handleOTPButton() {
         String email = emailField.getText();
-        String pasword = passwordField.getText();
+
+        if (email.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please enter your email.");
+            return;
+        }
+
         String otp = otpGenerator.generatedOTP();
         LocalDateTime time = LocalDateTime.now();
 
-        if (email.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter your email.");
-            alert.showAndWait();
-        } else {
-
         String result = otpService.addOTP(email, otp, time);
-        eMailSender.sendVerificationEmail(email,"OTP Verification Code","",otp);
+        eMailSender.sendVerificationEmail(email, "OTP Verification Code", "", otp);
 
-        System.out.println(result);
-        }
+        showAlert(Alert.AlertType.INFORMATION, "Success", "OTP sent to your email.");
     }
 
     @FXML
@@ -180,6 +181,4 @@ public class ForgotpassController {
         stage.setScene(scene);
         stage.show();
     }
-
-    
 }

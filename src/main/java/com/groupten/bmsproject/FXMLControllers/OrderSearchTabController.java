@@ -20,6 +20,8 @@ import javafx.stage.Stage;
 
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Order.OrderEntity;
+import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
+import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
 
 import javafx.collections.FXCollections;
@@ -52,12 +54,12 @@ public class OrderSearchTabController {
     private TableColumn<OrderEntity, Integer> orderQuantity;
 
     @FXML
-    private TableColumn<OrderEntity, String> orderPaymentstatus;
+    private TableColumn<OrderEntity, PaymentStatus> orderPaymentstatus;
 
     @FXML
-    private TableColumn<OrderEntity, String> orderDeliverystatus;
+    private TableColumn<OrderEntity, DeliveryStatus> orderDeliverystatus;
 
-    private OrderEntity selectedorder;
+    private OrderEntity selectedOrder;
 
     @FXML
     private TextField searchField;
@@ -89,8 +91,14 @@ public class OrderSearchTabController {
         ordersTable.setRowFactory(tv -> {
             TableRow<OrderEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
-                    selectedorder = row.getItem();
+                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+                    selectedOrder = row.getItem();
+                    try {
+                        proceedtoOrder();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
                 }
             });
             return row;
@@ -121,6 +129,30 @@ public class OrderSearchTabController {
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private String getsearchText() {
+        return searchField.getText();
+    }
+
+    @FXML
+    private void proceedtoOrder() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayOrder.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+
+        // Get the controller and set the search text
+        DisplayOrderController controller = loader.getController();
+        controller.setSearchTextField(getsearchText());
+        controller.setSelectedOrder(selectedOrder);
+
         Stage stage = BmsprojectApplication.getPrimaryStage();
         Scene scene = new Scene(root);
         stage.setScene(scene);

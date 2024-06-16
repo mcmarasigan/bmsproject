@@ -54,14 +54,14 @@ public class ProductSearchTabController {
     @FXML
     private TableColumn<ProductEntity, String> productImage;
 
-    private ProductEntity selectedproduct;
+    private ProductEntity selectedProduct;
 
     @FXML
     private TextField searchField;
 
     private final ProductService productService;
 
-    private ObservableList<ProductEntity> ProductList;
+    private ObservableList<ProductEntity> productList;
     
 
     @Autowired
@@ -85,8 +85,13 @@ public class ProductSearchTabController {
         productsTable.setRowFactory(tv -> {
             TableRow<ProductEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
-                    selectedproduct = row.getItem();
+                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+                    selectedProduct = row.getItem();
+                    try {
+                        proceedtoProduct();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
             return row;
@@ -99,14 +104,22 @@ public class ProductSearchTabController {
 
     private void populateTable() {
         // Initialize ProductList with data from ProductService
-        ProductList = FXCollections.observableArrayList(productService.getAllProducts());
+        productList = FXCollections.observableArrayList(productService.getAllProducts());
         productsTable.getItems().addAll(productService.getAllProducts());
     }
 
     private void searchProducts(String query) {
-        List<ProductEntity> filteredList = ProductList.stream()
-                .filter(product -> product.getproductName().toLowerCase().contains(query.toLowerCase()))
-                .collect(Collectors.toList());
+        List<ProductEntity> filteredList;
+        try {
+            int id = Integer.parseInt(query);
+            filteredList = productList.stream()
+                    .filter(product -> product.getID() == id)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            filteredList = productList.stream()
+                    .filter(product -> product.getproductName().toLowerCase().contains(query.toLowerCase()))
+                    .collect(Collectors.toList());
+        }
         productsTable.setItems(FXCollections.observableArrayList(filteredList));
     }
 
@@ -117,6 +130,30 @@ public class ProductSearchTabController {
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private String getsearchText() {
+        return searchField.getText();
+    }
+
+    @FXML
+    private void proceedtoProduct() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayProducts.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+
+        // Get the controller and set the search text
+        DisplayProductController controller = loader.getController();
+        controller.setSearchTextField(getsearchText());
+        controller.setSelectedProduct(selectedProduct);
+
         Stage stage = BmsprojectApplication.getPrimaryStage();
         Scene scene = new Scene(root);
         stage.setScene(scene);

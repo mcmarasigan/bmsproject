@@ -20,7 +20,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
@@ -33,140 +33,150 @@ import com.groupten.bmsproject.OTP.OTPService;
 public class RegisterController {
 
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-    private final Pattern emailpattern = Pattern.compile(EMAIL_REGEX);
-
     private static final String PASSWORD_REGEX = "^(?=.*[A-Z]).{8,}$";
-    private final Pattern passwordpattern = Pattern.compile(PASSWORD_REGEX);
+
+    private final Pattern emailPattern = Pattern.compile(EMAIL_REGEX);
+    private final Pattern passwordPattern = Pattern.compile(PASSWORD_REGEX);
 
     @FXML
     private TextField emailField;
-
     @FXML
     private PasswordField passwordField;
-
+    @FXML
+    private PasswordField confirmpassField;
+    @FXML
+    private TextField unameField;
+    @FXML
+    private TextField fnameField;
+    @FXML
+    private TextField lnameField;
+    @FXML
+    private TextField otpField;
+    @FXML
+    private Button otpButton;
     @FXML
     private Button submitButton;
 
-    @FXML
-    private TextField unameField;
-
-    @FXML
-    private TextField otpField;
-
-    @FXML
-    private Button otpButton;
-
-    // Autowire the adminService directly
     @Autowired
     private AdminService adminService;
-
     @Autowired
     private OTPService otpService;
-
     @Autowired
     private OTPGenerator otpGenerator;
-
     @Autowired
-    private EmailService eMailSender;
-
+    private EmailService emailSender;
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
-    // Method to handle the submit button action
+
     @FXML
     private void handleSubmitButton() {
         String email = emailField.getText();
         String username = unameField.getText();
         String password = passwordField.getText();
+        String confirmPassword = confirmpassField.getText();
         String otp = otpField.getText();
+        String firstName = fnameField.getText();
+        String lastName = lnameField.getText();
 
-        if (email.isEmpty() || username.isEmpty() || password.isEmpty() || otp.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill the corresponding fields.");
-            alert.showAndWait();
+        System.out.println("Email: " + email);
+        System.out.println("Username: " + username);
+        System.out.println("Password: " + password);
+        System.out.println("Confirm Password: " + confirmPassword);
+        System.out.println("OTP: " + otp);
+        System.out.println("First Name: " + firstName);
+        System.out.println("Last Name: " + lastName);
+
+        if (!validateInput(email, username, password, confirmPassword, otp, firstName, lastName)) return;
+
+        if (!verifyOtp(email, otp)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid OTP.");
+            return;
         }
 
-        if (!isEmailValid(email)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid E-mail format.");
-            alert.showAndWait();
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        String result = adminService.addNewAdmin(firstName, lastName, username, email, hashedPassword);
+        showAlert(Alert.AlertType.INFORMATION, "Success", result);
+    }
+
+    private boolean validateInput(String email, String username, String password, String confirmPassword, String otp, String firstName, String lastName) {
+        if (email.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || otp.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please fill the corresponding fields.");
+            return false;
         }
 
-        if (!isPasswordValid(password)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Password should have atleast eight characters and one uppercase letter.");
-            alert.showAndWait();
+        if (!isEmailValid(email)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid E-mail format.");
+            return false;
         }
 
-        // Call a method to verify the OTP
-        boolean isOtpValid = verifyOtp(email, otp);
+        if (!isPasswordValid(password)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Password should have at least eight characters and one uppercase letter.");
+            return false;
+        }
 
-        if (!isOtpValid){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Invalid OTP.");
-            alert.showAndWait();
+        if (!password.equals(confirmPassword)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Passwords do not match.");
+            return false;
         }
-        
-        else {
-        // Call the adminService method to add a new admin
-        String result = adminService.addNewAdmin(username, email, password);
-        // You can handle the result as needed, e.g., display a message
-        System.out.println(result);
-        }
+
+        return true;
     }
 
     private boolean verifyOtp(String email, String otp) {
-        // Implement code to verify OTP against the email in your database (MySQL)
-        // Return true if OTP is valid for the email, otherwise return false
         String sql = "SELECT otp FROM otpentity WHERE email = ?";
-        String storedOtp = jdbcTemplate.queryForObject(sql, String.class, email);
-        return otp.equals(storedOtp);
+        try {
+            String storedOtp = jdbcTemplate.queryForObject(sql, String.class, email);
+            return otp.equals(storedOtp);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    private boolean isEmailValid(String email){
-        Matcher matcher = emailpattern.matcher(email);
+    private boolean isEmailValid(String email) {
+        Matcher matcher = emailPattern.matcher(email);
         return matcher.matches();
     }
 
-    private boolean isPasswordValid(String password){
-        Matcher matcher = passwordpattern.matcher(password);
+    private boolean isPasswordValid(String password) {
+        Matcher matcher = passwordPattern.matcher(password);
         return matcher.matches();
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML
-    private void handleOTPButton () {
+    private void handleOTPButton() {
         String username = unameField.getText();
         String email = emailField.getText();
-        String pasword = passwordField.getText();
+        String password = passwordField.getText();
+
+        if (!validateOtpRequest(username, email, password)) return;
+
         String otp = otpGenerator.generatedOTP();
         LocalDateTime time = LocalDateTime.now();
 
-        if (username.isEmpty() || email.isEmpty() || pasword.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill the corresponding fields.");
-            alert.showAndWait();
-        } else {
-
         String result = otpService.addOTP(email, otp, time);
-        eMailSender.sendVerificationEmail(email,"OTP Verification Code","",otp);
+        emailSender.sendVerificationEmail(email, "OTP Verification Code", "", otp);
+        showAlert(Alert.AlertType.INFORMATION, "Success", "OTP sent to your email.");
+    }
 
-        System.out.println(result);
+    private boolean validateOtpRequest(String username, String email, String password) {
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Please fill the corresponding fields.");
+            return false;
         }
+        return true;
     }
 
     @FXML
     private void handleBackbtn(ActionEvent event) throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
         loader.setControllerFactory(context::getBean);
 
@@ -176,6 +186,4 @@ public class RegisterController {
         stage.setScene(scene);
         stage.show();
     }
-
-    
 }

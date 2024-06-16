@@ -9,24 +9,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.IngredientRegController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="739.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.IngredientRegController">
    <children>
-      <TextField fx:id="ingredienttxt" layoutX="75.0" layoutY="186.0" promptText="Ingredient" />
-      <TextField fx:id="price" layoutX="75.0" layoutY="238.0" promptText="Price" />
-      <TextField fx:id="quantity" layoutX="354.0" layoutY="186.0" promptText="Quantity" />
-      <DatePicker fx:id="expirydate" layoutX="354.0" layoutY="238.0" promptText="Expiry Date" />
-      <Button fx:id="savebutton" layoutX="261.0" layoutY="292.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="26.0" prefWidth="59.0" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
+      <TextField fx:id="ingredienttxt" layoutX="463.0" layoutY="129.0" prefHeight="25.0" prefWidth="175.0" promptText="Ingredient" />
+      <TextField fx:id="price" layoutX="463.0" layoutY="228.0" prefHeight="25.0" prefWidth="175.0" promptText="Price" />
+      <TextField fx:id="quantity" layoutX="463.0" layoutY="180.0" prefHeight="25.0" prefWidth="175.0" promptText="Quantity" />
+      <DatePicker fx:id="expirydate" layoutX="463.0" layoutY="322.0" prefHeight="25.6" prefWidth="175.0" promptText="Expiry Date" />
+      <Button fx:id="savebutton" layoutX="521.0" layoutY="391.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="26.0" prefWidth="59.0" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="506.0" fitWidth="411.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/banners/landscape_image.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
+            <Image url="@Images/banners/image_security.png" />
          </image>
       </ImageView>
       <Button fx:id="backbutton" layoutY="-1.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="8.0" prefWidth="28.0" style="-fx-background-color: none;">
@@ -37,6 +32,12 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Text fill="WHITE" layoutX="42.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Registration" wrappingWidth="159.13671875" />
+      <Text layoutX="42.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Registration" wrappingWidth="159.13671875" />
+      <TextField layoutX="463.0" layoutY="274.0" prefHeight="25.0" prefWidth="175.0" promptText="Set Quantity Theshold" />
+      <Text layoutX="504.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name:" />
+      <Text layoutX="526.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:" />
+      <Text layoutX="539.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+      <Text layoutX="493.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Set Quantity Theshold:" />
+      <Text layoutX="522.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiry Date:" />
    </children>
 </AnchorPane>

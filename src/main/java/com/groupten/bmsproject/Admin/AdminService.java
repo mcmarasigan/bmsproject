@@ -9,12 +9,14 @@ public class AdminService {
     @Autowired
     private Adminrepository adminrepository;
 
-    public String addNewAdmin(String username, String email, String password) {
+    public String addNewAdmin(String firstname, String lastname, String username, String email, String password) {
         Adminentity existingAdmin = adminrepository.findByEmail(email);
         if (existingAdmin != null) {
             return "Admin with this email already exists!";
         }
         Adminentity newAdmin = new Adminentity();
+        newAdmin.setfirstName(firstname);
+        newAdmin.setlastName(lastname);
         newAdmin.setuserName(username);
         newAdmin.setEmail(email);
         newAdmin.setPassword(password);

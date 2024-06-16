@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -16,10 +17,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -71,6 +75,8 @@ public class DisplayIngredientController {
     private TextField SearchTextfield;
 
     private final InventoryService inventoryService;
+
+    private ObservableList<InventoryEntity> inventoryList;
     private ObservableList<InventoryEntity> masterData = FXCollections.observableArrayList();
 
     @Autowired
@@ -80,6 +86,10 @@ public class DisplayIngredientController {
 
     @FXML
     private void initialize() {
+        
+        // Disable past dates in the DatePicker
+        editExpiryfield.setDayCellFactory(getDateCellFactory());
+
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
         PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
@@ -99,10 +109,41 @@ public class DisplayIngredientController {
             return row;
         });
 
+        // Add a listener to the search field to perform search on text change
+        SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchIngredients(newValue));
     }
 
+    private Callback<DatePicker, DateCell> getDateCellFactory() {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        // Disable all past dates
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                        }
+                    }
+                };
+            }
+        };
+    }
+
+
     private void populateTable() {
+        inventoryList = FXCollections.observableArrayList(inventoryService.getAllProducts());
         IngredientTable.getItems().addAll(inventoryService.getAllProducts());
+    }
+
+    private void searchIngredients(String query) {
+        List<InventoryEntity> filteredList = inventoryList.stream()
+                .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toList());
+        IngredientTable.setItems(FXCollections.observableArrayList(filteredList));
     }
 
     @FXML
@@ -179,5 +220,22 @@ public class DisplayIngredientController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    //Retrives the search text from the Ingredient search then 
+    public void setSearchTextField(String result) {
+        SearchTextfield.setText(result);
+    }
+
+    //Sets the selected Ingredient as the row retrieved from the ingredient search
+    public void setSelectedIngredient(InventoryEntity selectedIngredient) {
+        this.selectedIngredient = selectedIngredient;
+        displaySelectedIngredient();
+    }
+
+    //Displays the selected row
+    private void displaySelectedIngredient() {
+        // Set the table's items to only the selected ingredient
+        IngredientTable.setItems(FXCollections.observableArrayList(selectedIngredient));
     }
 }
