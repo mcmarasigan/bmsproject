@@ -2,16 +2,29 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayProductController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayProductController">
    <children>
+      <ImageView fitHeight="106.0" fitWidth="809.0" layoutX="-1.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/bms_banner924.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/navigator.png" />
+         </image>
+      </ImageView>
       <TableView fx:id="productTable" layoutX="15.0" layoutY="132.0" prefHeight="263.0" prefWidth="769.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="45.0" text="ID" />
@@ -27,10 +40,26 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
-      <Button layoutX="164.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Register new Product" textFill="WHITE" />
-      <Button layoutX="15.0" layoutY="24.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE" />
-      <Button layoutX="14.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Delete row" textFill="WHITE" />
-      <Button layoutX="97.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditButton" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE" />
+      <Button layoutX="164.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Register new Product" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutY="1.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: none;" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button layoutX="14.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Delete row" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="97.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditButton" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <StackPane fx:id="editPane" layoutX="54.0" layoutY="51.0" prefHeight="358.0" prefWidth="714.0" style="-fx-background-color: #ffffff;" visible="false">
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -54,10 +83,10 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Text layoutX="68.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products">
+      <Label layoutX="55.0" layoutY="4.0" text="Products" textFill="WHITE">
          <font>
-            <Font size="39.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
-      </Text>
+      </Label>
    </children>
 </AnchorPane>

@@ -14,15 +14,24 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
    <children>
       <ChoiceBox fx:id="productChoiceBox" layoutX="299.0" layoutY="109.0" prefWidth="150.0" />
-      <Text layoutX="300.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product:" />
+      <Text fill="#96735b" layoutX="300.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <DatePicker fx:id="dateofproductionPicker" layoutX="300.0" layoutY="240.0" promptText="Date of Production" />
       <DatePicker fx:id="expdatePicker" layoutX="300.0" layoutY="280.0" promptText="Expiration Date" />
       <Button fx:id="savebutton" layoutX="507.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Label layoutX="300.0" layoutY="145.0" text="Quantity:" />
-      <Text fx:id="levelOfStockField" layoutX="300.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Stock: N/A" />
+      <Label layoutX="300.0" layoutY="145.0" text="Quantity:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Text fx:id="levelOfStockField" fill="#96735b" layoutX="300.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Stock: N/A">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <TextField fx:id="quantityField" layoutX="299.0" layoutY="162.0" prefHeight="25.0" prefWidth="150.0" />
       <ImageView fitHeight="502.0" fitWidth="304.0" layoutX="-57.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
