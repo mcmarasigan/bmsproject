@@ -51,4 +51,7 @@ public class ProductService {
     public List<ProductEntity> getLowStockProducts(int threshold) {
         return productRepository.findByQuantityLessThanEqual(threshold);
     }
+    public ProductEntity getProductByName(String productname) {
+        return productRepository.findByProductname(productname);
+    }
 }

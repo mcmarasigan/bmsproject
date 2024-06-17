@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -24,10 +25,12 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="22.0" layoutY="81.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search..." />
-      <Text layoutX="71.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Production Schedule">
+      <Text layoutX="189.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Production Schedule">
          <font>
             <Font size="39.0" />
          </font>
       </Text>
+      <Button layoutX="314.0" layoutY="82.0" mnemonicParsing="false" onAction="#proceedtoAddProductionSched" text="Add Production" />
+      <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="30.0" prefWidth="160.0" text="Go Back To Dashboard" />
    </children>
 </AnchorPane>

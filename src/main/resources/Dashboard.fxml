@@ -32,7 +32,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="418.0" layoutY="155.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="116.0" style="-fx-background-color: none;">
+      <Button layoutX="418.0" layoutY="155.0" mnemonicParsing="false" onAction="#proceedtoProductionSched" prefHeight="120.0" prefWidth="116.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="113.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,7 +40,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="179.0" layoutY="268.0" mnemonicParsing="false" style="-fx-background-color: none;">
+      <Button layoutX="179.0" layoutY="268.0" mnemonicParsing="false" onAction="#proceedtoSales" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="118.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
                <image>

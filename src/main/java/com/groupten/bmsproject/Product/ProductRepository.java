@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
     List<ProductEntity> findByQuantityGreaterThan(Integer quantity);
     List<ProductEntity> findByQuantityLessThanEqual(Integer quantity);
+    ProductEntity findByProductname(String productname);
 }

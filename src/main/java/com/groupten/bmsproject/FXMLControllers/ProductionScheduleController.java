@@ -1,14 +1,22 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleEntity;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleService;
+import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Product.ProductEntity;
 import com.groupten.bmsproject.Product.ProductService;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -75,6 +83,20 @@ private void handleSaveButton() {
     productionSchedule.setlvlofstock(levelOfStock);
 
     productionScheduleService.save(productionSchedule);
+    
 }
+
+ @FXML
+    private void goBackProductionSched() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayProductionSchedule.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

@@ -50,6 +50,7 @@ public class OrderEntity {
         PENDING,
         CANCELLED
     }
+    
 
     public Integer getID() {
         return id;
@@ -100,11 +101,11 @@ public class OrderEntity {
     }
 
     public PaymentStatus getorderPaymentStatus() {
-        return paymentstatus;
+        return paymentstatus ;
     }
 
     public void setorderPaymentStatus(PaymentStatus paymentstatus) {
-        this.paymentstatus = paymentstatus;
+        this.paymentstatus  = paymentstatus;
     }
 
     public DeliveryStatus getorderDeliveryStatus() {

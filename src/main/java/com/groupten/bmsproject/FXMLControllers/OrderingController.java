@@ -114,6 +114,28 @@ public class OrderingController {
         PaymentStatus paymentStatus = PaymentStatusComboBox.getValue();
         DeliveryStatus deliveryStatus = DeliveryStatusComboBox.getValue();
 
+        // Get the selected product
+        ProductEntity selectedProduct = productService.getProductByName(productOrder);
+
+        if (selectedProduct == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Product Error");
+            alert.setHeaderText("Product not found");
+            alert.setContentText("The selected product could not be found.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Check if the ordered quantity is more than the available quantity
+        if (quantityOrder > selectedProduct.productQuantity()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Insufficient Quantity");
+            alert.setHeaderText("Insufficient quantity of product");
+            alert.setContentText("The quantity ordered exceeds the available quantity of the product.");
+            alert.showAndWait();
+            return;
+        }
+
         // Check for low stock products
         List<ProductEntity> lowStockProducts = productService.getLowStockProducts(LOW_STOCK_THRESHOLD);
         if (!lowStockProducts.isEmpty()) {
@@ -121,7 +143,7 @@ public class OrderingController {
             for (ProductEntity product : lowStockProducts) {
                 warningMessage.append(product.getproductName()).append(" (Quantity: ").append(product.productQuantity()).append(")\n");
             }
-            
+
             // Show a warning dialog
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Low Stock Warning");

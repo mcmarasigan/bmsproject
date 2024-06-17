@@ -34,5 +34,10 @@
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>
       </ImageView>
+      <Button layoutX="256.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBackProductionSched" style="-fx-background-color: #96735b;" text="Go Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
