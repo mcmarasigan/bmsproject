@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -16,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -84,6 +86,10 @@ public class DisplayIngredientController {
 
     @FXML
     private void initialize() {
+        
+        // Disable past dates in the DatePicker
+        editExpiryfield.setDayCellFactory(getDateCellFactory());
+
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
         PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
@@ -105,6 +111,26 @@ public class DisplayIngredientController {
 
         // Add a listener to the search field to perform search on text change
         SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchIngredients(newValue));
+    }
+
+    private Callback<DatePicker, DateCell> getDateCellFactory() {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        // Disable all past dates
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                        }
+                    }
+                };
+            }
+        };
     }
 
 

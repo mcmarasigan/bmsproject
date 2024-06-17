@@ -12,7 +12,7 @@ public class AdminController {
     private AdminService adminService;
 
     @PostMapping(path = "/addAdmin")
-    public String addNewAdmin(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
-        return adminService.addNewAdmin(username, email, password);
+    public String addNewAdmin(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String username, @RequestParam String email, @RequestParam String password) {
+        return adminService.addNewAdmin(firstname, lastname, username, email, password);
     }
 }

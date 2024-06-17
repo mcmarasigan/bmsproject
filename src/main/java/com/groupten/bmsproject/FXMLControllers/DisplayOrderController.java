@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -16,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -30,6 +33,8 @@ import org.springframework.stereotype.Controller;
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Inventory.InventoryEntity;
 import com.groupten.bmsproject.Order.OrderEntity;
+import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
+import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
 
 @Controller
@@ -57,10 +62,10 @@ public class DisplayOrderController {
     private TableColumn<OrderEntity, Integer> QuantityColumn;
 
     @FXML
-    private TableColumn<OrderEntity, String> PaymentColumn;
+    private TableColumn<OrderEntity, PaymentStatus> PaymentColumn;
 
     @FXML
-    private TableColumn<OrderEntity, String> DeliveryColumn;
+    private TableColumn<OrderEntity, DeliveryStatus> DeliveryColumn;
 
     @FXML
     private StackPane editPane;
@@ -81,10 +86,10 @@ public class DisplayOrderController {
     private TextField editQuantityfield;
 
     @FXML
-    private TextField editPaymentfield;
+    private ComboBox<PaymentStatus> editPaymentfield;
 
     @FXML
-    private TextField editDeliveryfield;
+    private ComboBox<DeliveryStatus> editDeliveryfield;
 
     @FXML
     private TextField SearchTextfield;
@@ -110,6 +115,14 @@ public class DisplayOrderController {
         PaymentColumn.setCellValueFactory(cellData -> cellData.getValue().paymentStatusProperty());
         DeliveryColumn.setCellValueFactory(cellData -> cellData.getValue().deliveryStatusProperty());
 
+        // Initialize ComboBoxes for editing
+        editPaymentfield.setItems(FXCollections.observableArrayList(PaymentStatus.values()));
+        editDeliveryfield.setItems(FXCollections.observableArrayList(DeliveryStatus.values()));
+
+        // Disable past dates in the DatePicker
+        editDateorderedfield.setDayCellFactory(getDateCellFactory());
+
+
         populateTable();
 
         // Add a listener to capture the selected row
@@ -126,6 +139,26 @@ public class DisplayOrderController {
          // Add a listener to the search field to perform search on text change
          SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchOrders(newValue));
 
+    }
+
+    private Callback<DatePicker, DateCell> getDateCellFactory() {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        // Disable all past dates
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                        }
+                    }
+                };
+            }
+        };
     }
     
         private void populateTable() {
@@ -150,8 +183,8 @@ public class DisplayOrderController {
             editDateorderedfield.setValue(selectedOrder.getorderDateOrder().toLocalDate());
             editOrderfield.setText(selectedOrder.getorderProductOrder());
             editQuantityfield.setText(selectedOrder.getorderQuantityOrder().toString());
-            editPaymentfield.setText(selectedOrder.getorderPaymentStatus());
-            editDeliveryfield.setText(selectedOrder.getorderDeliveryStatus());
+            editPaymentfield.setValue(selectedOrder.getorderPaymentStatus());
+            editDeliveryfield.setValue(selectedOrder.getorderDeliveryStatus());
             // Show the edit pane
             editPane.setVisible(true);
         } else {
@@ -170,8 +203,8 @@ public class DisplayOrderController {
         String address = editAddressfield.getText();
         String order = editOrderfield.getText();
         String quantityString = editQuantityfield.getText();
-        String paymentstatus = editPaymentfield.getText();
-        String deliverystatus = editDeliveryfield.getText();
+        PaymentStatus paymentstatus = editPaymentfield.getValue();
+        DeliveryStatus deliverystatus = editDeliveryfield.getValue();
         // TBA: Double price = Double.parseDouble(priceString);
 
         int quantity = Integer.parseInt(quantityString);

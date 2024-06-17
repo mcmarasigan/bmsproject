@@ -3,6 +3,8 @@ package com.groupten.bmsproject.Order;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,8 +31,25 @@ public class OrderEntity {
     private LocalDateTime dateorder;
     private String productorder;
     private Integer quantityorder;
-    private String paymentstatus;
-    private String deliverystatus;
+
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentstatus;
+
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus deliverystatus;
+    
+    // Enums:
+    public enum PaymentStatus {
+        PAID,
+        PENDING,
+        CANCELLED
+    }
+    
+    public enum DeliveryStatus {
+        DELIVERED,
+        PENDING,
+        CANCELLED
+    }
 
     public Integer getID() {
         return id;
@@ -80,19 +99,19 @@ public class OrderEntity {
         this.quantityorder = quantityorder;
     }
 
-    public String getorderPaymentStatus() {
+    public PaymentStatus getorderPaymentStatus() {
         return paymentstatus;
     }
 
-    public void setorderPaymentStatus(String paymentstatus) {
+    public void setorderPaymentStatus(PaymentStatus paymentstatus) {
         this.paymentstatus = paymentstatus;
     }
 
-    public String getorderDeliveryStatus() {
+    public DeliveryStatus getorderDeliveryStatus() {
         return deliverystatus;
     }
 
-    public void setorderDeliveryStatus(String deliverystatus) {
+    public void setorderDeliveryStatus(DeliveryStatus deliverystatus) {
         this.deliverystatus = deliverystatus;
     }
      // Property methods for JavaFX TableView binding
@@ -120,12 +139,12 @@ public class OrderEntity {
         return new SimpleIntegerProperty(quantityorder);
     }
 
-    public StringProperty paymentStatusProperty() {
-        return new SimpleStringProperty(paymentstatus);
+    public ObjectProperty<PaymentStatus> paymentStatusProperty() {
+        return new SimpleObjectProperty(paymentstatus);
     }
 
-    public StringProperty deliveryStatusProperty() {
-        return new SimpleStringProperty(deliverystatus);
+    public ObjectProperty<DeliveryStatus> deliveryStatusProperty() {
+        return new SimpleObjectProperty(deliverystatus);
     }
 
 }

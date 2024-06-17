@@ -15,12 +15,30 @@ public class Adminentity {
     @SequenceGenerator(name = "admin_seq", sequenceName = "admin_sequence", allocationSize = 1)
     
     private Integer id;
+    private String firstname;
+    private String lastname;
     private String username;
     private String email;
     private String password;
 
     public Integer getID(){
         return id;
+    }
+
+    public String getfirstName() {
+        return firstname;
+    }
+
+    public void setfirstName(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getlastName() {
+        return lastname;
+    }
+
+    public void setlastName(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setID(Integer id){

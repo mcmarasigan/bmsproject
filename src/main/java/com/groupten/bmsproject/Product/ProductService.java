@@ -7,16 +7,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.groupten.bmsproject.Inventory.InventoryEntity;
-
 @Service
 public class ProductService {
-    
+
     @Autowired
     private ProductRepository productRepository;
 
     public String addNewProduct(String productname, String description, Double price, LocalDateTime expiryTime, Integer quantity, String imglocation) {
-    
         ProductEntity newProduct = new ProductEntity();
         newProduct.setproductName(productname);
         newProduct.setprodDescription(description);
@@ -25,15 +22,12 @@ public class ProductService {
         newProduct.setproductQuantity(quantity);
         newProduct.setimageLocation(imglocation);
         productRepository.save(newProduct);
-
         return "Saved";
     }
 
     public String updateProduct(Integer id, String productname, String description, Double price, LocalDateTime expiryTime, Integer quantity, String imglocation) {
         Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
-
         if (optionalProductEntity.isPresent()) {
-            // Update existing inventory item
             ProductEntity productEntity = optionalProductEntity.get();
             productEntity.setproductName(productname);
             productEntity.setprodDescription(description);
@@ -42,7 +36,7 @@ public class ProductService {
             productEntity.setproductQuantity(quantity);
             productEntity.setimageLocation(imglocation);
             productRepository.save(productEntity);
-        } 
+        }
         return "Updated";
     }
 
@@ -50,7 +44,11 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<ProductEntity> findAll() {
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    public List<ProductEntity> getAvailableProducts() {
+        return productRepository.findByQuantityGreaterThan(0);
+    }
+
+    public List<ProductEntity> getLowStockProducts(int threshold) {
+        return productRepository.findByQuantityLessThanEqual(threshold);
     }
 }
