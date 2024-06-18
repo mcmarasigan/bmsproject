@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.Product;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +13,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public String addNewProduct(String productname, String description, Double price, LocalDateTime expiryTime, Integer quantity, String imglocation) {
+    public String addNewProduct(String productname, String description, Double price, LocalDate expiryTime, Integer quantity, String imglocation, LocalDate dateAdded) {
         ProductEntity newProduct = new ProductEntity();
         newProduct.setproductName(productname);
         newProduct.setprodDescription(description);
@@ -21,11 +21,12 @@ public class ProductService {
         newProduct.setproductExpiry(expiryTime);
         newProduct.setproductQuantity(quantity);
         newProduct.setimageLocation(imglocation);
+        newProduct.setDateAdded(dateAdded);
         productRepository.save(newProduct);
         return "Saved";
     }
 
-    public String updateProduct(Integer id, String productname, String description, Double price, LocalDateTime expiryTime, Integer quantity, String imglocation) {
+    public String updateProduct(Integer id, String productname, String description, Double price, LocalDate expiryTime, Integer quantity, String imglocation) {
         Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
         if (optionalProductEntity.isPresent()) {
             ProductEntity productEntity = optionalProductEntity.get();
@@ -35,6 +36,7 @@ public class ProductService {
             productEntity.setproductExpiry(expiryTime);
             productEntity.setproductQuantity(quantity);
             productEntity.setimageLocation(imglocation);
+            productEntity.setLastUpdateTime(LocalDate.now());
             productRepository.save(productEntity);
         }
         return "Updated";

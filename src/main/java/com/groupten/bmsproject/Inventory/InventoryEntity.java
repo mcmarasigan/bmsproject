@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.Inventory;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +26,9 @@ public class InventoryEntity {
     private String ingredient;
     private Double price;
     private Integer quantity;
-    private LocalDateTime expiryTime;
+    private LocalDate expiryDate;
+    private LocalDate lastUpdate;
+    private LocalDate dateAdded;
 
     public Integer getID() {
         return id;
@@ -60,12 +62,28 @@ public class InventoryEntity {
         this.quantity = quantity;
     }
 
-    public LocalDateTime getExpiry() {
-        return expiryTime;
+    public LocalDate getExpiry() {
+        return expiryDate;
     }
 
-    public void setExpiry(LocalDateTime expiryTime) {
-        this.expiryTime = expiryTime;
+    public void setExpiry(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public LocalDate getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdateTime(LocalDate lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public LocalDate getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDate dateAdded) {
+        this.dateAdded = dateAdded;
     }
  // Property methods for JavaFX TableView binding
      public IntegerProperty idProperty() {
@@ -84,7 +102,7 @@ public class InventoryEntity {
         return new SimpleIntegerProperty(quantity);
     }
 
-    public ObjectProperty<LocalDateTime> expiryTimeProperty() {
-        return new SimpleObjectProperty<>(expiryTime);
+    public ObjectProperty<LocalDate> expiryDateProperty() {
+        return new SimpleObjectProperty<>(expiryDate);
     }
 }

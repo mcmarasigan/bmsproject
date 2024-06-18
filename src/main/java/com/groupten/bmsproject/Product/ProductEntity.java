@@ -1,6 +1,7 @@
 package com.groupten.bmsproject.Product;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,9 +27,11 @@ public class ProductEntity {
     private String productname;
     private String description;
     private Double price;
-    private LocalDateTime expiryTime;
+    private LocalDate expiryDate;
     private Integer quantity;
     private String imglocation;
+    private LocalDate lastUpdate;
+    private LocalDate dateAdded;
 
     public Integer getID() {
         return id;
@@ -62,12 +65,12 @@ public class ProductEntity {
         this.price = price;
     }
 
-    public LocalDateTime productExpiry() {
-        return expiryTime;
+    public LocalDate productExpiry() {
+        return expiryDate;
     }
 
-    public void setproductExpiry(LocalDateTime expiryTime) {
-        this.expiryTime = expiryTime;
+    public void setproductExpiry(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 
     public Integer productQuantity() {
@@ -84,6 +87,22 @@ public class ProductEntity {
 
     public void setimageLocation(String imglocation) {
         this.imglocation = imglocation;
+    }
+
+    public LocalDate getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdateTime(LocalDate lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public LocalDate getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDate dateAdded) {
+        this.dateAdded = dateAdded;
     }
      // Property methods for JavaFX TableView binding
      public IntegerProperty idProperty() {
@@ -102,8 +121,8 @@ public class ProductEntity {
         return new SimpleDoubleProperty(price);
     }
 
-    public ObjectProperty<LocalDateTime> expiryTimeProperty() {
-        return new SimpleObjectProperty<>(expiryTime);
+    public ObjectProperty<LocalDate> expiryDateProperty() {
+        return new SimpleObjectProperty<>(expiryDate);
     }
 
     public IntegerProperty quantityProperty() {

@@ -3,7 +3,7 @@ package com.groupten.bmsproject.FXMLControllers;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -83,10 +83,11 @@ public class IngredientRegController {
         // Retrieve the selected date from the DatePicker
         LocalDate expiryDate = expirydate.getValue();
 
-        // Set the expiry time to the selected date at midnight
-        LocalDateTime productexpiry = expiryDate.atStartOfDay();
+        // Get the current date and time for date added
+        LocalDate dateAdded = LocalDate.now();
 
-        String result = inventoryService.addNewInventory(ingredient, price, quantity, productexpiry);
+
+        String result = inventoryService.addNewInventory(ingredient, price, quantity, expiryDate, dateAdded);
 
         System.out.println(result);
 }

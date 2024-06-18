@@ -23,6 +23,7 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
@@ -38,11 +39,23 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    @FXML
+    private ToggleButton showpassBtn;
+
+    @FXML
+    private TextField passtxtField;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private ForgotpassController forgotpassController;
+
+    @FXML
+    private void initialize() {
+        // Bind the TextField's text property to the PasswordField's text property
+        passtxtField.textProperty().bindBidirectional(passwordField.textProperty());
+    }
 
     @FXML
     private void handleLoginButton(){
@@ -90,6 +103,17 @@ public class LoginController {
         } catch (Exception e) {
             // Handle exception, e.g., user not found
             return false;
+        }
+    }
+
+    @FXML
+    private void showPassword () {
+        if (showpassBtn.isSelected()) {
+            passtxtField.setVisible(true);
+            passwordField.setVisible(false);
+        } else {
+            passtxtField.setVisible(false);
+            passwordField.setVisible(true);
         }
     }
 

@@ -1,7 +1,7 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +46,7 @@ public class IngredientSearchTabController {
     private TableColumn<InventoryEntity, Integer> ingredientQuantity;
 
     @FXML
-    private TableColumn<InventoryEntity, LocalDateTime> ingredientExpiry;
+    private TableColumn<InventoryEntity, LocalDate> ingredientExpiry;
 
     private InventoryEntity selectedIngredient;
 
@@ -70,7 +70,7 @@ public class IngredientSearchTabController {
         ingredientName.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
         ingredientPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         ingredientQuantity.setCellValueFactory(cellData -> cellData.getValue().quantityIngredientProperty().asObject());
-        ingredientExpiry.setCellValueFactory(cellData -> cellData.getValue().expiryTimeProperty());
+        ingredientExpiry.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
 
         populateTable();
 

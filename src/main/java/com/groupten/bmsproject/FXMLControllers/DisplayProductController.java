@@ -20,7 +20,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,7 +46,7 @@ public class DisplayProductController {
     private TableColumn<ProductEntity, String> descriptionColumn;
 
     @FXML
-    private TableColumn<ProductEntity, LocalDateTime> expiryTimeColumn;
+    private TableColumn<ProductEntity, LocalDate> expiryTimeColumn;
 
     @FXML
     private TableColumn<ProductEntity, String> imgLocationColumn;
@@ -106,7 +106,7 @@ private void initialize() {
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
         imgLocationColumn.setCellValueFactory(cellData -> cellData.getValue().imglocationProperty());
-        expiryTimeColumn.setCellValueFactory(cellData -> cellData.getValue().expiryTimeProperty());
+        expiryTimeColumn.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
         
         populateTable();
 
@@ -166,7 +166,7 @@ private void initialize() {
             editQuantityfield.setText(selectedProduct.productQuantity().toString());
             editImagefield.setText(selectedProduct.imageLocation());
             editPricefield.setText(selectedProduct.price().toString());
-            editExpiryfield.setValue(selectedProduct.productExpiry().toLocalDate());
+            editExpiryfield.setValue(selectedProduct.productExpiry());
             // Show the edit pane
             editPane.setVisible(true);
         } else {
@@ -194,10 +194,7 @@ private void initialize() {
         // Retrieve the selected date from the DatePicker
         LocalDate expiryDate = editExpiryfield.getValue();
 
-        // Set the expiry time to the selected date at midnight
-        LocalDateTime productexpiry = expiryDate.atStartOfDay();
-
-        String result = productService.updateProduct(id, product, description, price, productexpiry, quantity, imglocation);
+        String result = productService.updateProduct(id, product, description, price, expiryDate, quantity, imglocation);
 
         System.out.println(result);
         

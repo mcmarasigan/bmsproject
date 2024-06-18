@@ -3,7 +3,7 @@ package com.groupten.bmsproject.FXMLControllers;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -91,12 +91,11 @@ private void handleSaveButton() {
     // Retrieve the selected date from the DatePicker
     LocalDate expiryDate = expiry.getValue();
 
-    // Set the expiry time to the selected date at midnight
-    LocalDateTime productexpiry = expiryDate.atStartOfDay();
+    LocalDate dateAdded = LocalDate.now();
 
     String imagelocation = imgdirectory.getText();
 
-    String result = prdctService.addNewProduct(productname, productdesc, price, productexpiry, quantity, imagelocation);
+    String result = prdctService.addNewProduct(productname, productdesc, price, expiryDate, quantity, imagelocation, dateAdded);
 
     System.out.println(result);
 }

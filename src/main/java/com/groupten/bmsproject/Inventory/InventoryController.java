@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.Inventory;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +16,8 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @PostMapping(path = "/addInventory")
-    public String addNewInventory(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Integer quantity, @RequestParam LocalDateTime expiryTime) {
-        return inventoryService.addNewInventory(ingredient, price, quantity, expiryTime);
+    public String addNewInventory(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Integer quantity, @RequestParam LocalDate expiryTime, @RequestParam LocalDate dateAdded) {
+        return inventoryService.addNewInventory(ingredient, price, quantity, expiryTime, dateAdded);
     }
     
 }

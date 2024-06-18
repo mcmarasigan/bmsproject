@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -53,6 +54,31 @@ public class ProductionScheduleController {
         populateProductChoiceBox();
 
         savebutton.setOnAction(event -> handleSaveButton());
+
+        // Disable past dates in the DatePicker
+        expdatePicker.setDayCellFactory(getDateCellFactory());
+        dateofproductionPicker.setDayCellFactory(getDateCellFactory());
+    }
+
+    private Callback<DatePicker, DateCell> getDateCellFactory() {
+        return new Callback<DatePicker, DateCell>() {
+            @Override
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        // Disable all past dates
+                        if (item.isBefore(LocalDate.now())) {
+                            setDisable(true);
+                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                        }
+                    }
+                };
+            }
+        };
+    
     }
 
     private void populateProductChoiceBox() {

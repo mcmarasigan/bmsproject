@@ -9,6 +9,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,6 +58,12 @@ public class RegisterController {
     private Button otpButton;
     @FXML
     private Button submitButton;
+    @FXML
+    private ToggleButton showpassBtn;
+    @FXML
+    private TextField passtxtField;
+    @FXML
+    private TextField passtxtField2;
 
     @Autowired
     private AdminService adminService;
@@ -69,6 +77,13 @@ public class RegisterController {
     private JdbcTemplate jdbcTemplate;
 
     @FXML
+    private void initialize() {
+        // Bind the TextField's text property to the PasswordField's text property
+        passtxtField.textProperty().bindBidirectional(passwordField.textProperty());
+        passtxtField2.textProperty().bindBidirectional(confirmpassField.textProperty());
+    }
+
+    @FXML
     private void handleSubmitButton() {
         String email = emailField.getText();
         String username = unameField.getText();
@@ -77,14 +92,6 @@ public class RegisterController {
         String otp = otpField.getText();
         String firstName = fnameField.getText();
         String lastName = lnameField.getText();
-
-        System.out.println("Email: " + email);
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
-        System.out.println("Confirm Password: " + confirmPassword);
-        System.out.println("OTP: " + otp);
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
 
         if (!validateInput(email, username, password, confirmPassword, otp, firstName, lastName)) return;
 
@@ -172,6 +179,19 @@ public class RegisterController {
             return false;
         }
         return true;
+    }
+
+    @FXML
+    private void showPassword () {
+        if (showpassBtn.isSelected()) {
+            passtxtField.setVisible(true);
+            passtxtField2.setVisible(true);
+            passwordField.setVisible(false);
+        } else {
+            passtxtField.setVisible(false);
+            passtxtField2.setVisible(false);
+            passwordField.setVisible(true);
+        }
     }
 
     @FXML

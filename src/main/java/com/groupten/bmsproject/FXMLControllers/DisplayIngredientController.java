@@ -21,7 +21,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +52,7 @@ public class DisplayIngredientController {
     private TableColumn<InventoryEntity, Integer> QuantityColumn;
 
     @FXML
-    private TableColumn<InventoryEntity, LocalDateTime> ExpiryDateColumn;
+    private TableColumn<InventoryEntity, LocalDate> ExpiryDateColumn;
 
     @FXML
     private StackPane editPane;
@@ -94,7 +94,7 @@ public class DisplayIngredientController {
         IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
         PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityIngredientProperty().asObject());
-        ExpiryDateColumn.setCellValueFactory(cellData -> cellData.getValue().expiryTimeProperty());
+        ExpiryDateColumn.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
 
         populateTable();
 
@@ -153,7 +153,7 @@ public class DisplayIngredientController {
             editNamefield.setText(selectedIngredient.getIngredient());
             editPricefield.setText(selectedIngredient.getPrice().toString());
             editQuantityfield.setText(selectedIngredient.getQuantity().toString());
-            editExpiryfield.setValue(selectedIngredient.getExpiry().toLocalDate());
+            editExpiryfield.setValue(selectedIngredient.getExpiry());
             // Show the edit pane
             editPane.setVisible(true);
         } else {
@@ -177,10 +177,7 @@ public class DisplayIngredientController {
         // Retrieve the selected date from the DatePicker
         LocalDate expiryDate = editExpiryfield.getValue();
 
-        // Set the expiry time to the selected date at midnight
-        LocalDateTime productexpiry = expiryDate.atStartOfDay();
-
-        String result = inventoryService.updateIngredient(id, ingredient, price, quantity, productexpiry);
+        String result = inventoryService.updateIngredient(id, ingredient, price, quantity, expiryDate);
 
         System.out.println(result);
         

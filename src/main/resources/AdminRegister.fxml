@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,5 +44,16 @@
       <TextField fx:id="fnameField" layoutX="271.0" layoutY="167.0" promptText="First Name" />
       <TextField fx:id="lnameField" layoutX="271.0" layoutY="203.0" promptText="Last Name" />
       <PasswordField fx:id="confirmpassField" layoutX="272.0" layoutY="343.0" promptText="Confirm Password" />
+      <TextField fx:id="passtxtField" layoutX="272.0" layoutY="306.0" visible="false" />
+      <TextField fx:id="passtxtField2" layoutX="273.0" layoutY="343.0" visible="false" />
+      <ToggleButton fx:id="showpassBtn" layoutX="419.0" layoutY="321.0" mnemonicParsing="false" onAction="#showPassword" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/hide_password_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
    </children>
 </AnchorPane>

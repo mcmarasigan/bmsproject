@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.Product;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +15,8 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping(path = "/addProduct")
-    public String addNewProduct(@RequestParam String productname, @RequestParam String description, @RequestParam Double price, @RequestParam LocalDateTime expiryTime, @RequestParam Integer quantity, @RequestParam String imglocation) {
-        return productService.addNewProduct(productname, description, price, expiryTime, quantity, imglocation);
+    public String addNewProduct(@RequestParam String productname, @RequestParam String description, @RequestParam Double price, @RequestParam LocalDate expiryTime, @RequestParam Integer quantity, @RequestParam String imglocation, @RequestParam LocalDate dateAdded) {
+        return productService.addNewProduct(productname, description, price, expiryTime, quantity, imglocation, dateAdded);
     }
     
 }

@@ -1,7 +1,7 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,7 +49,7 @@ public class ProductSearchTabController {
     private TableColumn<ProductEntity, Integer> productQuantity;
 
     @FXML
-    private TableColumn<ProductEntity, LocalDateTime> productExpiry;
+    private TableColumn<ProductEntity, LocalDate> productExpiry;
 
     @FXML
     private TableColumn<ProductEntity, String> productImage;
@@ -73,7 +73,7 @@ public class ProductSearchTabController {
     private void initialize() {
         productID.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         productDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        productExpiry.setCellValueFactory(cellData -> cellData.getValue().expiryTimeProperty());
+        productExpiry.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
         productImage.setCellValueFactory(cellData -> cellData.getValue().imglocationProperty());
         productPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         productName.setCellValueFactory(cellData -> cellData.getValue().productnameProperty());
