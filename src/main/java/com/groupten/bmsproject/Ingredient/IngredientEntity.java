@@ -1,4 +1,4 @@
-package com.groupten.bmsproject.Inventory;
+package com.groupten.bmsproject.Ingredient;
 
 import java.time.LocalDate;
 
@@ -17,10 +17,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 @Entity
-public class InventoryEntity {
+public class IngredientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inv_seq")
-    @SequenceGenerator (name = "inv_seq", sequenceName = "inventory_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
     private String ingredient;

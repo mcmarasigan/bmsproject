@@ -101,8 +101,8 @@ private void handleSaveButton() {
     ProductionScheduleEntity productionSchedule = new ProductionScheduleEntity();
     productionSchedule.setproductName(productName);
     productionSchedule.setproductschedQuantity(quantity);
-    productionSchedule.setdateofProduction(dateOfProduction.atStartOfDay());
-    productionSchedule.setexpDate(expDate.atStartOfDay());
+    productionSchedule.setdateofProduction(dateOfProduction);
+    productionSchedule.setexpDate(expDate);
     productionSchedule.setnumberofdaysexp((int) numberOfDays); // Set the number of days
 
     String levelOfStock = quantity < 50 ? "Low" : "Sufficient";

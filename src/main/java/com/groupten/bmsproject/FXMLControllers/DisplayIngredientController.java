@@ -30,29 +30,29 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryEntity;
-import com.groupten.bmsproject.Inventory.InventoryService;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
+import com.groupten.bmsproject.Ingredient.IngredientService;
 
 @Controller
 public class DisplayIngredientController {
     
     @FXML
-    private TableView<InventoryEntity> IngredientTable;
+    private TableView<IngredientEntity> IngredientTable;
 
     @FXML
-    private TableColumn<InventoryEntity, Integer> idColumn;
+    private TableColumn<IngredientEntity, Integer> idColumn;
 
     @FXML
-    private TableColumn<InventoryEntity, String> IngredientNameColumn;
+    private TableColumn<IngredientEntity, String> IngredientNameColumn;
 
     @FXML
-    private TableColumn<InventoryEntity, Double> PriceColumn;
+    private TableColumn<IngredientEntity, Double> PriceColumn;
 
     @FXML
-    private TableColumn<InventoryEntity, Integer> QuantityColumn;
+    private TableColumn<IngredientEntity, Integer> QuantityColumn;
 
     @FXML
-    private TableColumn<InventoryEntity, LocalDate> ExpiryDateColumn;
+    private TableColumn<IngredientEntity, LocalDate> ExpiryDateColumn;
 
     @FXML
     private StackPane editPane;
@@ -69,18 +69,18 @@ public class DisplayIngredientController {
     @FXML
     private DatePicker editExpiryfield;
 
-    private InventoryEntity selectedIngredient;
+    private IngredientEntity selectedIngredient;
 
     @FXML
     private TextField SearchTextfield;
 
-    private final InventoryService inventoryService;
+    private final IngredientService inventoryService;
 
-    private ObservableList<InventoryEntity> inventoryList;
-    private ObservableList<InventoryEntity> masterData = FXCollections.observableArrayList();
+    private ObservableList<IngredientEntity> inventoryList;
+    private ObservableList<IngredientEntity> masterData = FXCollections.observableArrayList();
 
     @Autowired
-    public DisplayIngredientController(InventoryService inventoryService) {
+    public DisplayIngredientController(IngredientService inventoryService) {
         this.inventoryService = inventoryService;
     }
 
@@ -100,7 +100,7 @@ public class DisplayIngredientController {
 
         // Add a listener to capture the selected row
         IngredientTable.setRowFactory(tv -> {
-            TableRow<InventoryEntity> row = new TableRow<>();
+            TableRow<IngredientEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
                     selectedIngredient = row.getItem();
@@ -140,7 +140,7 @@ public class DisplayIngredientController {
     }
 
     private void searchIngredients(String query) {
-        List<InventoryEntity> filteredList = inventoryList.stream()
+        List<IngredientEntity> filteredList = inventoryList.stream()
                 .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
         IngredientTable.setItems(FXCollections.observableArrayList(filteredList));
@@ -225,7 +225,7 @@ public class DisplayIngredientController {
     }
 
     //Sets the selected Ingredient as the row retrieved from the ingredient search
-    public void setSelectedIngredient(InventoryEntity selectedIngredient) {
+    public void setSelectedIngredient(IngredientEntity selectedIngredient) {
         this.selectedIngredient = selectedIngredient;
         displaySelectedIngredient();
     }

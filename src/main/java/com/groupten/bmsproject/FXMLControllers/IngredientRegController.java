@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryService;
+import com.groupten.bmsproject.Ingredient.IngredientService;
 import com.groupten.bmsproject.Product.ProductService;
 
 import javafx.fxml.FXML;
@@ -44,7 +44,7 @@ public class IngredientRegController {
     private Button savebutton;
 
     @Autowired
-    private InventoryService inventoryService;
+    private IngredientService inventoryService;
 
     @FXML
     private void initialize() {

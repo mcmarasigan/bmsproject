@@ -1,6 +1,7 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Sales.SalesEntity;
 import com.groupten.bmsproject.Sales.SalesService;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -35,7 +36,7 @@ public class DisplaySalesController {
     private TableColumn<SalesEntity, String> CustomerNameSalesColumn;
 
     @FXML
-    private TableColumn<SalesEntity, LocalDateTime> DatePurchasedSalesColumn;
+    private TableColumn<SalesEntity, LocalDate> DatePurchasedSalesColumn;
 
     @FXML
     private TableColumn<SalesEntity, String> ProductOrderSalesColumn;
@@ -53,6 +54,8 @@ public class DisplaySalesController {
     private TextField SearchSaleTextField;
 
     private SalesService salesService;
+
+    private  ObservableList<SalesEntity> paidDeliveredOrders;
 
     @Autowired
     public DisplaySalesController(SalesService salesService) {
@@ -72,13 +75,12 @@ public class DisplaySalesController {
 
     
         // Load data into table
-        loadData();
+        populateTable();
     }
 
-    private void loadData() {
+    private void populateTable() {
         // Fetch data from service
-        ObservableList<SalesEntity> paidDeliveredOrders = FXCollections.observableArrayList(salesService.getPaidAndDeliveredOrders());
-
+        paidDeliveredOrders = FXCollections.observableArrayList(salesService.getPaidAndDeliveredOrders());
         // Populate table with fetched data
         SalesTable.setItems(paidDeliveredOrders);
     }

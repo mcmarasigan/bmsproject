@@ -1,4 +1,4 @@
-package com.groupten.bmsproject.Inventory;
+package com.groupten.bmsproject.Ingredient;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class InventoryService {
+public class IngredientService {
     
     @Autowired
-    private InventoryRepository inventoryRepository;
+    private IngredientRepository inventoryRepository;
 
     public String addNewInventory(String ingredient, Double price, Integer quantity, LocalDate expiryTime, LocalDate dateAdded) {
-        InventoryEntity newInventory = new InventoryEntity();
+        IngredientEntity newInventory = new IngredientEntity();
         newInventory.setIngredient(ingredient);
         newInventory.setPrice(price);
         newInventory.setQuantity(quantity);
@@ -27,11 +27,11 @@ public class InventoryService {
     }
 
     public String updateIngredient(Integer id, String ingredient, Double price, Integer quantity, LocalDate expiryTime) {
-        Optional<InventoryEntity> optionalInventoryEntity = inventoryRepository.findById(id);
+        Optional<IngredientEntity> optionalInventoryEntity = inventoryRepository.findById(id);
 
         if (optionalInventoryEntity.isPresent()) {
             // Update existing inventory item
-            InventoryEntity inventoryEntity = optionalInventoryEntity.get();
+            IngredientEntity inventoryEntity = optionalInventoryEntity.get();
             inventoryEntity.setIngredient(ingredient);
             inventoryEntity.setPrice(price);
             inventoryEntity.setQuantity(quantity);
@@ -42,7 +42,7 @@ public class InventoryService {
         return "Updated";
     }
 
-    public List<InventoryEntity> getAllProducts() {
+    public List<IngredientEntity> getAllProducts() {
         return inventoryRepository.findAll();
     }
 }

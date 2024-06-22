@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.ProductionSchedule;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ public class ProductionScheduleService {
     @Autowired
     private ProductionScheduleRepository productSchedRepository;
 
-    public String addnewProductSched(String productname, Integer quantity, String lvlofstock, LocalDateTime dateofproduction, LocalDateTime expdate,  Integer numberofdaysexp) {
+    public String addnewProductSched(String productname, Integer quantity, String lvlofstock, LocalDate dateofproduction, LocalDate expdate,  Integer numberofdaysexp) {
         ProductionScheduleEntity newProductSched = new ProductionScheduleEntity();
         newProductSched.setproductName(productname);
         newProductSched.setproductschedQuantity(quantity);

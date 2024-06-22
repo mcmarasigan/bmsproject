@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.Order;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,7 +28,7 @@ public class OrderEntity {
     private Integer id;
     private String customername;
     private String address;
-    private LocalDateTime dateorder;
+    private LocalDate dateorder;
     private String productorder;
     private Integer quantityorder;
 
@@ -76,11 +76,11 @@ public class OrderEntity {
         this.address = address;
     }
 
-    public LocalDateTime getorderDateOrder() {
+    public LocalDate getorderDateOrder() {
         return dateorder;
     }
 
-    public void setorderDateOrder(LocalDateTime dateorder) {
+    public void setorderDateOrder(LocalDate dateorder) {
         this.dateorder = dateorder;
     }
 
@@ -128,7 +128,7 @@ public class OrderEntity {
         return new SimpleStringProperty(address);
     }
 
-    public ObjectProperty<LocalDateTime> dateOrderProperty() {
+    public ObjectProperty<LocalDate> dateOrderProperty() {
         return new SimpleObjectProperty<>(dateorder);
     }
 

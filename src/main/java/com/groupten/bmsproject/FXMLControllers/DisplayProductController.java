@@ -29,7 +29,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryEntity;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Product.ProductEntity;
 import com.groupten.bmsproject.Product.ProductService;
 

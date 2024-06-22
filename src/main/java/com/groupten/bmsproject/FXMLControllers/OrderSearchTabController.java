@@ -1,7 +1,7 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,7 +45,7 @@ public class OrderSearchTabController {
     private TableColumn<OrderEntity, String> orderAddress;
 
     @FXML
-    private TableColumn<OrderEntity, LocalDateTime> orderDate;
+    private TableColumn<OrderEntity, LocalDate> orderDate;
 
     @FXML
     private TableColumn<OrderEntity, String> productOrder;

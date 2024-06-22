@@ -2,7 +2,7 @@ package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryEntity;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
 import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
@@ -108,7 +108,7 @@ public class OrderingController {
     private void handleSaveButton() {
         String customerName = CustomerNameTextField.getText();
         String address = AddressTextField.getText();
-        LocalDateTime dateOrder = DateOrder.getValue().atStartOfDay(); // Convert DatePicker value to LocalDateTime
+        LocalDate dateOrder = DateOrder.getValue(); // Convert DatePicker value to LocalDate
         String productOrder = ProductOrderChoiceBox.getValue();
         Integer quantityOrder = Integer.parseInt(QuantityOrderTextField.getText());
         PaymentStatus paymentStatus = PaymentStatusComboBox.getValue();

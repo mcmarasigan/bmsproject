@@ -1,4 +1,4 @@
-package com.groupten.bmsproject.Inventory;
+package com.groupten.bmsproject.Ingredient;
 
 import java.time.LocalDate;
 
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-public class InventoryController {
+public class IngredientController {
     
     @Autowired
-    private InventoryService inventoryService;
+    private IngredientService inventoryService;
 
     @PostMapping(path = "/addInventory")
     public String addNewInventory(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Integer quantity, @RequestParam LocalDate expiryTime, @RequestParam LocalDate dateAdded) {

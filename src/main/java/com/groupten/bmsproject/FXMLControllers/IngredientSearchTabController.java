@@ -19,8 +19,8 @@ import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryEntity;
-import com.groupten.bmsproject.Inventory.InventoryService;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
+import com.groupten.bmsproject.Ingredient.IngredientService;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,35 +31,35 @@ import javafx.fxml.FXMLLoader;
 public class IngredientSearchTabController {
 
     @FXML
-    private TableView<InventoryEntity> ingredientsTable;
+    private TableView<IngredientEntity> ingredientsTable;
     
     @FXML
-    private TableColumn<InventoryEntity, Integer> ingredientID;
+    private TableColumn<IngredientEntity, Integer> ingredientID;
 
     @FXML
-    private TableColumn<InventoryEntity, String> ingredientName;
+    private TableColumn<IngredientEntity, String> ingredientName;
 
     @FXML
-    private TableColumn<InventoryEntity, Double> ingredientPrice;
+    private TableColumn<IngredientEntity, Double> ingredientPrice;
 
     @FXML
-    private TableColumn<InventoryEntity, Integer> ingredientQuantity;
+    private TableColumn<IngredientEntity, Integer> ingredientQuantity;
 
     @FXML
-    private TableColumn<InventoryEntity, LocalDate> ingredientExpiry;
+    private TableColumn<IngredientEntity, LocalDate> ingredientExpiry;
 
-    private InventoryEntity selectedIngredient;
+    private IngredientEntity selectedIngredient;
 
     @FXML
     private TextField searchField;
 
-    private final InventoryService inventoryService;
+    private final IngredientService inventoryService;
 
-    private ObservableList<InventoryEntity> inventoryList;
+    private ObservableList<IngredientEntity> inventoryList;
     
 
     @Autowired
-    public IngredientSearchTabController(InventoryService inventoryService) {
+    public IngredientSearchTabController(IngredientService inventoryService) {
         this.inventoryService = inventoryService;
     }
 
@@ -76,7 +76,7 @@ public class IngredientSearchTabController {
 
         // Add a listener to capture the selected row
         ingredientsTable.setRowFactory(tv -> {
-            TableRow<InventoryEntity> row = new TableRow<>();
+            TableRow<IngredientEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
                     selectedIngredient = row.getItem();
@@ -104,7 +104,7 @@ public class IngredientSearchTabController {
 
     // Searches the table
     private void searchIngredients(String query) {
-        List<InventoryEntity> filteredList;
+        List<IngredientEntity> filteredList;
         try {
             int id = Integer.parseInt(query);
             filteredList = inventoryList.stream()

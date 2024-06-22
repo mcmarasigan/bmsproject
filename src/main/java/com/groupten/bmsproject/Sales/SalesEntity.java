@@ -1,6 +1,6 @@
 package com.groupten.bmsproject.Sales;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +24,7 @@ public class SalesEntity {
     private Integer id;
 
     private String customerName;
-    private LocalDateTime datePurchased;
+    private LocalDate datePurchased;
     private String productOrder;
     private Integer quantityOrder;
     private Double productPrice;
@@ -51,11 +51,11 @@ public class SalesEntity {
         this.customerName = customerName;
     }
 
-    public LocalDateTime getDatePurchased() {
+    public LocalDate getDatePurchased() {
         return datePurchased;
     }
 
-    public void setDatePurchased(LocalDateTime datePurchased) {
+    public void setDatePurchased(LocalDate datePurchased) {
         this.datePurchased = datePurchased;
     }
 
@@ -100,7 +100,7 @@ public class SalesEntity {
         return new SimpleStringProperty(customerName);
     }
 
-    public ObjectProperty<LocalDateTime> datePurchasedProperty() {
+    public ObjectProperty<LocalDate> datePurchasedProperty() {
         return new SimpleObjectProperty<>(datePurchased);
     }
 

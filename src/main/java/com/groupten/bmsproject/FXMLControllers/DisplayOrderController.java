@@ -22,7 +22,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,7 +31,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Inventory.InventoryEntity;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Order.OrderEntity;
 import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
 import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
@@ -53,7 +53,7 @@ public class DisplayOrderController {
     private TableColumn<OrderEntity, String> AddressColumn;
 
     @FXML
-    private TableColumn<OrderEntity, LocalDateTime> DateOrderColumn;
+    private TableColumn<OrderEntity, LocalDate> DateOrderColumn;
 
     @FXML
     private TableColumn<OrderEntity, String> ProductOrderColumn;
@@ -180,7 +180,7 @@ public class DisplayOrderController {
             // Fill the fields with the selected ingredient details
             editCustomerfield.setText(selectedOrder.getorderCustomerName());
             editAddressfield.setText(selectedOrder.getorderAddress());
-            editDateorderedfield.setValue(selectedOrder.getorderDateOrder().toLocalDate());
+            editDateorderedfield.setValue(selectedOrder.getorderDateOrder());
             editOrderfield.setText(selectedOrder.getorderProductOrder());
             editQuantityfield.setText(selectedOrder.getorderQuantityOrder().toString());
             editPaymentfield.setValue(selectedOrder.getorderPaymentStatus());
@@ -212,10 +212,7 @@ public class DisplayOrderController {
         // Retrieve the selected date from the DatePicker
         LocalDate orderDate = editDateorderedfield.getValue();
 
-        // Set the expiry time to the selected date at midnight
-        LocalDateTime dateordered = orderDate.atStartOfDay();
-
-        String result = orderService.updateOrder(id, customer, address, dateordered, order, quantity, paymentstatus, deliverystatus);
+        String result = orderService.updateOrder(id, customer, address, orderDate, order, quantity, paymentstatus, deliverystatus);
 
         // Refresh the table to show the updated details
         OrderTable.refresh();

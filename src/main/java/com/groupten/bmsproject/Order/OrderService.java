@@ -1,14 +1,14 @@
 package com.groupten.bmsproject.Order;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.groupten.bmsproject.Inventory.InventoryEntity;
+import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
 import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 
@@ -20,7 +20,7 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public String addNewOrder(String customername, String address, LocalDateTime dateorder,String productorder, Integer quantityorder, PaymentStatus paymentstatus, DeliveryStatus deliverystatus) {
+    public String addNewOrder(String customername, String address, LocalDate dateorder,String productorder, Integer quantityorder, PaymentStatus paymentstatus, DeliveryStatus deliverystatus) {
     
     OrderEntity newOrder = new OrderEntity();
     newOrder.setorderCustomerName(customername);
@@ -35,7 +35,7 @@ public class OrderService {
     return "Saved";
     }
 
-    public String updateOrder(Integer id, String customername, String address, LocalDateTime dateorder,String productorder, Integer quantityorder, PaymentStatus paymentstatus, DeliveryStatus deliverystatus) {
+    public String updateOrder(Integer id, String customername, String address, LocalDate dateorder,String productorder, Integer quantityorder, PaymentStatus paymentstatus, DeliveryStatus deliverystatus) {
         Optional<OrderEntity> optionalOrderEntity = orderRepository.findById(id);
 
         if (optionalOrderEntity.isPresent()) {

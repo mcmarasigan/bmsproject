@@ -1,5 +1,6 @@
 package com.groupten.bmsproject.ProductionSchedule;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import jakarta.persistence.Entity;
@@ -24,9 +25,11 @@ public class ProductionScheduleEntity {
     private String productname;
     private Integer quantity;
     private String lvlofstock;
-    private LocalDateTime dateofproduction;
-    private LocalDateTime expdate;
+    private LocalDate dateofproduction;
+    private LocalDate expdate;
     private Integer numberofdaysexp;
+    private LocalDate lastUpdate;
+    private LocalDate dateAdded;
 
     public Integer getID() {
         return id;
@@ -60,19 +63,19 @@ public class ProductionScheduleEntity {
         this.lvlofstock = lvlofstock;
     }
 
-    public LocalDateTime getdateofProduction() {
+    public LocalDate getdateofProduction() {
         return dateofproduction;
     }
 
-    public void setdateofProduction(LocalDateTime dateofproduction) {
+    public void setdateofProduction(LocalDate dateofproduction) {
         this.dateofproduction = dateofproduction;
     }
 
-    public LocalDateTime getexpDate() {
+    public LocalDate getexpDate() {
         return expdate;
     }
 
-    public void setexpDate(LocalDateTime expdate) {
+    public void setexpDate(LocalDate expdate) {
         this.expdate = expdate;
     }
 
@@ -101,11 +104,11 @@ public class ProductionScheduleEntity {
         return new SimpleStringProperty(lvlofstock);
     }
 
-    public ObjectProperty<LocalDateTime> dateofproductionProperty() {
+    public ObjectProperty<LocalDate> dateofproductionProperty() {
         return new SimpleObjectProperty<>(dateofproduction);
     }
 
-    public ObjectProperty<LocalDateTime> expdateProperty() {
+    public ObjectProperty<LocalDate> expdateProperty() {
         return new SimpleObjectProperty<>(expdate);
     }
 
