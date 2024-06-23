@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -31,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Product.ProductEntity;
+import com.groupten.bmsproject.Product.ProductEntity.QuantityType;
 import com.groupten.bmsproject.Product.ProductService;
 
 @Controller
@@ -53,6 +55,9 @@ public class DisplayProductController {
 
     @FXML
     private TableColumn<ProductEntity, Double> priceColumn;
+
+    @FXML
+    private TableColumn<ProductEntity, QuantityType> qtypeColumn;
 
     @FXML
     private TableColumn<ProductEntity, String> productNameColumn;
@@ -84,6 +89,9 @@ public class DisplayProductController {
     @FXML
     private TextField SearchTextfield;
 
+    @FXML
+    private ComboBox<QuantityType> editquantityCombobox;
+
     private final ProductService productService;
     private ObservableList<ProductEntity> productList;
     private ProductEntity selectedProduct;
@@ -96,17 +104,15 @@ public class DisplayProductController {
     @FXML
 private void initialize() {
 
-    // Disable past dates in the DatePicker
-    editExpiryfield.setDayCellFactory(getDateCellFactory());
-
+        // Initialize the ComboBox with QuantityType enum values
+        editquantityCombobox.getItems().setAll(QuantityType.values());
 
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         productNameColumn.setCellValueFactory(cellData -> cellData.getValue().productnameProperty());
         descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
-        quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
+        qtypeColumn.setCellValueFactory(cellData -> cellData.getValue().quantityTypeProperty());
         imgLocationColumn.setCellValueFactory(cellData -> cellData.getValue().imglocationProperty());
-        expiryTimeColumn.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
         
         populateTable();
 
@@ -123,26 +129,6 @@ private void initialize() {
 
         // Add a listener to the search field to perform search on text change
         SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchProducts(newValue));
-    }
-
-    private Callback<DatePicker, DateCell> getDateCellFactory() {
-        return new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        // Disable all past dates
-                        if (item.isBefore(LocalDate.now())) {
-                            setDisable(true);
-                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
-                        }
-                    }
-                };
-            }
-        };
     }
 
     private void populateTable() {
@@ -163,11 +149,9 @@ private void initialize() {
             // Fill the fields with the selected ingredient details
             editProductfield.setText(selectedProduct.getproductName());
             editDescriptionfield.setText(selectedProduct.prodDescription());
-            editQuantityfield.setText(selectedProduct.productQuantity().toString());
             editImagefield.setText(selectedProduct.imageLocation());
             editPricefield.setText(selectedProduct.price().toString());
-            editExpiryfield.setValue(selectedProduct.productExpiry());
-            // Show the edit pane
+            editquantityCombobox.setValue(selectedProduct.getQuantityType());
             editPane.setVisible(true);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -185,16 +169,10 @@ private void initialize() {
         String description = editDescriptionfield.getText();
         String imglocation = editImagefield.getText();
         String priceString = editPricefield.getText();
+        QuantityType type = editquantityCombobox.getValue();
         Double price = Double.parseDouble(priceString);
-        String quantityString = editQuantityfield.getText();
 
-        int quantity = Integer.parseInt(quantityString);
-        
-
-        // Retrieve the selected date from the DatePicker
-        LocalDate expiryDate = editExpiryfield.getValue();
-
-        String result = productService.updateProduct(id, product, description, price, expiryDate, quantity, imglocation);
+        String result = productService.updateProduct(id, product, description, price, type, imglocation);
 
         System.out.println(result);
         

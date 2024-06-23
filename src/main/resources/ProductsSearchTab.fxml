@@ -11,12 +11,11 @@
       <TableView fx:id="productsTable" layoutX="24.0" layoutY="56.0" prefHeight="339.0" prefWidth="754.0">
         <columns>
           <TableColumn fx:id="productID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="productName" prefWidth="108.0" text="Product" />
-            <TableColumn fx:id="productDescription" prefWidth="165.59996032714844" text="Description" />
-            <TableColumn fx:id="productPrice" prefWidth="82.4000244140625" text="Price" />
-            <TableColumn fx:id="productQuantity" prefWidth="113.5999755859375" text="Quantity" />
-            <TableColumn fx:id="productExpiry" prefWidth="91.199951171875" text="Expiry Date" />
-            <TableColumn fx:id="productImage" prefWidth="118.40006103515623" text="Image Location" />
+          <TableColumn fx:id="productName" prefWidth="131.0" text="Product" />
+            <TableColumn fx:id="productDescription" prefWidth="132.0" text="Description" />
+            <TableColumn fx:id="productPrice" prefWidth="96.0" text="Price" />
+            <TableColumn fx:id="qtypeColumn" minWidth="0.0" prefWidth="145.0" text="Quantity Type" />
+            <TableColumn fx:id="productImage" prefWidth="174.0" text="Image Location" />
         </columns>
       </TableView>
       <TextField fx:id="searchField" layoutX="144.0" layoutY="23.0" prefHeight="26.0" prefWidth="264.0" promptText="Search for keywords" />

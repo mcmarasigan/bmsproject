@@ -10,13 +10,16 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Product.ProductService;
+import com.groupten.bmsproject.Product.ProductEntity.QuantityType;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
@@ -39,44 +42,21 @@ public class ProductRegController {
     private TextField pricetxt;
 
     @FXML
-    private DatePicker expiry;
-
-    @FXML
-    private TextField quantity;
-
-    @FXML
     private Button selectimg;
 
     @FXML
     private TextField imgdirectory;
 
+    @FXML
+    private ComboBox<QuantityType> quantityCombobox;
+
     @Autowired
     private ProductService prdctService;
 
     @FXML
-    private void initialize() {
-        // Disable past dates in the DatePicker
-        expiry.setDayCellFactory(getDateCellFactory());
-    }
-
-    private Callback<DatePicker, DateCell> getDateCellFactory() {
-        return new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        // Disable all past dates
-                        if (item.isBefore(LocalDate.now())) {
-                            setDisable(true);
-                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
-                        }
-                    }
-                };
-            }
-        };
+    public void initialize() {
+        // Initialize the ComboBox with QuantityType enum values
+        quantityCombobox.getItems().setAll(QuantityType.values());
     }
 
     @FXML
@@ -84,18 +64,14 @@ private void handleSaveButton() {
     String productname = prdctname.getText();
     String productdesc = description.getText();
     String priceString = pricetxt.getText();
+    QuantityType type = quantityCombobox.getValue();
     Double price = Double.parseDouble(priceString);
-    String quantityString = quantity.getText();
-    int quantity = Integer.parseInt(quantityString);
-
-    // Retrieve the selected date from the DatePicker
-    LocalDate expiryDate = expiry.getValue();
 
     LocalDate dateAdded = LocalDate.now();
 
     String imagelocation = imgdirectory.getText();
 
-    String result = prdctService.addNewProduct(productname, productdesc, price, expiryDate, quantity, imagelocation, dateAdded);
+    String result = prdctService.addNewProduct(productname, productdesc, price, type, imagelocation, dateAdded);
 
     System.out.println(result);
 }

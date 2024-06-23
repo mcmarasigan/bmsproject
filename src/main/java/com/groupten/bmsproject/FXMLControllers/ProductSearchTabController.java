@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Product.ProductEntity;
+import com.groupten.bmsproject.Product.ProductEntity.QuantityType;
 import com.groupten.bmsproject.Product.ProductService;
 
 import javafx.collections.FXCollections;
@@ -44,6 +45,9 @@ public class ProductSearchTabController {
 
     @FXML
     private TableColumn<ProductEntity, Double> productPrice;
+
+    @FXML
+    private TableColumn<ProductEntity, QuantityType> qtypeColumn;
 
     @FXML
     private TableColumn<ProductEntity, Integer> productQuantity;
@@ -73,11 +77,10 @@ public class ProductSearchTabController {
     private void initialize() {
         productID.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         productDescription.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
-        productExpiry.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
         productImage.setCellValueFactory(cellData -> cellData.getValue().imglocationProperty());
         productPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+        qtypeColumn.setCellValueFactory(cellData -> cellData.getValue().quantityTypeProperty());
         productName.setCellValueFactory(cellData -> cellData.getValue().productnameProperty());
-        productQuantity.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
 
         populateTable();
 

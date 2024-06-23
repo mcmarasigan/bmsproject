@@ -1,9 +1,14 @@
 package com.groupten.bmsproject.Product;
 
 import java.time.LocalDate;
+
+import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,11 +32,18 @@ public class ProductEntity {
     private String productname;
     private String description;
     private Double price;
-    private LocalDate expiryDate;
-    private Integer quantity;
     private String imglocation;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
+
+    @Enumerated(EnumType.STRING)
+    private QuantityType quantitytype;
+
+    // Enums:
+    public enum QuantityType {
+        PCS,
+        PANS
+    }
 
     public Integer getID() {
         return id;
@@ -49,6 +61,14 @@ public class ProductEntity {
         this.productname = productname;
     }
 
+    public QuantityType getQuantityType() {
+        return quantitytype;
+    }
+
+    public void setQuantityType(QuantityType quantitytype) {
+        this.quantitytype = quantitytype;
+    }
+
     public String prodDescription() {
         return description;
     }
@@ -63,22 +83,6 @@ public class ProductEntity {
 
     public void setprodPrice(Double price) {
         this.price = price;
-    }
-
-    public LocalDate productExpiry() {
-        return expiryDate;
-    }
-
-    public void setproductExpiry(LocalDate expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public Integer productQuantity() {
-        return quantity;
-    }
-
-    public void setproductQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public String imageLocation() {
@@ -121,12 +125,8 @@ public class ProductEntity {
         return new SimpleDoubleProperty(price);
     }
 
-    public ObjectProperty<LocalDate> expiryDateProperty() {
-        return new SimpleObjectProperty<>(expiryDate);
-    }
-
-    public IntegerProperty quantityProperty() {
-        return new SimpleIntegerProperty(quantity);
+    public ObjectProperty<QuantityType> quantityTypeProperty() {
+        return new SimpleObjectProperty(quantitytype);
     }
 
     public StringProperty imglocationProperty() {

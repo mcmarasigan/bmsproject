@@ -78,7 +78,7 @@ public class OrderingController {
     }
 
     private void populateProductOrderChoiceBox() {
-        List<ProductEntity> availableProducts = productService.getAvailableProducts();
+        List<ProductEntity> availableProducts = productService.getAllProducts();
         for (ProductEntity product : availableProducts) {
             ProductOrderChoiceBox.getItems().add(product.getproductName());
         }
@@ -125,7 +125,7 @@ public class OrderingController {
             alert.showAndWait();
             return;
         }
-
+        /* 
         // Check if the ordered quantity is more than the available quantity
         if (quantityOrder > selectedProduct.productQuantity()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -135,6 +135,7 @@ public class OrderingController {
             alert.showAndWait();
             return;
         }
+        
 
         // Check for low stock products
         List<ProductEntity> lowStockProducts = productService.getLowStockProducts(LOW_STOCK_THRESHOLD);
@@ -151,6 +152,7 @@ public class OrderingController {
             alert.setContentText(warningMessage.toString());
             alert.showAndWait();
         }
+        */
 
         // Proceed to save the order
         String result = orderService.addNewOrder(customerName, address, dateOrder, productOrder, quantityOrder, paymentStatus, deliveryStatus);
