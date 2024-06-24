@@ -53,6 +53,9 @@ public class DisplayIngredientController {
 
     @FXML
     private TableColumn<IngredientEntity, LocalDate> ExpiryDateColumn;
+    
+    @FXML
+    private TableColumn<IngredientEntity, String> UnitTypeIngColumn;
 
     @FXML
     private StackPane editPane;
@@ -86,19 +89,17 @@ public class DisplayIngredientController {
 
     @FXML
     private void initialize() {
-        
-        // Disable past dates in the DatePicker
         editExpiryfield.setDayCellFactory(getDateCellFactory());
-
+    
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
         PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityIngredientProperty().asObject());
+        UnitTypeIngColumn.setCellValueFactory(cellData -> cellData.getValue().unitTypeProperty());
         ExpiryDateColumn.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
-
+    
         populateTable();
-
-        // Add a listener to capture the selected row
+    
         IngredientTable.setRowFactory(tv -> {
             TableRow<IngredientEntity> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -108,8 +109,7 @@ public class DisplayIngredientController {
             });
             return row;
         });
-
-        // Add a listener to the search field to perform search on text change
+    
         SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchIngredients(newValue));
     }
 
@@ -121,11 +121,10 @@ public class DisplayIngredientController {
                     @Override
                     public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
-
-                        // Disable all past dates
+    
                         if (item.isBefore(LocalDate.now())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                            setStyle("-fx-background-color: #d48200;");
                         }
                     }
                 };
@@ -136,9 +135,9 @@ public class DisplayIngredientController {
 
     private void populateTable() {
         inventoryList = FXCollections.observableArrayList(inventoryService.getAllProducts());
-        IngredientTable.getItems().addAll(inventoryService.getAllProducts());
+        IngredientTable.setItems(inventoryList);
     }
-
+    
     private void searchIngredients(String query) {
         List<IngredientEntity> filteredList = inventoryList.stream()
                 .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
@@ -147,51 +146,42 @@ public class DisplayIngredientController {
     }
 
     @FXML
-    private void handleEditButton() {
-        if (selectedIngredient != null) {
-            // Fill the fields with the selected ingredient details
-            editNamefield.setText(selectedIngredient.getIngredient());
-            editPricefield.setText(selectedIngredient.getPrice().toString());
-            editQuantityfield.setText(selectedIngredient.getQuantity().toString());
-            editExpiryfield.setValue(selectedIngredient.getExpiry());
-            // Show the edit pane
-            editPane.setVisible(true);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Ingredient Selected");
-            alert.setContentText("Please select an ingredient in the table.");
-            alert.showAndWait();
-        }
+private void handleEditButton() {
+    if (selectedIngredient != null) {
+        editPane.setVisible(true);
+        editNamefield.setText(selectedIngredient.getIngredient());
+        editPricefield.setText(selectedIngredient.getPrice().toString());
+        editQuantityfield.setText(selectedIngredient.getQuantity().toString());
+        editExpiryfield.setValue(selectedIngredient.getExpiry());
+        // Add handling for the unit type if needed
+    } else {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Ingredient Selected");
+        alert.setContentText("Please select an ingredient in the table.");
+        alert.showAndWait();
     }
+}
 
-    @FXML
-    private void handleSaveButton() {
-        Integer id = selectedIngredient.getID();
-        String ingredient = editNamefield.getText();
-        String priceString = editPricefield.getText();
-        Double price = Double.parseDouble(priceString);
-        String quantityString = editQuantityfield.getText();
-        int quantity = Integer.parseInt(quantityString);
+@FXML
+private void handleSaveButton() {
+    if (selectedIngredient != null) {
+        String newName = editNamefield.getText();
+        Double newPrice = Double.parseDouble(editPricefield.getText());
+        int newQuantity = Integer.parseInt(editQuantityfield.getText());
+        LocalDate newExpiry = editExpiryfield.getValue();
+        // Handle the unit type if necessary
 
-        // Retrieve the selected date from the DatePicker
-        LocalDate expiryDate = editExpiryfield.getValue();
-
-        String result = inventoryService.updateIngredient(id, ingredient, price, quantity, expiryDate);
-
-        System.out.println(result);
-        
-        // Refresh the table to show the updated details
-        IngredientTable.refresh();
-        // Hide the edit pane
+        inventoryService.updateIngredient(selectedIngredient.getID(), newName, newPrice, newQuantity, newExpiry, selectedIngredient.getUnitType());
+        populateTable();
         editPane.setVisible(false);
     }
+}
 
-    @FXML
-    private void handleCancelButton() {
-        // Hide the edit pane without saving
-        editPane.setVisible(false);
-    }
+@FXML
+private void handleCancelButton() {
+    editPane.setVisible(false);
+}
 
     @FXML
     private void backtoInventory() throws IOException {

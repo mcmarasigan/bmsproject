@@ -25,10 +25,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.scene.control.ChoiceBox;
 
 @Component
 public class IngredientRegController {
-     @FXML
+    @FXML
     private TextField ingredienttxt;
 
     @FXML
@@ -41,6 +42,9 @@ public class IngredientRegController {
     private DatePicker expirydate;
 
     @FXML
+    private ChoiceBox<String> UnitTypeIngChoiceBox;
+
+    @FXML
     private Button savebutton;
 
     @Autowired
@@ -48,8 +52,8 @@ public class IngredientRegController {
 
     @FXML
     private void initialize() {
-        // Disable past dates in the DatePicker
         expirydate.setDayCellFactory(getDateCellFactory());
+        UnitTypeIngChoiceBox.getItems().addAll("grams", "kilograms");
     }
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
@@ -61,10 +65,9 @@ public class IngredientRegController {
                     public void updateItem(LocalDate item, boolean empty) {
                         super.updateItem(item, empty);
 
-                        // Disable all past dates
                         if (item.isBefore(LocalDate.now())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
+                            setStyle("-fx-background-color: #d48200;");
                         }
                     }
                 };
@@ -75,22 +78,15 @@ public class IngredientRegController {
     @FXML
     private void handleSaveButton() {
         String ingredient = ingredienttxt.getText();
-        String priceString = price.getText();
-        Double price = Double.parseDouble(priceString);
-        String quantityString = quantity.getText();
-        int quantity = Integer.parseInt(quantityString);
-
-        // Retrieve the selected date from the DatePicker
+        Double price = Double.parseDouble(this.price.getText());
+        int quantity = Integer.parseInt(this.quantity.getText());
         LocalDate expiryDate = expirydate.getValue();
-
-        // Get the current date and time for date added
         LocalDate dateAdded = LocalDate.now();
+        String unitType = UnitTypeIngChoiceBox.getValue();
 
-
-        String result = inventoryService.addNewInventory(ingredient, price, quantity, expiryDate, dateAdded);
-
+        String result = inventoryService.addNewInventory(ingredient, price, quantity, expiryDate, dateAdded, unitType);
         System.out.println(result);
-}
+    }
 
     @FXML
     private void backtoDashboard() throws IOException {

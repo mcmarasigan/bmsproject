@@ -30,6 +30,7 @@
           <TableColumn fx:id="IngredientNameColumn" prefWidth="275.0" text="Ingredient Name" />
           <TableColumn fx:id="PriceColumn" prefWidth="139.0" text="Price" />
             <TableColumn fx:id="QuantityColumn" prefWidth="68.0" text="Quantity" />
+            <TableColumn fx:id="UnitTypeIngColumn" prefWidth="105.0" text="Unit Type" />
             <TableColumn fx:id="ExpiryDateColumn" prefWidth="105.0" text="Expiry Date" />
         </columns>
          <columnResizePolicy>

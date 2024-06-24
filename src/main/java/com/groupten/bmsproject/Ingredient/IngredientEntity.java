@@ -28,6 +28,7 @@ public class IngredientEntity {
     private LocalDate expiryDate;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
+    private String unitType;
 
     public Integer getID() {
         return id;
@@ -84,6 +85,15 @@ public class IngredientEntity {
     public void setDateAdded(LocalDate dateAdded) {
         this.dateAdded = dateAdded;
     }
+
+    public String getUnitType() {
+        return unitType;
+    }
+    
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
  // Property methods for JavaFX TableView binding
      public IntegerProperty idProperty() {
         return new SimpleIntegerProperty(id);
@@ -103,5 +113,9 @@ public class IngredientEntity {
 
     public ObjectProperty<LocalDate> expiryDateProperty() {
         return new SimpleObjectProperty<>(expiryDate);
+    }
+    
+    public StringProperty unitTypeProperty() {
+        return new SimpleStringProperty(unitType);
     }
 }

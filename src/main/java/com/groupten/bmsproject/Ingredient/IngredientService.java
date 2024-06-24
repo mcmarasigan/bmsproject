@@ -14,31 +14,32 @@ public class IngredientService {
     @Autowired
     private IngredientRepository inventoryRepository;
 
-    public String addNewInventory(String ingredient, Double price, Integer quantity, LocalDate expiryTime, LocalDate dateAdded) {
+    public String addNewInventory(String ingredient, Double price, Integer quantity, LocalDate expiryTime, LocalDate dateAdded, String unitType) {
         IngredientEntity newInventory = new IngredientEntity();
         newInventory.setIngredient(ingredient);
         newInventory.setPrice(price);
         newInventory.setQuantity(quantity);
         newInventory.setExpiry(expiryTime);
         newInventory.setDateAdded(dateAdded);
+        newInventory.setUnitType(unitType);
         inventoryRepository.save(newInventory);
-
+    
         return "Saved";
     }
 
-    public String updateIngredient(Integer id, String ingredient, Double price, Integer quantity, LocalDate expiryTime) {
+    public String updateIngredient(Integer id, String ingredient, Double price, Integer quantity, LocalDate expiryTime, String unitType) {
         Optional<IngredientEntity> optionalInventoryEntity = inventoryRepository.findById(id);
-
+    
         if (optionalInventoryEntity.isPresent()) {
-            // Update existing inventory item
             IngredientEntity inventoryEntity = optionalInventoryEntity.get();
             inventoryEntity.setIngredient(ingredient);
             inventoryEntity.setPrice(price);
             inventoryEntity.setQuantity(quantity);
             inventoryEntity.setExpiry(expiryTime);
-            inventoryEntity.setLastUpdateTime(LocalDate.now()); // Set the last update time
+            inventoryEntity.setUnitType(unitType);
+            inventoryEntity.setLastUpdateTime(LocalDate.now());
             inventoryRepository.save(inventoryEntity);
-        } 
+        }
         return "Updated";
     }
 
