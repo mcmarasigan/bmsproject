@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,34 +13,34 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="771.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
    <children>
-      <ChoiceBox fx:id="productChoiceBox" layoutX="299.0" layoutY="109.0" prefWidth="150.0" />
-      <Text fill="#96735b" layoutX="300.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product:">
+      <ChoiceBox fx:id="productChoiceBox" layoutX="299.0" layoutY="134.0" prefWidth="150.0" />
+      <Text fill="#96735b" layoutX="300.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <DatePicker fx:id="dateofproductionPicker" layoutX="300.0" layoutY="240.0" promptText="Date of Production" />
-      <DatePicker fx:id="expdatePicker" layoutX="300.0" layoutY="280.0" promptText="Expiration Date" />
-      <Button fx:id="savebutton" layoutX="507.0" layoutY="337.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
+      <DatePicker fx:id="dateofproductionPicker" layoutX="300.0" layoutY="265.0" promptText="Date of Production" />
+      <DatePicker fx:id="expdatePicker" layoutX="300.0" layoutY="321.0" promptText="Expiration Date" />
+      <Button fx:id="savebutton" layoutX="700.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Label layoutX="300.0" layoutY="145.0" text="Quantity:" textFill="#96735b">
+      <Label layoutX="300.0" layoutY="170.0" text="Quantity:" textFill="#96735b">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Text fx:id="levelOfStockField" fill="#96735b" layoutX="300.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Stock: N/A">
+      <Text fx:id="levelOfStockField" fill="#96735b" layoutX="300.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of Stock: N/A">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <TextField fx:id="quantityField" layoutX="299.0" layoutY="162.0" prefHeight="25.0" prefWidth="150.0" />
+      <TextField fx:id="quantityField" layoutX="299.0" layoutY="187.0" prefHeight="25.0" prefWidth="150.0" />
       <ImageView fitHeight="502.0" fitWidth="304.0" layoutX="-57.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/banners/image_security.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="500.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="671.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>
@@ -48,5 +50,40 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Text fill="#96735b" layoutX="280.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Productions">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <TableView fx:id="RecipeTable" layoutX="482.0" layoutY="134.0" prefHeight="200.0" prefWidth="275.0">
+        <columns>
+          <TableColumn fx:id="IngredientNameColumn" prefWidth="75.0" text="Ingredient Name" />
+          <TableColumn fx:id="QuantityColumn" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="UnitTypeColumn" prefWidth="75.0" text="Unit Type" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Text fill="#96735b" layoutX="482.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Button fx:id="AddIngredientButton" layoutX="483.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Add Ingredient" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="301.0" layoutY="248.0" text="Date of Production:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="302.0" layoutY="303.0" text="Expiration Date:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

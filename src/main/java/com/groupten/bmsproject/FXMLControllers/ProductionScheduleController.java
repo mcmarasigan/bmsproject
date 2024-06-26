@@ -105,7 +105,7 @@ private void handleSaveButton() {
     productionSchedule.setexpDate(expDate);
     productionSchedule.setnumberofdaysexp((int) numberOfDays); // Set the number of days
 
-    String levelOfStock = quantity < 50 ? "Low" : "Sufficient";
+    String levelOfStock = quantity < 10 ? "Low" : "Sufficient";
     productionSchedule.setlvlofstock(levelOfStock);
 
     productionScheduleService.save(productionSchedule);
