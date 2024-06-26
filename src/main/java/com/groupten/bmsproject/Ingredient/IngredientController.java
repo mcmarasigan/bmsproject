@@ -16,7 +16,7 @@ public class IngredientController {
     private IngredientService inventoryService;
 
     @PostMapping(path = "/addInventory")
-    public String addNewInventory(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Integer quantity, @RequestParam LocalDate expiryTime, @RequestParam LocalDate dateAdded, @RequestParam String unitType) {
+    public String addNewInventory(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Double quantity, @RequestParam LocalDate expiryTime, @RequestParam LocalDate dateAdded, @RequestParam String unitType) {
         return inventoryService.addNewInventory(ingredient, price, quantity, expiryTime, dateAdded, unitType);
     }
     

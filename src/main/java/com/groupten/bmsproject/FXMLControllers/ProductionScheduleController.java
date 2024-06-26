@@ -51,7 +51,7 @@ public class ProductionScheduleController {
     private TableColumn<IngredientTableRow, String> IngredientNameColumn;
 
     @FXML
-    private TableColumn<IngredientTableRow, Integer> QuantityColumn;
+    private TableColumn<IngredientTableRow, Double> QuantityColumn;
 
     @FXML
     private TableColumn<IngredientTableRow, String> UnitTypeColumn;
@@ -101,14 +101,23 @@ public class ProductionScheduleController {
         productService.getAllProducts().forEach(product -> productChoiceBox.getItems().add(product.getproductName()));
     }
 
-     @FXML
+    @FXML
     private void handleSaveButton() {
+        if (ingredientData.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("No Ingredients");
+            alert.setHeaderText(null);
+            alert.setContentText("Please add at least one ingredient before saving.");
+            alert.showAndWait();
+            return;
+        }
+
         String productName = productChoiceBox.getValue();
-        int quantity = Integer.parseInt(quantityField.getText());
+        Double quantity = Double.parseDouble(quantityField.getText());
         LocalDate dateOfProduction = dateofproductionPicker.getValue();
         LocalDate expDate = expdatePicker.getValue();
         long numberOfDays = ChronoUnit.DAYS.between(dateOfProduction, expDate);
-
+    
         ProductionScheduleEntity productionSchedule = new ProductionScheduleEntity();
         productionSchedule.setproductName(productName);
         productionSchedule.setproductschedQuantity(quantity);
@@ -116,21 +125,35 @@ public class ProductionScheduleController {
         productionSchedule.setexpDate(expDate);
         productionSchedule.setnumberofdaysexp((int) numberOfDays);
         productionSchedule.setlvlofstock(quantity < 10 ? "Low" : "Sufficient");
-
+    
         productionScheduleService.save(productionSchedule);
-
+    
         RecipeTable.getItems().forEach(row -> {
             ProductionIngredient productionIngredient = new ProductionIngredient();
             productionIngredient.setProductionSchedule(productionSchedule);
-
+    
             IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
             productionIngredient.setIngredient(ingredient);
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
-
+    
+            // Deduct the quantity from the ingredient
+            Double newQuantity = ingredient.getQuantity() - row.getQuantity();
+            if (newQuantity < 0) {
+                // Handle insufficient quantity error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Insufficient Quantity");
+                alert.setHeaderText(null);
+                alert.setContentText("Insufficient quantity for ingredient: " + ingredient.getIngredient());
+                alert.showAndWait();
+                return;
+            }
+            ingredient.setQuantity(newQuantity);
+            ingredientService.saveIngredient(ingredient); // Save the updated ingredient
+    
             productionScheduleService.saveProductionIngredient(productionIngredient);
         });
-
+    
         // Show success dialog
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Production Schedule Saved");
@@ -138,8 +161,7 @@ public class ProductionScheduleController {
         alert.setContentText("Production schedule and ingredients saved successfully!");
         alert.showAndWait();
     }
-
-
+    
     @FXML
     private void openAddIngredientDialog() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
@@ -153,13 +175,30 @@ public class ProductionScheduleController {
         stage.showAndWait();
     }
 
-    public static void addIngredientToTable(String ingredientName, int quantity, String unitType) {
+    public static void addIngredientToTable(String ingredientName, Double quantity, String unitType) {
         IngredientTableRow row = new IngredientTableRow(ingredientName, quantity, unitType);
         ingredientData.add(row);
+    }
+
+    @FXML
+    private void handleRemoveButton() {
+        IngredientTableRow selectedRow = RecipeTable.getSelectionModel().getSelectedItem();
+        if (selectedRow != null) {
+            ingredientData.remove(selectedRow);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("No Selection");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select an ingredient to remove.");
+            alert.showAndWait();
+        }
     }
     
     @FXML
     private void goBackProductionSched() throws IOException {
+        // Clear the ingredient data
+        ingredientData.clear();
+
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayProductionSchedule.fxml"));
         loader.setControllerFactory(context::getBean);

@@ -2,15 +2,16 @@ package com.groupten.bmsproject.FXMLControllers;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 
 public class IngredientTableRow {
     private final SimpleStringProperty ingredient;
-    private final SimpleIntegerProperty quantity;
+    private final SimpleDoubleProperty quantity;
     private final SimpleStringProperty unitType;
 
-    public IngredientTableRow(String ingredient, int quantity, String unitType) {
+    public IngredientTableRow(String ingredient, Double quantity, String unitType) {
         this.ingredient = new SimpleStringProperty(ingredient);
-        this.quantity = new SimpleIntegerProperty(quantity);
+        this.quantity = new SimpleDoubleProperty(quantity);
         this.unitType = new SimpleStringProperty(unitType);
     }
 
@@ -22,11 +23,11 @@ public class IngredientTableRow {
         return ingredient;
     }
 
-    public int getQuantity() {
+    public Double getQuantity() {
         return quantity.get();
     }
 
-    public SimpleIntegerProperty quantityProperty() {
+    public SimpleDoubleProperty quantityProperty() {
         return quantity;
     }
 

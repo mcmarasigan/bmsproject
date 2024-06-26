@@ -25,6 +25,8 @@ import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
 import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
 import com.groupten.bmsproject.Product.ProductService;
+import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleEntity;
+import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleService;
 import com.groupten.bmsproject.Product.ProductEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -35,6 +37,9 @@ public class OrderingController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private ProductionScheduleService productionScheduleService;
 
     @Autowired
     private ProductService productService;
@@ -50,6 +55,12 @@ public class OrderingController {
 
     @FXML
     private ChoiceBox<String> ProductOrderChoiceBox;
+
+    @FXML
+    private TextField remainingProductQuantity;
+
+    @FXML
+    private TextField productUnitType;
 
     @FXML
     private TextField QuantityOrderTextField;
@@ -78,11 +89,11 @@ public class OrderingController {
     }
 
     private void populateProductOrderChoiceBox() {
-        List<ProductEntity> availableProducts = productService.getAllProducts();
-        for (ProductEntity product : availableProducts) {
-            ProductOrderChoiceBox.getItems().add(product.getproductName());
-        }
+    List<ProductionScheduleEntity> availableProducts = productionScheduleService.getAllProducts();
+    for (ProductionScheduleEntity product : availableProducts) {
+        ProductOrderChoiceBox.getItems().add(product.getproductName());
     }
+}
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
         return new Callback<DatePicker, DateCell>() {

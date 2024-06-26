@@ -22,16 +22,32 @@ public class AddIngredientDialogController {
     private TextField QuantityDialogField;
 
     @FXML
+    private TextField remainingQuantity;
+
+    @FXML
+    private TextField unitType;
+
+    @FXML
     private ComboBox<String> UnitTypeDialogCombobox;
 
     @Autowired
     private IngredientService ingredientService;
 
     @FXML
-    private void initialize() {
-        populateIngredientNameComboBox();
-        populateUnitTypeComboBox();
-    }
+private void initialize() {
+    populateIngredientNameComboBox();
+    populateUnitTypeComboBox();
+
+    IngredientNameDialogCombobox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        if (newValue != null) {
+            IngredientEntity ingredient = ingredientService.findByName(newValue);
+            if (ingredient != null) {
+                remainingQuantity.setText(String.valueOf(ingredient.getQuantity()));
+                unitType.setText(ingredient.getUnitType());
+            }
+        }
+    });
+}
 
     private void populateIngredientNameComboBox() {
         System.out.println("populateIngredientNameComboBox called"); // Debug log
@@ -53,36 +69,61 @@ public class AddIngredientDialogController {
     }
 
     @FXML
-    private void handleAddButton() {
-        String ingredientName = IngredientNameDialogCombobox.getValue();
-        String quantityStr = QuantityDialogField.getText();
-        String unitType = UnitTypeDialogCombobox.getValue();
+private void handleAddButton() {
+    String ingredientName = IngredientNameDialogCombobox.getValue();
+    String quantityStr = QuantityDialogField.getText();
 
-        if (ingredientName != null && !ingredientName.isEmpty() &&
-            quantityStr != null && !quantityStr.isEmpty() &&
-            unitType != null && !unitType.isEmpty()) {
+    if (ingredientName != null && !ingredientName.isEmpty() &&
+        quantityStr != null && !quantityStr.isEmpty()) {
 
-            int quantity = Integer.parseInt(quantityStr);
+        Double quantity = Double.parseDouble(quantityStr);
 
-            // Add ingredient to RecipeTable in ProductionScheduleController
-            ProductionScheduleController.addIngredientToTable(ingredientName, quantity, unitType);
+        // Fetch the ingredient entity
+        IngredientEntity ingredient = ingredientService.findByName(ingredientName);
+        if (ingredient != null) {
+            String unitTypeValue = ingredient.getUnitType(); // Retrieve the unit type from the entity
+            Double remainingQuantityValue = ingredient.getQuantity(); // Retrieve the remaining quantity from the entity
 
-            // Show success dialog
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Ingredient Added");
-            alert.setHeaderText(null);
-            alert.setContentText("Ingredient " + ingredientName + " added successfully!");
-            alert.showAndWait();
+            // Set the values in the TextField components
+            remainingQuantity.setText(String.valueOf(remainingQuantityValue));
+            unitType.setText(unitTypeValue);
 
+            if (quantity <= remainingQuantityValue) {
+                // Add ingredient to RecipeTable in ProductionScheduleController
+                ProductionScheduleController.addIngredientToTable(ingredientName, quantity, unitTypeValue);
+
+                // Show success dialog
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Ingredient Added");
+                alert.setHeaderText(null);
+                alert.setContentText("Ingredient " + ingredientName + " added successfully!");
+                alert.showAndWait();
+            } else {
+                // Show error dialog for insufficient quantity
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Insufficient Quantity");
+                alert.setHeaderText(null);
+                alert.setContentText("The selected ingredient does not have enough quantity.");
+                alert.showAndWait();
+            }
         } else {
-            // Show error dialog
+            // Show error dialog for zero quantity in ingredient entity
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Invalid Input");
+            alert.setTitle("Invalid Ingredient");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill in all fields.");
+            alert.setContentText("The selected ingredient is out of stock or invalid.");
             alert.showAndWait();
         }
+    } else {
+        // Show error dialog for empty fields
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Invalid Input");
+        alert.setHeaderText(null);
+        alert.setContentText("Please fill in all fields.");
+        alert.showAndWait();
     }
+}
+
 
     @FXML
     private void handleCloseAddIngredients() {

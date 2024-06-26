@@ -24,7 +24,7 @@ public class ProductionScheduleService {
 
     private IngredientTableRow[] ingredients;
 
-    public String addnewProductSched(String productname, Integer quantity, String lvlofstock, LocalDate dateofproduction, LocalDate expdate,  Integer numberofdaysexp) {
+    public String addnewProductSched(String productname, Double quantity, String lvlofstock, LocalDate dateofproduction, LocalDate expdate,  Integer numberofdaysexp) {
         ProductionScheduleEntity newProductSched = new ProductionScheduleEntity();
         newProductSched.setproductName(productname);
         newProductSched.setproductschedQuantity(quantity);

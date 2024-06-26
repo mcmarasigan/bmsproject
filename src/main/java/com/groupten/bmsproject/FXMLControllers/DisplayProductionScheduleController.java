@@ -45,7 +45,7 @@ public class DisplayProductionScheduleController {
     private TableColumn<ProductionScheduleEntity, String> productNameColumn;
 
     @FXML
-    private TableColumn<ProductionScheduleEntity, Integer> quantityColumn;
+    private TableColumn<ProductionScheduleEntity, Double> quantityColumn;
 
     @FXML
     private TableColumn<ProductionScheduleEntity, String> lvlofStockColumn;

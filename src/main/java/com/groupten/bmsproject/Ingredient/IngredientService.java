@@ -14,7 +14,7 @@ public class IngredientService {
     @Autowired
     private IngredientRepository inventoryRepository;
 
-    public String addNewInventory(String ingredient, Double price, Integer quantity, LocalDate expiryTime, LocalDate dateAdded, String unitType) {
+    public String addNewInventory(String ingredient, Double price, Double quantity, LocalDate expiryTime, LocalDate dateAdded, String unitType) {
         IngredientEntity newInventory = new IngredientEntity();
         newInventory.setIngredient(ingredient);
         newInventory.setPrice(price);
@@ -27,7 +27,7 @@ public class IngredientService {
         return "Saved";
     }
 
-    public String updateIngredient(Integer id, String ingredient, Double price, Integer quantity, LocalDate expiryTime, String unitType) {
+    public String updateIngredient(Integer id, String ingredient, Double price, Double quantity, LocalDate expiryTime, String unitType) {
         Optional<IngredientEntity> optionalInventoryEntity = inventoryRepository.findById(id);
     
         if (optionalInventoryEntity.isPresent()) {
@@ -60,6 +60,10 @@ public class IngredientService {
     public IngredientEntity findByName(IngredientEntity ingredient) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findByName'");
+    }
+
+    public void saveIngredient(IngredientEntity ingredient) {
+        inventoryRepository.save(ingredient);
     }
 
 }

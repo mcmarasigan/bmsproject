@@ -43,7 +43,7 @@ public class IngredientSearchTabController {
     private TableColumn<IngredientEntity, Double> ingredientPrice;
 
     @FXML
-    private TableColumn<IngredientEntity, Integer> ingredientQuantity;
+    private TableColumn<IngredientEntity, Double> ingredientQuantity;
 
     @FXML
     private TableColumn<IngredientEntity, LocalDate> ingredientExpiry;

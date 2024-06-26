@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.OrderingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="752.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.OrderingController">
    <children>
       <TextField fx:id="CustomerNameTextField" layoutX="54.0" layoutY="176.0" prefHeight="26.0" prefWidth="186.0" />
       <TextField fx:id="AddressTextField" layoutX="54.0" layoutY="235.0" prefHeight="26.0" prefWidth="186.0" />
@@ -32,12 +32,12 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <TextField fx:id="QuantityOrderTextField" layoutX="360.0" layoutY="231.0" prefHeight="26.0" prefWidth="186.0" />
-      <Text fill="#96735b" layoutX="360.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
+      <TextField fx:id="QuantityOrderTextField" layoutX="359.0" layoutY="285.0" prefHeight="26.0" prefWidth="186.0" />
+      <Text fill="#96735b" layoutX="359.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity ordered:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="365.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status:">
+      <Text fill="#96735b" layoutX="361.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Status:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
@@ -72,7 +72,19 @@
             <Font name="System Bold" size="12.0" />
          </font></Text>
       <ComboBox fx:id="DeliveryStatusComboBox" layoutX="54.0" layoutY="356.0" prefWidth="150.0" />
-      <ComboBox fx:id="PaymentStatusComboBox" layoutX="360.0" layoutY="297.0" prefWidth="150.0" />
+      <ComboBox fx:id="PaymentStatusComboBox" layoutX="356.0" layoutY="355.0" prefWidth="150.0" />
       <ChoiceBox fx:id="ProductOrderChoiceBox" layoutX="356.0" layoutY="177.0" prefHeight="26.0" prefWidth="192.0" />
+      <TextField fx:id="remainingProductQuantity" editable="false" layoutX="359.0" layoutY="237.0" prefHeight="26.0" prefWidth="59.0" />
+      <Text fill="#96735b" layoutX="361.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remaining Quantity:" wrappingWidth="65.60156249999994">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <TextField fx:id="productUnitType" editable="false" layoutX="441.0" layoutY="237.0" prefHeight="26.0" prefWidth="66.0" />
+      <Text fill="#96735b" layoutX="438.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Type:" wrappingWidth="65.60156249999994">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

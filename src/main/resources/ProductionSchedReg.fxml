@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="771.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="821.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductionScheduleController">
    <children>
       <ChoiceBox fx:id="productChoiceBox" layoutX="299.0" layoutY="134.0" prefWidth="150.0" />
       <Text fill="#96735b" layoutX="300.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Product:">
@@ -22,7 +22,7 @@
          </font></Text>
       <DatePicker fx:id="dateofproductionPicker" layoutX="300.0" layoutY="265.0" promptText="Date of Production" />
       <DatePicker fx:id="expdatePicker" layoutX="300.0" layoutY="321.0" promptText="Expiration Date" />
-      <Button fx:id="savebutton" layoutX="700.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
+      <Button fx:id="savebutton" layoutX="736.0" layoutY="341.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -55,7 +55,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <TableView fx:id="RecipeTable" layoutX="482.0" layoutY="134.0" prefHeight="200.0" prefWidth="275.0">
+      <TableView fx:id="RecipeTable" layoutX="482.0" layoutY="134.0" prefHeight="200.0" prefWidth="295.0">
         <columns>
           <TableColumn fx:id="IngredientNameColumn" prefWidth="75.0" text="Ingredient Name" />
           <TableColumn fx:id="QuantityColumn" prefWidth="75.0" text="Quantity" />
@@ -65,12 +65,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Text fill="#96735b" layoutX="482.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients">
+      <Text fill="#96735b" layoutX="482.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used For Production:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Button fx:id="AddIngredientButton" layoutX="483.0" layoutY="354.0" mnemonicParsing="false" onAction="#openAddIngredientDialog" style="-fx-background-color: #96735b;" text="Add Ingredient" textFill="WHITE">
+      <Button fx:id="AddIngredientButton" layoutX="482.0" layoutY="341.0" mnemonicParsing="false" onAction="#openAddIngredientDialog" style="-fx-background-color: #96735b;" text="Add Ingredient" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -85,5 +85,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="RemoveIngredientButton" layoutX="597.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleRemoveButton" style="-fx-background-color: #96735b;" text="Remove Ingredient" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -15,7 +15,7 @@ public class ProdSchedController {
     private ProductionScheduleService productionScheduleService;
 
     @PostMapping(path = "/addProductSched")
-    public String addnewProductSched(@RequestParam String productname, @RequestParam Integer quantity, @RequestParam String lvlofstock, @RequestParam LocalDate dateofproduction, @RequestParam LocalDate expdate, @RequestParam Integer numberofdaysexp) {
+    public String addnewProductSched(@RequestParam String productname, @RequestParam Double quantity, @RequestParam String lvlofstock, @RequestParam LocalDate dateofproduction, @RequestParam LocalDate expdate, @RequestParam Integer numberofdaysexp) {
         return productionScheduleService.addnewProductSched(productname, quantity, lvlofstock, dateofproduction, expdate, numberofdaysexp);
     }
 }

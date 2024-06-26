@@ -79,7 +79,7 @@ public class IngredientRegController {
     private void handleSaveButton() {
         String ingredient = ingredienttxt.getText();
         Double price = Double.parseDouble(this.price.getText());
-        int quantity = Integer.parseInt(this.quantity.getText());
+        Double quantity = Double.parseDouble(this.quantity.getText());
         LocalDate expiryDate = expirydate.getValue();
         LocalDate dateAdded = LocalDate.now();
         String unitType = UnitTypeIngChoiceBox.getValue();

@@ -19,7 +19,7 @@ public class ProductionIngredient {
     private IngredientEntity ingredient;
 
     @Column(nullable = false)
-    private Integer quantity;
+    private Double quantity;
 
     @Column(nullable = false)
     private String unitType;
@@ -50,11 +50,11 @@ public class ProductionIngredient {
         this.ingredient = ingredient;
     }
 
-    public Integer getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 

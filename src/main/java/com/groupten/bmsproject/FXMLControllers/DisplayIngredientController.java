@@ -49,7 +49,7 @@ public class DisplayIngredientController {
     private TableColumn<IngredientEntity, Double> PriceColumn;
 
     @FXML
-    private TableColumn<IngredientEntity, Integer> QuantityColumn;
+    private TableColumn<IngredientEntity, Double> QuantityColumn;
 
     @FXML
     private TableColumn<IngredientEntity, LocalDate> ExpiryDateColumn;
@@ -168,7 +168,7 @@ private void handleSaveButton() {
     if (selectedIngredient != null) {
         String newName = editNamefield.getText();
         Double newPrice = Double.parseDouble(editPricefield.getText());
-        int newQuantity = Integer.parseInt(editQuantityfield.getText());
+        Double newQuantity = Double.parseDouble(editQuantityfield.getText());
         LocalDate newExpiry = editExpiryfield.getValue();
         // Handle the unit type if necessary
 

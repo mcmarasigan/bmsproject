@@ -25,7 +25,7 @@ public class IngredientEntity {
     private Integer id;
     private String ingredient;
     private Double price;
-    private Integer quantity;
+    private Double quantity;
     private LocalDate expiryDate;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
@@ -55,11 +55,11 @@ public class IngredientEntity {
         this.price = price;
     }
 
-    public Integer getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
@@ -108,8 +108,8 @@ public class IngredientEntity {
         return new SimpleDoubleProperty(price);
     }
 
-    public IntegerProperty quantityIngredientProperty() {
-        return new SimpleIntegerProperty(quantity);
+    public DoubleProperty quantityIngredientProperty() {
+        return new SimpleDoubleProperty(quantity);
     }
 
     public ObjectProperty<LocalDate> expiryDateProperty() {
