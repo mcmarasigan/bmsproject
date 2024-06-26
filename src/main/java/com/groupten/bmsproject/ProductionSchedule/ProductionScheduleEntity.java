@@ -2,11 +2,14 @@ package com.groupten.bmsproject.ProductionSchedule;
 import java.time.LocalDate;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -30,6 +33,13 @@ public class ProductionScheduleEntity {
     private Integer numberofdaysexp;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
+
+     @OneToMany(mappedBy = "productionSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductionIngredient> ingredients;
+    
+    public void setIngredients(Set<ProductionIngredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 
     public Integer getID() {
         return id;
@@ -85,6 +95,10 @@ public class ProductionScheduleEntity {
 
     public void setnumberofdaysexp(Integer numberofdaysexp) {
         this.numberofdaysexp = numberofdaysexp;
+    }
+
+    public Set<ProductionIngredient> getIngredients() {
+        return ingredients;
     }
 
      // Property methods for JavaFX TableView binding

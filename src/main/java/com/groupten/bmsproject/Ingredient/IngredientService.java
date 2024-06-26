@@ -43,7 +43,23 @@ public class IngredientService {
         return "Updated";
     }
 
+    public List<IngredientEntity> getAllIngredients() {
+        List<IngredientEntity> ingredients = inventoryRepository.findAll();
+        System.out.println("Fetched ingredients: " + ingredients); // Debug log
+        return ingredients;
+    }
+
     public List<IngredientEntity> getAllProducts() {
         return inventoryRepository.findAll();
     }
+
+    public IngredientEntity findByName(String ingredient) {
+        return inventoryRepository.findByIngredient(ingredient);
+    }
+
+    public IngredientEntity findByName(IngredientEntity ingredient) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByName'");
+    }
+
 }

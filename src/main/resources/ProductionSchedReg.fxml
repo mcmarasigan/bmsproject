@@ -70,7 +70,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Button fx:id="AddIngredientButton" layoutX="483.0" layoutY="354.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Add Ingredient" textFill="WHITE">
+      <Button fx:id="AddIngredientButton" layoutX="483.0" layoutY="354.0" mnemonicParsing="false" onAction="#openAddIngredientDialog" style="-fx-background-color: #96735b;" text="Add Ingredient" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
