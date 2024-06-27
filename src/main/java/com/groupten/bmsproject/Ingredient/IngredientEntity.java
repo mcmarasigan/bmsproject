@@ -64,7 +64,7 @@ public class IngredientEntity {
         this.quantity = quantity;
     }
 
-    public LocalDate getExpiry() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 

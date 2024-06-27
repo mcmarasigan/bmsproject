@@ -152,7 +152,7 @@ private void handleEditButton() {
         editNamefield.setText(selectedIngredient.getIngredient());
         editPricefield.setText(selectedIngredient.getPrice().toString());
         editQuantityfield.setText(selectedIngredient.getQuantity().toString());
-        editExpiryfield.setValue(selectedIngredient.getExpiry());
+        editExpiryfield.setValue(selectedIngredient.getExpiryDate());
         // Add handling for the unit type if needed
     } else {
         Alert alert = new Alert(Alert.AlertType.WARNING);
