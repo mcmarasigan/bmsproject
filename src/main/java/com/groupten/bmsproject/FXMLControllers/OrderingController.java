@@ -86,14 +86,34 @@ public class OrderingController {
 
         // Populate ProductOrderChoiceBox with available products
         populateProductOrderChoiceBox();
+
+        // Add listener to update product details when a product is selected
+        ProductOrderChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                updateProductDetails(newValue);
+            }
+        });
     }
 
     private void populateProductOrderChoiceBox() {
-    List<ProductionScheduleEntity> availableProducts = productionScheduleService.getAllProducts();
-    for (ProductionScheduleEntity product : availableProducts) {
-        ProductOrderChoiceBox.getItems().add(product.getproductName());
+        List<ProductionScheduleEntity> availableProducts = productionScheduleService.getAllProducts();
+        for (ProductionScheduleEntity product : availableProducts) {
+            ProductOrderChoiceBox.getItems().add(product.getID() + " - " + product.getproductName());
+        }
     }
-}
+
+    private void updateProductDetails(String productNameWithID) {
+        // Extract the product ID from the ComboBox item
+        String[] parts = productNameWithID.split(" - ");
+        String productID = parts[0];
+        String productName = parts[1];
+
+        ProductionScheduleEntity selectedProduct = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
+        if (selectedProduct != null) {
+            remainingProductQuantity.setText(String.valueOf(selectedProduct.getproductschedQuantity()));
+            productUnitType.setText(selectedProduct.getlvlofstock());
+        }
+    }
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
         return new Callback<DatePicker, DateCell>() {
@@ -120,13 +140,19 @@ public class OrderingController {
         String customerName = CustomerNameTextField.getText();
         String address = AddressTextField.getText();
         LocalDate dateOrder = DateOrder.getValue(); // Convert DatePicker value to LocalDate
-        String productOrder = ProductOrderChoiceBox.getValue();
+        String productOrderWithID = ProductOrderChoiceBox.getValue();
+        
+        // Extract the product ID from the ComboBox item
+        String[] parts = productOrderWithID.split(" - ");
+        String productID = parts[0];
+        String productOrder = parts[1];
+
         Integer quantityOrder = Integer.parseInt(QuantityOrderTextField.getText());
         PaymentStatus paymentStatus = PaymentStatusComboBox.getValue();
         DeliveryStatus deliveryStatus = DeliveryStatusComboBox.getValue();
 
         // Get the selected product
-        ProductEntity selectedProduct = productService.getProductByName(productOrder);
+        ProductEntity selectedProduct = productService.getProductByID(Integer.parseInt(productID));
 
         if (selectedProduct == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -136,34 +162,38 @@ public class OrderingController {
             alert.showAndWait();
             return;
         }
-        /* 
-        // Check if the ordered quantity is more than the available quantity
-        if (quantityOrder > selectedProduct.productQuantity()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Insufficient Quantity");
-            alert.setHeaderText("Insufficient quantity of product");
-            alert.setContentText("The quantity ordered exceeds the available quantity of the product.");
-            alert.showAndWait();
-            return;
+
+        // Deduct the ordered quantity from the production schedule
+        ProductionScheduleEntity productionSchedule = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
+        if (productionSchedule != null) {
+            Double remainingQuantity = productionSchedule.getproductschedQuantity() - quantityOrder;
+            if (remainingQuantity < 0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Insufficient Quantity");
+                alert.setHeaderText("Insufficient quantity of product");
+                alert.setContentText("The quantity ordered exceeds the available quantity of the product.");
+                alert.showAndWait();
+                return;
+            }
+            productionSchedule.setproductschedQuantity(remainingQuantity);
+            productionScheduleService.updateProductionSchedule(productionSchedule);
         }
-        
 
         // Check for low stock products
-        List<ProductEntity> lowStockProducts = productService.getLowStockProducts(LOW_STOCK_THRESHOLD);
-        if (!lowStockProducts.isEmpty()) {
-            StringBuilder warningMessage = new StringBuilder("Warning: Low stock on the following products:\n");
-            for (ProductEntity product : lowStockProducts) {
-                warningMessage.append(product.getproductName()).append(" (Quantity: ").append(product.productQuantity()).append(")\n");
+        List<ProductionScheduleEntity> lowStockProducts = productionScheduleService.getAllProducts(); // Adjust as necessary to fetch only low stock products
+        StringBuilder warningMessage = new StringBuilder();
+        for (ProductionScheduleEntity product : lowStockProducts) {
+            if (product.getproductschedQuantity() <= LOW_STOCK_THRESHOLD) {
+                warningMessage.append(product.getproductName()).append(" (Quantity: ").append(product.getproductschedQuantity()).append(")\n");
             }
-
-            // Show a warning dialog
+        }
+        if (warningMessage.length() > 0) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Low Stock Warning");
             alert.setHeaderText("There are low stock products.");
             alert.setContentText(warningMessage.toString());
             alert.showAndWait();
         }
-        */
 
         // Proceed to save the order
         String result = orderService.addNewOrder(customerName, address, dateOrder, productOrder, quantityOrder, paymentStatus, deliveryStatus);

@@ -53,11 +53,29 @@ public class ProductionScheduleService {
     public List<ProductionScheduleEntity> getAllProducts() {
         return productSchedRepository.findAll();
     }
+    public ProductionScheduleEntity getProductionScheduleByName(String productname) {
+        return productSchedRepository.findByProductname(productname);
+    }
+    public ProductionScheduleEntity getProductionScheduleById(Integer id) {
+        return productSchedRepository.findById(id).orElse(null);
+    }
     public void save(ProductionScheduleEntity productionSchedule) {
         productSchedRepository.save(productionSchedule);
     }
 
     public void saveProductionIngredient(ProductionIngredient productionIngredient) {
         productSchedRepository.save(productionIngredient);
+    }
+
+    public void updateProductQuantity(int id, Double newQuantity) {
+        ProductionScheduleEntity productionScheduleEntity = productSchedRepository.findById(id).orElse(null);
+        if (productionScheduleEntity != null) {
+            productionScheduleEntity.setproductschedQuantity(newQuantity);
+            productSchedRepository.save(productionScheduleEntity);
+        }
+    }
+
+    public void updateProductionSchedule(ProductionScheduleEntity productionSchedule) {
+        productSchedRepository.save(productionSchedule);
     }
 }

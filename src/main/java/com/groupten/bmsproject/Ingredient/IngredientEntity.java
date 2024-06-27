@@ -20,7 +20,8 @@ import javafx.beans.property.StringProperty;
 @Entity
 public class IngredientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_seq")
+    @SequenceGenerator (name = "ingredient_seq", sequenceName = "ingredient_sequence", allocationSize = 1)
 
     private Integer id;
     private String ingredient;

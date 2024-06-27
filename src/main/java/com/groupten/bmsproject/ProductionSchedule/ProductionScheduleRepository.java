@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductionScheduleRepository extends JpaRepository<ProductionScheduleEntity, Integer> {
-
     void save(ProductionIngredient productionIngredient);
+    ProductionScheduleEntity findByProductname(String productname);
     
 }

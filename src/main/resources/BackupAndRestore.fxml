@@ -14,5 +14,6 @@
             <Font size="28.0" />
          </font>
       </Text>
+      <Button layoutX="23.0" layoutY="44.0" mnemonicParsing="false" onAction="#backtoDashboard" text="Back to Dashboard" />
     </children>
 </AnchorPane>

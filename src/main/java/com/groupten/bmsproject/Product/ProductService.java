@@ -45,6 +45,12 @@ public class ProductService {
     public List<ProductEntity> getAllProducts() {
         return productRepository.findAll();
     }
+
+    // Get product with ID
+    public ProductEntity getProductByID(int id) {
+        Optional<ProductEntity> product = productRepository.findById(id);
+        return product.orElse(null);
+    }
     /* 
     public List<ProductEntity> getAvailableProducts() {
         return productRepository.findByQuantityGreaterThan(0);
@@ -54,6 +60,8 @@ public class ProductService {
         return productRepository.findByQuantityLessThanEqual(threshold);
     }
     */
+
+    // Get product with name
     public ProductEntity getProductByName(String productname) {
         return productRepository.findByProductname(productname);
     }
