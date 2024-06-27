@@ -33,7 +33,7 @@ public class ReportService {
 
 
    public String exportReport (String reportFormat) throws FileNotFoundException, JRException{
-    String path ="C:\\Users\\Maria\\3rd Year Projects\\softeng\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
+    String path ="C:\\Users\\alexd\\Desktop\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
 
     List<IngredientEntity> ingredients = ingredientRepository.findAll();
 

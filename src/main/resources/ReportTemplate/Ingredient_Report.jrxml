@@ -21,7 +21,7 @@
 			<text><![CDATA[DREW BAKES]]></text>
 		</element>
 		<element kind="image" uuid="ded7b99f-de38-45b8-9a2f-b6af46358bcc" x="680" y="0" width="70" height="70">
-			<expression><![CDATA["C:/Users/Maria/3rd Year Projects/softeng/bmsproject/src/main/resources/Images/logos/logo-removebg-preview.png"]]></expression>
+			<expression><![CDATA["C:/Users/alexd/Desktop/bmsproject/src/main/resources/Images/logos/logo-removebg-preview.png"]]></expression>
 		</element>
 		<element kind="staticText" uuid="2cfa4863-0d0f-434a-8c98-6bc31ea4d5b6" x="148" y="30" width="465" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Blk. 5 Lot 6, Ivy St. Ferretville Subdivision, Brgy. San Roque, Antipolo City Rizal
