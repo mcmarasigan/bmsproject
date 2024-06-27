@@ -1,15 +1,13 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.Admin.AdminService;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -29,6 +27,8 @@ import javafx.event.ActionEvent;
 
 @Component
 public class LoginController {
+    @Autowired
+    private AdminService adminService;
 
     private static final int MAX_FAILED_ATTEMPTS = 3;
     private int failedLoginAttempts = 0;
@@ -53,7 +53,6 @@ public class LoginController {
 
     @FXML
     private void initialize() {
-        // Bind the TextField's text property to the PasswordField's text property
         passtxtField.textProperty().bindBidirectional(passwordField.textProperty());
     }
 
@@ -68,31 +67,35 @@ public class LoginController {
         } 
         
         if (isValidCredentials(email, password)){
-            System.out.println("Login Succeed");
-            try {
-                failedLoginAttempts = 0; // Reset the counter on successful login
-                proceedtoDashboard();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            String username = getUsernameByEmail(email);
+            if (username != null) {
+                adminService.setLoggedInUser(username); // Store the username
+                System.out.println("Login Succeed");
+                try {
+                    failedLoginAttempts = 0; // Reset the counter on successful login
+                    proceedtoDashboard();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                showAlert("Unable to retrieve username.");
             }
         } else {
             failedLoginAttempts++;
             if (failedLoginAttempts >= MAX_FAILED_ATTEMPTS) {
                 suggestForgotPassword();
             } else {
-            showAlert("Invalid email or password");
+                showAlert("Invalid email or password");
+            }
         }
-    }
-
     }
 
     private void showAlert(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.showAndWait();
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private boolean isValidCredentials(String email, String password){
@@ -103,6 +106,16 @@ public class LoginController {
         } catch (Exception e) {
             // Handle exception, e.g., user not found
             return false;
+        }
+    }
+
+    private String getUsernameByEmail(String email) {
+        String sql = "SELECT username FROM adminentity WHERE email = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{email}, String.class);
+        } catch (Exception e) {
+            // Handle exception, e.g., user not found
+            return null;
         }
     }
 
@@ -119,7 +132,7 @@ public class LoginController {
 
     @FXML
     private void handleForgotpassbtn(ActionEvent event) throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Forgotpassword.fxml"));
         loader.setControllerFactory(context::getBean);
 
@@ -132,7 +145,7 @@ public class LoginController {
 
     @FXML
     private void handleRegisterbtn(ActionEvent event) throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminRegister.fxml"));
         loader.setControllerFactory(context::getBean);
 
@@ -145,7 +158,7 @@ public class LoginController {
 
     @FXML
     private void proceedtoDashboard() throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
         loader.setControllerFactory(context::getBean);
 
@@ -169,7 +182,7 @@ public class LoginController {
         alert.showAndWait().ifPresent(response -> {
             if (response == okButton) {
                 try {
-                    ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+                    ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Forgotpassword.fxml"));
                     loader.setControllerFactory(context::getBean);
 
@@ -181,12 +194,9 @@ public class LoginController {
 
                     failedLoginAttempts = 0;
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
         });
     }
-
-    
 }

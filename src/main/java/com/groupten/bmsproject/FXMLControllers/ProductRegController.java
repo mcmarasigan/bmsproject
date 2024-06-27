@@ -10,6 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.Admin.AdminService;
 import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Product.ProductService;
 import com.groupten.bmsproject.Product.ProductEntity.QuantityType;
@@ -53,6 +54,9 @@ public class ProductRegController {
     @Autowired
     private ProductService prdctService;
 
+    @Autowired
+    private AdminService adminService; // Inject the UserService or UserSession bean
+
     @FXML
     public void initialize() {
         // Initialize the ComboBox with QuantityType enum values
@@ -74,6 +78,9 @@ private void handleSaveButton() {
     String result = prdctService.addNewProduct(productname, productdesc, price, type, imagelocation, dateAdded);
 
     System.out.println(result);
+    String loggedInUser = adminService.getLoggedInUser(); // Retrieve logged-in user info
+        // Use loggedInUser for further processing or logging
+        System.out.println("Logged-in User: " + loggedInUser);
 }
 
 @FXML

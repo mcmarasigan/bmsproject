@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdminService {
+    private String loggedInUser; // Example storage, replace with your actual implementation
 
     @Autowired
     private Adminrepository adminrepository;
@@ -22,5 +23,14 @@ public class AdminService {
         newAdmin.setPassword(password);
         adminrepository.save(newAdmin);
         return "Saved";
+    }
+
+    // Gets the username of the logged in user
+    public void setLoggedInUser(String username) {
+        this.loggedInUser = username;
+    }
+
+    public String getLoggedInUser() {
+        return loggedInUser;
     }
 }
