@@ -1,6 +1,7 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.JasperReport.ReportService;
 import com.groupten.bmsproject.Sales.SalesEntity;
 import com.groupten.bmsproject.Sales.SalesService;
 import javafx.collections.FXCollections;
@@ -12,6 +13,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
@@ -61,6 +63,9 @@ public class SalesBarChartController {
     private Text totalSalestxt;
 
     private final SalesService salesService;
+
+    @Autowired
+    private ReportService reportService;
 
     @Autowired
     public SalesBarChartController(SalesService salesService) {
@@ -191,7 +196,7 @@ public class SalesBarChartController {
 
         return mostSoldProduct;
     }
-
+    
     @FXML
     private void backtoDashboard() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context

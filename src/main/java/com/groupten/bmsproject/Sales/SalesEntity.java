@@ -2,6 +2,8 @@ package com.groupten.bmsproject.Sales;
 
 import java.time.LocalDate;
 
+import com.groupten.bmsproject.Order.OrderEntity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,6 +31,8 @@ public class SalesEntity {
     private Integer quantityOrder;
     private Double productPrice;
     private Double totalAmount;
+    private OrderEntity.PaymentStatus paymentStatus;  // Add this
+    private OrderEntity.DeliveryStatus deliveryStatus;  // Add this
 
     // Constructors
     public SalesEntity() {
@@ -89,6 +93,22 @@ public class SalesEntity {
 
     public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public OrderEntity.PaymentStatus getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(OrderEntity.PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public OrderEntity.DeliveryStatus getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(OrderEntity.DeliveryStatus deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
     }
 
     // Property methods for JavaFX TableView binding

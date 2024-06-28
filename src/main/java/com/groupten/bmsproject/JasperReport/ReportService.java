@@ -15,6 +15,8 @@ import com.groupten.bmsproject.Admin.Adminentity;
 import com.groupten.bmsproject.Admin.Adminrepository;
 import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Ingredient.IngredientRepository;
+import com.groupten.bmsproject.Sales.SalesEntity;
+import com.groupten.bmsproject.Sales.SalesRepository;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -30,6 +32,8 @@ public class ReportService {
 
    @Autowired
    private IngredientRepository ingredientRepository;
+   @Autowired
+   private SalesRepository salesRepository;
 
 
    public String exportReport (String reportFormat) throws FileNotFoundException, JRException{
@@ -50,5 +54,24 @@ JasperExportManager.exportReportToPdfFile(jasperPrint, path+"\\ingredient_report
 }
     return "report generated in path:"+path;
    }
+
+   public String exportSalesReport(String reportFormat) throws FileNotFoundException, JRException {
+        String path = "C:\\Users\\alexd\\Desktop\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
+
+        List<SalesEntity> sales = salesRepository.findAll();
+
+        // Load file and compile
+        File file = ResourceUtils.getFile("classpath:ReportTemplate/Sales_Report.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(sales);
+        Map<String, Object> map = new HashMap<>();
+        map.put("createdBy", "Developer");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource);
+
+        if (reportFormat.equalsIgnoreCase("pdf")) {
+            JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\sales_report.pdf");
+        }
+        return "report generated in path:" + path;
+    }
 }
 

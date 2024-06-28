@@ -25,7 +25,7 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="22.0" layoutY="81.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search..." />
-      <Text layoutX="189.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Production Schedule">
+      <Text layoutX="189.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productions">
          <font>
             <Font size="39.0" />
          </font>

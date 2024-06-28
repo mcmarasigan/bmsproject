@@ -7,26 +7,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
    <children>
       <TabPane layoutY="80.0" prefHeight="505.0" prefWidth="906.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Pefromance Analytics">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-          <Tab text="Sales">
+          <Tab text="Performance and Analytics">
             <content>
               <fx:include source="SalesTab.fxml" />
             </content>
           </Tab>
-            <Tab text="Inventory">
+            <Tab text="Generate Reports">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="GenerateReportbtn" layoutX="29.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleGenerateReportIngredient" text="Generate Report" />
-                     </children></AnchorPane>
+                  <children>
+                    <Button fx:id="GenerateReportbtn" layoutX="372.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleGenerateReportIngredient" text="Generate Ingredient Report" />
+                    <Button fx:id="GenerateReportbtn1" layoutX="386.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleGenerateReportSales" text="Generate Sales Report" />
+                  </children>
+                </AnchorPane>
               </content>
             </Tab>
         </tabs>

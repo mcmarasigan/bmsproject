@@ -1,0 +1,152 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="Sales_Report" language="java" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0de93069-36e2-4a73-a642-a9bdebcf3501">
+	<field name="id" class="java.lang.Integer"/>
+	<field name="customerName" class="java.lang.String"/>
+	<field name="datePurchased" class="java.time.LocalDate"/>
+	<field name="productOrder" class="java.lang.String"/>
+	<field name="productPrice" class="java.lang.Double"/>
+	<field name="quantityOrder" class="java.lang.Integer"/>
+	<field name="totalAmount" class="java.lang.Double"/>
+	<field name="deliveryStatus" class="java.lang.Integer"/>
+	<field name="paymentStatus" class="java.lang.Integer"/>
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="3278bffa-ed5a-49b9-ae70-50b009692487" x="286" y="0" width="190" height="30" fontName="Times New Roman" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[DREW BAKES]]></text>
+		</element>
+		<element kind="staticText" uuid="0ef0f5df-958e-47cc-a38e-664953c5c7f7" x="148" y="30" width="465" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Blk. 5 Lot 6, Ivy St. Ferretville Subdivision, Brgy. San Roque, Antipolo City Rizal
+Contact no.: 09069392897
+]]></text>
+		</element>
+	</title>
+	<pageHeader height="51" splitType="Stretch">
+		<element kind="staticText" uuid="fa57961d-4305-4dc9-b308-af4e254b75b6" x="290" y="0" width="190" height="50" fontName="Times New Roman" fontSize="14.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[SALES REPORT]]></text>
+		</element>
+		<element kind="staticText" uuid="e99797c0-24e3-490d-a115-6a61a95e3a63" x="0" y="21" width="96" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Report ID:]]></text>
+		</element>
+	</pageHeader>
+	<columnHeader height="61" splitType="Stretch">
+		<element kind="staticText" uuid="25829006-a90f-4ab7-9980-d10a63445771" x="0" y="30" width="110" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Sales ID	]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3947ce51-3c99-4810-ae3e-a2209c2ce9cb"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="f26beba7-759e-4895-be2d-a65c10820b63" x="110" y="30" width="107" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Customer Name]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c9a806c-24ea-4c89-bbd0-5740299fff86"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="a1248e2c-79fe-49a7-97da-331cbc7f2e3c" x="217" y="30" width="107" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Date Purchased]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="89c9cb3a-016e-4660-b014-4fe5f75eab33"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="424ba2a1-6138-4c29-8fd2-ca73d2d473d6" x="324" y="30" width="107" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Product Order]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b6fd47f4-42b2-44f9-83c9-2d6895ac26f6"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="e19ac33e-7cf0-491a-a2b2-c8453fe2a8b8" x="431" y="30" width="107" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Product Price]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="061beb8e-04d7-4252-871b-9e2aff1105d6"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="52f1d68b-62b7-48fb-a0cd-64623ca7d1f2" x="538" y="30" width="107" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Quantity Order]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c347d926-c621-4ae6-abf7-c72ae1fd5490"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="33dc33ca-cc31-46e1-9f9d-4e2c6542f0c0" x="645" y="30" width="107" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Total Amount]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="639be698-ceec-4b61-aa83-49bcd49c65bf"/>
+			<box>
+				<pen lineWidth="2.0"/>
+			</box>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<element kind="textField" uuid="de4c3200-505c-47c9-b414-5744e42bf4e5" x="0" y="0" width="110" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{id}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3947ce51-3c99-4810-ae3e-a2209c2ce9cb"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="56ba5e45-2902-471a-a5de-cc8300b254b4" x="110" y="0" width="107" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{customerName}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1c9a806c-24ea-4c89-bbd0-5740299fff86"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="136bb0b3-a8de-43c4-9ec4-c2d0cd83fb65" x="217" y="0" width="107" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{datePurchased}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="89c9cb3a-016e-4660-b014-4fe5f75eab33"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="9fef01e1-436d-483c-877a-494956fa60fa" x="324" y="0" width="107" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{productOrder}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b6fd47f4-42b2-44f9-83c9-2d6895ac26f6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="95531b20-af5c-4b2e-83ea-18386cd89306" x="431" y="0" width="107" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{productPrice}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="061beb8e-04d7-4252-871b-9e2aff1105d6"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="5183350b-201f-492f-8f8e-4d68a5486508" x="538" y="0" width="107" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{quantityOrder}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c347d926-c621-4ae6-abf7-c72ae1fd5490"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="0caa8849-0c44-436a-bd1a-dbbb54a74b7f" x="645" y="0" width="107" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{totalAmount}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="639be698-ceec-4b61-aa83-49bcd49c65bf"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="105" splitType="Stretch">
+		<element kind="staticText" uuid="ad15fab2-3b6d-41cb-bad4-1648d070f5da" x="200" y="30" width="161" height="30" fontName="Times New Roman" fontSize="12.0" italic="true" bold="false" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Automatically generated on]]></text>
+		</element>
+		<element kind="textField" uuid="af81090d-bcb9-42df-b18b-26968a6fbd08" x="360" y="30" width="100" height="30" fontName="Times New Roman" fontSize="12.0" pattern="MMMMM dd, yyyy" italic="true" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="ccbc3b80-4ba2-4f75-8e05-3d559bb41905" x="460" y="30" width="100" height="30" fontName="Times New Roman" fontSize="12.0" pattern="HH:mm" italic="true" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="7acdadfe-1142-49b8-ba6c-222e081f60f6" x="280" y="75" width="100" height="30" fontName="Times New Roman" fontSize="10.0" italic="true" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="13dfe036-3c6e-4feb-b3cb-e9881df070e8" x="380" y="75" width="100" height="30" fontName="Times New Roman" fontSize="10.0" evaluationTime="Report" italic="true" hTextAlign="Left">
+			<expression><![CDATA[" of " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+</jasperReport>

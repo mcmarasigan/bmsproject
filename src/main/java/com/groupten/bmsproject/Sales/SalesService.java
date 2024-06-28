@@ -14,23 +14,32 @@ import com.groupten.bmsproject.Product.ProductRepository;
 @Service
 public class SalesService {
 
-    private OrderRepository orderRepository;
-    private ProductRepository productRepository;
+    private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
+    private final SalesRepository salesRepository;
 
     @Autowired
-    public SalesService(OrderRepository orderRepository, ProductRepository productRepository) {
+    public SalesService(OrderRepository orderRepository, ProductRepository productRepository, SalesRepository salesRepository) {
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
+        this.salesRepository = salesRepository;
     }
 
     public List<SalesEntity> getPaidAndDeliveredOrders() {
+        // Fetch orders with PAID payment status and DELIVERED delivery status
         List<OrderEntity> paidAndDeliveredOrders = orderRepository.findAll()
                 .stream()
                 .filter(order -> order.getorderPaymentStatus() == OrderEntity.PaymentStatus.PAID
                                 && order.getorderDeliveryStatus() == OrderEntity.DeliveryStatus.DELIVERED)
                 .collect(Collectors.toList());
 
-        return convertToSalesEntities(paidAndDeliveredOrders);
+        // Convert orders to sales entities
+        List<SalesEntity> salesEntities = convertToSalesEntities(paidAndDeliveredOrders);
+
+        // Save sales entities to the database
+        salesRepository.saveAll(salesEntities);
+
+        return salesEntities;
     }
 
     private List<SalesEntity> convertToSalesEntities(List<OrderEntity> orders) {
@@ -42,6 +51,8 @@ public class SalesService {
                     salesEntity.setDatePurchased(order.getorderDateOrder());
                     salesEntity.setProductOrder(order.getorderProductOrder());
                     salesEntity.setQuantityOrder(order.getorderQuantityOrder());
+                    salesEntity.setPaymentStatus(order.getorderPaymentStatus());
+                    salesEntity.setDeliveryStatus(order.getorderDeliveryStatus());
 
                     // Fetch product price from ProductEntity
                     Double productPrice = getProductPrice(order.getorderProductOrder());
