@@ -53,14 +53,14 @@ public class IngredientSearchTabController {
     @FXML
     private TextField searchField;
 
-    private final IngredientService inventoryService;
+    private final IngredientService ingredientService;
 
-    private ObservableList<IngredientEntity> inventoryList;
+    private ObservableList<IngredientEntity> ingredientList;
     
 
     @Autowired
-    public IngredientSearchTabController(IngredientService inventoryService) {
-        this.inventoryService = inventoryService;
+    public IngredientSearchTabController(IngredientService ingredientService) {
+        this.ingredientService = ingredientService;
     }
 
     @FXML
@@ -97,9 +97,9 @@ public class IngredientSearchTabController {
     }
     // Populates the table
     private void populateTable() {
-        // Initialize inventoryList with data from inventoryService
-        inventoryList = FXCollections.observableArrayList(inventoryService.getAllProducts());
-        ingredientsTable.getItems().addAll(inventoryService.getAllProducts());
+        // Initialize ingredientList with data from ingredientService
+        ingredientList = FXCollections.observableArrayList(ingredientService.getAllProducts());
+        ingredientsTable.getItems().addAll(ingredientService.getAllProducts());
     }
 
     // Searches the table
@@ -107,11 +107,11 @@ public class IngredientSearchTabController {
         List<IngredientEntity> filteredList;
         try {
             int id = Integer.parseInt(query);
-            filteredList = inventoryList.stream()
+            filteredList = ingredientList.stream()
                     .filter(ingredient -> ingredient.getID() == id)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            filteredList = inventoryList.stream()
+            filteredList = ingredientList.stream()
                     .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
                     .collect(Collectors.toList());
         }

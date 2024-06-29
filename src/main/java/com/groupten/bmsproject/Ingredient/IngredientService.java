@@ -12,49 +12,49 @@ import org.springframework.stereotype.Service;
 public class IngredientService {
     
     @Autowired
-    private IngredientRepository inventoryRepository;
+    private IngredientRepository ingredientRepository;
 
-    public String addNewInventory(String ingredient, Double price, Double quantity, LocalDate expiryTime, LocalDate dateAdded, String unitType) {
-        IngredientEntity newInventory = new IngredientEntity();
-        newInventory.setIngredient(ingredient);
-        newInventory.setPrice(price);
-        newInventory.setQuantity(quantity);
-        newInventory.setExpiry(expiryTime);
-        newInventory.setDateAdded(dateAdded);
-        newInventory.setUnitType(unitType);
-        inventoryRepository.save(newInventory);
+    public String addNewIngredient(String ingredient, Double price, Double quantity, LocalDate expiryTime, LocalDate dateAdded, String unitType) {
+        IngredientEntity newIngredient = new IngredientEntity();
+        newIngredient.setIngredient(ingredient);
+        newIngredient.setPrice(price);
+        newIngredient.setQuantity(quantity);
+        newIngredient.setExpiry(expiryTime);
+        newIngredient.setDateAdded(dateAdded);
+        newIngredient.setUnitType(unitType);
+        ingredientRepository.save(newIngredient);
     
         return "Saved";
     }
 
     public String updateIngredient(Integer id, String ingredient, Double price, Double quantity, LocalDate expiryTime, String unitType) {
-        Optional<IngredientEntity> optionalInventoryEntity = inventoryRepository.findById(id);
+        Optional<IngredientEntity> optionalIngredientEntity = ingredientRepository.findById(id);
     
-        if (optionalInventoryEntity.isPresent()) {
-            IngredientEntity inventoryEntity = optionalInventoryEntity.get();
-            inventoryEntity.setIngredient(ingredient);
-            inventoryEntity.setPrice(price);
-            inventoryEntity.setQuantity(quantity);
-            inventoryEntity.setExpiry(expiryTime);
-            inventoryEntity.setUnitType(unitType);
-            inventoryEntity.setLastUpdateTime(LocalDate.now());
-            inventoryRepository.save(inventoryEntity);
+        if (optionalIngredientEntity.isPresent()) {
+            IngredientEntity ingredientEntity = optionalIngredientEntity.get();
+            ingredientEntity.setIngredient(ingredient);
+            ingredientEntity.setPrice(price);
+            ingredientEntity.setQuantity(quantity);
+            ingredientEntity.setExpiry(expiryTime);
+            ingredientEntity.setUnitType(unitType);
+            ingredientEntity.setLastUpdateTime(LocalDate.now());
+            ingredientRepository.save(ingredientEntity);
         }
         return "Updated";
     }
 
     public List<IngredientEntity> getAllIngredients() {
-        List<IngredientEntity> ingredients = inventoryRepository.findAll();
+        List<IngredientEntity> ingredients = ingredientRepository.findAll();
         System.out.println("Fetched ingredients: " + ingredients); // Debug log
         return ingredients;
     }
 
     public List<IngredientEntity> getAllProducts() {
-        return inventoryRepository.findAll();
+        return ingredientRepository.findAll();
     }
 
     public IngredientEntity findByName(String ingredient) {
-        return inventoryRepository.findByIngredient(ingredient);
+        return ingredientRepository.findByIngredient(ingredient);
     }
 
     public IngredientEntity findByName(IngredientEntity ingredient) {
@@ -63,7 +63,7 @@ public class IngredientService {
     }
 
     public void saveIngredient(IngredientEntity ingredient) {
-        inventoryRepository.save(ingredient);
+        ingredientRepository.save(ingredient);
     }
 
 }

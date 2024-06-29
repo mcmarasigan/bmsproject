@@ -38,6 +38,7 @@ public class BmsprojectApplication extends Application {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     // Make sure to close the application context when the JavaFX stage is closed

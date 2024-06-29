@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IngredientController {
     
     @Autowired
-    private IngredientService inventoryService;
+    private IngredientService ingredientService;
 
-    @PostMapping(path = "/addInventory")
-    public String addNewInventory(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Double quantity, @RequestParam LocalDate expiryTime, @RequestParam LocalDate dateAdded, @RequestParam String unitType) {
-        return inventoryService.addNewInventory(ingredient, price, quantity, expiryTime, dateAdded, unitType);
+    @PostMapping(path = "/addIngredient")
+    public String addNewIngredient(@RequestParam String ingredient, @RequestParam Double price, @RequestParam Double quantity, @RequestParam LocalDate expiryTime, @RequestParam LocalDate dateAdded, @RequestParam String unitType) {
+        return ingredientService.addNewIngredient(ingredient, price, quantity, expiryTime, dateAdded, unitType);
     }
     
 }

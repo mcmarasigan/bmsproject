@@ -48,7 +48,7 @@ public class IngredientRegController {
     private Button savebutton;
 
     @Autowired
-    private IngredientService inventoryService;
+    private IngredientService ingredientService;
 
     @FXML
     private void initialize() {
@@ -84,7 +84,7 @@ public class IngredientRegController {
         LocalDate dateAdded = LocalDate.now();
         String unitType = UnitTypeIngChoiceBox.getValue();
 
-        String result = inventoryService.addNewInventory(ingredient, price, quantity, expiryDate, dateAdded, unitType);
+        String result = ingredientService.addNewIngredient(ingredient, price, quantity, expiryDate, dateAdded, unitType);
         System.out.println(result);
     }
 

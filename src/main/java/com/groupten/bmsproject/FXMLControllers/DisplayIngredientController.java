@@ -77,14 +77,14 @@ public class DisplayIngredientController {
     @FXML
     private TextField SearchTextfield;
 
-    private final IngredientService inventoryService;
+    private final IngredientService ingredientService;
 
-    private ObservableList<IngredientEntity> inventoryList;
+    private ObservableList<IngredientEntity> ingredientList;
     private ObservableList<IngredientEntity> masterData = FXCollections.observableArrayList();
 
     @Autowired
-    public DisplayIngredientController(IngredientService inventoryService) {
-        this.inventoryService = inventoryService;
+    public DisplayIngredientController(IngredientService ingredientService) {
+        this.ingredientService = ingredientService;
     }
 
     @FXML
@@ -134,12 +134,12 @@ public class DisplayIngredientController {
 
 
     private void populateTable() {
-        inventoryList = FXCollections.observableArrayList(inventoryService.getAllProducts());
-        IngredientTable.setItems(inventoryList);
+        ingredientList = FXCollections.observableArrayList(ingredientService.getAllProducts());
+        IngredientTable.setItems(ingredientList);
     }
     
     private void searchIngredients(String query) {
-        List<IngredientEntity> filteredList = inventoryList.stream()
+        List<IngredientEntity> filteredList = ingredientList.stream()
                 .filter(ingredient -> ingredient.getIngredient().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
         IngredientTable.setItems(FXCollections.observableArrayList(filteredList));
@@ -172,7 +172,7 @@ private void handleSaveButton() {
         LocalDate newExpiry = editExpiryfield.getValue();
         // Handle the unit type if necessary
 
-        inventoryService.updateIngredient(selectedIngredient.getID(), newName, newPrice, newQuantity, newExpiry, selectedIngredient.getUnitType());
+        ingredientService.updateIngredient(selectedIngredient.getID(), newName, newPrice, newQuantity, newExpiry, selectedIngredient.getUnitType());
         populateTable();
         editPane.setVisible(false);
     }

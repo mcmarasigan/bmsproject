@@ -13,7 +13,7 @@
         <tabs>
           <Tab text="Performance and Analytics">
             <content>
-              <fx:include source="SalesTab.fxml" />
+              <fx:include source="PerformanceTab.fxml" />
             </content>
           </Tab>
             <Tab text="Generate Reports">

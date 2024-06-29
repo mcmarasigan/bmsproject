@@ -17,7 +17,7 @@
       <ComboBox fx:id="yearComboBox" layoutX="357.0" layoutY="14.0" prefWidth="80.0" />
       <DatePicker fx:id="weekStartDatePicker" layoutX="447.0" layoutY="14.0" prefWidth="120.0" />
       <Button layoutX="738.0" layoutY="14.0" onAction="#updateBarChart" text="Update" />
-      <BarChart fx:id="salesBarChart" layoutX="315.0" layoutY="55.0" prefHeight="306.0" prefWidth="558.0">
+      <BarChart fx:id="salesBarChart" animated="false" layoutX="315.0" layoutY="55.0" legendVisible="false" prefHeight="306.0" prefWidth="558.0">
         <xAxis>
           <CategoryAxis label="Products" side="BOTTOM" fx:id="xAxis" />
         </xAxis>

@@ -13,23 +13,19 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -73,6 +69,20 @@ public class SalesBarChartController {
     }
 
     private boolean isWeekly = false;
+    private final Map<String, String> productColors = new HashMap<>();
+    private final List<String> availableColors = new ArrayList<>(Arrays.asList(
+        "#FF6347", // Tomato
+        "#4682B4", // SteelBlue
+        "#FFD700", // Gold
+        "#ADFF2F", // GreenYellow
+        "#FF69B4", // HotPink
+        "#CD5C5C", // IndianRed
+        "#4B0082", // Indigo
+        "#7FFF00", // Chartreuse
+        "#D2691E", // Chocolate
+        "#8A2BE2"  // BlueViolet
+        // Add more colors as needed
+    ));
 
     public void initialize() {
         populateComboBoxes();
@@ -143,11 +153,19 @@ public class SalesBarChartController {
             .sum();
         totalSalestxt.setText(String.format("Total Sales for the month: ₱%.2f", totalSales));
 
+        assignColorsToProducts(filteredSales);
+
         filteredSales.stream()
             .collect(Collectors.groupingBy(SalesEntity::getProductOrder,
                     Collectors.summingDouble(SalesEntity::getTotalAmount)))
             .forEach((product, totalAmount) -> {
-                series.getData().add(new XYChart.Data<>(product, totalAmount));
+                XYChart.Data<String, Number> data = new XYChart.Data<>(product, totalAmount);
+                data.nodeProperty().addListener((observable, oldNode, newNode) -> {
+                    if (newNode != null) {
+                        newNode.setStyle("-fx-bar-fill: " + productColors.get(product) + ";");
+                    }
+                });
+                series.getData().add(data);
             });
 
         salesBarChart.getData().clear();
@@ -172,11 +190,19 @@ public class SalesBarChartController {
             .sum();
         totalSalestxt.setText(String.format("Total Sales for the week: ₱%.2f", totalSales));
 
+        assignColorsToProducts(filteredSales);
+
         filteredSales.stream()
             .collect(Collectors.groupingBy(SalesEntity::getProductOrder,
                     Collectors.summingDouble(SalesEntity::getTotalAmount)))
             .forEach((product, totalAmount) -> {
-                series.getData().add(new XYChart.Data<>(product, totalAmount));
+                XYChart.Data<String, Number> data = new XYChart.Data<>(product, totalAmount);
+                data.nodeProperty().addListener((observable, oldNode, newNode) -> {
+                    if (newNode != null) {
+                        newNode.setStyle("-fx-bar-fill: " + productColors.get(product) + ";");
+                    }
+                });
+                series.getData().add(data);
             });
 
         salesBarChart.getData().clear();
@@ -210,4 +236,21 @@ public class SalesBarChartController {
         stage.show();
     }
 
+    private void assignColorsToProducts(List<SalesEntity> salesEntities) {
+        Set<String> usedColors = new HashSet<>(productColors.values());
+        int colorIndex = 0;
+
+        for (SalesEntity sale : salesEntities) {
+            String product = sale.getProductOrder();
+            if (!productColors.containsKey(product)) {
+                while (usedColors.contains(availableColors.get(colorIndex % availableColors.size()))) {
+                    colorIndex++;
+                }
+                String color = availableColors.get(colorIndex % availableColors.size());
+                productColors.put(product, color);
+                usedColors.add(color);
+                colorIndex++;
+            }
+        }
+    }
 }
