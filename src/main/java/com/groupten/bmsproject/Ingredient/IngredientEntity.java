@@ -31,6 +31,7 @@ public class IngredientEntity {
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
     private String unitType;
+    private String status;  // Add this field
 
     public Integer getID() {
         return id;
@@ -94,6 +95,14 @@ public class IngredientEntity {
     
     public void setUnitType(String unitType) {
         this.unitType = unitType;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+    
+    public void setStatus(String status) {
+        this.status = status;
     }
 
  // Property methods for JavaFX TableView binding

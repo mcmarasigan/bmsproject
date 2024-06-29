@@ -98,7 +98,7 @@ public class ProductionScheduleController {
     }
 
     private void populateProductChoiceBox() {
-        productService.getAllProducts().forEach(product -> productChoiceBox.getItems().add(product.getproductName()));
+        productService.getActiveProducts().forEach(product -> productChoiceBox.getItems().add(product.getproductName()));
     }
 
     @FXML

@@ -3,6 +3,7 @@ package com.groupten.bmsproject.Product;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class ProductService {
         newProduct.setQuantityType(quantitytype);
         newProduct.setimageLocation(imglocation);
         newProduct.setDateAdded(dateAdded);
+        newProduct.setStatus("active");
         productRepository.save(newProduct);
         return "Saved";
     }
@@ -96,5 +98,11 @@ public class ProductService {
         productRepository.save(product);
     
         return "Product removed from archived successfully.";
+    }
+
+    public List<ProductEntity> getActiveProducts() {
+        return productRepository.findAll().stream()
+                .filter(product -> !product.getStatus().equalsIgnoreCase("archived"))
+                .collect(Collectors.toList());
     }
 }
