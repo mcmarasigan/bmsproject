@@ -26,7 +26,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
-public class DisplayProductionScheduleController {
+public class DisplayArchivedProductions {
 
     @FXML
     private TableView<ProductionScheduleEntity> productionScheduleTable;
@@ -94,7 +94,7 @@ public class DisplayProductionScheduleController {
     private ObservableList<ProductionIngredient> recipeData = FXCollections.observableArrayList();
 
     @Autowired
-    public DisplayProductionScheduleController(ProductionScheduleService productionScheduleService) {
+    public DisplayArchivedProductions(ProductionScheduleService productionScheduleService) {
         this.productionScheduleService = productionScheduleService;
     }
 
@@ -133,7 +133,7 @@ public class DisplayProductionScheduleController {
     private void populateTable() {
         productionScheduleList = FXCollections.observableArrayList(
             productionScheduleService.getAllProducts().stream()
-                .filter(schedule -> !"archived".equals(schedule.getStatus()))
+                .filter(schedule -> "archived".equals(schedule.getStatus()))
                 .collect(Collectors.toList())
         );
         productionScheduleTable.setItems(productionScheduleList);
@@ -163,7 +163,7 @@ public class DisplayProductionScheduleController {
     private void handleArchiveButton() {
         if (selectedSchedule != null) {
             // Archive the selected schedule
-            String result = productionScheduleService.archiveProductionSchedule(selectedSchedule.getID());
+            String result = productionScheduleService.removeArchiveProductionSchedule(selectedSchedule.getID());
 
             System.out.println(result);
             

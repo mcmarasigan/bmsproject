@@ -97,4 +97,36 @@ public class ProductionScheduleService {
         }
         return new HashSet<>();
     }
+
+    // Archive a production schedule
+    public String archiveProductionSchedule(Integer scheduleId) {
+        // Retrieve the schedule by ID
+        ProductionScheduleEntity schedule = productSchedRepository.findById(scheduleId).orElse(null);
+
+        if (schedule == null) {
+            return "Production schedule not found.";
+        }
+
+        // Set the schedule's status to "archived"
+        schedule.setStatus("archived");
+        productSchedRepository.save(schedule);
+
+        return "Production schedule archived successfully.";
+    }
+
+    // Archive a production schedule
+    public String removeArchiveProductionSchedule(Integer scheduleId) {
+        // Retrieve the schedule by ID
+        ProductionScheduleEntity schedule = productSchedRepository.findById(scheduleId).orElse(null);
+
+        if (schedule == null) {
+            return "Production schedule not found.";
+        }
+
+        // Set the schedule's status to "archived"
+        schedule.setStatus("active");
+        productSchedRepository.save(schedule);
+
+        return "Production removed from archived successfully.";
+    }
 }
