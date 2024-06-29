@@ -1,7 +1,12 @@
 package com.groupten.bmsproject.ProductionSchedule;
+
 import com.groupten.bmsproject.FXMLControllers.IngredientTableRow;
 import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Ingredient.IngredientService;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +14,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.time.LocalDate;
 
-import com.groupten.bmsproject.Ingredient.IngredientService;
 
 @Service
 public class ProductionScheduleService {
@@ -22,9 +25,12 @@ public class ProductionScheduleService {
     @Autowired
     private IngredientService ingredientService;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     private IngredientTableRow[] ingredients;
 
-    public String addnewProductSched(String productname, Double quantity, String lvlofstock, LocalDate dateofproduction, LocalDate expdate,  Integer numberofdaysexp) {
+    public String addnewProductSched(String productname, Double quantity, String lvlofstock, LocalDate dateofproduction, LocalDate expdate, Integer numberofdaysexp) {
         ProductionScheduleEntity newProductSched = new ProductionScheduleEntity();
         newProductSched.setproductName(productname);
         newProductSched.setproductschedQuantity(quantity);
@@ -53,12 +59,15 @@ public class ProductionScheduleService {
     public List<ProductionScheduleEntity> getAllProducts() {
         return productSchedRepository.findAll();
     }
+
     public ProductionScheduleEntity getProductionScheduleByName(String productname) {
         return productSchedRepository.findByProductname(productname);
     }
+
     public ProductionScheduleEntity getProductionScheduleById(Integer id) {
         return productSchedRepository.findById(id).orElse(null);
     }
+
     public void save(ProductionScheduleEntity productionSchedule) {
         productSchedRepository.save(productionSchedule);
     }
@@ -77,5 +86,15 @@ public class ProductionScheduleService {
 
     public void updateProductionSchedule(ProductionScheduleEntity productionSchedule) {
         productSchedRepository.save(productionSchedule);
+    }
+
+    public Set<ProductionIngredient> getIngredientsByProductionScheduleId(Integer id) {
+        ProductionScheduleEntity productionSchedule = entityManager.find(ProductionScheduleEntity.class, id);
+        if (productionSchedule != null) {
+            // Initialize the ingredients collection
+            productionSchedule.getIngredient().size();
+            return productionSchedule.getIngredient();
+        }
+        return new HashSet<>();
     }
 }

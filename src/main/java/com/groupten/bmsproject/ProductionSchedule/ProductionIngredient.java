@@ -2,6 +2,7 @@ package com.groupten.bmsproject.ProductionSchedule;
 
 import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import jakarta.persistence.*;
+import javafx.beans.property.*;
 
 @Entity
 public class ProductionIngredient {
@@ -10,11 +11,11 @@ public class ProductionIngredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "production_schedule_id")
     private ProductionScheduleEntity productionSchedule;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ingredient_id")
     private IngredientEntity ingredient;
 
@@ -25,7 +26,6 @@ public class ProductionIngredient {
     private String unitType;
 
     // Getters and setters
-
     public Integer getId() {
         return id;
     }
@@ -64,5 +64,22 @@ public class ProductionIngredient {
 
     public void setUnitType(String unitType) {
         this.unitType = unitType;
+    }
+
+    // Property methods for JavaFX TableView binding
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
+
+    public StringProperty ingredientProperty() {
+        return ingredient.IngredientProperty();
+    }
+
+    public DoubleProperty quantityProperty() {
+        return new SimpleDoubleProperty(quantity);
+    }
+
+    public StringProperty unitTypeProperty() {
+        return new SimpleStringProperty(unitType);
     }
 }

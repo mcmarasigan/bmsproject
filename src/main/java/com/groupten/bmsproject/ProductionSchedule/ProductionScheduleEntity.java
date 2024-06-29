@@ -6,6 +6,7 @@ import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,11 +37,11 @@ public class ProductionScheduleEntity {
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
 
-     @OneToMany(mappedBy = "productionSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<ProductionIngredient> ingredients;
+     @OneToMany(fetch = FetchType.EAGER, mappedBy = "productionSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductionIngredient> ingredient;
     
     public void setIngredients(Set<ProductionIngredient> ingredients) {
-        this.ingredients = ingredients;
+        this.ingredient = ingredient;
     }
 
     public Integer getID() {
@@ -99,8 +100,8 @@ public class ProductionScheduleEntity {
         this.numberofdaysexp = numberofdaysexp;
     }
 
-    public Set<ProductionIngredient> getIngredients() {
-        return ingredients;
+    public Set<ProductionIngredient> getIngredient() {
+        return ingredient;
     }
 
      // Property methods for JavaFX TableView binding
