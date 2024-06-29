@@ -106,9 +106,12 @@ public class ProductSearchTabController {
     }
 
     private void populateTable() {
-        // Initialize ProductList with data from ProductService
-        productList = FXCollections.observableArrayList(productService.getAllProducts());
-        productsTable.getItems().addAll(productService.getAllProducts());
+        productList = FXCollections.observableArrayList(
+            productService.getAllProducts().stream()
+                .filter(product -> !"archived".equals(product.getStatus()))
+                .collect(Collectors.toList())
+        );
+        productsTable.setItems(productList);
     }
 
     private void searchProducts(String query) {

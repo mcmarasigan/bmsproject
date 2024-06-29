@@ -35,6 +35,7 @@ public class ProductEntity {
     private String imglocation;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
+    private String status;  // Add this field
 
     @Enumerated(EnumType.STRING)
     private QuantityType quantitytype;
@@ -108,6 +109,15 @@ public class ProductEntity {
     public void setDateAdded(LocalDate dateAdded) {
         this.dateAdded = dateAdded;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
      // Property methods for JavaFX TableView binding
      public IntegerProperty idProperty() {
         return new SimpleIntegerProperty(id);
