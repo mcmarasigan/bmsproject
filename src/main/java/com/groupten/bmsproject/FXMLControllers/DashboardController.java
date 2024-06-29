@@ -108,7 +108,7 @@ public class DashboardController {
     @FXML
     private void proceedtoMaintenance() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackupAndRestore.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Maintenance.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();

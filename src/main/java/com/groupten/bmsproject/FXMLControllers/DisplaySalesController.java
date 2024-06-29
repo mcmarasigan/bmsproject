@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -51,7 +53,7 @@ public class DisplaySalesController {
     private TableColumn<SalesEntity, Double> TotalAmountSalesColumn;
 
     @FXML
-    private TextField SearchSaleTextField;
+    private TextField SearchTextfield;
 
     private SalesService salesService;
 
@@ -76,6 +78,9 @@ public class DisplaySalesController {
     
         // Load data into table
         populateTable();
+
+        // Add a listener to the search field to perform search on text change
+        SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchSales(newValue));
     }
 
     private void populateTable() {
@@ -84,6 +89,15 @@ public class DisplaySalesController {
         // Populate table with fetched data
         SalesTable.setItems(paidDeliveredOrders);
     }
+
+    private void searchSales(String query) {
+        List<SalesEntity> filteredList = paidDeliveredOrders.stream()
+                .filter(sale -> sale.getCustomerName().toLowerCase().contains(query.toLowerCase()) ||
+                                sale.getProductOrder().toLowerCase().contains(query.toLowerCase()))
+                .collect(Collectors.toList());
+        SalesTable.setItems(FXCollections.observableArrayList(filteredList));
+    }
+    
     @FXML
     private void backtoDashboard() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
