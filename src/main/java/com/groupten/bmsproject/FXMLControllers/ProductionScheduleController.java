@@ -137,20 +137,6 @@ public class ProductionScheduleController {
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
     
-            // Deduct the quantity from the ingredient
-            Double newQuantity = ingredient.getQuantity() - row.getQuantity();
-            if (newQuantity < 0) {
-                // Handle insufficient quantity error
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Insufficient Quantity");
-                alert.setHeaderText(null);
-                alert.setContentText("Insufficient quantity for ingredient: " + ingredient.getIngredient());
-                alert.showAndWait();
-                return;
-            }
-            ingredient.setQuantity(newQuantity);
-            ingredientService.saveIngredient(ingredient); // Save the updated ingredient
-    
             productionScheduleService.saveProductionIngredient(productionIngredient);
         });
     
