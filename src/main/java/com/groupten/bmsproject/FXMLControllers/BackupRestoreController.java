@@ -125,9 +125,9 @@ public class BackupRestoreController {
     }
 
     @FXML
-    private void backtoDashboard() throws IOException {
+    private void backtoSystemConfiguration() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/SystemConfiguration.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();

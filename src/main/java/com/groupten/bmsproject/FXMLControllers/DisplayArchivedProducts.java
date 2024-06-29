@@ -36,7 +36,7 @@ import com.groupten.bmsproject.Product.ProductEntity.QuantityType;
 import com.groupten.bmsproject.Product.ProductService;
 
 @Controller
-public class DisplayProductController {
+public class DisplayArchivedProducts {
 
     @FXML
     private TableView<ProductEntity> productTable;
@@ -97,7 +97,7 @@ public class DisplayProductController {
     private ProductEntity selectedProduct;
 
     @Autowired
-    public DisplayProductController(ProductService productService) {
+    public DisplayArchivedProducts(ProductService productService) {
         this.productService = productService;
     }
 
@@ -134,7 +134,7 @@ private void initialize() {
     private void populateTable() {
         productList = FXCollections.observableArrayList(
             productService.getAllProducts().stream()
-                .filter(product -> !"archived".equals(product.getStatus()))
+                .filter(product -> "archived".equals(product.getStatus()))
                 .collect(Collectors.toList())
         );
         productTable.setItems(productList);
@@ -190,7 +190,7 @@ private void initialize() {
 private void handleArchiveButton() {
     if (selectedProduct != null) {
         // Archive the selected product
-        String result = productService.archiveProduct(selectedProduct.getID());
+        String result = productService.removeArchivedProduct(selectedProduct.getID());
 
         System.out.println(result);
         

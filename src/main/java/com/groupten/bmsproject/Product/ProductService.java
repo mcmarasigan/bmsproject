@@ -65,4 +65,36 @@ public class ProductService {
     public ProductEntity getProductByName(String productname) {
         return productRepository.findByProductname(productname);
     }
+
+    // Archive produts
+    public String archiveProduct(Integer productId) {
+        // Retrieve the product by ID
+        ProductEntity product = productRepository.findById(productId).orElse(null);
+    
+        if (product == null) {
+            return "Product not found.";
+        }
+    
+        // Set the product's status to "archived"
+        product.setStatus("archived");
+        productRepository.save(product);
+    
+        return "Product archived successfully.";
+    }
+
+    // Remove Archived produts
+    public String removeArchivedProduct(Integer productId) {
+        // Retrieve the product by ID
+        ProductEntity product = productRepository.findById(productId).orElse(null);
+    
+        if (product == null) {
+            return "Product not found.";
+        }
+    
+        // Set the product's status to "active"
+        product.setStatus("active");
+        productRepository.save(product);
+    
+        return "Product removed from archived successfully.";
+    }
 }
