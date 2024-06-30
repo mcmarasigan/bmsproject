@@ -1,5 +1,7 @@
 package com.groupten.bmsproject.Admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +34,26 @@ public class AdminService {
 
     public String getLoggedInUser() {
         return loggedInUser;
+    }
+
+    // Add this method to get an account by username
+    public Adminentity getAccountByUsername(String username) {
+        return adminrepository.findByUsername(username);
+    }
+
+    // Retrieves data for the table
+    public List<Adminentity> getAllAccounts() {
+        return adminrepository.findAll();
+    }
+
+    // Activate and Deactivate accounts
+    public void deactivateAccount(Adminentity admin) {
+        admin.setStatus("deactivated");
+        adminrepository.save(admin);
+    }
+
+    public void reactivateAccount(Adminentity admin) {
+        admin.setStatus("active");
+        adminrepository.save(admin);
     }
 }

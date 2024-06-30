@@ -6,6 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -20,6 +24,7 @@ public class Adminentity {
     private String username;
     private String email;
     private String password;
+    private String status;  // Add this line
 
     public Integer getID(){
         return id;
@@ -69,4 +74,36 @@ public class Adminentity {
         this.password = password;
     }
 
+    public String getStatus() {  // Add this getter
+        return status;
+    }
+
+    public void setStatus(String status) {  // Add this setter
+        this.status = status;
+    }
+
+    // Property methods for JavaFX TableView binding
+    public IntegerProperty idProperty() {
+        return new SimpleIntegerProperty(id);
+    }
+
+    public StringProperty firstNameProperty() {
+        return new SimpleStringProperty(firstname);
+    }
+
+    public StringProperty lastNameProperty() {
+        return new SimpleStringProperty(lastname);
+    }
+
+    public StringProperty usernameProperty() {
+        return new SimpleStringProperty(username);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
+    }
+
+    public StringProperty statusProperty() {
+        return new SimpleStringProperty(status);
+    }
 }

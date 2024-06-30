@@ -18,7 +18,7 @@ public class Maintenance {
     @FXML
     private void proceedtoAccountManagement() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AccountManagement.fxml"));
         loader.setControllerFactory(context::getBean);
 
         Parent root = loader.load();

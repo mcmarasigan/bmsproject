@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Adminrepository extends JpaRepository<Adminentity, Integer> {
     Adminentity findByEmail(String email);
+    Adminentity findByUsername(String username); // Add this method
 }

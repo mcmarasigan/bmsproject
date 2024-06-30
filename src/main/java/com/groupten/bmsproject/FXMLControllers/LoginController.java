@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Admin.AdminService;
+import com.groupten.bmsproject.Admin.Adminentity;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -57,16 +58,16 @@ public class LoginController {
     }
 
     @FXML
-    private void handleLoginButton(){
+    private void handleLoginButton() {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        if (email.isEmpty() || password.isEmpty()){
+        if (email.isEmpty() || password.isEmpty()) {
             showAlert("Please fill the corresponding fields.");
             return;
         } 
         
-        if (isValidCredentials(email, password)){
+        if (isValidCredentials(email, password)) {
             String username = getUsernameByEmail(email);
             if (username != null) {
                 adminService.setLoggedInUser(username); // Store the username
@@ -90,7 +91,7 @@ public class LoginController {
         }
     }
 
-    private void showAlert(String message){
+    private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
@@ -98,15 +99,28 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    private boolean isValidCredentials(String email, String password){
-        String sql = "SELECT password FROM adminentity WHERE email = ?";
+    private boolean isValidCredentials(String email, String password) {
+        String sql = "SELECT password, status FROM adminentity WHERE email = ?";
         try {
-            String storedHashedPassword = jdbcTemplate.queryForObject(sql, new Object[]{email}, String.class);
-            return BCrypt.checkpw(password, storedHashedPassword);
+            Adminentity admin = jdbcTemplate.queryForObject(sql, new Object[]{email}, (rs, rowNum) -> {
+                Adminentity a = new Adminentity();
+                a.setPassword(rs.getString("password"));
+                a.setStatus(rs.getString("status"));
+                return a;
+            });
+
+            if (admin != null) {
+                if ("deactivated".equals(admin.getStatus())) {
+                    showAlert("Your account is deactivated. Please contact support.");
+                    return false;
+                }
+                return BCrypt.checkpw(password, admin.getPassword());
+            }
         } catch (Exception e) {
             // Handle exception, e.g., user not found
             return false;
         }
+        return false;
     }
 
     private String getUsernameByEmail(String email) {
@@ -120,7 +134,7 @@ public class LoginController {
     }
 
     @FXML
-    private void showPassword () {
+    private void showPassword() {
         if (showpassBtn.isSelected()) {
             passtxtField.setVisible(true);
             passwordField.setVisible(false);
