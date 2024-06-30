@@ -129,4 +129,12 @@ public class ProductionScheduleService {
 
         return "Production removed from archived successfully.";
     }
+
+    public void removeIngredientsByProductionScheduleId(Integer scheduleId) {
+        ProductionScheduleEntity schedule = productSchedRepository.findById(scheduleId).orElse(null);
+        if (schedule != null) {
+            schedule.getIngredient().clear();
+            productSchedRepository.save(schedule);
+        }
+    }
 }

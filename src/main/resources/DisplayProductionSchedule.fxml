@@ -44,6 +44,6 @@
          </columnResizePolicy>
       </TableView>
       <Button layoutX="14.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleArchiveButton" text="Archive Row" />
-      <Button layoutX="105.0" layoutY="431.0" mnemonicParsing="false" text="Edit Row" />
+      <Button layoutX="105.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleEditButton" text="Edit Row" />
    </children>
 </AnchorPane>

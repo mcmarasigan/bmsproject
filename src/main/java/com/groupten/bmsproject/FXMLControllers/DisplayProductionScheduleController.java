@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,6 +159,37 @@ public class DisplayProductionScheduleController {
         // Hide the edit pane without saving
         editPane.setVisible(false);
     }
+
+    @FXML
+private void handleEditButton() {
+    if (selectedSchedule != null) {
+        try {
+            // Load the EditProductions.fxml and set the controller
+            ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditProductions.fxml"));
+            loader.setControllerFactory(context::getBean);
+
+            Parent root = loader.load();
+            // Get the controller and pass the selected schedule
+            EditProductions editProductionsController = loader.getController();
+            editProductionsController.setProductionSchedule(selectedSchedule);
+
+            // Show the edit window
+            Stage stage = BmsprojectApplication.getPrimaryStage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } else {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Production Schedule Selected");
+        alert.setContentText("Please select a production schedule in the table.");
+        alert.showAndWait();
+    }
+}
 
     @FXML
     private void handleArchiveButton() {
