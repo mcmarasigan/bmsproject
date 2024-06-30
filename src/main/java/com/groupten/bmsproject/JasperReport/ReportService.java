@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.jar.JarException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class ReportService {
 
 
    public String exportReport (String reportFormat) throws FileNotFoundException, JRException{
-    String path ="C:\\Users\\alexd\\Desktop\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
+    String path ="C:\\Users\\Maria\\3rd Year Projects\\softeng\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
 
     List<IngredientEntity> ingredients = ingredientRepository.findAll();
 
@@ -45,9 +46,18 @@ public class ReportService {
     File file= ResourceUtils.getFile(("classpath:ReportTemplate/Ingredient_Report.jrxml"));
     JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
     JRBeanCollectionDataSource dataSource= new JRBeanCollectionDataSource(ingredients);
+
+       // Generate a UUID
+       String uuid = UUID.randomUUID().toString();
+
+       // Take the first 5 characters as the report ID
+       String reportId = uuid.substring(0, 5);
+
     Map<String,Object> map=new HashMap<>();
+    map.put("REPORT_ID", reportId);
     map.put("createdBy","Developer");
-    JasperPrint jasperPrint= JasperFillManager.fillReport(jasperReport, null, dataSource);
+
+    JasperPrint jasperPrint= JasperFillManager.fillReport(jasperReport, map, dataSource);
 
     if(reportFormat.equalsIgnoreCase("pdf")){
 JasperExportManager.exportReportToPdfFile(jasperPrint, path+"\\ingredient_report.pdf");
@@ -56,7 +66,7 @@ JasperExportManager.exportReportToPdfFile(jasperPrint, path+"\\ingredient_report
    }
 
    public String exportSalesReport(String reportFormat) throws FileNotFoundException, JRException {
-        String path = "C:\\Users\\alexd\\Desktop\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
+        String path = "C:\\Users\\Maria\\3rd Year Projects\\softeng\\bmsproject\\src\\main\\java\\com\\groupten\\bmsproject\\Report Files";
 
         List<SalesEntity> sales = salesRepository.findAll();
 
@@ -64,9 +74,17 @@ JasperExportManager.exportReportToPdfFile(jasperPrint, path+"\\ingredient_report
         File file = ResourceUtils.getFile("classpath:ReportTemplate/Sales_Report.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(sales);
-        Map<String, Object> map = new HashMap<>();
-        map.put("createdBy", "Developer");
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, dataSource);
+
+// Generate a UUID
+String uuid = UUID.randomUUID().toString();
+
+// Take the first 5 characters as the report ID
+String reportId = uuid.substring(0, 5);
+
+    Map<String,Object> map=new HashMap<>();
+    map.put("REPORT_ID", reportId);
+    map.put("createdBy","Developer");
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, dataSource);
 
         if (reportFormat.equalsIgnoreCase("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, path + "\\sales_report.pdf");

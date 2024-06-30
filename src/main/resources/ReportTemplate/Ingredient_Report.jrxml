@@ -7,13 +7,11 @@
 	<field name="price" class="java.lang.Double"/>
 	<field name="quantity" class="java.lang.Double"/>
 	<field name="unitType" class="java.lang.String"/>
+	<parameter name="REPORT_ID" class="java.lang.String"/>
 	<background splitType="Stretch"/>
 	<title height="79" splitType="Stretch">
 		<element kind="staticText" uuid="3ac19f66-f25d-417c-90c0-df51bcf5ea08" x="286" y="0" width="190" height="30" fontName="Times New Roman" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[DREW BAKES]]></text>
-		</element>
-		<element kind="image" uuid="ded7b99f-de38-45b8-9a2f-b6af46358bcc" x="680" y="0" width="70" height="70">
-			<expression><![CDATA["C:/Users/alexd/Desktop/bmsproject/src/main/resources/Images/logos/logo-removebg-preview.png"]]></expression>
 		</element>
 		<element kind="staticText" uuid="2cfa4863-0d0f-434a-8c98-6bc31ea4d5b6" x="148" y="30" width="465" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Blk. 5 Lot 6, Ivy St. Ferretville Subdivision, Brgy. San Roque, Antipolo City Rizal
@@ -29,6 +27,9 @@ INGREDIENTS]]></text>
 		<element kind="staticText" uuid="af232436-6cd0-43b4-8e07-0d5fc1077aac" x="0" y="21" width="96" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Report ID:]]></text>
 		</element>
+		 <element kind="textField" uuid="e3b4f5a9-5e3f-42b5-9d0b-9f2ea07d153a" x="96" y="21" width="190" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+        <expression><![CDATA[$P{REPORT_ID}]]></expression>
+    </element>
 	</pageHeader>
 	<columnHeader height="62" splitType="Stretch">
 		<element kind="staticText" uuid="23418ba5-f91a-479b-aaac-7989ac479c8a" x="0" y="31" width="120" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center">

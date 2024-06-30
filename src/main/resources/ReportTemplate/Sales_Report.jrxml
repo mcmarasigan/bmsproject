@@ -9,6 +9,7 @@
 	<field name="totalAmount" class="java.lang.Double"/>
 	<field name="deliveryStatus" class="java.lang.Integer"/>
 	<field name="paymentStatus" class="java.lang.Integer"/>
+	<parameter name="REPORT_ID" class="java.lang.String"/>
 	<background splitType="Stretch"/>
 	<title height="79" splitType="Stretch">
 		<element kind="staticText" uuid="3278bffa-ed5a-49b9-ae70-50b009692487" x="286" y="0" width="190" height="30" fontName="Times New Roman" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
@@ -27,6 +28,9 @@ Contact no.: 09069392897
 		<element kind="staticText" uuid="e99797c0-24e3-490d-a115-6a61a95e3a63" x="0" y="21" width="96" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Report ID:]]></text>
 		</element>
+		<element kind="textField" uuid="e3b4f5a9-5e3f-42b5-9d0b-9f2ea07d153a" x="96" y="21" width="190" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Left" vTextAlign="Middle">
+        <expression><![CDATA[$P{REPORT_ID}]]></expression>
+    </element>
 	</pageHeader>
 	<columnHeader height="61" splitType="Stretch">
 		<element kind="staticText" uuid="25829006-a90f-4ab7-9980-d10a63445771" x="0" y="30" width="110" height="30" fontName="Times New Roman" fontSize="12.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
