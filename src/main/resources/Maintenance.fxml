@@ -15,6 +15,6 @@
       <Button layoutX="233.0" layoutY="128.0" mnemonicParsing="false" onAction="#proceedtoAccountManagement" text="Account management" />
       <Button layoutX="234.0" layoutY="187.0" mnemonicParsing="false" onAction="#proceedtoSystemConfiguration" text="System Configuration" />
       <Button layoutX="21.0" layoutY="26.0" mnemonicParsing="false" onAction="#backtoDashboard" text="Back to Dashboard" />
-      <Button layoutX="257.0" layoutY="239.0" mnemonicParsing="false" text="Security Logs" />
+      <Button layoutX="257.0" layoutY="239.0" mnemonicParsing="false" onAction="#proceedtoSecurityLogs" text="Security Logs" />
    </children>
 </AnchorPane>
