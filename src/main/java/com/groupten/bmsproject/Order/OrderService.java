@@ -56,4 +56,35 @@ public class OrderService {
     public List<OrderEntity> getAllProducts() {
         return orderRepository.findAll();
     }
+
+    // Archive order
+    public String archiveOrder(Integer orderId) {
+        // Retrieve the order by ID
+        OrderEntity order = orderRepository.findById(orderId).orElse(null);
+
+        if (order == null) {
+            return "Order not found.";
+        }
+
+        // Set the order's status to "archived"
+        order.setStatus("archived");
+        orderRepository.save(order);
+
+        return "Order archived successfully.";
+    }
+
+    public String removeArchivedOrder(Integer orderId) {
+        // Retrieve the order by ID
+        OrderEntity order = orderRepository.findById(orderId).orElse(null);
+
+        if (order == null) {
+            return "Order not found.";
+        }
+
+        // Set the order's status to "active"
+        order.setStatus("active");
+        orderRepository.save(order);
+
+        return "Order removed from archived successfully.";
+    }
 }

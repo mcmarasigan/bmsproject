@@ -26,10 +26,10 @@
               <fx:include source="ArchivedProductions.fxml" />
             </content>
             </Tab>
-            <Tab text="Sales">
+            <Tab text="Orders">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+              <fx:include source="ArchivedOrders.fxml" />
+            </content>
             </Tab>
         </tabs>
       </TabPane>

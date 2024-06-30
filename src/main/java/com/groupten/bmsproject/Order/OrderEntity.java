@@ -31,6 +31,7 @@ public class OrderEntity {
     private LocalDate dateorder;
     private String productorder;
     private Integer quantityorder;
+    private String status;  // Add this field
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus paymentstatus;
@@ -114,6 +115,14 @@ public class OrderEntity {
 
     public void setorderDeliveryStatus(DeliveryStatus deliverystatus) {
         this.deliverystatus = deliverystatus;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
      // Property methods for JavaFX TableView binding
      public IntegerProperty idProperty() {

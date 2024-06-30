@@ -38,7 +38,7 @@ import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
 
 @Controller
-public class DisplayOrderController {
+public class DisplayArchivedOrders {
 
     @FXML
     private TableView<OrderEntity> OrderTable;
@@ -100,7 +100,7 @@ public class DisplayOrderController {
     private ObservableList<OrderEntity> masterData = FXCollections.observableArrayList();
 
     @Autowired
-    public DisplayOrderController(OrderService orderService) {
+    public DisplayArchivedOrders(OrderService orderService) {
         this.orderService = orderService;
     }
 
@@ -164,7 +164,7 @@ public class DisplayOrderController {
     private void populateTable() {
         orderList = FXCollections.observableArrayList(
             orderService.getAllProducts().stream()
-                .filter(order -> !"archived".equalsIgnoreCase(order.getStatus()))
+                .filter(order -> "archived".equalsIgnoreCase(order.getStatus()))
                 .collect(Collectors.toList())
         );
         OrderTable.setItems(orderList);
@@ -237,7 +237,7 @@ public class DisplayOrderController {
 private void handleArchiveOrderButton() {
     if (selectedOrder != null) {
         // Archive the selected order
-        String result = orderService.archiveOrder(selectedOrder.getID());
+        String result = orderService.removeArchivedOrder(selectedOrder.getID());
 
         System.out.println(result);
 
