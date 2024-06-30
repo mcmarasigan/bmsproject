@@ -35,7 +35,7 @@ public class ProductEntity {
     private String imglocation;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
-    private String status;  // Add this field
+    private String status = "active";  // Add this field
 
     @Enumerated(EnumType.STRING)
     private QuantityType quantitytype;

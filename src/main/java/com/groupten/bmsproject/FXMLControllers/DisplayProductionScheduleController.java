@@ -113,6 +113,32 @@ public class DisplayProductionScheduleController {
         QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
         UnitTypeColumn.setCellValueFactory(cellData -> cellData.getValue().unitTypeProperty());
 
+
+        // Set cell factory for lvlofStockColumn to add color indicators
+        lvlofStockColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+                    switch (item.toLowerCase()) {
+                        case "low":
+                            setStyle(" -fx-text-fill: red;");
+                            break;
+                        case "sufficient":
+                            setStyle(" -fx-text-fill: green;");
+                            break;
+                        default:
+                            setStyle(""); // Reset to default style for other levels
+                            break;
+                    }
+                }
+            }
+        });
+
         populateTable();
 
         // Add a listener to capture the selected row
@@ -132,13 +158,22 @@ public class DisplayProductionScheduleController {
     }
 
     private void populateTable() {
-        productionScheduleList = FXCollections.observableArrayList(
-            productionScheduleService.getAllProducts().stream()
-                .filter(schedule -> !"archived".equals(schedule.getStatus()))
-                .collect(Collectors.toList())
-        );
+        List<ProductionScheduleEntity> schedules = productionScheduleService.getAllProducts().stream()
+            .filter(schedule -> !"archived".equals(schedule.getStatus()))
+            .collect(Collectors.toList());
+    
+        schedules.forEach(schedule -> {
+            if (schedule.getproductschedQuantity() <= 5) {
+                schedule.setlvlofstock("Low");
+            } else {
+                schedule.setlvlofstock("Sufficient");
+            }
+        });
+    
+        productionScheduleList = FXCollections.observableArrayList(schedules);
         productionScheduleTable.setItems(productionScheduleList);
     }
+    
 
     private void searchSchedules(String query) {
         List<ProductionScheduleEntity> filteredList = productionScheduleList.stream()
