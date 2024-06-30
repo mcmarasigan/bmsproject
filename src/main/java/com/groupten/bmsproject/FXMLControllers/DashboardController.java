@@ -1,11 +1,16 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.groupten.bmsproject.BmsprojectApplication;
+import com.groupten.bmsproject.Admin.AdminService;
+import com.groupten.bmsproject.SecurityLogs.SecurityLogs;
+import com.groupten.bmsproject.SecurityLogs.SecurityLogsRepository;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +20,13 @@ import javafx.stage.Stage;
 
 @Component
 public class DashboardController {
+
+    @Autowired
+    private SecurityLogsRepository securityLogsRepository;
+
+    @Autowired
+    private AdminService adminService; // Assuming you have this service to get the logged-in user
+
     @FXML
     private void proceedtoInventory() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
@@ -79,6 +91,7 @@ public class DashboardController {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     private void proceedtoProductionSched() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
@@ -116,5 +129,26 @@ public class DashboardController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    private void Logout() throws IOException {
+        // Log the logout activity
+        logSecurityEvent(adminService.getLoggedInUser(), " has logged out of the system");
+
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private void logSecurityEvent(String username, String activityLog) {
+        SecurityLogs securityLog = new SecurityLogs(username, activityLog, LocalDateTime.now());
+        securityLogsRepository.save(securityLog);
     }
 }

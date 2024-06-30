@@ -1,6 +1,7 @@
 package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Component;
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Admin.AdminService;
 import com.groupten.bmsproject.Admin.Adminentity;
+import com.groupten.bmsproject.SecurityLogs.SecurityLogs;
+import com.groupten.bmsproject.SecurityLogs.SecurityLogsRepository;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -50,6 +53,9 @@ public class LoginController {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
+    private SecurityLogsRepository securityLogsRepository;
+
+    @Autowired
     private ForgotpassController forgotpassController;
 
     @FXML
@@ -71,6 +77,7 @@ public class LoginController {
             String username = getUsernameByEmail(email);
             if (username != null) {
                 adminService.setLoggedInUser(username); // Store the username
+                logSecurityEvent(username, username + " has logged in the system");
                 System.out.println("Login Succeed");
                 try {
                     failedLoginAttempts = 0; // Reset the counter on successful login
@@ -89,6 +96,11 @@ public class LoginController {
                 showAlert("Invalid email or password");
             }
         }
+    }
+
+    private void logSecurityEvent(String username, String activityLog) {
+        SecurityLogs securityLog = new SecurityLogs(username, activityLog, LocalDateTime.now());
+        securityLogsRepository.save(securityLog);
     }
 
     private void showAlert(String message) {
