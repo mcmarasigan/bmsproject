@@ -34,7 +34,7 @@ import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Ingredient.IngredientService;
 
 @Controller
-public class DisplayIngredientController {
+public class DisplayArchivedIngredients {
     
     @FXML
     private TableView<IngredientEntity> IngredientTable;
@@ -83,7 +83,7 @@ public class DisplayIngredientController {
     private ObservableList<IngredientEntity> masterData = FXCollections.observableArrayList();
 
     @Autowired
-    public DisplayIngredientController(IngredientService ingredientService) {
+    public DisplayArchivedIngredients(IngredientService ingredientService) {
         this.ingredientService = ingredientService;
     }
 
@@ -135,7 +135,7 @@ public class DisplayIngredientController {
     private void populateTable() {
         ingredientList = FXCollections.observableArrayList(
                 ingredientService.getAllProducts().stream()
-                        .filter(ingredient -> !"archived".equalsIgnoreCase(ingredient.getStatus()))
+                        .filter(ingredient -> "archived".equalsIgnoreCase(ingredient.getStatus()))
                         .collect(Collectors.toList())
         );
         IngredientTable.setItems(ingredientList);
@@ -190,7 +190,7 @@ private void handleCancelButton() {
 private void handleArchiveButton() {
     if (selectedIngredient != null) {
         // Archive the selected ingredient
-        String result = ingredientService.archiveIngredient(selectedIngredient.getID());
+        String result = ingredientService.removeArchivedIngredient(selectedIngredient.getID());
 
         System.out.println(result);
         

@@ -25,9 +25,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Set;
 
 @Controller
-public class ProductionScheduleController {
+public class EditProductions {
 
     @FXML
     private ChoiceBox<String> productChoiceBox;
@@ -61,9 +62,10 @@ public class ProductionScheduleController {
     private final IngredientService ingredientService;
 
     private static ObservableList<IngredientTableRow> ingredientData = FXCollections.observableArrayList();
+    private ProductionScheduleEntity selectedSchedule;
 
     @Autowired
-    public ProductionScheduleController(ProductionScheduleService productionScheduleService, ProductService productService, IngredientService ingredientService) {
+    public EditProductions(ProductionScheduleService productionScheduleService, ProductService productService, IngredientService ingredientService) {
         this.productionScheduleService = productionScheduleService;
         this.productService = productService;
         this.ingredientService = ingredientService;
@@ -101,6 +103,28 @@ public class ProductionScheduleController {
         productService.getActiveProducts().forEach(product -> productChoiceBox.getItems().add(product.getproductName()));
     }
 
+    public void setProductionSchedule(ProductionScheduleEntity schedule) {
+        this.selectedSchedule = schedule;
+        productChoiceBox.setValue(schedule.getproductName());
+        quantityField.setText(String.valueOf(schedule.getproductschedQuantity()));
+        dateofproductionPicker.setValue(schedule.getdateofProduction());
+        expdatePicker.setValue(schedule.getexpDate());
+    
+        // Clear the current ingredient data
+        ingredientData.clear();
+    
+        // Populate the ingredients
+        Set<ProductionIngredient> ingredients = productionScheduleService.getIngredientsByProductionScheduleId(schedule.getID());
+        for (ProductionIngredient ingredient : ingredients) {
+            IngredientTableRow row = new IngredientTableRow(
+                ingredient.getIngredient().getIngredient(),
+                ingredient.getQuantity(),
+                ingredient.getUnitType()
+            );
+            ingredientData.add(row);
+        }
+    }
+
     @FXML
     private void handleSaveButton() {
         if (ingredientData.isEmpty()) {
@@ -117,29 +141,38 @@ public class ProductionScheduleController {
         LocalDate dateOfProduction = dateofproductionPicker.getValue();
         LocalDate expDate = expdatePicker.getValue();
         long numberOfDays = ChronoUnit.DAYS.between(dateOfProduction, expDate);
-    
-        ProductionScheduleEntity productionSchedule = new ProductionScheduleEntity();
+
+        // Check if this is an update or a new save
+        ProductionScheduleEntity productionSchedule;
+        if (selectedSchedule != null) {
+            productionSchedule = selectedSchedule;
+        } else {
+            productionSchedule = new ProductionScheduleEntity();
+        }
+
         productionSchedule.setproductName(productName);
         productionSchedule.setproductschedQuantity(quantity);
         productionSchedule.setdateofProduction(dateOfProduction);
         productionSchedule.setexpDate(expDate);
         productionSchedule.setnumberofdaysexp((int) numberOfDays);
         productionSchedule.setlvlofstock(quantity < 10 ? "Low" : "Sufficient");
-    
+
         productionScheduleService.save(productionSchedule);
-    
+
+        // Save ingredients
+        productionScheduleService.removeIngredientsByProductionScheduleId(productionSchedule.getID());
         RecipeTable.getItems().forEach(row -> {
             ProductionIngredient productionIngredient = new ProductionIngredient();
             productionIngredient.setProductionSchedule(productionSchedule);
-    
+
             IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
             productionIngredient.setIngredient(ingredient);
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
-    
+
             productionScheduleService.saveProductionIngredient(productionIngredient);
         });
-    
+
         // Show success dialog
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Production Schedule Saved");
@@ -151,19 +184,19 @@ public class ProductionScheduleController {
     @FXML
     private void openAddIngredientDialog() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddIngredientDialog.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditIngredientDialog.fxml"));
         loader.setControllerFactory(context::getBean);
         Parent root = loader.load();
 
+        EditIngredientDialogController controller = loader.getController();
+        controller.setEditProductionsController(this);
+
         Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Add Ingredient");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(RecipeTable.getScene().getWindow());
         stage.setScene(new Scene(root));
         stage.showAndWait();
-    }
-
-    public static void addIngredientToTable(String ingredientName, Double quantity, String unitType) {
-        IngredientTableRow row = new IngredientTableRow(ingredientName, quantity, unitType);
-        ingredientData.add(row);
     }
 
     @FXML
@@ -178,6 +211,11 @@ public class ProductionScheduleController {
             alert.setContentText("Please select an ingredient to remove.");
             alert.showAndWait();
         }
+    }
+
+    public void addIngredientToTable(String ingredientName, Double quantity, String unitType) {
+        IngredientTableRow row = new IngredientTableRow(ingredientName, quantity, unitType);
+        ingredientData.add(row);
     }
     
     @FXML

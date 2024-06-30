@@ -2,38 +2,31 @@ package com.groupten.bmsproject.FXMLControllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
-
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleEntity;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleService;
+import com.groupten.bmsproject.ProductionSchedule.ProductionIngredient;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
-public class DisplayProductionScheduleController {
+public class DisplayArchivedProductions {
 
     @FXML
     private TableView<ProductionScheduleEntity> productionScheduleTable;
@@ -58,6 +51,18 @@ public class DisplayProductionScheduleController {
 
     @FXML
     private TableColumn<ProductionScheduleEntity, Integer> numberOfDaysExpirationColumn;
+
+    @FXML
+    private TableView<ProductionIngredient> RecipeTable;
+
+    @FXML
+    private TableColumn<ProductionIngredient, String> IngredientNameColumn;
+
+    @FXML
+    private TableColumn<ProductionIngredient, Double> QuantityColumn;
+
+    @FXML
+    private TableColumn<ProductionIngredient, String> UnitTypeColumn;
 
     @FXML
     private StackPane editPane;
@@ -86,10 +91,10 @@ public class DisplayProductionScheduleController {
     private final ProductionScheduleService productionScheduleService;
     private ObservableList<ProductionScheduleEntity> productionScheduleList;
     private ProductionScheduleEntity selectedSchedule;
-    private ObservableList<ProductionScheduleEntity> masterData = FXCollections.observableArrayList();
+    private ObservableList<ProductionIngredient> recipeData = FXCollections.observableArrayList();
 
     @Autowired
-    public DisplayProductionScheduleController(ProductionScheduleService productionScheduleService) {
+    public DisplayArchivedProductions(ProductionScheduleService productionScheduleService) {
         this.productionScheduleService = productionScheduleService;
     }
 
@@ -103,11 +108,9 @@ public class DisplayProductionScheduleController {
         expirationDateColumn.setCellValueFactory(cellData -> cellData.getValue().expdateProperty());
         numberOfDaysExpirationColumn.setCellValueFactory(cellData -> cellData.getValue().numberofdaysexpProperty().asObject());
 
-        /* 
-        // Disable past dates in the DatePicker
-        editDateofProductionField.setDayCellFactory(getDateCellFactory());
-        editExpirationDateField.setDayCellFactory(getDateCellFactory());
-        */
+        IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().ingredientProperty());
+        QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
+        UnitTypeColumn.setCellValueFactory(cellData -> cellData.getValue().unitTypeProperty());
 
         populateTable();
 
@@ -117,6 +120,7 @@ public class DisplayProductionScheduleController {
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
                     selectedSchedule = row.getItem();
+                    displayIngredients(selectedSchedule);
                 }
             });
             return row;
@@ -126,30 +130,13 @@ public class DisplayProductionScheduleController {
         SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchSchedules(newValue));
     }
 
-    private Callback<DatePicker, DateCell> getDateCellFactory() {
-        return new Callback<DatePicker, DateCell>() {
-            @Override
-            public DateCell call(final DatePicker datePicker) {
-                return new DateCell() {
-                    @Override
-                    public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        // Disable all past dates
-                        if (item.isBefore(LocalDate.now())) {
-                            setDisable(true);
-                            setStyle("-fx-background-color: #d48200;"); // You can set a style to indicate disabled dates
-                        }
-                    }
-                };
-            }
-        };
-    }
-
     private void populateTable() {
-        productionScheduleList = FXCollections.observableArrayList(productionScheduleService.getAllProducts());
-        // Populate the masterData list with data from the production schedule service
-        productionScheduleTable.getItems().addAll(productionScheduleService.getAllProducts());
+        productionScheduleList = FXCollections.observableArrayList(
+            productionScheduleService.getAllProducts().stream()
+                .filter(schedule -> "archived".equals(schedule.getStatus()))
+                .collect(Collectors.toList())
+        );
+        productionScheduleTable.setItems(productionScheduleList);
     }
 
     private void searchSchedules(String query) {
@@ -158,56 +145,39 @@ public class DisplayProductionScheduleController {
                 .collect(Collectors.toList());
         productionScheduleTable.setItems(FXCollections.observableArrayList(filteredList));
     }
-    /* 
-    @FXML
-    private void handleEditButton() {
-        if (selectedSchedule != null) {
-            // Fill the fields with the selected production schedule details
-            editProductNameField.setText(selectedSchedule.getproductName());
-            editQuantityField.setText(selectedSchedule.getquantity().toString());
-            editLvlofStockField.setText(selectedSchedule.getlvlofStock());
-            editDateofProductionField.setValue(selectedSchedule.getdateofProduction());
-            editExpirationDateField.setValue(selectedSchedule.getexpirationDate());
-            editNumberOfDaysExpirationField.setText(selectedSchedule.getnumberOfDaysExpiration().toString());
-            // Show the edit pane
-            editPane.setVisible(true);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Schedule Selected");
-            alert.setContentText("Please select a Production Schedule in the table.");
-            alert.showAndWait();
-        }
+
+    private void displayIngredients(ProductionScheduleEntity schedule) {
+        recipeData.clear();
+        Set<ProductionIngredient> ingredients = productionScheduleService.getIngredientsByProductionScheduleId(schedule.getID());
+        recipeData.setAll(ingredients);
+        RecipeTable.setItems(recipeData);
     }
-    @FXML
-    private void handleSaveButton() {
-        Integer id = selectedSchedule.getId();
-        String productName = editProductNameField.getText();
-        String lvlofStock = editLvlofStockField.getText();
-        LocalDate dateofProduction = editDateofProductionField.getValue();
-        LocalDate expirationDate = editExpirationDateField.getValue();
-        String quantityString = editQuantityField.getText();
-        String numberOfDaysExpirationString = editNumberOfDaysExpirationField.getText();
-
-        int quantity = Integer.parseInt(quantityString);
-        int numberOfDaysExpiration = Integer.parseInt(numberOfDaysExpirationString);
-
-        String result = productionScheduleService.updateSchedule(id, productName, lvlofStock, dateofProduction, expirationDate, quantity, numberOfDaysExpiration);
-
-        // Refresh the table to show the updated details
-        productionScheduleTable.refresh();
-
-        System.out.println(result);
-        
-        // Hide the edit pane
-        editPane.setVisible(false);
-    }
-    */
 
     @FXML
     private void handleCancelButton() {
         // Hide the edit pane without saving
         editPane.setVisible(false);
+    }
+
+    @FXML
+    private void handleArchiveButton() {
+        if (selectedSchedule != null) {
+            // Archive the selected schedule
+            String result = productionScheduleService.removeArchiveProductionSchedule(selectedSchedule.getID());
+
+            System.out.println(result);
+            
+            // Remove the schedule from the table
+            productionScheduleList.remove(selectedSchedule);
+            productionScheduleTable.refresh();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Production Schedule Selected");
+            alert.setContentText("Please select a production schedule in the table.");
+            alert.showAndWait();
+        }
     }
 
     @FXML

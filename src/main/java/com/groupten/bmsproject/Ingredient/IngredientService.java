@@ -66,4 +66,37 @@ public class IngredientService {
         ingredientRepository.save(ingredient);
     }
 
+    // Archive ingredient
+    public String archiveIngredient(Integer ingredientId) {
+        // Retrieve the ingredient by ID
+        IngredientEntity ingredient = ingredientRepository.findById(ingredientId).orElse(null);
+
+        if (ingredient == null) {
+            return "Ingredient not found.";
+        }
+
+        // Set the ingredient's status to "archived"
+        ingredient.setStatus("archived");
+        ingredientRepository.save(ingredient);
+
+        return "Ingredient archived successfully.";
+    }
+
+    public String removeArchivedIngredient(Integer ingredientId) {
+        // Retrieve the ingredient by ID
+        IngredientEntity ingredient = ingredientRepository.findById(ingredientId).orElse(null);
+    
+        if (ingredient == null) {
+            return "Ingredient not found.";
+        }
+    
+        // Set the ingredient's status to "active"
+        ingredient.setStatus("active");
+        ingredientRepository.save(ingredient);
+    
+        return "Ingredient removed from archived successfully.";
+    }
+
+
+
 }

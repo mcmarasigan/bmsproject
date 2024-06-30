@@ -100,5 +100,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="14.0" layoutY="530.0" mnemonicParsing="false" text="Logout" />
    </children>
 </AnchorPane>

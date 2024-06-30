@@ -12,19 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedIngredients">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="802.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="IngredientTable" layoutX="15.0" layoutY="132.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
+      <TableView fx:id="IngredientTable" layoutX="15.0" layoutY="79.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="43.0" text="Id" />
           <TableColumn fx:id="IngredientNameColumn" prefWidth="275.0" text="Ingredient Name" />
@@ -37,7 +27,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="86.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
+      <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="33.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
       <Button layoutY="-4.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="16.0" prefWidth="28.0" style="-fx-background-color: none;" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -46,15 +36,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="174.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoIngredientreg" style="-fx-background-color: #96735b;" text="Add new Ingredient" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button layoutX="14.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Archive Row" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button layoutX="107.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditButton" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -77,7 +59,7 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Text fill="WHITE" layoutX="52.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients">
+      <Text fill="#96735b" layoutX="52.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Ingredients">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
