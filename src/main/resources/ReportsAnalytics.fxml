@@ -22,6 +22,7 @@
                   <children>
                     <Button fx:id="GenerateReportbtn" layoutX="372.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleGenerateReportIngredient" text="Generate Ingredient Report" />
                     <Button fx:id="GenerateReportbtn1" layoutX="386.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleGenerateReportSales" text="Generate Sales Report" />
+                        <Button fx:id="GenerateReportbtn11" layoutX="367.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleGenerateSecurityLogReport" text="Generate Security Log Report" />
                   </children>
                 </AnchorPane>
               </content>

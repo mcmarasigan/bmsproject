@@ -86,6 +86,15 @@ public class InventoryFXMLController {
             showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
         }
     }
+    @FXML
+    private void handleGenerateSecurityLogReport() {
+        try {
+            String result = reportService.exportSecurityLogReport("pdf");
+            showAlert(AlertType.INFORMATION, "Report Generation", result);
+        } catch (Exception e) {
+            showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
+        }
+    }
 
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

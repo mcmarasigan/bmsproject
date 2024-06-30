@@ -36,6 +36,11 @@ public class AdminService {
         return loggedInUser;
     }
 
+    public String getLoggedInUserEmail() {
+        Adminentity admin = adminrepository.findByUsername(loggedInUser);
+        return admin != null ? admin.getEmail() : "unknown";
+    }
+
     // Add this method to get an account by username
     public Adminentity getAccountByUsername(String username) {
         return adminrepository.findByUsername(username);
