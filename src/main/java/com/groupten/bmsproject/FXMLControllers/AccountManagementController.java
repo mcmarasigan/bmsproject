@@ -99,6 +99,7 @@ public class AccountManagementController {
         stage.setScene(scene);
         stage.show();
     }
+    
     @FXML
     private void backtoMaintenance() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
