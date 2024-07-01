@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SystemConfiguration">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SystemConfiguration">
    <children>
-      <Text layoutX="157.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="System Configuration">
+      <Button layoutX="148.0" layoutY="115.0" mnemonicParsing="false" onAction="#proceedtoBackupRestore" prefHeight="59.0" prefWidth="284.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Backup and Restore Database">
          <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Button layoutX="213.0" layoutY="111.0" mnemonicParsing="false" onAction="#proceedtoBackupRestore" text="Backup and Restore Database" />
-      <Button layoutX="227.0" layoutY="154.0" mnemonicParsing="false" text="Edit System Module Data" />
-      <Button layoutX="255.0" layoutY="200.0" mnemonicParsing="false" onAction="#proceedtoArchives" text="Archived Data" />
-      <Button layoutX="30.0" layoutY="23.0" mnemonicParsing="false" onAction="#backtoMaintenance" text="Back" />
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="159.0" layoutY="193.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="263.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Edit System Module Data">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="188.0" layoutY="275.0" mnemonicParsing="false" onAction="#proceedtoArchives" prefHeight="59.0" prefWidth="206.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Archived Data">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Pane prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="62.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="System Configuration">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Button layoutX="-10.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoMaintenance" prefHeight="59.0" prefWidth="72.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1109.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1052.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="42.0" layoutY="65.0" prefHeight="470.0" prefWidth="970.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="42.0" layoutY="65.0" prefHeight="457.0" prefWidth="970.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Products">
             <content>
@@ -33,11 +36,26 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="42.0" layoutY="24.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="98.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archives">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Text>
+      <Pane prefHeight="59.0" prefWidth="1052.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Button layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="59.0" layoutY="12.0" text="Archives" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

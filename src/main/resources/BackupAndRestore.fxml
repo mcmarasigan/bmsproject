@@ -1,19 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.BackupRestoreController">
     <children>
-        <Button fx:id="backupButton" layoutX="246.0" layoutY="138.0" text="Backup Database" />
-        <Button fx:id="restoreButton" layoutX="246.0" layoutY="194.0" text="Restore Database" />
-      <Text layoutX="175.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backup And Restore">
+        <Button fx:id="backupButton" layoutX="186.0" layoutY="189.0" prefHeight="66.0" prefWidth="216.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Backup Database">
          <font>
-            <Font size="28.0" />
-         </font>
-      </Text>
-      <Button layoutX="46.0" layoutY="44.0" mnemonicParsing="false" onAction="#backtoSystemConfiguration" text="Back" />
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+        <Button fx:id="restoreButton" layoutX="186.0" layoutY="272.0" prefHeight="66.0" prefWidth="216.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Restore Database">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Pane prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Button layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backtoSystemConfiguration" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="59.0" layoutY="12.0" text="Backup &amp; Restore" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="101.0" fitWidth="606.0" layoutX="-1.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/bms_banner924.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

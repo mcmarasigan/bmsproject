@@ -2,28 +2,20 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="802.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
       <TableView fx:id="IngredientTable" layoutX="15.0" layoutY="132.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="43.0" text="Id" />
@@ -38,14 +30,7 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="86.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
-      <Button layoutY="-4.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="16.0" prefWidth="28.0" style="-fx-background-color: none;" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
+      <Button layoutY="-4.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="16.0" prefWidth="28.0" style="-fx-background-color: none;" textFill="WHITE" />
       <Button layoutX="174.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoIngredientreg" style="-fx-background-color: #96735b;" text="Add new Ingredient" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -77,10 +62,26 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Text fill="WHITE" layoutX="52.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Text>
+      <Pane layoutX="-1.0" prefHeight="59.0" prefWidth="810.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Button layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="59.0" layoutY="12.0" text="Ingredients" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

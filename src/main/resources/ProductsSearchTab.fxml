@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductSearchTabController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductSearchTabController">
    <children>
       <TableView fx:id="productsTable" layoutX="24.0" layoutY="56.0" prefHeight="339.0" prefWidth="754.0">
         <columns>
@@ -19,7 +19,7 @@
         </columns>
       </TableView>
       <TextField fx:id="searchField" layoutX="144.0" layoutY="23.0" prefHeight="26.0" prefWidth="264.0" promptText="Search for keywords" />
-      <Button layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#backtoDashboard" text="Back to Dashboard" />
+      <Button layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: #96735b;" text="Back to Dashboard" textFill="WHITE" />
    </children>
 
 </AnchorPane>

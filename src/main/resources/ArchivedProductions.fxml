@@ -4,30 +4,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="978.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProductions">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="978.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProductions">
    <children>
-      <Pane layoutX="-6.0" prefHeight="52.0" prefWidth="985.0" style="-fx-background-color: #96735b;">
-         <children>
-            <Text fill="WHITE" layoutX="78.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Productions">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="24.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <TableView fx:id="productionScheduleTable" layoutX="11.0" layoutY="119.0" prefHeight="267.0" prefWidth="622.0">
+      <TableView fx:id="productionScheduleTable" layoutX="11.0" layoutY="92.0" prefHeight="267.0" prefWidth="622.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="38.0" text="ID" />
           <TableColumn fx:id="productNameColumn" prefWidth="118.0" text="Product Name" />
@@ -41,15 +24,15 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="12.0" layoutY="81.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search...">
+      <TextField fx:id="SearchTextfield" layoutX="12.0" layoutY="54.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search...">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Text fill="#363636" layoutX="642.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
+      <Text fill="#363636" layoutX="642.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <TableView fx:id="RecipeTable" layoutX="641.0" layoutY="119.0" prefHeight="267.0" prefWidth="326.0">
+      <TableView fx:id="RecipeTable" layoutX="641.0" layoutY="93.0" prefHeight="267.0" prefWidth="326.0">
          <columns>
             <TableColumn fx:id="IngredientNameColumn" prefWidth="75.0" text="Ingredient Name" />
             <TableColumn fx:id="QuantityColumn" prefWidth="75.0" text="Quantity" />
@@ -59,9 +42,14 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="11.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
+      <Button layoutX="11.0" layoutY="379.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <Text fill="#393939" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Productions">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -10,24 +10,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="888.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
    <children>
-      <ComboBox fx:id="viewTypeComboBox" layoutX="141.0" layoutY="14.0" prefWidth="100.0" />
-      <ComboBox fx:id="monthComboBox" layoutX="247.0" layoutY="14.0" prefWidth="100.0" />
-      <ComboBox fx:id="yearComboBox" layoutX="357.0" layoutY="14.0" prefWidth="80.0" />
-      <DatePicker fx:id="weekStartDatePicker" layoutX="447.0" layoutY="14.0" prefWidth="120.0" />
-      <Button layoutX="738.0" layoutY="14.0" onAction="#updateBarChart" text="Update" />
+      <ComboBox fx:id="viewTypeComboBox" layoutX="141.0" layoutY="14.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
+      <ComboBox fx:id="monthComboBox" layoutX="247.0" layoutY="14.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
+      <ComboBox fx:id="yearComboBox" layoutX="357.0" layoutY="14.0" prefWidth="80.0" style="-fx-background-color: #96735b;" />
+      <DatePicker fx:id="weekStartDatePicker" layoutX="447.0" layoutY="14.0" prefWidth="120.0" style="-fx-background-color: #96735b;" />
+      <Button layoutX="738.0" layoutY="14.0" onAction="#updateBarChart" style="-fx-background-color: #96735b;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <BarChart fx:id="salesBarChart" animated="false" layoutX="315.0" layoutY="55.0" legendVisible="false" prefHeight="306.0" prefWidth="558.0">
         <xAxis>
           <CategoryAxis label="Products" side="BOTTOM" fx:id="xAxis" />
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="yAxis" label="Total price sold" side="LEFT" />
+          <NumberAxis fx:id="yAxis" label="Total price sold" side="LEFT">
+               <tickLabelFont>
+                  <Font name="System Bold" size="8.0" />
+               </tickLabelFont></NumberAxis>
         </yAxis>
       </BarChart>
-      <Text layoutX="13.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most Sold Product:" wrappingWidth="202.13671875">
+      <Text fill="#515151" layoutX="13.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most Sold Product:" wrappingWidth="202.13671875">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Text>
       <Text fx:id="mostsoldProducttxt" layoutX="13.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875">
@@ -35,9 +41,9 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="13.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales:" wrappingWidth="202.13671875">
+      <Text fill="#515151" layoutX="13.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales:" wrappingWidth="202.13671875">
          <font>
-            <Font size="22.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Text>
       <Text fx:id="totalSalestxt" layoutX="13.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875">
@@ -45,6 +51,9 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#backtoDashboard" text="Back to Dashboard" />
+      <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: #96735b;" text="Back to Dashboard" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

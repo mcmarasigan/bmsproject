@@ -6,14 +6,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProducts">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProducts">
    <children>
       <TableView fx:id="productTable" layoutX="17.0" layoutY="97.0" prefHeight="263.0" prefWidth="769.0">
          <columns>
@@ -29,15 +27,7 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="16.0" layoutY="51.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
-      <Button layoutY="1.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: none;" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button layoutY="1.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: none;" textFill="WHITE" />
       <Button layoutX="16.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -64,9 +54,9 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Label layoutX="55.0" layoutY="4.0" text="Archived Products" textFill="#96735b">
+      <Label layoutX="16.0" layoutY="9.0" text="Archived Products" textFill="#3c3c3c">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
    </children>

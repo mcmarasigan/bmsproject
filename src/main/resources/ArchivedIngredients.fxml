@@ -5,10 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -56,19 +53,10 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Pane prefHeight="52.0" prefWidth="811.0" style="-fx-background-color: #96735b;">
-         <children>
-            <Text fill="WHITE" layoutX="73.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Ingredients">
-               <font>
-                  <Font name="System Bold" size="22.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+      <Text fill="#464646" layoutX="20.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Ingredients">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

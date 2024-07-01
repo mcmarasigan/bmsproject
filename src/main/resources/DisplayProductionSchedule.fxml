@@ -4,7 +4,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -25,14 +28,14 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="22.0" layoutY="81.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search..." />
-      <Text layoutX="189.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productions">
+      <Button layoutX="314.0" layoutY="82.0" mnemonicParsing="false" onAction="#proceedtoAddProductionSched" style="-fx-background-color: #96735b;" text="Add Production" textFill="WHITE">
          <font>
-            <Font size="39.0" />
-         </font>
-      </Text>
-      <Button layoutX="314.0" layoutY="82.0" mnemonicParsing="false" onAction="#proceedtoAddProductionSched" text="Add Production" />
-      <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="30.0" prefWidth="160.0" text="Go Back To Dashboard" />
-      <Text layoutX="644.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:" />
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Text fill="#96735b" layoutX="644.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <TableView fx:id="RecipeTable" layoutX="644.0" layoutY="144.0" prefHeight="267.0" prefWidth="326.0">
          <columns>
             <TableColumn fx:id="IngredientNameColumn" prefWidth="75.0" text="Ingredient Name" />
@@ -43,7 +46,24 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="14.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleArchiveButton" text="Archive Row" />
-      <Button layoutX="105.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleEditButton" text="Edit Row" />
+      <Button layoutX="14.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Archive Row" textFill="WHITE" />
+      <Button layoutX="105.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleEditButton" style="-fx-background-color: #96735b;" text="Edit Row" textFill="WHITE" />
+      <Pane prefHeight="52.0" prefWidth="978.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monitor Productions">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="-4.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="66.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

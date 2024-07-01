@@ -9,22 +9,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayOrderController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="802.0" layoutX="-1.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
       <TableView fx:id="OrderTable" layoutX="15.0" layoutY="132.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="43.0" text="Id" />
@@ -41,14 +32,7 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="14.0" layoutY="86.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
-      <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
+      <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;" textFill="WHITE" />
       <Button layoutX="171.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoAddOrders" style="-fx-background-color: #96735b;" text="Add Order Status" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -86,10 +70,22 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Text fill="WHITE" layoutX="60.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Text>
+      <Pane prefHeight="52.0" prefWidth="802.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="6.0" layoutY="5.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="29.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutY="78.0" prefHeight="463.0" prefWidth="802.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="78.0" prefHeight="463.0" prefWidth="802.0" style="-fx-background-color: none;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Ingredients">
             <content>
@@ -27,5 +28,14 @@
             </Tab>
         </tabs>
       </TabPane>
+      <Pane prefHeight="52.0" prefWidth="802.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="7.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Management" wrappingWidth="374.361328125">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -4,10 +4,29 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
    <children>
+      <Pane layoutX="-4.0" layoutY="-4.0" prefHeight="52.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="59.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </Pane>
       <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -24,24 +43,10 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="90.0" fitWidth="608.0" layoutX="-4.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/banners/DrewBakes.png" />
+            <Image url="@Images/banners/bms_banner924.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="regText" fill="WHITE" layoutX="37.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory" wrappingWidth="100.2578125" />
-      <Button fx:id="backButton" layoutX="-8.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
    </children>
 </AnchorPane>

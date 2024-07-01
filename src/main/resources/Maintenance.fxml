@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.Maintenance">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.Maintenance">
    <children>
-      <Text layoutX="148.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance:">
+      <ImageView fitHeight="143.0" fitWidth="608.0" layoutX="-3.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/landscape_image.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="160.0" layoutY="190.0" mnemonicParsing="false" onAction="#proceedtoAccountManagement" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Account management">
          <font>
-            <Font size="56.0" />
-         </font>
-      </Text>
-      <Button layoutX="233.0" layoutY="128.0" mnemonicParsing="false" onAction="#proceedtoAccountManagement" text="Account management" />
-      <Button layoutX="234.0" layoutY="187.0" mnemonicParsing="false" onAction="#proceedtoSystemConfiguration" text="System Configuration" />
-      <Button layoutX="21.0" layoutY="26.0" mnemonicParsing="false" onAction="#backtoDashboard" text="Back to Dashboard" />
-      <Button layoutX="257.0" layoutY="239.0" mnemonicParsing="false" onAction="#proceedtoSecurityLogs" text="Security Logs" />
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="161.0" layoutY="266.0" mnemonicParsing="false" onAction="#proceedtoSystemConfiguration" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="System Configuration">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Button layoutX="209.0" layoutY="338.0" mnemonicParsing="false" onAction="#proceedtoSecurityLogs" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Security Logs">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
+      <Pane layoutX="-3.0" prefHeight="52.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="10.0" layoutY="7.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

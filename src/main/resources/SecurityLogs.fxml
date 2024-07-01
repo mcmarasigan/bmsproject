@@ -3,24 +3,38 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SecurityLogsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="808.0" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SecurityLogsController">
    <children>
-      <Text layoutX="246.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security Logs">
-         <font>
-            <Font size="54.0" />
-         </font>
-      </Text>
-      <Button layoutX="42.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleBackbtn" text="Back" />
-      <TableView fx:id="securityLogsTable" layoutX="83.0" layoutY="105.0" prefHeight="350.0" prefWidth="674.0">
+      <TableView fx:id="securityLogsTable" layoutX="67.0" layoutY="73.0" prefHeight="350.0" prefWidth="674.0">
         <columns>
           <TableColumn fx:id="usernameColumn" prefWidth="139.20001220703125" text="Username" />
           <TableColumn fx:id="activitylogColumn" prefWidth="336.0" text="Activity Log" />
             <TableColumn fx:id="activitytimestampColumn" prefWidth="199.20001220703125" text="Timestamp" />
         </columns>
       </TableView>
+      <Pane prefHeight="52.0" prefWidth="808.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security Logs">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutY="8.0" mnemonicParsing="false" onAction="#handleBackbtn" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
