@@ -98,6 +98,7 @@ public class AccountManagementController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
     private void backtoMaintenance() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Maintenance.fxml"));
