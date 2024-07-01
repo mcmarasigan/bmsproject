@@ -1,5 +1,6 @@
 package com.groupten.bmsproject.FXMLControllers;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 @Component
@@ -67,32 +69,33 @@ public class InventoryFXMLController {
     }
 
 
-     @FXML
+      @FXML
     private void handleGenerateReportIngredient() {
-        try {
-            String result = reportService.exportReport("pdf");
-            showAlert(AlertType.INFORMATION, "Report Generation", result);
-        } catch (Exception e) {
-            showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
-        }
+        generateReport("IngredientReport", "Ingredient_Report.jrxml");
     }
 
     @FXML
     private void handleGenerateReportSales() {
-        try {
-            String result = reportService.exportSalesReport("pdf");
-            showAlert(AlertType.INFORMATION, "Report Generation", result);
-        } catch (Exception e) {
-            showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
-        }
+        generateReport("SalesReport", "Sales_Report.jrxml");
     }
+
     @FXML
     private void handleGenerateSecurityLogReport() {
-        try {
-            String result = reportService.exportSecurityLogReport("pdf");
-            showAlert(AlertType.INFORMATION, "Report Generation", result);
-        } catch (Exception e) {
-            showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
+        generateReport("SecurityLogReport", "Security_Report.jrxml");
+    }
+
+    private void generateReport(String reportPrefix, String reportTemplate) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
+        File file = fileChooser.showSaveDialog(new Stage());
+
+        if (file != null) {
+            try {
+                String result = reportService.exportReport(reportTemplate, file.getAbsolutePath());
+                showAlert(AlertType.INFORMATION, "Report Generation", result);
+            } catch (Exception e) {
+                showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
+            }
         }
     }
 
