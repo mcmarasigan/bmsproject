@@ -2,6 +2,8 @@ package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -84,14 +86,20 @@ public class InventoryFXMLController {
         generateReport("SecurityLogReport", "Security_Report.jrxml");
     }
 
-    private void generateReport(String reportPrefix, String reportTemplate) {
+     private void generateReport(String reportPrefix, String reportTemplate) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
+
+        // Set default file name
+        String timestamp = new SimpleDateFormat("dd-MM-yyyy_hh-mm a").format(new Date()).replace(" ", "_");
+        String defaultFileName = String.format("%s_%s.pdf", reportPrefix, timestamp);
+        fileChooser.setInitialFileName(defaultFileName);
+
         File file = fileChooser.showSaveDialog(new Stage());
 
         if (file != null) {
             try {
-                String result = reportService.exportReport(reportTemplate, file.getAbsolutePath());
+                String result = reportService.exportReport(reportTemplate, file.getParent());
                 showAlert(AlertType.INFORMATION, "Report Generation", result);
             } catch (Exception e) {
                 showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());

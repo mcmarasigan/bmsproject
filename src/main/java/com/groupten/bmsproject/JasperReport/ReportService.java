@@ -36,12 +36,16 @@ public class ReportService {
     public String exportReport(String reportTemplate, String filePath) throws FileNotFoundException, JRException {
         // Fetch the appropriate data based on the report template
         List<?> data;
+        String reportType;
         if (reportTemplate.contains("Ingredient")) {
             data = ingredientRepository.findAll();
+            reportType = "IngredientReport";
         } else if (reportTemplate.contains("Sales")) {
             data = salesRepository.findAll();
+            reportType = "SalesReport";
         } else {
             data = securitylogsRepository.findAll();
+            reportType = "SecurityLogReport";
         }
 
         // Load file and compile
@@ -63,8 +67,12 @@ public class ReportService {
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, dataSource);
 
+         // Format the current date and time
+         String timestamp = new SimpleDateFormat("dd-MM-yyyy_hh-mm a").format(new Date());
+         String fullFilePath = String.format("%s\\%s_%s.pdf", filePath, File.separator, reportType, timestamp);
+
         // Export the report to the specified path
-        JasperExportManager.exportReportToPdfFile(jasperPrint, filePath);
-        return "Report generated at: " + filePath;
+        JasperExportManager.exportReportToPdfFile(jasperPrint, fullFilePath);
+        return "Report generated at: " + fullFilePath;
     }
 }
