@@ -5,14 +5,73 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="912.0" style="-fx-background-color: #FFF4E3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1341.0" style="-fx-background-color: #FFF4E3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.FAQController">
    <children>
-      <Text layoutX="199.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequently Asked Questions:">
+      <Text layoutX="413.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequently Asked Questions:">
          <font>
             <Font size="41.0" />
          </font>
       </Text>
-      <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#backtoHelp" text="Back" />
+      <Text fill="#96735b" layoutX="94.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 1: How to create a new account?" wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="91.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: You can create a new account by registering in the login. You must input all fields first and have a strong password. For verification, An OTP will be sent to your email and if the OTP is correct, the account will be registered." wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="79.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 2: How do I reset my password?" wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="76.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can reset your password by going into maintenance, account management, and from there you can change your password. You must provide an email for the OTP verification and if the OTP is correct, it can update the password associated with the email provided for OTP verification" wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="515.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 3: How can I delete an account so it can't access the system?" wrappingWidth="320.2666015625">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="513.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: You cannot directly delete an account, but you can set an account to deactivate and that user will not be able to access the system. Go into account management and select a row in the table of the account you wish to deactivate, and click deactivate. You can also reactivate an account so that user can gain access in the system again." wrappingWidth="348.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="512.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 4: How to delete an ingredient / product in the inventory?" wrappingWidth="319.2000732421875">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="513.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: As same as the answer in question 3, you cannot directly delete a product or ingredient in the system, but you can archive it and if you want to use the archived product / ingredient, then you can remove it from the archives and it will be back to their respective modules." wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="955.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 5: I added a row in a module but I want to update it. How can I do it?" wrappingWidth="305.3333740234375">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="952.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: You can update a row in a module by selecting a row in the table first, then clicking edit row to update the information on the row selected." wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="953.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 6: Can I backup the data in the modules?" wrappingWidth="305.3333740234375">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#96735b" layoutX="950.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: Yes, you can do so by heading to Backup / Restore in the maintenance, then go into system configuration, then backup and restore. You can also choose a file path to save the backup and if something happens to the database, you can restore your backups." wrappingWidth="300.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
