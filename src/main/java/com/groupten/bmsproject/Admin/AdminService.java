@@ -61,4 +61,8 @@ public class AdminService {
         admin.setStatus("active");
         adminrepository.save(admin);
     }
+
+    public void save(Adminentity selectedAccount) {
+        adminrepository.save(selectedAccount);
+    }
 }

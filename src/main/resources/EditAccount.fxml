@@ -31,7 +31,7 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="145.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Done" textFill="WHITE">
+      <Button layoutX="145.0" layoutY="310.0" mnemonicParsing="false" onAction="#handleSaveButton" style="-fx-background-color: #96735b;" text="Done" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

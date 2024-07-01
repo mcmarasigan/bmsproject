@@ -9,15 +9,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedOrders">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="802.0" style="-fx-background-color: #FFF7EF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedOrders">
    <children>
-      <TableView fx:id="OrderTable" layoutX="16.0" layoutY="87.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
+      <TableView fx:id="OrderTable" layoutX="17.0" layoutY="97.0" prefHeight="263.0" prefWidth="769.0" snapToPixel="false">
         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="43.0" text="Id" />
+            <TableColumn fx:id="idColumn" prefWidth="43.0" text="ID" />
           <TableColumn fx:id="CustomerNameColumn" prefWidth="164.0000343322754" text="Customer Name" />
           <TableColumn fx:id="AddressColumn" prefWidth="91.19993591308594" text="Address" />
             <TableColumn fx:id="DateOrderColumn" prefWidth="109.60003662109375" text="Date Order" />
@@ -30,16 +31,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="15.0" layoutY="41.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
-      <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="27.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button layoutX="15.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleArchiveOrderButton" style="-fx-background-color: #96735b;" text="Remove from archive" textFill="WHITE">
+      <TextField fx:id="SearchTextfield" layoutX="17.0" layoutY="61.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search...">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;" textFill="WHITE" />
+      <Button layoutX="17.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleArchiveOrderButton" style="-fx-background-color: #96735b;" text="Remove from archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -68,10 +65,19 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Text fill="#96735b" layoutX="60.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Orders">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Text>
+      <Pane layoutX="-4.0" prefHeight="52.0" prefWidth="811.0" style="-fx-background-color: #96735b;">
+         <children>
+            <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="16.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="71.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Orders">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

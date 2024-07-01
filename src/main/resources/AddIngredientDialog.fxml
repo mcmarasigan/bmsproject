@@ -4,35 +4,42 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AddIngredientDialogController">
    <children>
-      <Text fill="#96735b" layoutX="113.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="200.908203125">
+      <Text fill="#96735b" layoutX="5.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select ingredients:" textAlignment="RIGHT" wrappingWidth="169.908203125">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="76.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select ingredients:" textAlignment="CENTER" wrappingWidth="112.908203125">
+      <Text fill="#96735b" layoutX="62.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity to use:" textAlignment="RIGHT" wrappingWidth="112.908203125">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="76.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity to use:" textAlignment="CENTER" wrappingWidth="112.908203125">
+      <Text fill="#96735b" layoutX="33.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select unit type:" textAlignment="RIGHT" wrappingWidth="141.50823974609375">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="76.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select unit type:" textAlignment="CENTER" wrappingWidth="98.50823974609375">
+      <ComboBox fx:id="IngredientNameDialogCombobox" layoutX="187.0" layoutY="110.0" prefWidth="150.0" />
+      <TextField fx:id="QuantityDialogField" layoutX="187.0" layoutY="147.0" />
+      <ComboBox fx:id="UnitTypeDialogCombobox" layoutX="186.0" layoutY="181.0" prefWidth="150.0" />
+      <Button fx:id="addButton" layoutX="227.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #96735b;" text="Add" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
-      <ComboBox fx:id="IngredientNameDialogCombobox" layoutX="200.0" layoutY="120.0" prefWidth="150.0" />
-      <TextField fx:id="QuantityDialogField" layoutX="200.0" layoutY="157.0" />
-      <ComboBox fx:id="UnitTypeDialogCombobox" layoutX="200.0" layoutY="195.0" prefWidth="150.0" />
-      <Button fx:id="addButton" layoutX="194.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleAddButton" style="-fx-background-color: #96735b;" text="Add" textFill="WHITE" />
-      <Button fx:id="closebutton" layoutX="8.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleCloseAddIngredients" style="-fx-background-color: #96735b;" text="Close" textFill="WHITE" />
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <Pane prefHeight="47.0" prefWidth="427.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="427.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -89,7 +89,7 @@ public class AccountManagementController {
 
     @FXML
     private void backToDashboard() {
-        // Implementation to go back to the dashboard
+        
     }
 
     @FXML
@@ -116,6 +116,32 @@ public class AccountManagementController {
 
     @FXML
     private void handleEditButton() {
+        Adminentity selectedAccount = accountTable.getSelectionModel().getSelectedItem();
+        if (selectedAccount != null) {
+            try {
+                ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditAccount.fxml"));
+                loader.setControllerFactory(context::getBean);
+
+                Parent root = loader.load();
+
+                EditAccountController controller = loader.getController();
+                controller.setSelectedAccount(selectedAccount);
+
+                Stage stage = new Stage();
+                stage.setTitle("Edit Account");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                // After closing the edit window, refresh the table view
+                stage.setOnHidden(event -> loadAccountData());
+
+            } catch (IOException e) {
+                showAlert("Error", "Failed to load Edit Account screen.");
+            }
+        } else {
+            showAlert("No Selection", "Please select an account to edit.");
+        }
     }
 
     private void showAlert(String title, String content) {
