@@ -6,21 +6,33 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="888.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="888.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
    <children>
-      <ComboBox fx:id="viewTypeComboBox" layoutX="141.0" layoutY="14.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
-      <ComboBox fx:id="monthComboBox" layoutX="247.0" layoutY="14.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
-      <ComboBox fx:id="yearComboBox" layoutX="357.0" layoutY="14.0" prefWidth="80.0" style="-fx-background-color: #96735b;" />
-      <DatePicker fx:id="weekStartDatePicker" layoutX="447.0" layoutY="14.0" prefWidth="120.0" style="-fx-background-color: #96735b;" />
-      <Button layoutX="738.0" layoutY="14.0" onAction="#updateBarChart" style="-fx-background-color: #96735b;" text="Update" textFill="WHITE">
+      <ImageView fitHeight="48.0" fitWidth="888.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/bar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="888.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/bms_banner924.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="viewTypeComboBox" layoutX="7.0" layoutY="148.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
+      <ComboBox fx:id="monthComboBox" layoutX="113.0" layoutY="148.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
+      <ComboBox fx:id="yearComboBox" layoutX="218.0" layoutY="148.0" prefWidth="80.0" style="-fx-background-color: #96735b;" />
+      <DatePicker fx:id="weekStartDatePicker" layoutX="308.0" layoutY="148.0" prefWidth="120.0" style="-fx-background-color: #96735b;" />
+      <Button layoutX="796.0" layoutY="148.0" onAction="#updateBarChart" style="-fx-background-color: #96735b;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <BarChart fx:id="salesBarChart" animated="false" layoutX="315.0" layoutY="55.0" legendVisible="false" prefHeight="306.0" prefWidth="558.0">
+      <BarChart fx:id="salesBarChart" animated="false" layoutX="416.0" layoutY="180.0" legendVisible="false" prefHeight="281.0" prefWidth="380.0">
         <xAxis>
           <CategoryAxis label="Products" side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -31,7 +43,7 @@
                </tickLabelFont></NumberAxis>
         </yAxis>
       </BarChart>
-      <Text fill="#515151" layoutX="13.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most Sold Product:" wrappingWidth="202.13671875">
+      <Text fill="#96735b" layoutX="13.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most Sold Product:" wrappingWidth="202.13671875">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -41,7 +53,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#515151" layoutX="13.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales:" wrappingWidth="202.13671875">
+      <Text fill="#96735b" layoutX="13.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales:" wrappingWidth="202.13671875">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
@@ -51,9 +63,21 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: #96735b;" text="Back to Dashboard" textFill="WHITE">
+      <Button layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="34.0" prefWidth="21.0" style="-fx-background-color: none;" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <ImageView fitHeight="18.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Text fill="WHITE" layoutX="45.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Performance and Analytics" wrappingWidth="239.681640625">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

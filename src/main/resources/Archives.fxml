@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1052.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="42.0" layoutY="65.0" prefHeight="457.0" prefWidth="970.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="29.0" layoutY="59.0" prefHeight="471.0" prefWidth="977.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Products">
             <content>

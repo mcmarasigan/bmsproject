@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -34,12 +36,22 @@
          </font></Button>
       <Pane prefHeight="47.0" prefWidth="427.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="427.0">
+            <Text fill="WHITE" layoutX="6.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="187.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Text>
+            <Button layoutX="375.0" layoutY="3.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="46.0" style="-fx-background-color: none; -fx-border-color: white;" text="X" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
+      <ImageView fitHeight="81.0" fitWidth="89.0" layoutX="343.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/logos/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

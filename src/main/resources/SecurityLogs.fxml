@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="808.0" style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SecurityLogsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="808.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SecurityLogsController">
    <children>
       <TableView fx:id="securityLogsTable" layoutX="67.0" layoutY="73.0" prefHeight="350.0" prefWidth="674.0">
         <columns>
@@ -19,16 +19,16 @@
             <TableColumn fx:id="activitytimestampColumn" prefWidth="199.20001220703125" text="Timestamp" />
         </columns>
       </TableView>
-      <Pane prefHeight="52.0" prefWidth="808.0" style="-fx-background-color: #96735b;">
+      <Pane prefHeight="46.0" prefWidth="808.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security Logs">
+            <Text fill="WHITE" layoutX="60.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security Logs">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
-            <Button layoutY="8.0" mnemonicParsing="false" onAction="#handleBackbtn" style="-fx-background-color: none;">
+            <Button layoutX="14.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleBackbtn" prefHeight="24.0" prefWidth="31.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="24.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>
