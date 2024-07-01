@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DashboardController">
    <children>
@@ -100,6 +101,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="14.0" layoutY="530.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
+      <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: white; -fx-text-fill: #96735b;" text="Logout" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="110.0" layoutY="8.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: white; -fx-text-fill: #96735b;" text="Notification" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

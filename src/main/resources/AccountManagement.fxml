@@ -4,12 +4,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AccountManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="865.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AccountManagementController">
    <children>
-      <TableView fx:id="accountTable" layoutX="37.0" layoutY="96.0" prefHeight="440.0" prefWidth="782.0">
+      <TableView fx:id="accountTable" layoutX="37.0" layoutY="68.0" prefHeight="357.0" prefWidth="782.0">
         <columns>
           <TableColumn fx:id="emailColumn" prefWidth="134.0" text="Email" />
           <TableColumn fx:id="firstNameColumn" prefWidth="148.0" text="First Name" />
@@ -18,15 +19,36 @@
             <TableColumn fx:id="statusColumn" prefWidth="185.0" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="24.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" text="Go Back To Dashboard" />
-      <Text layoutX="199.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Management">
+      <Button layoutX="37.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleDeactivateButton" style="-fx-background-color: #96735b;" text="Deactivate account" textFill="WHITE">
          <font>
-            <Font size="39.0" />
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="305.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Edit account details" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="170.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleReactivateButton" style="-fx-background-color: #96735b;" text="Reactivate Account" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="ChangePassbtn" layoutX="442.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Change Password" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
-      </Text>
-      <Button layoutX="37.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleDeactivateButton" text="Deactivate account" />
-      <Button layoutX="283.0" layoutY="553.0" mnemonicParsing="false" text="Edit account details" />
-      <Button layoutX="158.0" layoutY="553.0" mnemonicParsing="false" onAction="#handleReactivateButton" text="Reactivate Account" />
-      <Button fx:id="ChangePassbtn" layoutX="407.0" layoutY="553.0" mnemonicParsing="false" text="Change Password" />
+      </Button>
+      <Pane layoutX="-2.0" prefHeight="48.0" prefWidth="872.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="198.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Management" wrappingWidth="374.361328125">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Text>
+            <Button layoutX="20.0" layoutY="9.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: white;" text="Go Back To Dashboard" textFill="#96735b">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
