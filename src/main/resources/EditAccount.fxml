@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.EditAccountController">
    <children>
-      <TextField fx:id="emailField" layoutX="104.0" layoutY="269.0" promptText="E-mail" />
+      <TextField fx:id="emailField" disable="true" editable="false" layoutX="104.0" layoutY="269.0" promptText="E-mail" />
       <TextField fx:id="unameField" layoutX="104.0" layoutY="219.0" promptText="Username" />
       <TextField fx:id="fnameField" layoutX="104.0" layoutY="114.0" promptText="First Name" />
       <TextField fx:id="lnameField" layoutX="104.0" layoutY="164.0" promptText="Last Name" />
