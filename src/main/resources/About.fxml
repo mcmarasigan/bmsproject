@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="384.0" prefWidth="690.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AboutController">
+   <children>
+      <Text fill="#96735b" layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" wrappingWidth="100.0">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font></Text>
+      <ImageView fitHeight="373.0" fitWidth="227.0" layoutX="14.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/image_security.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="155.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/logos/logo-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ScrollPane layoutX="251.0" layoutY="74.0" prefHeight="299.0" prefWidth="427.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1124.0" prefWidth="422.0">
+               <children>
+                  <Text fill="#96735b" layoutX="21.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drew Bakes is a local bakery owned by Kristine Sison and her fiancé, Andrew Simeon. Established in 2021 in Cogeo, Rizal, it operates from their home, offering a variety of pastries, including banana bread and chocolate cake. " wrappingWidth="300.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="152.0" fitWidth="122.0" layoutX="20.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/images/img1.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="149.0" fitWidth="149.0" layoutX="153.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/images/img2.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#96735b" layoutX="20.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developers:" wrappingWidth="87.19999694824219">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="120.0" fitWidth="121.0" layoutX="20.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/images/dev1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="120.0" fitWidth="136.0" layoutX="20.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/images/dev2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="107.0" fitWidth="127.0" layoutX="20.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/images/dev3.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#96735b" layoutX="148.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alex Wilhelm D. Sison" wrappingWidth="158.4000244140625">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="153.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="153.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="154.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maria Clarissa Marasigan" wrappingWidth="185.60003662109375">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="158.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="158.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="150.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krysteen Clare Belen" wrappingWidth="158.4000244140625">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="155.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="153.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="21.0" layoutY="750.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Information:" wrappingWidth="158.4000244140625">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="150.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: alexdangasison023@gmail.com" wrappingWidth="206.4000244140625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="159.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: alexdangasison023@gmail.com" wrappingWidth="206.4000244140625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="150.0" layoutY="680.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: alexdangasison023@gmail.com" wrappingWidth="206.4000244140625">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="21.0" layoutY="768.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version: 1.0" wrappingWidth="158.4000244140625" />
+                  <Text fill="#96735b" layoutX="21.0" layoutY="785.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date: -" wrappingWidth="158.4000244140625" />
+                  <Text fill="#96735b" layoutX="21.0" layoutY="802.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform Language: Java" wrappingWidth="158.4000244140625" />
+                  <Text fill="#96735b" layoutX="21.0" layoutY="818.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Description:" wrappingWidth="158.4000244140625" />
+                  <Text fill="#96735b" layoutX="21.0" layoutY="835.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is a Bakery Management System for Drew Bakes. It aims to aid in their business operations and provide a centralized database for all of their operations. It tracks inventories such as products, monitors productions and orders." wrappingWidth="336.00001525878906" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button layoutX="14.0" layoutY="35.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>

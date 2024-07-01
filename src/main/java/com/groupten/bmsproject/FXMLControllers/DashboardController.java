@@ -137,6 +137,19 @@ public class DashboardController {
     }
 
     @FXML
+    private void proceedtoAbout() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/About.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     private void Logout() throws IOException {
         // Show confirmation dialog
         Alert alert = new Alert(AlertType.CONFIRMATION);
