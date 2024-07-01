@@ -148,7 +148,18 @@ public class DashboardController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private void proceedHelpModule() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/HelpModule.fxml"));
+        loader.setControllerFactory(context::getBean);
 
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     @FXML
     private void Logout() throws IOException {
         // Show confirmation dialog

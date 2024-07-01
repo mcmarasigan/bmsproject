@@ -83,7 +83,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="502.0" layoutY="369.0" mnemonicParsing="false" onAction="#proceedtoAbout" prefHeight="133.0" prefWidth="124.0" style="-fx-background-color: none;">
+      <Button layoutX="502.0" layoutY="369.0" mnemonicParsing="false" prefHeight="133.0" prefWidth="124.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="100.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -92,7 +92,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="608.0" layoutY="369.0" mnemonicParsing="false" prefHeight="133.0" prefWidth="124.0" style="-fx-background-color: none;">
+      <Button layoutX="608.0" layoutY="369.0" mnemonicParsing="false" onAction="#proceedHelpModule" prefHeight="133.0" prefWidth="124.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="103.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -105,5 +105,10 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <Button layoutX="110.0" layoutY="8.0" mnemonicParsing="false" onAction="#Logout" style="-fx-background-color: white; -fx-text-fill: #96735b;" text="Notification" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
