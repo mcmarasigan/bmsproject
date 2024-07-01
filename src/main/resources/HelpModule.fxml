@@ -13,6 +13,7 @@
          </image>
       </ImageView>
       <Button layoutX="299.0" layoutY="157.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="149.0" text="FAQs" />
-      <Button fx:id="userManualButton" layoutX="299.0" layoutY="221.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="149.0" text="User's Manual" onAction="#openUserManual" />
+      <Button fx:id="userManualButton" layoutX="299.0" layoutY="221.0" mnemonicParsing="false" onAction="#openUserManual" prefHeight="45.0" prefWidth="149.0" text="User's Manual" />
+      <Button layoutX="28.0" layoutY="109.0" mnemonicParsing="false" onAction="#backtoDashboard" text="Back to Dashboard" />
    </children>
 </AnchorPane>
