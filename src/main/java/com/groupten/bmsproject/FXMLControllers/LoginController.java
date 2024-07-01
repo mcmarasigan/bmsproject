@@ -77,7 +77,7 @@ public class LoginController {
             String username = getUsernameByEmail(email);
             if (username != null) {
                 adminService.setLoggedInUser(username); // Store the username
-                logSecurityEvent(username, username + " has logged in the system");
+                logSecurityEvent(username, " logged in the system");
                 System.out.println("Login Succeed");
                 try {
                     failedLoginAttempts = 0; // Reset the counter on successful login

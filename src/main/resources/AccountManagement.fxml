@@ -31,7 +31,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="ChangePassbtn" layoutX="442.0" layoutY="434.0" mnemonicParsing="false" style="-fx-background-color: #96735b;" text="Change Password" textFill="WHITE">
+      <Button fx:id="ChangePassbtn" layoutX="442.0" layoutY="434.0" mnemonicParsing="false" onAction="#changePassword" style="-fx-background-color: #96735b;" text="Change Password" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -43,7 +43,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="20.0" layoutY="9.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: white;" text="Go Back To Dashboard" textFill="#96735b">
+            <Button layoutX="20.0" layoutY="9.0" mnemonicParsing="false" onAction="#backtoMaintenance" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: white;" text="Back to Maintenance" textFill="#96735b">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

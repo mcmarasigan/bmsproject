@@ -173,7 +173,9 @@ public class DisplayOrderController {
 
         private void searchOrders(String query) {
             List<OrderEntity> filteredList = orderList.stream()
-                    .filter(order -> order.getorderCustomerName().toLowerCase().contains(query.toLowerCase()))
+                    .filter(order -> 
+                    order.getorderCustomerName().toLowerCase().contains(query.toLowerCase())||
+                    order.getorderProductOrder().toLowerCase().contains(query.toLowerCase()))
                     .collect(Collectors.toList());
                 OrderTable.setItems(FXCollections.observableArrayList(filteredList));
         }
