@@ -52,12 +52,14 @@ public class AddIngredientDialogController {
             System.out.println("No ingredients found"); // Debug log
         } else {
             for (IngredientEntity ingredient : ingredients) {
-                System.out.println("Found ingredient: " + ingredient.getIngredient()); // Debug log
-                IngredientNameDialogCombobox.getItems().add(ingredient.getIngredient());
+                if (!"archived".equalsIgnoreCase(ingredient.getStatus())) {
+                    System.out.println("Found active ingredient: " + ingredient.getIngredient()); // Debug log
+                    IngredientNameDialogCombobox.getItems().add(ingredient.getIngredient());
             }
             // Debug log for ComboBox items
             System.out.println("Ingredients added to ComboBox: " + IngredientNameDialogCombobox.getItems());
         }
+    }
     }
 
     private void populateUnitTypeComboBox() {

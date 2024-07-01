@@ -16,7 +16,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 @Component
 public class DashboardController {
@@ -133,18 +138,27 @@ public class DashboardController {
 
     @FXML
     private void Logout() throws IOException {
-        // Log the logout activity
-        logSecurityEvent(adminService.getLoggedInUser(), " has logged out of the system");
+        // Show confirmation dialog
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Logout Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to log out?");
 
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
-        loader.setControllerFactory(context::getBean);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Log the logout activity
+            logSecurityEvent(adminService.getLoggedInUser(), " logged out of the system");
 
-        Parent root = loader.load();
-        Stage stage = BmsprojectApplication.getPrimaryStage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+            loader.setControllerFactory(context::getBean);
+
+            Parent root = loader.load();
+            Stage stage = BmsprojectApplication.getPrimaryStage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     private void logSecurityEvent(String username, String activityLog) {
