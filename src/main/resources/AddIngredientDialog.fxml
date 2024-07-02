@@ -30,13 +30,13 @@
       <ComboBox fx:id="IngredientNameDialogCombobox" layoutX="187.0" layoutY="110.0" prefWidth="150.0" />
       <TextField fx:id="QuantityDialogField" layoutX="187.0" layoutY="147.0" />
       <ComboBox fx:id="UnitTypeDialogCombobox" layoutX="186.0" layoutY="181.0" prefWidth="150.0" />
-      <Button fx:id="addButton" layoutX="227.0" layoutY="239.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #96735b;" text="Add" textFill="WHITE">
+      <Button fx:id="addButton" layoutX="189.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #96735b;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
       <Pane prefHeight="47.0" prefWidth="427.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="6.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="187.0">
+            <Text fill="WHITE" layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="158.20001220703125">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -48,7 +48,7 @@
             </Button>
          </children>
       </Pane>
-      <ImageView fitHeight="81.0" fitWidth="89.0" layoutX="343.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="81.0" fitWidth="99.0" layoutX="345.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>

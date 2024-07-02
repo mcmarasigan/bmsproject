@@ -12,52 +12,43 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="427.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.EditIngredientDialogController">
    <children>
-      <Pane layoutX="-1.0" prefHeight="42.0" prefWidth="433.0" style="-fx-background-color: #96735b;">
+      <Pane layoutX="-1.0" prefHeight="47.0" prefWidth="427.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="7.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="168.908203125">
+            <Text fill="WHITE" layoutX="10.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="159.30816650390625">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="closebutton" layoutX="391.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleCloseAddIngredients" prefHeight="32.0" prefWidth="26.0" style="-fx-background-color: #96735b; -fx-border-color: white;" text="X" textFill="WHITE">
+            <Button fx:id="closebutton" layoutX="375.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleCloseAddIngredients" prefHeight="41.0" prefWidth="46.0" style="-fx-background-color: #96735b; -fx-border-color: white;" text="X" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Text fill="#96735b" layoutX="14.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select ingredients:" textAlignment="CENTER" wrappingWidth="112.908203125">
+      <Text fill="#96735b" layoutX="51.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select ingredients:" textAlignment="CENTER" wrappingWidth="123.3082275390625">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="14.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity to use:" textAlignment="CENTER" wrappingWidth="112.908203125">
+      <Text fill="#96735b" layoutX="62.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity to use:" textAlignment="CENTER" wrappingWidth="112.908203125">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="14.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select unit type:" textAlignment="CENTER" wrappingWidth="98.50823974609375">
+      <Text fill="#96735b" layoutX="68.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select unit type:" textAlignment="CENTER" wrappingWidth="106.50823974609375">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <ComboBox fx:id="IngredientNameDialogCombobox" layoutX="138.0" layoutY="122.0" prefWidth="150.0" />
-      <TextField fx:id="QuantityDialogField" layoutX="138.0" layoutY="159.0" />
-      <ComboBox fx:id="UnitTypeDialogCombobox" layoutX="138.0" layoutY="197.0" prefWidth="150.0" />
-      <Button fx:id="addButton" layoutX="194.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleAddButton" style="-fx-background-color: #96735b;" text="Add" textFill="WHITE" />
-      <TextField fx:id="remainingQuantity" editable="false" layoutX="302.0" layoutY="121.0" prefHeight="26.0" prefWidth="45.0" />
-      <Text fill="#96735b" layoutX="291.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remaining Quantity:" textAlignment="CENTER" wrappingWidth="66.50823974609375">
+      <ComboBox fx:id="IngredientNameDialogCombobox" layoutX="187.0" layoutY="110.0" prefWidth="150.0" />
+      <TextField fx:id="QuantityDialogField" layoutX="187.0" layoutY="147.0" />
+      <ComboBox fx:id="UnitTypeDialogCombobox" layoutX="186.0" layoutY="181.0" prefWidth="150.0" />
+      <Button fx:id="addButton" layoutX="189.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #96735b;" text="Add" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
-      <TextField fx:id="unitType" editable="false" layoutX="363.0" layoutY="121.0" prefHeight="26.0" prefWidth="45.0" />
-      <Text fill="#96735b" layoutX="356.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Type:" textAlignment="CENTER" wrappingWidth="58.5081787109375">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="81.0" fitWidth="99.0" layoutX="345.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="81.0" fitWidth="99.0" layoutX="345.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>
