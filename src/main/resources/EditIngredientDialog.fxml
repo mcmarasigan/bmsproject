@@ -12,13 +12,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="427.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.EditIngredientDialogController">
    <children>
-      <Pane layoutX="-1.0" prefHeight="42.0" prefWidth="434.0" style="-fx-background-color: #96735b;">
+      <Pane layoutX="-1.0" prefHeight="42.0" prefWidth="433.0" style="-fx-background-color: #96735b;">
          <children>
-            <Button layoutY="3.0" mnemonicParsing="false" onAction="#backtoMaintenance" prefHeight="40.0" prefWidth="58.0" style="-fx-background-color: none;" textFill="#96735b">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
             <Text fill="WHITE" layoutX="7.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Ingredients" textAlignment="CENTER" wrappingWidth="168.908203125">
                <font>
                   <Font name="System Bold" size="18.0" />

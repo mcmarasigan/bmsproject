@@ -69,6 +69,6 @@
                </image>
             </ImageView>
          </graphic></ToggleButton>
-      <TextField fx:id="passtxtField" layoutX="386.0" layoutY="204.0" prefHeight="36.0" prefWidth="224.0" />
+      <TextField fx:id="passtxtField" layoutX="386.0" layoutY="204.0" prefHeight="36.0" prefWidth="224.0" visible="false" />
    </children>
 </AnchorPane>
