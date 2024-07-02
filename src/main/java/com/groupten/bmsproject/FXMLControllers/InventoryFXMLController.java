@@ -25,12 +25,6 @@ import javafx.stage.Stage;
 @Component
 public class InventoryFXMLController {
 
-    @Autowired
-    private ReportService reportService;
-
-     @FXML
-    private Button GenerateReportbtn;
-
     @FXML
     private void proceedtoProduct() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
@@ -69,51 +63,4 @@ public class InventoryFXMLController {
         stage.setScene(scene);
         stage.show();
     }
-
-
-      @FXML
-    private void handleGenerateReportIngredient() {
-        generateReport("IngredientReport", "Ingredient_Report.jrxml");
-    }
-
-    @FXML
-    private void handleGenerateReportSales() {
-        generateReport("SalesReport", "Sales_Report.jrxml");
-    }
-
-    @FXML
-    private void handleGenerateSecurityLogReport() {
-        generateReport("SecurityLogReport", "Security_Report.jrxml");
-    }
-
-     private void generateReport(String reportPrefix, String reportTemplate) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
-
-        // Set default file name
-        String timestamp = new SimpleDateFormat("dd-MM-yyyy_hh-mm a").format(new Date()).replace(" ", "_");
-        String defaultFileName = String.format("%s_%s.pdf", reportPrefix, timestamp);
-        fileChooser.setInitialFileName(defaultFileName);
-
-        File file = fileChooser.showSaveDialog(new Stage());
-
-        if (file != null) {
-            try {
-                String result = reportService.exportReport(reportTemplate, file.getParent());
-                showAlert(AlertType.INFORMATION, "Report Generation", result);
-            } catch (Exception e) {
-                showAlert(AlertType.ERROR, "Report Generation Error", e.getMessage());
-            }
-        }
-    }
-
-    private void showAlert(AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-
 }

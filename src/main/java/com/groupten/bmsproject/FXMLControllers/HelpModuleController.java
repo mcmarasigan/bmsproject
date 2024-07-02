@@ -19,6 +19,19 @@ import java.io.IOException;
 public class HelpModuleController {
 
     @FXML
+    private void FAQ() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FAQ.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     private void openUserManual(ActionEvent event) {
         // Path to the UserManual.pdf
         String pdfFilePath = "src/main/resources/UserManual.pdf";
@@ -45,5 +58,18 @@ public class HelpModuleController {
         } else {
             System.out.println("File does not exist: " + pdfFilePath);
         }
+    }
+
+    @FXML
+    private void backtoDashboard() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        loader.setControllerFactory(context::getBean);
+
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

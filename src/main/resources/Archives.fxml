@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1052.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1052.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ArchivesController">
    <children>
       <TabPane layoutX="29.0" layoutY="59.0" prefHeight="471.0" prefWidth="977.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -38,7 +38,7 @@
       </TabPane>
       <Pane prefHeight="59.0" prefWidth="1052.0" style="-fx-background-color: #96735b;">
          <children>
-            <Button layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
+            <Button layoutX="7.0" layoutY="10.0" mnemonicParsing="false" onAction="#backtoSystemConfiguration" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
