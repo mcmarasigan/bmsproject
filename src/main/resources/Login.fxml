@@ -51,7 +51,7 @@
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <Label layoutX="384.0" layoutY="118.0" prefHeight="17.0" prefWidth="116.0" text="Email" textFill="#96735b">
+      <Label layoutX="384.0" layoutY="118.0" prefHeight="20.0" prefWidth="39.0" text="Email" textFill="#96735b">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

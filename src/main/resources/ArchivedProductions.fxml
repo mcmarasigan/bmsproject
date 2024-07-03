@@ -4,25 +4,13 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="978.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProductions">
    <children>
-      <ImageView fitHeight="135.0" fitWidth="978.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="978.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bar.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="productionScheduleTable" layoutX="14.0" layoutY="153.0" prefHeight="227.0" prefWidth="672.0">
+      <TableView fx:id="productionScheduleTable" layoutX="15.0" layoutY="94.0" prefHeight="227.0" prefWidth="672.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="38.0" text="ID" />
           <TableColumn fx:id="productNameColumn" prefWidth="118.0" text="Product Name" />
@@ -36,15 +24,15 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="18.0" layoutY="102.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search...">
+      <TextField fx:id="SearchTextfield" layoutX="19.0" layoutY="43.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search...">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Text fill="#96735b" layoutX="699.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
+      <Text fill="#96735b" layoutX="693.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
-      <TableView fx:id="RecipeTable" layoutX="692.0" layoutY="176.0" prefHeight="205.0" prefWidth="270.0">
+      <TableView fx:id="RecipeTable" layoutX="693.0" layoutY="96.0" prefHeight="227.0" prefWidth="270.0">
          <columns>
             <TableColumn fx:id="IngredientNameColumn" prefWidth="148.0" text="Ingredient Name" />
             <TableColumn fx:id="QuantityColumn" prefWidth="81.0" text="Quantity" />
@@ -54,19 +42,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Text fill="WHITE" layoutX="54.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Productions">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/buttons/backbtn.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

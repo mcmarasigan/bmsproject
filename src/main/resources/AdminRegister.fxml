@@ -11,59 +11,68 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="690.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.RegisterController">
    <children>
-      <Label layoutX="138.0" layoutY="154.0" prefHeight="27.0" prefWidth="189.0" text="Register New Admin">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font></Label>
-      <TextField fx:id="emailField" layoutX="64.0" layoutY="385.0" promptText="Enter Email" />
-      <Button fx:id="submitButton" layoutX="382.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #96735b;" text="Submit" textFill="WHITE">
+      <TextField fx:id="emailField" layoutX="65.0" layoutY="337.0" prefHeight="36.0" prefWidth="224.0" promptText="Enter Email" />
+      <Button fx:id="submitButton" layoutX="307.0" layoutY="401.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="36.0" prefWidth="74.0" style="-fx-background-color: #96735b;" text="Submit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField fx:id="unameField" layoutX="64.0" layoutY="333.0" promptText="Enter Username" />
-      <TextField fx:id="otpField" layoutX="345.0" layoutY="333.0" promptText="Enter OTP code:" />
-      <Button fx:id="otpButton" layoutX="269.0" layoutY="335.0" mnemonicParsing="false" onAction="#handleOTPButton" style="-fx-background-color: #96735b;" text="Send OTP:" textFill="WHITE">
+      <TextField fx:id="unameField" layoutX="65.0" layoutY="274.0" prefHeight="36.0" prefWidth="224.0" promptText="Enter Username" />
+      <TextField fx:id="otpField" layoutX="388.0" layoutY="276.0" prefHeight="36.0" prefWidth="224.0" promptText="Enter OTP code:" />
+      <Button fx:id="otpButton" layoutX="388.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleOTPButton" prefHeight="36.0" prefWidth="224.0" style="-fx-background-color: #96735b;" text="Send OTP:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="10.0" />
          </font></Button>
-      <PasswordField fx:id="passwordField" layoutX="345.0" layoutY="229.0" promptText="Enter Password" />
-      <ImageView fitHeight="133.0" fitWidth="662.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/DrewBakes.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="submitButton1" layoutX="23.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleBackbtn" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #96735b;" text="Back to login" textFill="WHITE">
+      <PasswordField fx:id="passwordField" layoutX="386.0" layoutY="151.0" prefHeight="36.0" prefWidth="224.0" promptText="Enter Password" />
+      <Button fx:id="submitButton1" layoutX="14.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleBackbtn" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: #96735b;" text="Back to login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Text fill="WHITE" layoutX="23.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Registration">
+      <Text fill="#96735b" layoutX="217.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Registration">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="28.0" />
          </font></Text>
-      <TextField fx:id="fnameField" layoutX="64.0" layoutY="229.0" promptText="Enter First Name" />
-      <TextField fx:id="lnameField" layoutX="64.0" layoutY="280.0" promptText="Enter Last Name" />
-      <PasswordField fx:id="confirmpassField" layoutX="345.0" layoutY="280.0" promptText="Confirm Password" />
-      <TextField fx:id="passtxtField" layoutX="272.0" layoutY="306.0" visible="false" />
-      <TextField fx:id="passtxtField2" layoutX="273.0" layoutY="343.0" visible="false" />
-      <ToggleButton fx:id="showpassBtn" layoutX="419.0" layoutY="321.0" mnemonicParsing="false" onAction="#showPassword" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: none;" />
-      <ImageView fitHeight="36.0" fitWidth="53.0" layoutX="494.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/buttons/hide_password_icon.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="64.0" layoutY="212.0" text="First Name:" />
-      <Label layoutX="64.0" layoutY="263.0" text="Last Name:" />
-      <Label layoutX="64.0" layoutY="316.0" text="Username:" />
-      <Label layoutX="65.0" layoutY="368.0" text="Email:" />
-      <Label layoutX="346.0" layoutY="212.0" text="Create Password:" />
-      <Label layoutX="346.0" layoutY="263.0" text="Confirm Passowrd:" />
-      <Label layoutX="346.0" layoutY="316.0" text="OTP Code:" />
+      <TextField fx:id="fnameField" layoutX="65.0" layoutY="149.0" prefHeight="36.0" prefWidth="224.0" promptText="Enter First Name" />
+      <TextField fx:id="lnameField" layoutX="65.0" layoutY="214.0" prefHeight="36.0" prefWidth="224.0" promptText="Enter Last Name" />
+      <PasswordField fx:id="confirmpassField" layoutX="388.0" layoutY="216.0" prefHeight="36.0" prefWidth="224.0" promptText="Confirm Password" />
+      <ToggleButton fx:id="showpassBtn" layoutX="612.0" layoutY="147.0" mnemonicParsing="false" onAction="#showPassword" prefHeight="35.0" prefWidth="54.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/hide_password_icon.png" />
+               </image>
+            </ImageView>
+         </graphic></ToggleButton>
+      <Label layoutX="65.0" layoutY="132.0" text="First Name:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="65.0" layoutY="197.0" text="Last Name:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="65.0" layoutY="257.0" text="Username:" textFill="#96735b">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="66.0" layoutY="320.0" text="Email:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="387.0" layoutY="134.0" text="Create Password:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="389.0" layoutY="199.0" text="Confirm Password:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="389.0" layoutY="259.0" text="OTP Code:" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <TextField fx:id="passtxtField" layoutX="386.0" layoutY="151.0" prefHeight="36.0" prefWidth="224.0" visible="false" />
+      <TextField fx:id="passtxtField2" layoutX="388.0" layoutY="216.0" prefHeight="36.0" prefWidth="224.0" visible="false" />
    </children>
 </AnchorPane>

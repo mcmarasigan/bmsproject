@@ -20,21 +20,11 @@
          </font></Button>
       <Pane prefHeight="48.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
          <children>
-            <Button layoutX="7.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoSystemConfiguration" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label layoutX="60.0" layoutY="4.0" text="Backup &amp; Restore" textFill="WHITE">
+            <Label layoutX="46.0" layoutY="2.0" text="Backup &amp; Restore" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="13.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
       <ImageView fitHeight="101.0" fitWidth="606.0" layoutX="-3.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
@@ -42,5 +32,17 @@
             <Image url="@Images/banners/bms_banner924.png" />
          </image>
       </ImageView>
+      <Button mnemonicParsing="false" onAction="#backtoSystemConfiguration" prefHeight="30.0" prefWidth="40.0" style="-fx-background-color: none;" textFill="#96735b">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </AnchorPane>
