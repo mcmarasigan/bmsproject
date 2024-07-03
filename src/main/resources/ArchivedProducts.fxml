@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -26,9 +25,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="16.0" layoutY="51.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
+      <TextField fx:id="SearchTextfield" layoutX="25.0" layoutY="47.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
       <Button layoutY="1.0" mnemonicParsing="false" onAction="#backtoInventory" style="-fx-background-color: none;" textFill="WHITE" />
-      <Button layoutX="16.0" layoutY="365.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
+      <Button layoutX="28.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -54,10 +53,5 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Label layoutX="16.0" layoutY="9.0" text="Archived Products" textFill="#3c3c3c">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

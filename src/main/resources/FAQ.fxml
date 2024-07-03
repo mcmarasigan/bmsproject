@@ -7,13 +7,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1341.0" style="-fx-background-color: #FFF4E3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.FAQController">
    <children>
-      <Text layoutX="413.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequently Asked Questions:">
+      <Text fill="#96735b" layoutX="413.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequently Asked Questions:">
          <font>
-            <Font size="41.0" />
+            <Font name="System Bold" size="41.0" />
          </font>
       </Text>
-      <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#backtoHelp" text="Back" />
-      <Text fill="#96735b" layoutX="94.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 1: How to create a new account?" wrappingWidth="300.0">
+      <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#backtoHelp" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Text fill="#722e00" layoutX="94.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 1: How to create a new account?" wrappingWidth="300.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -23,7 +26,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="79.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 2: How do I reset my password?" wrappingWidth="300.0">
+      <Text fill="#722e00" layoutX="79.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 2: How do I reset my password?" wrappingWidth="300.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -33,7 +36,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="515.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 3: How can I delete an account so it can't access the system?" wrappingWidth="320.2666015625">
+      <Text fill="#722e00" layoutX="515.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 3: How can I delete an account so it can't access the system?" wrappingWidth="320.2666015625">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -43,7 +46,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="512.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 4: How to delete an ingredient / product in the inventory?" wrappingWidth="319.2000732421875">
+      <Text fill="#722e00" layoutX="512.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 4: How to delete an ingredient / product in the inventory?" wrappingWidth="319.2000732421875">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -53,7 +56,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="955.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 5: I added a row in a module but I want to update it. How can I do it?" wrappingWidth="305.3333740234375">
+      <Text fill="#722e00" layoutX="955.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 5: I added a row in a module but I want to update it. How can I do it?" wrappingWidth="305.3333740234375">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -63,7 +66,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="953.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 6: Can I backup the data in the modules?" wrappingWidth="305.3333740234375">
+      <Text fill="#722e00" layoutX="953.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 6: Can I backup the data in the modules?" wrappingWidth="305.3333740234375">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

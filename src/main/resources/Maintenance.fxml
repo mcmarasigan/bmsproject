@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="431.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.Maintenance">
    <children>
-      <ImageView fitHeight="143.0" fitWidth="608.0" layoutX="-3.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="135.0" fitWidth="608.0" layoutX="-3.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/banners/landscape_image.png" />
          </image>
@@ -27,16 +27,16 @@
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>
-      <Pane layoutX="-3.0" prefHeight="52.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
+      <Pane layoutX="-3.0" prefHeight="37.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance">
+            <Text fill="WHITE" layoutX="56.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maintenance">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Text>
             <Button layoutX="10.0" layoutY="7.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>

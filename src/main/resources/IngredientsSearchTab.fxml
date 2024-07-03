@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.IngredientSearchTabController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.IngredientSearchTabController">
    <children>
       <TableView fx:id="ingredientsTable" layoutX="20.0" layoutY="56.0" prefHeight="339.0" prefWidth="754.0">
         <columns>
-          <TableColumn fx:id="ingredientID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="ingredientName" prefWidth="184.0" text="Ingredient" />
-            <TableColumn fx:id="ingredientPrice" prefWidth="63.0" text="Price" />
-            <TableColumn fx:id="ingredientQuantity" prefWidth="81.0" text="Quantity" />
-            <TableColumn fx:id="ingredientExpiry" prefWidth="156.0" text="Expiry" />
+          <TableColumn fx:id="ingredientID" text="ID" />
+          <TableColumn fx:id="ingredientName" prefWidth="196.0" text="Ingredient" />
+            <TableColumn fx:id="ingredientPrice" prefWidth="142.0" text="Price" />
+            <TableColumn fx:id="ingredientQuantity" prefWidth="130.0" text="Quantity" />
+            <TableColumn fx:id="ingredientExpiry" prefWidth="205.0" text="Expiry" />
         </columns>
       </TableView>
       <TextField fx:id="searchField" layoutX="144.0" layoutY="23.0" prefHeight="26.0" prefWidth="264.0" promptText="Search for keywords" />

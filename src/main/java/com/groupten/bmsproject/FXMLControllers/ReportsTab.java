@@ -23,49 +23,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 @Component
-public class InventoryFXMLController {
+public class ReportsTab {
+
+    @Autowired
+    private ReportService reportService;
 
     @FXML
-    private void proceedtoProduct() throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayProducts.fxml"));
-        loader.setControllerFactory(context::getBean);
-
-        Parent root = loader.load();
-        Stage stage = BmsprojectApplication.getPrimaryStage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+    private Button GenerateReportbtn;
 
     @FXML
-    private void proceedtoIngredient() throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayIngredients.fxml"));
-        loader.setControllerFactory(context::getBean);
-
-        Parent root = loader.load();
-        Stage stage = BmsprojectApplication.getPrimaryStage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    private void backtoDashboard() throws IOException {
-        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
-        loader.setControllerFactory(context::getBean);
-
-        Parent root = loader.load();
-        Stage stage = BmsprojectApplication.getPrimaryStage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-
-      @FXML
     private void handleGenerateReportIngredient() {
         generateReport("IngredientReport", "Ingredient_Report.jrxml");
     }
@@ -79,17 +45,8 @@ public class InventoryFXMLController {
     private void handleGenerateSecurityLogReport() {
         generateReport("SecurityLogReport", "Security_Report.jrxml");
     }
-    @FXML
-    private void handleGenerateReportProduction() {
-        generateReport("ProductionReport", "Production_Report.jrxml");
-    }
-    @FXML
-    private void handleGenerateReportProductionIngredientUsed() {
-        generateReport("IngredientUsedReport", "IngredientUsed_Report.jrxml");
-    }
 
-
-    private void generateReport(String reportPrefix, String reportTemplate) {
+     private void generateReport(String reportPrefix, String reportTemplate) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
 
@@ -110,7 +67,6 @@ public class InventoryFXMLController {
         }
     }
 
-
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -119,5 +75,16 @@ public class InventoryFXMLController {
         alert.showAndWait();
     }
 
+    @FXML
+    private void backtoDashboard() throws IOException {
+        ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        loader.setControllerFactory(context::getBean);
 
+        Parent root = loader.load();
+        Stage stage = BmsprojectApplication.getPrimaryStage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

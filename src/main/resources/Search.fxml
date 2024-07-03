@@ -2,14 +2,21 @@
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="802.0" style="-fx-background-color: white;" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutY="78.0" prefHeight="463.0" prefWidth="802.0" style="-fx-background-color: none;" tabClosingPolicy="UNAVAILABLE">
+      <ImageView fitHeight="150.0" fitWidth="802.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/bms_banner924.png" />
+         </image>
+      </ImageView>
+      <TabPane layoutY="115.0" prefHeight="426.0" prefWidth="802.0" style="-fx-background-color: none;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Ingredients">
             <content>
@@ -28,11 +35,11 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Pane prefHeight="52.0" prefWidth="802.0" style="-fx-background-color: #96735b;">
+      <Pane prefHeight="35.0" prefWidth="802.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="7.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" wrappingWidth="374.361328125">
+            <Text fill="WHITE" layoutX="7.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Management" wrappingWidth="374.361328125">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
          </children>

@@ -40,7 +40,7 @@
             <Image url="@Images/banners/image_security.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="671.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="714.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>

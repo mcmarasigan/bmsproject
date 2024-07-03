@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="908.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="908.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ReportsTab">
    <children>
-      <TabPane layoutY="80.0" prefHeight="505.0" prefWidth="906.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="38.0" prefHeight="547.0" prefWidth="906.0" style="-fx-background-color: white;" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Performance and Analytics">
             <content>
@@ -21,7 +21,7 @@
           </Tab>
             <Tab text="Generate Reports">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                   <children>
                     <Button fx:id="GenerateReportbtn" layoutX="299.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleGenerateReportIngredient" prefHeight="66.0" prefWidth="282.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Ingredient Report">
                            <font>
@@ -51,16 +51,16 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Pane layoutX="-4.0" prefHeight="52.0" prefWidth="917.0" style="-fx-background-color: #96735b;">
+      <Pane layoutX="-4.0" prefHeight="38.0" prefWidth="917.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Analytics">
+            <Text fill="WHITE" layoutX="60.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Analytics">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Text>
             <Button layoutX="10.0" layoutY="7.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>

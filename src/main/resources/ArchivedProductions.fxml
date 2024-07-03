@@ -24,11 +24,11 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="12.0" layoutY="54.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search...">
+      <TextField fx:id="SearchTextfield" layoutX="19.0" layoutY="43.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search...">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Text fill="#363636" layoutX="697.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
+      <Text fill="#363636" layoutX="642.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredients Used:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Text>
@@ -42,14 +42,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="11.0" layoutY="379.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Remove from Archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Text fill="#393939" layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Productions">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

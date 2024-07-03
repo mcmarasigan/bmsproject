@@ -10,12 +10,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="643.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.HelpModuleController">
    <children>
-      <ImageView fitHeight="83.0" fitWidth="673.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="151.0" fitWidth="651.0" layoutX="-4.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/banners/bms_banner924.png" />
+            <Image url="@Images/banners/landscape_image.png" />
          </image>
       </ImageView>
-      <Button layoutX="229.0" layoutY="172.0" mnemonicParsing="false" onAction="#proceedtoFAQs" prefHeight="66.0" prefWidth="183.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="FAQs">
+      <Button layoutX="229.0" layoutY="172.0" mnemonicParsing="false" onAction="#proceedtoFAQs" onAction="#FAQ" prefHeight="66.0" prefWidth="183.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="FAQs">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
@@ -23,16 +23,16 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Pane layoutX="-5.0" prefHeight="52.0" prefWidth="651.0" style="-fx-background-color: #96735b;">
+      <Pane layoutX="-5.0" prefHeight="34.0" prefWidth="651.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help">
+            <Text fill="WHITE" layoutX="54.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Button layoutX="6.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="60.0" style="-fx-background-color: none;">
+            <Button layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="29.0" prefWidth="35.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>

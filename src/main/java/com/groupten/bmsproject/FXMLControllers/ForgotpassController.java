@@ -28,6 +28,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 @Component
@@ -59,6 +60,15 @@ public class ForgotpassController {
     @FXML
     private Button backButton;
 
+    @FXML
+    private ToggleButton showpassBtn;
+
+    @FXML
+    private TextField passtxtField1;
+    
+    @FXML
+    private TextField passtxtField2;
+
     @Autowired
     private AdminService adminService;
 
@@ -79,6 +89,12 @@ public class ForgotpassController {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @FXML
+    private void initialize() {
+        passtxtField1.textProperty().bindBidirectional(passwordField.textProperty());
+        passtxtField2.textProperty().bindBidirectional(confirmpassField.textProperty());
+    }
 
     @FXML
     private void handleSubmitButton() {
@@ -167,6 +183,21 @@ public class ForgotpassController {
         eMailSender.sendVerificationEmail(email, "OTP Verification Code", "", otp);
 
         showAlert(Alert.AlertType.INFORMATION, "Success", "OTP sent to your email.");
+    }
+
+    @FXML
+    private void showPassword() {
+        if (showpassBtn.isSelected()) {
+            passtxtField1.setVisible(true);
+            passtxtField2.setVisible(true);
+            passwordField.setVisible(false);
+            confirmpassField.setVisible(false);
+        } else {
+            passtxtField1.setVisible(false);
+            passtxtField2.setVisible(false);
+            passwordField.setVisible(true);
+            confirmpassField.setVisible(true);
+        }
     }
 
     @FXML

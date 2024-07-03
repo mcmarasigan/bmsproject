@@ -10,16 +10,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
    <children>
-      <Pane layoutX="-4.0" layoutY="-4.0" prefHeight="52.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
+      <ImageView fitHeight="134.0" fitWidth="640.0" layoutX="-2.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/banners/DrewBakes.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="-4.0" layoutY="-4.0" prefHeight="36.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory">
+            <Text fill="WHITE" layoutX="52.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Button layoutX="3.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="59.0" style="-fx-background-color: none;">
+            <Button layoutX="7.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>
@@ -43,10 +48,5 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="90.0" fitWidth="608.0" layoutX="-4.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

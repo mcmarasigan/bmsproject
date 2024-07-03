@@ -28,12 +28,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="17.0" layoutY="61.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search...">
+      <TextField fx:id="SearchTextfield" layoutX="18.0" layoutY="41.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search...">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <Button layoutX="6.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;" textFill="WHITE" />
-      <Button layoutX="17.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleArchiveOrderButton" style="-fx-background-color: #96735b;" text="Remove from archive" textFill="WHITE">
+      <Button mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;" textFill="WHITE" />
+      <Button layoutX="18.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleArchiveOrderButton" style="-fx-background-color: #96735b;" text="Remove from archive" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -62,10 +62,5 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Text fill="#2f2f2f" layoutX="17.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Archived Orders">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>
