@@ -98,7 +98,7 @@ public class OrderingController {
     private void populateProductOrderChoiceBox() {
         List<ProductionScheduleEntity> availableProducts = productionScheduleService.getAllProducts();
         for (ProductionScheduleEntity product : availableProducts) {
-            ProductOrderChoiceBox.getItems().add(product.getID() + " - " + product.getproductName());
+            ProductOrderChoiceBox.getItems().add(product.getId() + " - " + product.getProductname());
         }
     }
 
@@ -110,7 +110,7 @@ public class OrderingController {
 
         ProductionScheduleEntity selectedProduct = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
         if (selectedProduct != null) {
-            remainingProductQuantity.setText(String.valueOf(selectedProduct.getproductschedQuantity()));
+            remainingProductQuantity.setText(String.valueOf(selectedProduct.getQuantity()));
             productUnitType.setText(selectedProduct.getlvlofstock());
         }
     }
@@ -166,7 +166,7 @@ public class OrderingController {
         // Deduct the ordered quantity from the production schedule
         ProductionScheduleEntity productionSchedule = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
         if (productionSchedule != null) {
-            Double remainingQuantity = productionSchedule.getproductschedQuantity() - quantityOrder;
+            Double remainingQuantity = productionSchedule.getQuantity() - quantityOrder;
             if (remainingQuantity < 0) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Insufficient Quantity");
@@ -183,8 +183,8 @@ public class OrderingController {
         List<ProductionScheduleEntity> lowStockProducts = productionScheduleService.getAllProducts(); // Adjust as necessary to fetch only low stock products
         StringBuilder warningMessage = new StringBuilder();
         for (ProductionScheduleEntity product : lowStockProducts) {
-            if (product.getproductschedQuantity() <= LOW_STOCK_THRESHOLD) {
-                warningMessage.append(product.getproductName()).append(" (Quantity: ").append(product.getproductschedQuantity()).append(")\n");
+            if (product.getQuantity() <= LOW_STOCK_THRESHOLD) {
+                warningMessage.append(product.getProductname()).append(" (Quantity: ").append(product.getQuantity()).append(")\n");
             }
         }
         if (warningMessage.length() > 0) {

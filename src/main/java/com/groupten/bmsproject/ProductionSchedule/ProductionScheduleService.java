@@ -43,10 +43,10 @@ public class ProductionScheduleService {
         for (IngredientTableRow row : ingredients) {
             ProductionIngredient productionIngredient = new ProductionIngredient();
             IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
-            productionIngredient.setIngredient(ingredient);
+            productionIngredient.setIngredientid(ingredient);
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
-            productionIngredient.setProductionSchedule(newProductSched);
+            productionIngredient.setProductionschedule(newProductSched);
             productionIngredients.add(productionIngredient);
         }
 

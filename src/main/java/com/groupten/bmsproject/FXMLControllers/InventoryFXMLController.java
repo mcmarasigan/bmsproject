@@ -85,8 +85,17 @@ public class InventoryFXMLController {
     private void handleGenerateSecurityLogReport() {
         generateReport("SecurityLogReport", "Security_Report.jrxml");
     }
+    @FXML
+    private void handleGenerateReportProduction() {
+        generateReport("ProductionReport", "Production_Report.jrxml");
+    }
+    @FXML
+    private void handleGenerateReportProductionIngredientUsed() {
+        generateReport("IngredientUsedReport", "IngredientUsed_Report.jrxml");
+    }
 
-     private void generateReport(String reportPrefix, String reportTemplate) {
+
+    private void generateReport(String reportPrefix, String reportTemplate) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
 
@@ -106,6 +115,7 @@ public class InventoryFXMLController {
             }
         }
     }
+
 
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

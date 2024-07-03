@@ -92,7 +92,7 @@
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="158.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                  <Text fill="#96735b" layoutX="158.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 961 435 1790" wrappingWidth="177.60003662109375">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -107,7 +107,7 @@
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="153.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                  <Text fill="#96735b" layoutX="153.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 915 362 0898" wrappingWidth="177.60003662109375">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -117,17 +117,17 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="150.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: alexdangasison023@gmail.com" wrappingWidth="206.4000244140625">
+                  <Text fill="#96735b" layoutX="150.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qawsison@tip.edu.ph" wrappingWidth="206.4000244140625">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="159.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: alexdangasison023@gmail.com" wrappingWidth="206.4000244140625">
+                  <Text fill="#96735b" layoutX="159.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qmcmarasigan@tip.edu.ph" wrappingWidth="206.4000244140625">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="150.0" layoutY="680.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: alexdangasison023@gmail.com" wrappingWidth="206.4000244140625">
+                  <Text fill="#96735b" layoutX="150.0" layoutY="680.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qkcrbelen@tip.edu.ph" wrappingWidth="206.4000244140625">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -141,6 +141,13 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button layoutX="14.0" layoutY="35.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE" />
+      <Button layoutX="6.0" layoutY="19.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="55.0" prefWidth="58.0" style="-fx-background-color: none;" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/buttons/backbtn_dark.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>

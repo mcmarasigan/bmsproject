@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProducts">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="946.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayArchivedProducts">
    <children>
-      <TableView fx:id="productTable" layoutX="17.0" layoutY="97.0" prefHeight="263.0" prefWidth="769.0">
+      <TableView fx:id="productTable" layoutX="17.0" layoutY="97.0" prefHeight="263.0" prefWidth="920.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="45.0" text="ID" />
             <TableColumn fx:id="productNameColumn" prefWidth="142.0" text="Product" />

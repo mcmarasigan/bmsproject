@@ -1,5 +1,5 @@
 <!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
-<jasperReport name="Sales_Report" language="java" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d341d1ad-0597-4842-97b2-dedd70184de0">
+<jasperReport name="Sales_Report" language="java" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eeb4bd9b-c1bf-41d7-8127-90c686abae49">
 
 	<parameter name="REPORT_ID" class="java.lang.String"/>
 	<parameter name="userEmail" class="java.lang.String"/>
@@ -16,139 +16,151 @@
 	</field>
 	<field name="totalAmount" class="java.lang.Double">
 	</field>
-	<background splitType="Stretch"/>
-	<title height="68" splitType="Stretch">
-		<element kind="staticText" uuid="4f830635-9331-4f0c-8d94-cbad9cc7c83a" x="287" y="0" width="190" height="30" fontName="Times New Roman" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+	<variable name="TotalSum" calculation="Sum" class="java.lang.Double">
+		<expression><![CDATA[$F{totalAmount}]]></expression>
+	</variable>
+	<title height="60" splitType="Stretch">
+		<element kind="staticText" uuid="f20953de-e790-490a-ab5d-4d0d5aa55121" x="187" y="0" width="187" height="30" fontSize="18.0" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[DREW BAKES]]></text>
 		</element>
-		<element kind="staticText" uuid="7cba442d-29d5-4402-b50f-4b3d3b239cde" x="150" y="34" width="465" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="17a77600-6aa8-4ba2-ba60-efc62e463051" positionType="Float" x="63" y="31" width="435" height="29" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Blk. 5 Lot 6, Ivy St. Ferretville Subdivision, Brgy. San Roque, Antipolo City Rizal
-Contact no.: 09069392897
-]]></text>
+Contact no.: 09069392897]]></text>
 		</element>
 	</title>
-	<pageHeader height="46" splitType="Stretch">
-		<element kind="staticText" uuid="55240a51-a294-4b88-845e-415831b422f1" x="280" y="6" width="190" height="35" fontName="Times New Roman" fontSize="14.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+	<pageHeader height="50" splitType="Stretch">
+		<element kind="staticText" uuid="c590c2f8-150b-4153-9da7-273733337c13" x="170" y="0" width="226" height="45" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[SALES REPORT]]></text>
 		</element>
-		<element kind="staticText" uuid="4f2a49d2-4901-4fbd-b4b7-075b93c45bab" x="0" y="12" width="96" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="0feb1081-3232-4882-a305-f1053244a7a9" x="0" y="20" width="56" height="30" hTextAlign="Left" vTextAlign="Middle">
 			<text><![CDATA[Report ID:]]></text>
 		</element>
-		<element kind="textField" uuid="772216a8-9d4d-4d22-a590-28bac33e7e35" x="96" y="12" width="100" height="30" fontName="Times New Roman" fontSize="12.0" vTextAlign="Middle">
+		<element kind="textField" uuid="b3054504-83c5-4fe1-a5f2-846ca0bb9bd0" x="56" y="20" width="100" height="30" vTextAlign="Middle">
 			<expression><![CDATA[$P{REPORT_ID}]]></expression>
 		</element>
 	</pageHeader>
-	<columnHeader height="31" splitType="Stretch">
-		<element kind="staticText" uuid="b15649ba-c463-4408-95fd-25f34738c8b1" x="0" y="0" width="127" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+	<columnHeader height="30" splitType="Stretch">
+		<element kind="staticText" uuid="cbb09efa-1a91-4762-b357-e5d6a6b974c2" x="0" y="0" width="97" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Customer Name]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="76f4339b-48dc-4fc4-be13-28f3540a77f4"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b8729f4-8b31-4a8f-bb35-20f377e07804"/>
 			<box>
 				<pen lineWidth="1.0"/>
 			</box>
 		</element>
-		<element kind="staticText" uuid="eec951fd-c300-4255-a3b4-598ce8993511" x="127" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="5a6eb39e-d3f6-4f5d-b95b-6ef89fb2f246" x="97" y="0" width="95" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Date Purchased]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8da6e569-aa47-47c1-9afc-4ea190b6b240"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="526cba93-074d-4ab5-9bfc-d9e86ed87f77"/>
 			<box>
 				<pen lineWidth="1.0"/>
 			</box>
 		</element>
-		<element kind="staticText" uuid="ab3d4e52-f373-4140-afb3-d6e270aa5d64" x="252" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="1941f130-fa38-42b8-b996-288edc677e96" x="192" y="0" width="95" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Product Order]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9865121-ab66-4c1c-97af-4e0cc30c3d4e"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="184ac9b9-aa7e-4b20-aece-11ad84ef1b0b"/>
 			<box>
 				<pen lineWidth="1.0"/>
 			</box>
 		</element>
-		<element kind="staticText" uuid="c282a365-f869-4f98-bd1c-3fc5d57a8b08" x="377" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="be83cd21-80b4-4f31-9111-3cd2a6e965ea" x="287" y="0" width="95" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Product Price]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d21071a9-ec56-4e17-9536-0a9094ee1dfc"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6fd3bae2-4098-4812-8a37-5d739aa38473"/>
 			<box>
 				<pen lineWidth="1.0"/>
 			</box>
 		</element>
-		<element kind="staticText" uuid="3d1c3ce0-2a26-4535-818e-28afacad0fb8" x="502" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="95c2accb-a227-46a3-916f-b2e8a6b45499" x="382" y="0" width="95" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Quantity Order]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98e71ef0-d2ff-4736-927f-9a074c3d6992"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4a76fe2-3097-4bde-962e-7cc4dffb5be6"/>
 			<box>
 				<pen lineWidth="1.0"/>
 			</box>
 		</element>
-		<element kind="staticText" uuid="7be449dc-e061-4ff7-808e-2790f868f6fd" x="627" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+		<element kind="staticText" uuid="191faeea-029f-4d78-b0dc-6b0de83e09a3" x="477" y="0" width="95" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
 			<text><![CDATA[Total Amount]]></text>
-			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b60e8de-1dd0-42c0-9b8e-5e5d2ea35e3d"/>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5aef3880-074f-4b3a-8e9b-16ffb5b98be1"/>
 			<box>
 				<pen lineWidth="1.0"/>
 			</box>
 		</element>
 	</columnHeader>
 	<detail>
-		<band height="31" splitType="Stretch">
-			<element kind="textField" uuid="c0759211-7efb-4843-8df3-9b1369e5b3c9" x="0" y="0" width="127" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+		<band height="20" splitType="Stretch">
+			<element kind="textField" uuid="d527e49b-16cf-4375-ad09-0ca67c303492" positionType="Float" stretchType="NoStretch" x="0" y="0" width="96" height="20" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{customerName}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="76f4339b-48dc-4fc4-be13-28f3540a77f4"/>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2b8729f4-8b31-4a8f-bb35-20f377e07804"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
 			</element>
-			<element kind="textField" uuid="6d9c6a94-d818-41ad-a210-c0af33732734" x="127" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<element kind="textField" uuid="d1c201f2-73aa-4c80-aaf6-26827689eae2" positionType="Float" stretchType="NoStretch" x="96" y="0" width="96" height="20" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{datePurchased}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8da6e569-aa47-47c1-9afc-4ea190b6b240"/>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="526cba93-074d-4ab5-9bfc-d9e86ed87f77"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
 			</element>
-			<element kind="textField" uuid="97120c0a-25a3-4da7-a3e8-01dfa482a301" x="252" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<element kind="textField" uuid="893fb7c1-29d3-4569-af4d-66c1042af25a" positionType="Float" stretchType="NoStretch" x="192" y="0" width="95" height="20" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{productOrder}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f9865121-ab66-4c1c-97af-4e0cc30c3d4e"/>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="184ac9b9-aa7e-4b20-aece-11ad84ef1b0b"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
 			</element>
-			<element kind="textField" uuid="288c4a43-a000-4fec-8bff-1cc50bb27356" x="377" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<element kind="textField" uuid="78ea6515-8e77-4e44-a86e-82e68cec8df4" positionType="Float" stretchType="NoStretch" x="287" y="0" width="95" height="20" textAdjust="StretchHeight" pattern="#,##0.00#;(#,##0.00#-)" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{productPrice}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d21071a9-ec56-4e17-9536-0a9094ee1dfc"/>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6fd3bae2-4098-4812-8a37-5d739aa38473"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
 			</element>
-			<element kind="textField" uuid="5bd25484-74d3-4d1a-b645-0fadad9f6d1f" x="502" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<element kind="textField" uuid="9cbc4ee6-ac5d-4f8f-bf66-ec06e96d1304" positionType="Float" stretchType="NoStretch" x="382" y="0" width="95" height="20" textAdjust="StretchHeight" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{quantityOrder}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="98e71ef0-d2ff-4736-927f-9a074c3d6992"/>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b4a76fe2-3097-4bde-962e-7cc4dffb5be6"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
 			</element>
-			<element kind="textField" uuid="2679d38f-3f5c-46a5-a9ae-4955be3b3602" x="627" y="0" width="125" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<element kind="textField" uuid="c9233745-861f-4a2b-bec7-a964cc278811" positionType="Float" stretchType="NoStretch" x="477" y="0" width="95" height="20" textAdjust="StretchHeight" pattern="#,##0.00#;(#,##0.00#-)" hTextAlign="Center" vTextAlign="Middle">
 				<expression><![CDATA[$F{totalAmount}]]></expression>
-				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4b60e8de-1dd0-42c0-9b8e-5e5d2ea35e3d"/>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5aef3880-074f-4b3a-8e9b-16ffb5b98be1"/>
 				<box>
 					<pen lineWidth="1.0"/>
 				</box>
 			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.spreadsheet.SpreadsheetLayout"/>
 		</band>
 	</detail>
-	<pageFooter height="77" splitType="Stretch">
-		<element kind="staticText" uuid="bf5d891c-b7b0-43a2-a3b4-1b9948e6fd7f" x="200" y="0" width="161" height="30" fontName="Times New Roman" fontSize="12.0" bold="false" italic="true" hTextAlign="Center" vTextAlign="Middle">
+	<pageFooter height="60" splitType="Stretch">
+		<element kind="textField" uuid="0de1dc93-ca97-4e5c-8f2d-40927834a2f9" x="230" y="0" width="100" height="30" fontName="Times New Roman" fontSize="12.0" pattern="MMMMM dd, yyyy" italic="true" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="297cb406-dddf-4c22-9ab9-aac2c4a02651" x="330" y="0" width="100" height="30" fontName="Times New Roman" fontSize="12.0" pattern="hh:mm a" italic="true" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="staticText" uuid="0bc86bb1-cddd-4706-9438-d66d2b1f05f3" x="100" y="0" width="130" height="30" hTextAlign="Left" vTextAlign="Middle">
 			<text><![CDATA[Automatically generated on]]></text>
 		</element>
-		<element kind="textField" uuid="40721968-7113-49ba-b571-66c2d8a85875" x="380" y="45" width="100" height="30" fontName="Times New Roman" fontSize="10.0" evaluationTime="Report" italic="true" hTextAlign="Left">
-			<expression><![CDATA[" of " + $V{PAGE_NUMBER}]]></expression>
+		<element kind="staticText" uuid="09f9c885-f3e2-49fc-bbc6-10c71986d276" x="0" y="30" width="70" height="30" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Prepared By:]]></text>
 		</element>
-		<element kind="textField" uuid="10066235-3cdd-42d4-9cc1-2c94aa66c063" x="280" y="45" width="100" height="30" fontName="Times New Roman" fontSize="10.0" italic="true" hTextAlign="Right">
-			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
-		</element>
-		<element kind="textField" uuid="b017219d-1da5-4455-901e-ecaeb238555c" x="360" y="0" width="100" height="30" fontName="Times New Roman" fontSize="12.0" pattern="MMMMM dd, yyyy" italic="true" vTextAlign="Middle">
-			<expression><![CDATA[new java.util.Date()]]></expression>
-		</element>
-		<element kind="textField" uuid="2c628817-273f-4b24-90b7-cac6680a8d23" x="460" y="0" width="100" height="30" fontName="Times New Roman" fontSize="12.0" pattern="HH:mm" italic="true" hTextAlign="Left" vTextAlign="Middle">
-			<expression><![CDATA[new java.util.Date()]]></expression>
-		</element>
-		<element kind="staticText" uuid="e85c2af2-c8e0-401c-ac13-215d99209cc5" x="0" y="54" width="80" height="21" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Bottom">
-			<text><![CDATA[Prepared by:]]></text>
-		</element>
-		<element kind="textField" uuid="d73b4289-cd74-4455-8ad4-7edd0558041b" x="80" y="45" width="180" height="30" fontName="Times New Roman" fontSize="12.0" hTextAlign="Left" vTextAlign="Bottom">
+		<element kind="textField" uuid="e0f11b86-0ed6-4985-add6-7655a9be02dc" x="70" y="30" width="100" height="30" vTextAlign="Middle">
 			<expression><![CDATA[$P{userEmail}]]></expression>
 		</element>
+		<element kind="textField" uuid="d5e32b53-fc8b-4af7-a9e4-ccb0fb491fbd" x="200" y="30" width="100" height="30" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="e5952e21-3c0c-4128-909e-7c304e8b9b63" x="300" y="30" width="100" height="30" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA[" of " + $V{PAGE_NUMBER}]]></expression>
+		</element>
 	</pageFooter>
+	<summary height="50">
+		<element kind="textField" uuid="3c87e945-81ca-4ae2-87c5-587d89735028" x="477" y="0" width="95" height="30" textAdjust="StretchHeight" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA[$V{TotalSum}]]></expression>
+			<property name="com.jaspersoft.studio.unit.y" value="px"/>
+			<box>
+				<pen lineWidth="1.0"/>
+			</box>
+		</element>
+	</summary>
 </jasperReport>

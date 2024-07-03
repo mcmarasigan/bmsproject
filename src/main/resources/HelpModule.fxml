@@ -15,7 +15,7 @@
             <Image url="@Images/banners/bms_banner924.png" />
          </image>
       </ImageView>
-      <Button layoutX="229.0" layoutY="172.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="183.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="FAQs">
+      <Button layoutX="229.0" layoutY="172.0" mnemonicParsing="false" onAction="#proceedtoFAQs" prefHeight="66.0" prefWidth="183.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="FAQs">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
