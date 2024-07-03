@@ -179,14 +179,14 @@ public class DisplayProductionScheduleController {
 
     private void searchSchedules(String query) {
         List<ProductionScheduleEntity> filteredList = productionScheduleList.stream()
-                .filter(schedule -> schedule.getproductName().toLowerCase().contains(query.toLowerCase()))
+                .filter(schedule -> schedule.getProductname().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
         productionScheduleTable.setItems(FXCollections.observableArrayList(filteredList));
     }
 
     private void displayIngredients(ProductionScheduleEntity schedule) {
         recipeData.clear();
-        Set<ProductionIngredient> ingredients = productionScheduleService.getIngredientsByProductionScheduleId(schedule.getID());
+        Set<ProductionIngredient> ingredients = productionScheduleService.getIngredientsByProductionScheduleId(schedule.getId());
         recipeData.setAll(ingredients);
         RecipeTable.setItems(recipeData);
     }
@@ -232,7 +232,7 @@ public class DisplayProductionScheduleController {
     private void handleArchiveButton() {
         if (selectedSchedule != null) {
             // Archive the selected schedule
-            String result = productionScheduleService.archiveProductionSchedule(selectedSchedule.getID());
+            String result = productionScheduleService.archiveProductionSchedule(selectedSchedule.getId());
 
             System.out.println(result);
             

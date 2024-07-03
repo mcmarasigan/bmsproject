@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 @Component
 public class InventoryFXMLController {
 
+private ReportService reportService;
     @FXML
     private void proceedtoProduct() throws IOException {
         ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext(); // Get the application context
@@ -63,4 +64,8 @@ public class InventoryFXMLController {
         stage.setScene(scene);
         stage.show();
     }
+
+
+
+
 }

@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -50,9 +51,9 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="600.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/banners/DrewBakes.png" />
+            <Image url="@Images/banners/bms_banner924.png" />
          </image>
       </ImageView>
       <Pane prefHeight="38.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
@@ -87,5 +88,23 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
+      <Pane layoutX="-6.0" prefHeight="52.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Order">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="8.0" layoutY="4.0" mnemonicParsing="false" onAction="#backtoOrders" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

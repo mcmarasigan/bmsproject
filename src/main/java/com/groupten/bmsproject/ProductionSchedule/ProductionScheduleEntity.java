@@ -45,15 +45,15 @@ public class ProductionScheduleEntity {
         this.ingredient = ingredient;
     }
 
-    public Integer getID() {
+    public Integer getId() {
         return id;
     }
 
-    public void setID(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getproductName() {
+    public String getProductname() {
         return productname;
     }
 
@@ -61,7 +61,7 @@ public class ProductionScheduleEntity {
         this.productname = productname;
     }
 
-    public Double getproductschedQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
@@ -77,7 +77,7 @@ public class ProductionScheduleEntity {
         this.lvlofstock = lvlofstock;
     }
 
-    public LocalDate getdateofProduction() {
+    public LocalDate getDateofproduction() {
         return dateofproduction;
     }
 
@@ -85,7 +85,7 @@ public class ProductionScheduleEntity {
         this.dateofproduction = dateofproduction;
     }
 
-    public LocalDate getexpDate() {
+    public LocalDate getExpdate() {
         return expdate;
     }
 
@@ -93,7 +93,7 @@ public class ProductionScheduleEntity {
         this.expdate = expdate;
     }
 
-    public Integer getnumberofdaysexp() {
+    public Integer getNumberofdaysexp() {
         return numberofdaysexp;
     }
 

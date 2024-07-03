@@ -23,7 +23,7 @@
       <Button layoutX="20.0" layoutY="23.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: #96735b;" text="Back to Dashboard" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Button>
+         </font>
+      </Button>
    </children>
-
 </AnchorPane>

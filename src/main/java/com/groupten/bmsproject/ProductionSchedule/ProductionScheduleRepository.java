@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface ProductionScheduleRepository extends JpaRepository<ProductionScheduleEntity, Integer> {
     void save(ProductionIngredient productionIngredient);
     ProductionScheduleEntity findByProductname(String productname);
-    Optional<ProductionScheduleEntity> findById(Long id);
+    Optional<ProductionScheduleEntity> findById(Integer id);
     
 }

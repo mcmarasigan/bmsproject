@@ -15,6 +15,7 @@ public class ProductionIngredient {
     @JoinColumn(name = "production_schedule_id")
     private ProductionScheduleEntity productionSchedule;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ingredient_id")
     private IngredientEntity ingredient;
@@ -34,19 +35,23 @@ public class ProductionIngredient {
         this.id = id;
     }
 
-    public ProductionScheduleEntity getProductionSchedule() {
+
+    public ProductionScheduleEntity getProductionschedule() {
         return productionSchedule;
     }
+    public Integer getProductionscheduleid() {
+        return productionSchedule != null ? productionSchedule.getId() : null;
+    }
 
-    public void setProductionSchedule(ProductionScheduleEntity productionSchedule) {
+    public void setProductionschedule(ProductionScheduleEntity productionSchedule) {
         this.productionSchedule = productionSchedule;
     }
 
-    public IngredientEntity getIngredient() {
+    public IngredientEntity getIngredientid() {
         return ingredient;
     }
 
-    public void setIngredient(IngredientEntity ingredient) {
+    public void setIngredientid(IngredientEntity ingredient) {
         this.ingredient = ingredient;
     }
 

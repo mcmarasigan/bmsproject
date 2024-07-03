@@ -1,0 +1,124 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="IngredientUsed_Report" language="java" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13084c7e-eaed-4f46-871d-1e2e38cf82f5">
+
+	<parameter name="REPORT_ID" class="java.lang.String"/>
+	<parameter name="userEmail" class="java.lang.String"/>
+
+	<field name="ingredient" class="java.lang.Integer">
+</field>
+<field name="quantity" class="java.lang.Double">
+</field>
+<field name="unitType" class="java.lang.String">
+</field>
+<field name="productionscheduleid" class="java.lang.Integer">
+</field>
+
+	<background splitType="Stretch"/>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="9b6d7eff-dd94-4730-aab8-6fd44900a6a7" x="187" y="0" width="187" height="30" fontSize="18.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[DREW BAKES]]></text>
+		</element>
+		<element kind="staticText" uuid="ad0b3fd5-cf3f-45ac-bdfb-ff263b4f49e4" positionType="Float" x="63" y="31" width="435" height="29" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Blk. 5 Lot 6, Ivy St. Ferretville Subdivision, Brgy. San Roque, Antipolo City Rizal
+Contact no.: 09069392897]]></text>
+		</element>
+	</title>
+	<pageHeader height="61" splitType="Stretch">
+		<element kind="staticText" uuid="910a0968-8ccc-45a7-a4ba-8b15daf80d3b" x="170" y="0" width="226" height="49" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[PRODUCTION REPORT
+INGREDIENT USED]]></text>
+		</element>
+		<element kind="staticText" uuid="583148cb-cb3e-453b-a083-46c35ca2a5f5" x="1" y="19" width="56" height="30" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Report ID:]]></text>
+		</element>
+		<element kind="textField" uuid="7507e2b9-71bc-4745-8175-4ec19d421db2" x="57" y="19" width="100" height="30" vTextAlign="Middle">
+			<expression><![CDATA[$P{REPORT_ID}]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="30" splitType="Stretch">
+		<element kind="staticText" uuid="5e56b579-61e3-41ef-8987-803da25a0872" x="0" y="0" width="143" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Ingredient ID]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f82f52f-83c4-4d15-84f9-f7fb9126856a"/>
+			<box>
+				<pen lineWidth="1.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="10b277ba-c71a-4645-ad31-5851ee47aaac" x="143" y="0" width="143" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Quantity]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6775adf3-11a9-45f8-b5e1-990dd33d53ef"/>
+			<box>
+				<pen lineWidth="1.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="908b93c5-cff0-40d1-beeb-67fa8aaafad4" x="286" y="0" width="143" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Unit Type]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a19ecb61-162b-407e-a922-d004e6145bb1"/>
+			<box>
+				<pen lineWidth="1.0"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="dce45f05-a9dd-4307-9e63-c634c7875449" x="429" y="0" width="143" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Production Schedule ID]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f5f7248-d652-46c8-b7ab-7f5aac8b94c1"/>
+			<box>
+				<pen lineWidth="1.0"/>
+			</box>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<element kind="textField" uuid="bf596106-1ee5-40cf-800a-a616224d71d1" x="0" y="0" width="143" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{ingredient}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7f82f52f-83c4-4d15-84f9-f7fb9126856a"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="eb4833ec-11df-45b1-a474-7ffef28c78c0" x="143" y="0" width="143" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{quantity}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6775adf3-11a9-45f8-b5e1-990dd33d53ef"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="79b13cce-5359-4645-88e6-61f69f509566" x="286" y="0" width="143" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{unitType}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a19ecb61-162b-407e-a922-d004e6145bb1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="4ed865e0-e5e9-4d9f-ab18-9d7b6030efd2" x="429" y="0" width="143" height="30" hTextAlign="Center" vTextAlign="Middle">
+				  <expression><![CDATA[$F{productionscheduleid}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f5f7248-d652-46c8-b7ab-7f5aac8b94c1"/>
+				<box>
+					<pen lineWidth="1.0"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+	<pageFooter height="67" splitType="Stretch">
+		<element kind="staticText" uuid="026bfd18-d123-4e99-a251-98f3485ff2a9" x="1" y="35" width="70" height="30" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Prepared By:]]></text>
+		</element>
+		<element kind="textField" uuid="a19dc8c6-e972-4cd7-a192-1aaa9f1d167e" x="180" y="36" width="100" height="30" hTextAlign="Right">
+			<expression><![CDATA["Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="08a8a536-22ad-4157-97fd-fd33d311dad2" x="280" y="36" width="100" height="30" evaluationTime="Report" hTextAlign="Left">
+			<expression><![CDATA[" of " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+		<element kind="textField" uuid="ad37869e-0f72-4706-b84b-7b43f1bb4874" x="370" y="0" width="100" height="30" fontName="Times New Roman" fontSize="10.0" pattern="hh:mm a" italic="true" hTextAlign="Left" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="2818a302-c28d-42f3-8bb1-ae89e495f00d" x="270" y="0" width="100" height="30" fontName="Times New Roman" fontSize="10.0" pattern="MMMMM dd, yyyy" italic="true" vTextAlign="Middle">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="staticText" uuid="1c5f9fa6-49ab-487e-a790-6a4296903cab" x="140" y="0" width="130" height="30" hTextAlign="Left" vTextAlign="Middle">
+			<text><![CDATA[Automatically generated on]]></text>
+		</element>
+		<element kind="textField" uuid="b1170967-0591-479f-a65e-baf405c7f2db" x="71" y="35" width="100" height="30" vTextAlign="Middle">
+			<expression><![CDATA[$P{userEmail}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

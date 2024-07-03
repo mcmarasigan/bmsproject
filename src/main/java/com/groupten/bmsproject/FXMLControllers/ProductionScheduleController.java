@@ -130,10 +130,10 @@ public class ProductionScheduleController {
     
         RecipeTable.getItems().forEach(row -> {
             ProductionIngredient productionIngredient = new ProductionIngredient();
-            productionIngredient.setProductionSchedule(productionSchedule);
+            productionIngredient.setProductionschedule(productionSchedule);
     
             IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
-            productionIngredient.setIngredient(ingredient);
+            productionIngredient.setIngredientid(ingredient);
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
     

@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -25,27 +26,29 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="600.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/banners/DrewBakes.png" />
+            <Image url="@Images/banners/bms_banner924.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/navigator.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="regText" fill="WHITE" layoutX="37.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Orders" wrappingWidth="100.2578125">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Text>
-      <Button fx:id="backButton" layoutX="-8.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
-         <graphic>
-            <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
+      <Button fx:id="backButton" layoutX="-8.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;" />
+      <Pane layoutY="-4.0" prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Order">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="6.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="60.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

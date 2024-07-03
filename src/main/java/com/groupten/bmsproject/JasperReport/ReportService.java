@@ -2,6 +2,8 @@ package com.groupten.bmsproject.JasperReport;
 
 import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Ingredient.IngredientRepository;
+import com.groupten.bmsproject.ProductionSchedule.ProductionIngredientRepository;
+import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleRepository;
 import com.groupten.bmsproject.Sales.SalesEntity;
 import com.groupten.bmsproject.Sales.SalesRepository;
 import com.groupten.bmsproject.SecurityLogs.SecurityLogs;
@@ -31,10 +33,15 @@ public class ReportService {
     private SecurityLogsRepository securitylogsRepository;
 
     @Autowired
+    private ProductionScheduleRepository productionScheduleRepository;
+
+    @Autowired
+    private ProductionIngredientRepository productioningredientRepository;
+
+    @Autowired
     private AdminService adminService;
 
     public String exportReport(String reportTemplate, String filePath) throws FileNotFoundException, JRException {
-        // Fetch the appropriate data based on the report template
         List<?> data;
         String reportType;
         if (reportTemplate.contains("Ingredient")) {
@@ -43,35 +50,31 @@ public class ReportService {
         } else if (reportTemplate.contains("Sales")) {
             data = salesRepository.findAll();
             reportType = "SalesReport";
-        } else {
-            data = securitylogsRepository.findAll();
-            reportType = "SecurityLogReport";
+        } else if (reportTemplate.contains("IngredientUsed")) {
+            data = productioningredientRepository.findAll();
+            reportType = "IngredientUsedReport";
+        } else{
+            data = productionScheduleRepository.findAll();
+            reportType = "ProductionReport";
         }
 
-        // Load file and compile
         File file = ResourceUtils.getFile("classpath:ReportTemplate/" + reportTemplate);
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(data);
 
-        // Generate a UUID
         String uuid = UUID.randomUUID().toString();
-        // Take the first 5 characters as the report ID
         String reportId = uuid.substring(0, 5);
-
-        // Get the logged-in user's email
         String userEmail = adminService.getLoggedInUserEmail();
 
         Map<String, Object> map = new HashMap<>();
         map.put("REPORT_ID", reportId);
-        map.put("userEmail", userEmail); // Add user email parameter
+        map.put("userEmail", userEmail);
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, map, dataSource);
 
-         // Format the current date and time
-         String timestamp = new SimpleDateFormat("dd-MM-yyyy_hh-mm a").format(new Date());
-         String fullFilePath = String.format("%s\\%s_%s.pdf", filePath, File.separator, reportType, timestamp);
+        String timestamp = new SimpleDateFormat("dd-MM-yyyy_hh-mm a").format(new Date()).replace(" ", "_");
+        String fullFilePath = String.format("%s%s%s_%s.pdf", filePath, File.separator, reportType, timestamp);
 
-        // Export the report to the specified path
         JasperExportManager.exportReportToPdfFile(jasperPrint, fullFilePath);
         return "Report generated at: " + fullFilePath;
     }

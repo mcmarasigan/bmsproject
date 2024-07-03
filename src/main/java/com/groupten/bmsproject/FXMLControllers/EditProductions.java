@@ -105,19 +105,19 @@ public class EditProductions {
 
     public void setProductionSchedule(ProductionScheduleEntity schedule) {
         this.selectedSchedule = schedule;
-        productChoiceBox.setValue(schedule.getproductName());
-        quantityField.setText(String.valueOf(schedule.getproductschedQuantity()));
-        dateofproductionPicker.setValue(schedule.getdateofProduction());
-        expdatePicker.setValue(schedule.getexpDate());
+        productChoiceBox.setValue(schedule.getProductname());
+        quantityField.setText(String.valueOf(schedule.getQuantity()));
+        dateofproductionPicker.setValue(schedule.getDateofproduction());
+        expdatePicker.setValue(schedule.getExpdate());
     
         // Clear the current ingredient data
         ingredientData.clear();
     
         // Populate the ingredients
-        Set<ProductionIngredient> ingredients = productionScheduleService.getIngredientsByProductionScheduleId(schedule.getID());
+        Set<ProductionIngredient> ingredients = productionScheduleService.getIngredientsByProductionScheduleId(schedule.getId());
         for (ProductionIngredient ingredient : ingredients) {
             IngredientTableRow row = new IngredientTableRow(
-                ingredient.getIngredient().getIngredient(),
+                ingredient.getIngredientid().getIngredient(),
                 ingredient.getQuantity(),
                 ingredient.getUnitType()
             );
@@ -160,13 +160,13 @@ public class EditProductions {
         productionScheduleService.save(productionSchedule);
 
         // Save ingredients
-        productionScheduleService.removeIngredientsByProductionScheduleId(productionSchedule.getID());
+        productionScheduleService.removeIngredientsByProductionScheduleId(productionSchedule.getId());
         RecipeTable.getItems().forEach(row -> {
             ProductionIngredient productionIngredient = new ProductionIngredient();
-            productionIngredient.setProductionSchedule(productionSchedule);
+            productionIngredient.setProductionschedule(productionSchedule);
 
             IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
-            productionIngredient.setIngredient(ingredient);
+            productionIngredient.setIngredientid(ingredient);
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
 

@@ -12,9 +12,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0" prefWidth="888.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
    <children>
-      <ComboBox fx:id="viewTypeComboBox" layoutX="13.0" layoutY="31.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
-      <ComboBox fx:id="monthComboBox" layoutX="119.0" layoutY="31.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
-      <ComboBox fx:id="yearComboBox" layoutX="224.0" layoutY="31.0" prefWidth="80.0" style="-fx-background-color: #96735b;" />
+      <ComboBox fx:id="viewTypeComboBox" layoutX="13.0" layoutY="31.0" prefWidth="100.0" />
+      <ComboBox fx:id="monthComboBox" layoutX="119.0" layoutY="31.0" prefWidth="100.0" />
+      <ComboBox fx:id="yearComboBox" layoutX="224.0" layoutY="31.0" prefWidth="80.0" />
       <DatePicker fx:id="weekStartDatePicker" layoutX="119.0" layoutY="31.0" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
       <Button layoutX="802.0" layoutY="31.0" onAction="#updateBarChart" style="-fx-background-color: #96735b;" text="Update" textFill="WHITE">
          <font>
