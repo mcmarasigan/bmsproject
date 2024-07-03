@@ -5,8 +5,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -45,30 +43,22 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Pane layoutX="-3.0" layoutY="-5.0" prefHeight="40.0" prefWidth="871.0" style="-fx-background-color: #96735b;">
+      <Pane layoutX="-3.0" layoutY="-1.0" prefHeight="52.0" prefWidth="885.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="61.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Management" wrappingWidth="374.361328125">
+            <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account Management">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button mnemonicParsing="false" onAction="#backtoMaintenance" prefHeight="52.0" prefWidth="57.0" style="-fx-background-color: none;" textFill="#96735b">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
+            <Button layoutX="6.0" mnemonicParsing="false" onAction="#backtoMaintenance" prefHeight="52.0" prefWidth="60.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
    </children>

@@ -46,6 +46,15 @@ public class ReportsTab {
         generateReport("SecurityLogReport", "Security_Report.jrxml");
     }
 
+    @FXML
+    private void handleGenerateReportProduction() {
+        generateReport("ProductionReport", "Production_Report.jrxml");
+    }
+    @FXML
+    private void handleGenerateReportProductionIngredientUsed() {
+        generateReport("IngredientUsedReport", "IngredientUsed_Report.jrxml");
+    }
+
      private void generateReport(String reportPrefix, String reportTemplate) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf"));
