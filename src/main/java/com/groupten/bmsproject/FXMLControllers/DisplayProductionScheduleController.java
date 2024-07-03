@@ -164,9 +164,9 @@ public class DisplayProductionScheduleController {
             .collect(Collectors.toList());
 
         schedules.forEach(schedule -> {
-            if (schedule.getproductschedQuantity() == 0) {
+            if (schedule.getQuantity() == 0) {
                 schedule.setlvlofstock("Empty");
-            } else if (schedule.getproductschedQuantity() <= 5) {
+            } else if (schedule.getQuantity() <= 5) {
                 schedule.setlvlofstock("Low");
             } else {
                 schedule.setlvlofstock("Sufficient");
