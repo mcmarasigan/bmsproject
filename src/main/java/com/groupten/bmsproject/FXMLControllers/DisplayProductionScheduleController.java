@@ -11,7 +11,6 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -113,7 +112,6 @@ public class DisplayProductionScheduleController {
         QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
         UnitTypeColumn.setCellValueFactory(cellData -> cellData.getValue().unitTypeProperty());
 
-
         // Set cell factory for lvlofStockColumn to add color indicators
         lvlofStockColumn.setCellFactory(column -> new TableCell<>() {
             @Override
@@ -125,11 +123,14 @@ public class DisplayProductionScheduleController {
                 } else {
                     setText(item);
                     switch (item.toLowerCase()) {
+                        case "empty":
+                            setStyle("-fx-text-fill: red;");
+                            break;
                         case "low":
-                            setStyle(" -fx-text-fill: red;");
+                            setStyle("-fx-text-fill: yellow;");
                             break;
                         case "sufficient":
-                            setStyle(" -fx-text-fill: green;");
+                            setStyle("-fx-text-fill: green;");
                             break;
                         default:
                             setStyle(""); // Reset to default style for other levels
@@ -161,19 +162,20 @@ public class DisplayProductionScheduleController {
         List<ProductionScheduleEntity> schedules = productionScheduleService.getAllProducts().stream()
             .filter(schedule -> !"archived".equals(schedule.getStatus()))
             .collect(Collectors.toList());
-    
+
         schedules.forEach(schedule -> {
-            if (schedule.getproductschedQuantity() <= 5) {
+            if (schedule.getproductschedQuantity() == 0) {
+                schedule.setlvlofstock("Empty");
+            } else if (schedule.getproductschedQuantity() <= 5) {
                 schedule.setlvlofstock("Low");
             } else {
                 schedule.setlvlofstock("Sufficient");
             }
         });
-    
+
         productionScheduleList = FXCollections.observableArrayList(schedules);
         productionScheduleTable.setItems(productionScheduleList);
     }
-    
 
     private void searchSchedules(String query) {
         List<ProductionScheduleEntity> filteredList = productionScheduleList.stream()
@@ -196,35 +198,35 @@ public class DisplayProductionScheduleController {
     }
 
     @FXML
-private void handleEditButton() {
-    if (selectedSchedule != null) {
-        try {
-            // Load the EditProductions.fxml and set the controller
-            ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditProductions.fxml"));
-            loader.setControllerFactory(context::getBean);
+    private void handleEditButton() {
+        if (selectedSchedule != null) {
+            try {
+                // Load the EditProductions.fxml and set the controller
+                ConfigurableApplicationContext context = BmsprojectApplication.getApplicationContext();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditProductions.fxml"));
+                loader.setControllerFactory(context::getBean);
 
-            Parent root = loader.load();
-            // Get the controller and pass the selected schedule
-            EditProductions editProductionsController = loader.getController();
-            editProductionsController.setProductionSchedule(selectedSchedule);
+                Parent root = loader.load();
+                // Get the controller and pass the selected schedule
+                EditProductions editProductionsController = loader.getController();
+                editProductionsController.setProductionSchedule(selectedSchedule);
 
-            // Show the edit window
-            Stage stage = BmsprojectApplication.getPrimaryStage();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                // Show the edit window
+                Stage stage = BmsprojectApplication.getPrimaryStage();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Production Schedule Selected");
+            alert.setContentText("Please select a production schedule in the table.");
+            alert.showAndWait();
         }
-    } else {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("No Selection");
-        alert.setHeaderText("No Production Schedule Selected");
-        alert.setContentText("Please select a production schedule in the table.");
-        alert.showAndWait();
     }
-}
 
     @FXML
     private void handleArchiveButton() {
