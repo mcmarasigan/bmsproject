@@ -38,6 +38,11 @@ public class ProductionScheduleService {
         newProductSched.setdateofProduction(dateofproduction);
         newProductSched.setexpDate(expdate);
         newProductSched.setnumberofdaysexp(numberofdaysexp);
+        if (numberofdaysexp <= 0) {
+            newProductSched.setExpiryStatus("Expired");
+        } else {
+            newProductSched.setExpiryStatus("Valid");
+        }
 
         Set<ProductionIngredient> productionIngredients = new HashSet<>();
         for (IngredientTableRow row : ingredients) {
@@ -134,6 +139,21 @@ public class ProductionScheduleService {
         ProductionScheduleEntity schedule = productSchedRepository.findById(scheduleId).orElse(null);
         if (schedule != null) {
             schedule.getIngredient().clear();
+            productSchedRepository.save(schedule);
+        }
+    }
+
+    // Check and update expiry status
+    public void checkAndUpdateExpiryStatus() {
+        List<ProductionScheduleEntity> schedules = productSchedRepository.findAll();
+        LocalDate today = LocalDate.now();
+
+        for (ProductionScheduleEntity schedule : schedules) {
+            if (schedule.getExpdate().isBefore(today)) {
+                schedule.setExpiryStatus("expired");
+            } else {
+                schedule.setExpiryStatus("active");
+            }
             productSchedRepository.save(schedule);
         }
     }

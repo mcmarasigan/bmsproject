@@ -125,6 +125,11 @@ public class ProductionScheduleController {
         productionSchedule.setexpDate(expDate);
         productionSchedule.setnumberofdaysexp((int) numberOfDays);
         productionSchedule.setlvlofstock(quantity < 10 ? "Low" : "Sufficient");
+        if (numberOfDays <= 0) {
+            productionSchedule.setExpiryStatus("Expired");
+        } else {
+            productionSchedule.setExpiryStatus("Valid");
+        }
     
         productionScheduleService.save(productionSchedule);
     

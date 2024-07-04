@@ -37,6 +37,7 @@ public class ProductionScheduleEntity {
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
     private String status;  // Add this field
+    private String expiryStatus; // Add this field
 
      @OneToMany(fetch = FetchType.EAGER, mappedBy = "productionSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProductionIngredient> ingredient;
@@ -111,6 +112,14 @@ public class ProductionScheduleEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getExpiryStatus() {
+        return expiryStatus;
+    }
+
+    public void setExpiryStatus(String expiryStatus) {
+        this.expiryStatus = expiryStatus;
     }
 
      // Property methods for JavaFX TableView binding

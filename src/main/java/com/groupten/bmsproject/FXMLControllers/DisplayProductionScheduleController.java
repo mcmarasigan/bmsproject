@@ -88,6 +88,13 @@ public class DisplayProductionScheduleController {
     @FXML
     private TextField SearchTextfield;
 
+    @FXML
+    private Button refreshButton;
+
+    @FXML
+    private ComboBox<String> filterComboBox;
+
+
     private final ProductionScheduleService productionScheduleService;
     private ObservableList<ProductionScheduleEntity> productionScheduleList;
     private ProductionScheduleEntity selectedSchedule;
@@ -100,6 +107,17 @@ public class DisplayProductionScheduleController {
 
     @FXML
     private void initialize() {
+        // Initialize the filter ComboBox
+    ObservableList<String> filterOptions = FXCollections.observableArrayList("All", "Sufficient", "Low", "Empty", "Expired");
+    filterComboBox.setItems(filterOptions);
+    filterComboBox.setValue("All"); // Default selection
+
+    // Add listener to filter ComboBox
+    filterComboBox.setOnAction(event -> {
+        String selectedFilter = filterComboBox.getValue();
+        filterProductionSchedules(selectedFilter);
+    });
+
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         productNameColumn.setCellValueFactory(cellData -> cellData.getValue().productnameProperty());
         quantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
@@ -162,8 +180,8 @@ public class DisplayProductionScheduleController {
         List<ProductionScheduleEntity> schedules = productionScheduleService.getAllProducts().stream()
             .filter(schedule -> !"archived".equals(schedule.getStatus()))
             .collect(Collectors.toList());
-
-        schedules.forEach(schedule -> {
+    
+        for (ProductionScheduleEntity schedule : schedules) {
             if (schedule.getQuantity() == 0) {
                 schedule.setlvlofstock("Empty");
             } else if (schedule.getQuantity() <= 5) {
@@ -171,11 +189,21 @@ public class DisplayProductionScheduleController {
             } else {
                 schedule.setlvlofstock("Sufficient");
             }
-        });
-
+            
+            if (schedule.getNumberofdaysexp() <= 0) {
+                schedule.setExpiryStatus("Expired");
+            } else {
+                schedule.setExpiryStatus("Valid");
+            }
+    
+            // Save the updated schedule back to the database
+            productionScheduleService.updateProductionSchedule(schedule);
+        }
+    
         productionScheduleList = FXCollections.observableArrayList(schedules);
         productionScheduleTable.setItems(productionScheduleList);
     }
+    
 
     private void searchSchedules(String query) {
         List<ProductionScheduleEntity> filteredList = productionScheduleList.stream()
@@ -274,4 +302,67 @@ public class DisplayProductionScheduleController {
         stage.setScene(scene);
         stage.show();
     }
+
+    @FXML
+    private void handleRefreshButton() {
+        populateTable();
+        productionScheduleTable.refresh();
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Data Refreshed");
+        alert.setHeaderText(null);
+        alert.setContentText("Production schedule data has been refreshed.");
+        alert.showAndWait();
+    }
+
+    @FXML
+private void filterProductionSchedules(String filterCriteria) {
+    List<ProductionScheduleEntity> filteredList;
+
+    // Apply filter based on filter criteria
+    switch (filterCriteria.toLowerCase()) {
+        case "all":
+            filteredList = productionScheduleService.getAllProducts().stream()
+                    .filter(schedule -> !"archived".equals(schedule.getStatus()))
+                    .collect(Collectors.toList());
+            break;
+        case "sufficient":
+            filteredList = productionScheduleList.stream()
+                    .filter(schedule -> "Sufficient".equalsIgnoreCase(schedule.getlvlofstock()))
+                    .collect(Collectors.toList());
+            break;
+        case "low":
+            filteredList = productionScheduleList.stream()
+                    .filter(schedule -> "Low".equalsIgnoreCase(schedule.getlvlofstock()))
+                    .collect(Collectors.toList());
+            break;
+        case "empty":
+            filteredList = productionScheduleList.stream()
+                    .filter(schedule -> "Empty".equalsIgnoreCase(schedule.getlvlofstock()))
+                    .collect(Collectors.toList());
+            break;
+        case "expired":
+            filteredList = productionScheduleList.stream()
+                    .filter(schedule -> "Expired".equalsIgnoreCase(schedule.getExpiryStatus()))
+                    .collect(Collectors.toList());
+            break;
+        default:
+            // Default to showing all if criteria doesn't match any specific filter
+            filteredList = productionScheduleService.getAllProducts().stream()
+                    .filter(schedule -> !"archived".equals(schedule.getStatus()))
+                    .collect(Collectors.toList());
+            break;
+    }
+
+    // Update the table with the filtered list
+    productionScheduleList.setAll(filteredList);
+    productionScheduleTable.setItems(productionScheduleList);
+}
+
+@FXML
+private void handleFilterComboBox() {
+    String selectedFilter = filterComboBox.getValue();
+    filterProductionSchedules(selectedFilter);
+}
+
 }
