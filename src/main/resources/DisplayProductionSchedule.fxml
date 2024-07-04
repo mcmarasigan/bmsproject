@@ -28,7 +28,7 @@
          </columnResizePolicy>
       </TableView>
       <TextField fx:id="SearchTextfield" layoutX="22.0" layoutY="81.0" prefHeight="26.0" prefWidth="270.0" promptText="Type to Search..." />
-      <Button layoutX="314.0" layoutY="82.0" mnemonicParsing="false" onAction="#proceedtoAddProductionSched" style="-fx-background-color: #96735b;" text="Add Production" textFill="WHITE">
+      <Button layoutX="176.0" layoutY="431.0" mnemonicParsing="false" onAction="#proceedtoAddProductionSched" style="-fx-background-color: #96735b;" text="Add Production" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

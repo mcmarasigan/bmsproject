@@ -22,7 +22,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.scene.control.ChoiceBox;
 
 @Component
 public class IngredientRegController {
@@ -39,7 +38,7 @@ public class IngredientRegController {
     private DatePicker expirydate;
 
     @FXML
-    private ChoiceBox<String> UnitTypeIngChoiceBox;
+    private TextField unittype; // Changed from ChoiceBox to TextField
 
     @FXML
     private Button savebutton;
@@ -50,7 +49,6 @@ public class IngredientRegController {
     @FXML
     private void initialize() {
         expirydate.setDayCellFactory(getDateCellFactory());
-        UnitTypeIngChoiceBox.getItems().addAll("grams", "kilograms");
 
         // Add listeners to restrict input to numeric values only
         addNumericRestriction(price, true);
@@ -96,7 +94,7 @@ public class IngredientRegController {
         String priceStr = price.getText();
         String quantityStr = quantity.getText();
         LocalDate expiryDate = expirydate.getValue();
-        String unitType = UnitTypeIngChoiceBox.getValue();
+        String unitType = unittype.getText(); // Changed to get text from TextField
 
         if (ingredient == null || ingredient.isEmpty()) {
             showAlert(AlertType.ERROR, "Invalid Input", "Please enter the ingredient name.");
@@ -119,7 +117,7 @@ public class IngredientRegController {
         }
 
         if (unitType == null || unitType.isEmpty()) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please select the unit type.");
+            showAlert(AlertType.ERROR, "Invalid Input", "Please enter the unit type."); // Updated error message
             return;
         }
 

@@ -51,9 +51,6 @@ public class DisplayProductController {
     private TableColumn<ProductEntity, LocalDate> expiryTimeColumn;
 
     @FXML
-    private TableColumn<ProductEntity, String> imgLocationColumn;
-
-    @FXML
     private TableColumn<ProductEntity, Double> priceColumn;
 
     @FXML
@@ -112,7 +109,6 @@ private void initialize() {
         descriptionColumn.setCellValueFactory(cellData -> cellData.getValue().descriptionProperty());
         priceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         qtypeColumn.setCellValueFactory(cellData -> cellData.getValue().quantityTypeProperty());
-        imgLocationColumn.setCellValueFactory(cellData -> cellData.getValue().imglocationProperty());
         
         populateTable();
 
