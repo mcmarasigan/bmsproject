@@ -2,7 +2,6 @@ package com.groupten.bmsproject.FXMLControllers;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDate;
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,14 +19,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import com.groupten.bmsproject.BmsprojectApplication;
-import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Order.OrderEntity.DeliveryStatus;
 import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
-import com.groupten.bmsproject.Product.ProductService;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleEntity;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleService;
-import com.groupten.bmsproject.Product.ProductEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
@@ -40,9 +36,6 @@ public class OrderingController {
 
     @Autowired
     private ProductionScheduleService productionScheduleService;
-
-    @Autowired
-    private ProductService productService;
 
     @FXML
     private TextField CustomerNameTextField;
@@ -98,7 +91,10 @@ public class OrderingController {
     private void populateProductOrderChoiceBox() {
         List<ProductionScheduleEntity> availableProducts = productionScheduleService.getAllProducts();
         for (ProductionScheduleEntity product : availableProducts) {
-            ProductOrderChoiceBox.getItems().add(product.getId() + " - " + product.getProductname());
+            // Check if the product is not expired
+            if (!product.getExpdate().isBefore(LocalDate.now())) {
+                ProductOrderChoiceBox.getItems().add(product.getId() + " - " + product.getProductname());
+            }
         }
     }
 
@@ -106,7 +102,6 @@ public class OrderingController {
         // Extract the product ID from the ComboBox item
         String[] parts = productNameWithID.split(" - ");
         String productID = parts[0];
-        String productName = parts[1];
 
         ProductionScheduleEntity selectedProduct = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
         if (selectedProduct != null) {
@@ -151,10 +146,9 @@ public class OrderingController {
         PaymentStatus paymentStatus = PaymentStatusComboBox.getValue();
         DeliveryStatus deliveryStatus = DeliveryStatusComboBox.getValue();
 
-        // Get the selected product
-        ProductEntity selectedProduct = productService.getProductByID(Integer.parseInt(productID));
-
-        if (selectedProduct == null) {
+        // Get the selected production schedule entity
+        ProductionScheduleEntity productionSchedule = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
+        if (productionSchedule == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Product Error");
             alert.setHeaderText("Product not found");
@@ -164,20 +158,17 @@ public class OrderingController {
         }
 
         // Deduct the ordered quantity from the production schedule
-        ProductionScheduleEntity productionSchedule = productionScheduleService.getProductionScheduleById(Integer.parseInt(productID));
-        if (productionSchedule != null) {
-            Double remainingQuantity = productionSchedule.getQuantity() - quantityOrder;
-            if (remainingQuantity < 0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Insufficient Quantity");
-                alert.setHeaderText("Insufficient quantity of product");
-                alert.setContentText("The quantity ordered exceeds the available quantity of the product.");
-                alert.showAndWait();
-                return;
-            }
-            productionSchedule.setproductschedQuantity(remainingQuantity);
-            productionScheduleService.updateProductionSchedule(productionSchedule);
+        Double remainingQuantity = productionSchedule.getQuantity() - quantityOrder;
+        if (remainingQuantity < 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Insufficient Quantity");
+            alert.setHeaderText("Insufficient quantity of product");
+            alert.setContentText("The quantity ordered exceeds the available quantity of the product.");
+            alert.showAndWait();
+            return;
         }
+        productionSchedule.setproductschedQuantity(remainingQuantity);
+        productionScheduleService.updateProductionSchedule(productionSchedule);
 
         // Check for low stock products
         List<ProductionScheduleEntity> lowStockProducts = productionScheduleService.getAllProducts(); // Adjust as necessary to fetch only low stock products
