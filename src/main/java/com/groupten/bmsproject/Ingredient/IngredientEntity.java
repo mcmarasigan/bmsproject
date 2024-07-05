@@ -16,6 +16,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import java.time.temporal.ChronoUnit;
 
 @Entity
 public class IngredientEntity {
@@ -32,6 +33,8 @@ public class IngredientEntity {
     private LocalDate dateAdded;
     private String unitType;
     private String status;  // Add this field
+    private String expiryStatus;
+    private Integer numberOfDaysExp;
 
     public Integer getID() {
         return id;
@@ -105,6 +108,22 @@ public class IngredientEntity {
         this.status = status;
     }
 
+    public Integer getNumberOfDaysExp() {
+        return numberOfDaysExp;
+    }
+    
+    public void setNumberOfDaysExp(Integer numberOfDaysExp) {
+        this.numberOfDaysExp = numberOfDaysExp;
+    }
+
+    public String getExpiryStatus() {
+        return expiryStatus;
+    }
+    
+    public void setExpiryStatus(String expiryStatus) {
+        this.expiryStatus = expiryStatus;
+    }
+
  // Property methods for JavaFX TableView binding
      public IntegerProperty idProperty() {
         return new SimpleIntegerProperty(id);
@@ -128,5 +147,11 @@ public class IngredientEntity {
     
     public StringProperty unitTypeProperty() {
         return new SimpleStringProperty(unitType);
+    }
+
+    public IntegerProperty numberOfDaysExpProperty() {
+        // Calculate the number of days until expiration
+        long daysUntilExpiration = ChronoUnit.DAYS.between(dateAdded, expiryDate);
+        return new SimpleIntegerProperty((int) daysUntilExpiration);
     }
 }
