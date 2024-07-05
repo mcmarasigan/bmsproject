@@ -81,7 +81,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="59.0" layoutY="8.0" text="Ingredients" textFill="WHITE">
+            <Label layoutX="59.0" layoutY="8.0" text="Ingredients List" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
