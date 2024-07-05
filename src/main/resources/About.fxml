@@ -9,23 +9,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AboutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="999.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AboutController">
    <children>
       <Text fill="#96735b" layoutX="63.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" wrappingWidth="100.0">
          <font>
             <Font name="System Bold" size="28.0" />
          </font></Text>
-      <ImageView fitHeight="328.0" fitWidth="234.0" layoutX="6.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="471.0" fitWidth="457.0" layoutX="6.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/banners/image_security.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="600.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="794.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="251.0" layoutY="74.0" prefHeight="315.0" prefWidth="436.0">
+      <ScrollPane layoutX="370.0" layoutY="78.0" prefHeight="914.0" prefWidth="524.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -72,22 +72,22 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="153.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="153.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="154.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maria Clarissa Marasigan" wrappingWidth="185.60003662109375">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maria Clarissa Marasigan" wrappingWidth="185.60003662109375">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="158.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -97,12 +97,12 @@
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="150.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krysteen Clare Belen" wrappingWidth="158.4000244140625">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krysteen Clare Belen" wrappingWidth="158.4000244140625">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="155.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
                      <font>
                         <Font size="13.0" />
                      </font>

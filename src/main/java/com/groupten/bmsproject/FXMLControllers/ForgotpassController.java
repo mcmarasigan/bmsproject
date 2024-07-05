@@ -130,6 +130,12 @@ public class ForgotpassController {
             return;
         }
 
+        // Check if the new password is the same as the old password
+        if (isPasswordSameAsOld(email, password)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "New password cannot be the same as the old password.");
+            return;
+        }
+
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         String result = passwordService.updatePassword(email, hashedPassword);
         showAlert(Alert.AlertType.INFORMATION, "Success", result);
@@ -157,6 +163,16 @@ public class ForgotpassController {
 
     private boolean isPasswordSame(String password, String confirmedPassword) {
         return password.equals(confirmedPassword);
+    }
+
+    private boolean isPasswordSameAsOld(String email, String newPassword) {
+        String sql = "SELECT password FROM adminentity WHERE email = ?";
+        try {
+            String currentHashedPassword = jdbcTemplate.queryForObject(sql, String.class, email);
+            return BCrypt.checkpw(newPassword, currentHashedPassword);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
