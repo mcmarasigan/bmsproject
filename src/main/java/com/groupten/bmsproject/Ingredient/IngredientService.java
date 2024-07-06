@@ -24,11 +24,11 @@ public class IngredientService {
         newIngredient.setUnitType(unitType);
         
         // Calculate number of days until expiration and set the value
-        long daysUntilExpiration = ChronoUnit.DAYS.between(dateAdded, expiryTime);
+        long daysUntilExpiration = ChronoUnit.DAYS.between(LocalDate.now(), expiryTime);
         newIngredient.setNumberOfDaysExp((int) daysUntilExpiration);
 
-        // Set expiry status based on the number of days until expiration
-        String expiryStatus = daysUntilExpiration <= 0 ? "Expired" : "Valid";
+        // Set expiry status based on the current date and expiry date
+        String expiryStatus = !expiryTime.isAfter(LocalDate.now()) ? "Expired" : "Valid";
         newIngredient.setExpiryStatus(expiryStatus);
 
         ingredientRepository.save(newIngredient);
@@ -49,11 +49,11 @@ public class IngredientService {
             ingredientEntity.setLastUpdateTime(LocalDate.now());
 
             // Update number of days until expiration
-            long daysUntilExpiration = ChronoUnit.DAYS.between(ingredientEntity.getDateAdded(), expiryTime);
+            long daysUntilExpiration = ChronoUnit.DAYS.between(LocalDate.now(), expiryTime);
             ingredientEntity.setNumberOfDaysExp((int) daysUntilExpiration);
 
-            // Update expiry status based on the number of days until expiration
-            String expiryStatus = daysUntilExpiration <= 0 ? "Expired" : "Valid";
+            // Update expiry status based on the current date and expiry date
+            String expiryStatus = !expiryTime.isAfter(LocalDate.now()) ? "Expired" : "Valid";
             ingredientEntity.setExpiryStatus(expiryStatus);
 
             ingredientRepository.save(ingredientEntity);
@@ -121,5 +121,20 @@ public class IngredientService {
         ingredientRepository.save(ingredient);
     
         return "Ingredient removed from archived successfully.";
+    }
+
+    public void updateExpiryAndDaysUntilExpiration(IngredientEntity ingredient) {
+        long daysUntilExpiration = ChronoUnit.DAYS.between(LocalDate.now(), ingredient.getExpiryDate());
+        ingredient.setNumberOfDaysExp((int) daysUntilExpiration);
+        String expiryStatus = !ingredient.getExpiryDate().isAfter(LocalDate.now()) ? "Expired" : "Valid";
+        ingredient.setExpiryStatus(expiryStatus);
+        ingredientRepository.save(ingredient);
+    }
+
+    public void updateAllIngredients() {
+        List<IngredientEntity> ingredients = ingredientRepository.findAll();
+        for (IngredientEntity ingredient : ingredients) {
+            updateExpiryAndDaysUntilExpiration(ingredient);
+        }
     }
 }

@@ -79,31 +79,50 @@ public class DisplayIngredientController {
     }
 
     @FXML
-    private void initialize() {
-        editExpiryfield.setDayCellFactory(getDateCellFactory());
+private void initialize() {
+    editExpiryfield.setDayCellFactory(getDateCellFactory());
 
-        idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
-        IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
-        PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
-        QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityIngredientProperty().asObject());
-        UnitTypeIngColumn.setCellValueFactory(cellData -> cellData.getValue().unitTypeProperty());
-        ExpiryDateColumn.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
-        daystillexpireColumn.setCellValueFactory(cellData -> cellData.getValue().numberOfDaysExpProperty().asObject());
+    idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+    IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().IngredientProperty());
+    PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+    QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityIngredientProperty().asObject());
+    UnitTypeIngColumn.setCellValueFactory(cellData -> cellData.getValue().unitTypeProperty());
+    ExpiryDateColumn.setCellValueFactory(cellData -> cellData.getValue().expiryDateProperty());
 
-        populateTable();
 
-        IngredientTable.setRowFactory(tv -> {
-            TableRow<IngredientEntity> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
-                    selectedIngredient = row.getItem();
+    // Update all ingredients expiry and days until expiration
+    ingredientService.updateAllIngredients();
+
+    populateTable();
+
+    // Set row factory to mark expired rows red
+    IngredientTable.setRowFactory(tv -> {
+        TableRow<IngredientEntity> row = new TableRow<>();
+        row.itemProperty().addListener((obs, oldIngredient, newIngredient) -> {
+            if (newIngredient == null) {
+                row.setStyle("");
+            } else {
+                String status = newIngredient.getExpiryStatus();
+                if ("Expired".equals(status)) {
+                    row.setStyle("-fx-background-color: #ffcccc;"); // Red background for expired ingredients
+                } else {
+                    row.setStyle("");
                 }
-            });
-            return row;
+            }
         });
 
-        SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchIngredients(newValue));
-    }
+        row.setOnMouseClicked(event -> {
+            if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
+                selectedIngredient = row.getItem();
+            }
+        });
+
+        return row;
+    });
+
+    SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchIngredients(newValue));
+}
+
 
     private Callback<DatePicker, DateCell> getDateCellFactory() {
         return new Callback<DatePicker, DateCell>() {
