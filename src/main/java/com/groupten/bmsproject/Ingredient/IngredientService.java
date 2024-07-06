@@ -15,6 +15,11 @@ public class IngredientService {
     private IngredientRepository ingredientRepository;
 
     public String addNewIngredient(String ingredient, Double price, Double quantity, LocalDate expiryTime, LocalDate dateAdded, String unitType) {
+        // Check if the ingredient already exists
+        if (ingredientRepository.findByIngredient(ingredient) != null) {
+            return "Ingredient already exists.";
+        }
+
         IngredientEntity newIngredient = new IngredientEntity();
         newIngredient.setIngredient(ingredient);
         newIngredient.setPrice(price);
@@ -33,7 +38,7 @@ public class IngredientService {
 
         ingredientRepository.save(newIngredient);
     
-        return "Saved";
+        return "Ingredient added successfully.";
     }
 
     public String updateIngredient(Integer id, String ingredient, Double price, Double quantity, LocalDate expiryTime, String unitType) {

@@ -5,6 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +39,9 @@ public class ProductionScheduleEntity {
     private LocalDate dateAdded;
     private String status;  // Add this field
     private String expiryStatus; // Add this field
+
+    @Column(name = "product_id", nullable = false)
+    private Integer productId;
 
      @OneToMany(fetch = FetchType.EAGER, mappedBy = "productionSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProductionIngredient> ingredient;
@@ -120,6 +124,14 @@ public class ProductionScheduleEntity {
 
     public void setExpiryStatus(String expiryStatus) {
         this.expiryStatus = expiryStatus;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
      // Property methods for JavaFX TableView binding

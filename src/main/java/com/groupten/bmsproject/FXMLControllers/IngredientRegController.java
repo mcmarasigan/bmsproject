@@ -89,63 +89,67 @@ public class IngredientRegController {
     }
 
     @FXML
-    private void handleSaveButton() {
-        String ingredient = ingredienttxt.getText();
-        String priceStr = price.getText();
-        String quantityStr = quantity.getText();
-        LocalDate expiryDate = expirydate.getValue();
-        String unitType = unittype.getText(); // Changed to get text from TextField
+private void handleSaveButton() {
+    String ingredient = ingredienttxt.getText();
+    String priceStr = price.getText();
+    String quantityStr = quantity.getText();
+    LocalDate expiryDate = expirydate.getValue();
+    String unitType = unittype.getText(); // Changed to get text from TextField
 
-        if (ingredient == null || ingredient.isEmpty()) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please enter the ingredient name.");
-            return;
-        }
-
-        if (priceStr == null || priceStr.isEmpty()) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please enter the price.");
-            return;
-        }
-
-        if (quantityStr == null || quantityStr.isEmpty()) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please enter the quantity.");
-            return;
-        }
-
-        if (expiryDate == null) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please select the expiry date.");
-            return;
-        }
-
-        if (unitType == null || unitType.isEmpty()) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please enter the unit type."); // Updated error message
-            return;
-        }
-
-        try {
-            Double price = Double.parseDouble(priceStr);
-            Double quantity = Double.parseDouble(quantityStr);
-
-            if (price <= 0) {
-                showAlert(AlertType.ERROR, "Invalid Input", "Price must be greater than zero.");
-                return;
-            }
-
-            if (quantity <= 0) {
-                showAlert(AlertType.ERROR, "Invalid Input", "Quantity must be greater than zero.");
-                return;
-            }
-
-            LocalDate dateAdded = LocalDate.now();
-
-            String result = ingredientService.addNewIngredient(ingredient, price, quantity, expiryDate, dateAdded, unitType);
-            System.out.println(result);
-
-            showAlert(AlertType.INFORMATION, "Success", "Ingredient added successfully!");
-
-        } catch (NumberFormatException e) {
-            showAlert(AlertType.ERROR, "Invalid Input", "Please enter a valid number for price and quantity.");
-        }
+    if (ingredient == null || ingredient.isEmpty()) {
+        showAlert(AlertType.ERROR, "Invalid Input", "Please enter the ingredient name.");
+        return;
     }
+
+    if (priceStr == null || priceStr.isEmpty()) {
+        showAlert(AlertType.ERROR, "Invalid Input", "Please enter the price.");
+        return;
+    }
+
+    if (quantityStr == null || quantityStr.isEmpty()) {
+        showAlert(AlertType.ERROR, "Invalid Input", "Please enter the quantity.");
+        return;
+    }
+
+    if (expiryDate == null) {
+        showAlert(AlertType.ERROR, "Invalid Input", "Please select the expiry date.");
+        return;
+    }
+
+    if (unitType == null || unitType.isEmpty()) {
+        showAlert(AlertType.ERROR, "Invalid Input", "Please enter the unit type."); // Updated error message
+        return;
+    }
+
+    try {
+        Double price = Double.parseDouble(priceStr);
+        Double quantity = Double.parseDouble(quantityStr);
+
+        if (price <= 0) {
+            showAlert(AlertType.ERROR, "Invalid Input", "Price must be greater than zero.");
+            return;
+        }
+
+        if (quantity <= 0) {
+            showAlert(AlertType.ERROR, "Invalid Input", "Quantity must be greater than zero.");
+            return;
+        }
+
+        LocalDate dateAdded = LocalDate.now();
+
+        String result = ingredientService.addNewIngredient(ingredient, price, quantity, expiryDate, dateAdded, unitType);
+
+        if (result.equals("Ingredient already exists.")) {
+            showAlert(AlertType.ERROR, "Duplicate Ingredient", "The ingredient already exists.");
+        } else {
+            showAlert(AlertType.INFORMATION, "Success", result);
+        }
+
+    } catch (NumberFormatException e) {
+        showAlert(AlertType.ERROR, "Invalid Input", "Please enter a valid number for price and quantity.");
+    }
+}
+
 
     private void showAlert(AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);

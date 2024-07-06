@@ -24,6 +24,8 @@ import com.groupten.bmsproject.Order.OrderEntity.PaymentStatus;
 import com.groupten.bmsproject.Order.OrderService;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleEntity;
 import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleService;
+import com.groupten.bmsproject.Product.ProductEntity;
+import com.groupten.bmsproject.Product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
@@ -37,6 +39,9 @@ public class OrderingController {
     @Autowired
     private ProductionScheduleService productionScheduleService;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @FXML
     private TextField CustomerNameTextField;
 
@@ -48,6 +53,12 @@ public class OrderingController {
 
     @FXML
     private ChoiceBox<String> ProductOrderChoiceBox;
+
+    @FXML
+    private TextField productPrice;
+
+    @FXML
+    private TextField totalAmount;
 
     @FXML
     private TextField remainingProductQuantity;
@@ -86,6 +97,11 @@ public class OrderingController {
                 updateProductDetails(newValue);
             }
         });
+
+        // Add listener to calculate total amount when quantity is changed
+        QuantityOrderTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            calculateTotalAmount();
+        });
     }
 
     private void populateProductOrderChoiceBox() {
@@ -107,6 +123,35 @@ public class OrderingController {
         if (selectedProduct != null) {
             remainingProductQuantity.setText(String.valueOf(selectedProduct.getQuantity()));
             productUnitType.setText(selectedProduct.getlvlofstock());
+
+            // Fetch product price from ProductEntity using the product name
+            String productName = selectedProduct.getProductname();
+            ProductEntity product = productRepository.findByProductname(productName);
+            if (product != null) {
+                productPrice.setText(String.valueOf(product.price()));
+                calculateTotalAmount();
+            } else {
+                // Handle the case where the product is not found
+                productPrice.setText("N/A");
+            }
+        }
+    }
+
+    private void calculateTotalAmount() {
+        String quantityStr = QuantityOrderTextField.getText();
+        String priceStr = productPrice.getText();
+
+        if (quantityStr != null && !quantityStr.isEmpty() && priceStr != null && !priceStr.isEmpty()) {
+            try {
+                Double quantity = Double.parseDouble(quantityStr);
+                Double price = Double.parseDouble(priceStr);
+                Double total = quantity * price;
+                totalAmount.setText(String.valueOf(total));
+            } catch (NumberFormatException e) {
+                totalAmount.setText("0.0");
+            }
+        } else {
+            totalAmount.setText("0.0");
         }
     }
 

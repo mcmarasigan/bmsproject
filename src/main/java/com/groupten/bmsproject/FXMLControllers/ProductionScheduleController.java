@@ -6,6 +6,7 @@ import com.groupten.bmsproject.ProductionSchedule.ProductionScheduleService;
 import com.groupten.bmsproject.BmsprojectApplication;
 import com.groupten.bmsproject.Ingredient.IngredientEntity;
 import com.groupten.bmsproject.Ingredient.IngredientService;
+import com.groupten.bmsproject.Product.ProductEntity;
 import com.groupten.bmsproject.Product.ProductService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -102,56 +103,99 @@ public class ProductionScheduleController {
     }
 
     @FXML
-    private void handleSaveButton() {
-        if (ingredientData.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("No Ingredients");
-            alert.setHeaderText(null);
-            alert.setContentText("Please add at least one ingredient before saving.");
-            alert.showAndWait();
-            return;
-        }
-
-        String productName = productChoiceBox.getValue();
-        Double quantity = Double.parseDouble(quantityField.getText());
-        LocalDate dateOfProduction = dateofproductionPicker.getValue();
-        LocalDate expDate = expdatePicker.getValue();
-        long numberOfDays = ChronoUnit.DAYS.between(dateOfProduction, expDate);
-    
-        ProductionScheduleEntity productionSchedule = new ProductionScheduleEntity();
-        productionSchedule.setproductName(productName);
-        productionSchedule.setproductschedQuantity(quantity);
-        productionSchedule.setdateofProduction(dateOfProduction);
-        productionSchedule.setexpDate(expDate);
-        productionSchedule.setnumberofdaysexp((int) numberOfDays);
-        productionSchedule.setlvlofstock(quantity < 10 ? "Low" : "Sufficient");
-        if (numberOfDays <= 0) {
-            productionSchedule.setExpiryStatus("Expired");
-        } else {
-            productionSchedule.setExpiryStatus("Valid");
-        }
-    
-        productionScheduleService.save(productionSchedule);
-    
-        RecipeTable.getItems().forEach(row -> {
-            ProductionIngredient productionIngredient = new ProductionIngredient();
-            productionIngredient.setProductionschedule(productionSchedule);
-    
-            IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
-            productionIngredient.setIngredientid(ingredient);
-            productionIngredient.setQuantity(row.getQuantity());
-            productionIngredient.setUnitType(row.getUnitType());
-    
-            productionScheduleService.saveProductionIngredient(productionIngredient);
-        });
-    
-        // Show success dialog
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Production Schedule Saved");
+private void handleSaveButton() {
+    if (ingredientData.isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("No Ingredients");
         alert.setHeaderText(null);
-        alert.setContentText("Production schedule and ingredients saved successfully!");
+        alert.setContentText("Please add at least one ingredient before saving.");
         alert.showAndWait();
+        return;
     }
+
+    String productName = productChoiceBox.getValue();
+    if (productName == null || productName.trim().isEmpty()) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid Input");
+        alert.setHeaderText(null);
+        alert.setContentText("Please select a product.");
+        alert.showAndWait();
+        return;
+    }
+
+    Double quantity = null;
+    try {
+        quantity = Double.parseDouble(quantityField.getText());
+    } catch (NumberFormatException e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid Input");
+        alert.setHeaderText(null);
+        alert.setContentText("Quantity must be a valid number.");
+        alert.showAndWait();
+        return;
+    }
+
+    LocalDate dateOfProduction = dateofproductionPicker.getValue();
+    LocalDate expDate = expdatePicker.getValue();
+    if (dateOfProduction == null || expDate == null || dateOfProduction.isAfter(expDate)) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid Dates");
+        alert.setHeaderText(null);
+        alert.setContentText("Please select valid production and expiry dates.");
+        alert.showAndWait();
+        return;
+    }
+
+    long numberOfDays = ChronoUnit.DAYS.between(dateOfProduction, expDate);
+
+    ProductionScheduleEntity productionSchedule = new ProductionScheduleEntity();
+    productionSchedule.setproductName(productName);
+    productionSchedule.setproductschedQuantity(quantity);
+    productionSchedule.setdateofProduction(dateOfProduction);
+    productionSchedule.setexpDate(expDate);
+    productionSchedule.setnumberofdaysexp((int) numberOfDays);
+    productionSchedule.setlvlofstock(quantity < 10 ? "Low" : "Sufficient");
+    if (numberOfDays <= 0) {
+        productionSchedule.setExpiryStatus("Expired");
+    } else {
+        productionSchedule.setExpiryStatus("Valid");
+    }
+
+    // Fetch and set the product entity
+    ProductEntity productEntity = productService.getProductByName(productName);
+    if (productEntity != null) {
+        productionSchedule.setProductId(productEntity.getID());
+    } else {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Product Not Found");
+        alert.setHeaderText(null);
+        alert.setContentText("Selected product does not exist.");
+        alert.showAndWait();
+        return;
+    }
+
+    productionScheduleService.save(productionSchedule);
+
+    RecipeTable.getItems().forEach(row -> {
+        ProductionIngredient productionIngredient = new ProductionIngredient();
+        productionIngredient.setProductionschedule(productionSchedule);
+
+        IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
+        productionIngredient.setIngredientid(ingredient);
+        productionIngredient.setQuantity(row.getQuantity());
+        productionIngredient.setUnitType(row.getUnitType());
+
+        productionScheduleService.saveProductionIngredient(productionIngredient);
+    });
+
+    // Show success dialog
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Production Schedule Saved");
+    alert.setHeaderText(null);
+    alert.setContentText("Production schedule and ingredients saved successfully!");
+    alert.showAndWait();
+}
+
     
     @FXML
     private void openAddIngredientDialog() throws IOException {

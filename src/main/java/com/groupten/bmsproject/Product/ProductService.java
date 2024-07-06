@@ -17,6 +17,11 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public String addNewProduct(String productname, String description, Double price, QuantityType quantitytype, String imglocation, LocalDate dateAdded) {
+        // Check if a product with the same name already exists
+        if (productRepository.findByProductname(productname) != null) {
+            return "Product with the same name already exists.";
+        }
+
         ProductEntity newProduct = new ProductEntity();
         newProduct.setproductName(productname);
         newProduct.setprodDescription(description);
@@ -53,22 +58,13 @@ public class ProductService {
         Optional<ProductEntity> product = productRepository.findById(id);
         return product.orElse(null);
     }
-    /* 
-    public List<ProductEntity> getAvailableProducts() {
-        return productRepository.findByQuantityGreaterThan(0);
-    }
-
-    public List<ProductEntity> getLowStockProducts(int threshold) {
-        return productRepository.findByQuantityLessThanEqual(threshold);
-    }
-    */
 
     // Get product with name
     public ProductEntity getProductByName(String productname) {
         return productRepository.findByProductname(productname);
     }
 
-    // Archive produts
+    // Archive products
     public String archiveProduct(Integer productId) {
         // Retrieve the product by ID
         ProductEntity product = productRepository.findById(productId).orElse(null);
@@ -84,7 +80,7 @@ public class ProductService {
         return "Product archived successfully.";
     }
 
-    // Remove Archived produts
+    // Remove Archived products
     public String removeArchivedProduct(Integer productId) {
         // Retrieve the product by ID
         ProductEntity product = productRepository.findById(productId).orElse(null);
