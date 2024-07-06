@@ -22,7 +22,7 @@ public class AddIngredientDialogController {
     private TextField QuantityDialogField;
 
     @FXML
-    private ComboBox<String> UnitTypeDialogCombobox;
+    private TextField unitType;
 
     @Autowired
     private IngredientService ingredientService;
@@ -32,15 +32,13 @@ public class AddIngredientDialogController {
     @FXML
     private void initialize() {
         populateIngredientNameComboBox();
-        populateUnitTypeComboBox();
 
         IngredientNameDialogCombobox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                // Optionally, you can still fetch and display unit type if needed
-                // IngredientEntity ingredient = ingredientService.findByName(newValue);
-                // if (ingredient != null) {
-                //     unitType.setText(ingredient.getUnitType());
-                // }
+                IngredientEntity ingredient = ingredientService.findByName(newValue);
+                if (ingredient != null) {
+                    unitType.setText(ingredient.getUnitType());
+                }
             }
         });
     }
@@ -52,18 +50,15 @@ public class AddIngredientDialogController {
             System.out.println("No ingredients found"); // Debug log
         } else {
             for (IngredientEntity ingredient : ingredients) {
-                if (!"archived".equalsIgnoreCase(ingredient.getStatus())) {
+                if (!"archived".equalsIgnoreCase(ingredient.getStatus()) &&
+                    !"Expired".equalsIgnoreCase(ingredient.getExpiryStatus())) {
                     System.out.println("Found active ingredient: " + ingredient.getIngredient()); // Debug log
                     IngredientNameDialogCombobox.getItems().add(ingredient.getIngredient());
+                }
             }
             // Debug log for ComboBox items
             System.out.println("Ingredients added to ComboBox: " + IngredientNameDialogCombobox.getItems());
         }
-    }
-    }
-
-    private void populateUnitTypeComboBox() {
-        UnitTypeDialogCombobox.getItems().addAll("grams", "kilograms");
     }
 
     @FXML
@@ -91,7 +86,7 @@ public class AddIngredientDialogController {
                 // Fetch the ingredient entity
                 IngredientEntity ingredient = ingredientService.findByName(ingredientName);
                 if (ingredient != null) {
-                    String unitTypeValue = UnitTypeDialogCombobox.getValue(); // Retrieve the unit type from the ComboBox
+                    String unitTypeValue = ingredient.getUnitType(); // Retrieve the unit type from the IngredientEntity
 
                     // Add ingredient to the table in ProductionScheduleController
                     productionScheduleController.addIngredientToTable(ingredientName, quantity, unitTypeValue);

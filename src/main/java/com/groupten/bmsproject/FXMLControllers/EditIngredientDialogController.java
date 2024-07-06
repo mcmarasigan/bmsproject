@@ -7,9 +7,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import javafx.stage.Stage;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class EditIngredientDialogController {
     private TextField QuantityDialogField;
 
     @FXML
-    private ComboBox<String> UnitTypeDialogCombobox;
+    private TextField unitType;
 
     @Autowired
     private IngredientService ingredientService;
@@ -33,7 +33,15 @@ public class EditIngredientDialogController {
     @FXML
     private void initialize() {
         populateIngredientNameComboBox();
-        populateUnitTypeComboBox();
+
+        IngredientNameDialogCombobox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                IngredientEntity ingredient = ingredientService.findByName(newValue);
+                if (ingredient != null) {
+                    unitType.setText(ingredient.getUnitType());
+                }
+            }
+        });
     }
 
     public void setEditProductionsController(EditProductions editProductionsController) {
@@ -43,36 +51,43 @@ public class EditIngredientDialogController {
     private void populateIngredientNameComboBox() {
         List<IngredientEntity> ingredients = ingredientService.getAllIngredients();
         for (IngredientEntity ingredient : ingredients) {
-            IngredientNameDialogCombobox.getItems().add(ingredient.getIngredient());
+            if (!"archived".equalsIgnoreCase(ingredient.getStatus()) &&
+                !"Expired".equalsIgnoreCase(ingredient.getExpiryStatus())) {
+                IngredientNameDialogCombobox.getItems().add(ingredient.getIngredient());
+            }
         }
-    }
-
-    private void populateUnitTypeComboBox() {
-        UnitTypeDialogCombobox.getItems().addAll("grams", "kilograms");
     }
 
     @FXML
     private void handleAddButton() {
         String ingredientName = IngredientNameDialogCombobox.getValue();
         String quantityStr = QuantityDialogField.getText();
-        String unitTypeValue = UnitTypeDialogCombobox.getValue();
 
         if (ingredientName != null && !ingredientName.isEmpty() &&
-            quantityStr != null && !quantityStr.isEmpty() &&
-            unitTypeValue != null && !unitTypeValue.isEmpty()) {
+            quantityStr != null && !quantityStr.isEmpty()) {
 
             try {
                 Double quantity = Double.parseDouble(quantityStr);
 
+                // Validate quantity
                 if (quantity <= 0) {
                     Alert alert = new Alert(AlertType.ERROR);
                     alert.setTitle("Invalid Quantity");
                     alert.setHeaderText(null);
-                    alert.setContentText("The quantity must be greater than zero.");
+                    alert.setContentText("Quantity must be greater than zero.");
                     alert.showAndWait();
-                } else {
+                    return; // Exit method if quantity is invalid
+                }
+
+                // Fetch the ingredient entity
+                IngredientEntity ingredient = ingredientService.findByName(ingredientName);
+                if (ingredient != null) {
+                    String unitTypeValue = ingredient.getUnitType(); // Retrieve the unit type from the IngredientEntity
+
+                    // Add ingredient to the table in EditProductions
                     editProductionsController.addIngredientToTable(ingredientName, quantity, unitTypeValue);
 
+                    // Show success dialog
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Ingredient Added");
                     alert.setHeaderText(null);
@@ -81,15 +96,24 @@ public class EditIngredientDialogController {
 
                     Stage stage = (Stage) QuantityDialogField.getScene().getWindow();
                     stage.close();
+                } else {
+                    // Show error dialog for invalid ingredient selection
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setTitle("Invalid Ingredient");
+                    alert.setHeaderText(null);
+                    alert.setContentText("The selected ingredient is out of stock or invalid.");
+                    alert.showAndWait();
                 }
             } catch (NumberFormatException e) {
+                // Show error dialog for non-numeric quantity
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Invalid Quantity");
                 alert.setHeaderText(null);
-                alert.setContentText("Please enter a valid number for the quantity.");
+                alert.setContentText("Quantity must be a valid number.");
                 alert.showAndWait();
             }
         } else {
+            // Show error dialog for empty fields
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Invalid Input");
             alert.setHeaderText(null);
