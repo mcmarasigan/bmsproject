@@ -110,7 +110,7 @@ public class ProductRegController {
         String imagelocation = imgdirectory.getText();
 
         String result = prdctService.addNewProduct(productname, productdesc, price, type, imagelocation, dateAdded);
-        showAlert(AlertType.ERROR, "Duplicate Product", result);
+        showAlert(AlertType.INFORMATION, "Product Registered", result);
 
         String loggedInUser = adminService.getLoggedInUser(); // Retrieve logged-in user info
         System.out.println("Logged-in User: " + loggedInUser);
