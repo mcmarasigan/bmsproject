@@ -53,10 +53,14 @@ public class ReportService {
         } else if (reportTemplate.contains("IngredientUsed")) {
             data = productioningredientRepository.findAll();
             reportType = "IngredientUsedReport";
+        } else if (reportTemplate.contains("Security")) {
+            data = securitylogsRepository.findAll();
+            reportType = "SecurityLogReport";
         } else{
             data = productionScheduleRepository.findAll();
             reportType = "ProductionReport";
         }
+
 
         File file = ResourceUtils.getFile("classpath:ReportTemplate/" + reportTemplate);
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());

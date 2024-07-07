@@ -3,12 +3,10 @@
 	<parameter name="REPORT_ID" class="java.lang.String"/>
 	<parameter name="userEmail" class="java.lang.String"/>
 	
-	<field name="username" class="java.lang.String">
-	</field>
-	<field name="activityLog" class="java.lang.String">
-	</field>
-	<field name="timestamp" class="java.lang.String">
-	</field>
+	<field name="username" class="java.lang.String"/>
+	<field name="activityLog" class="java.lang.String"/>
+	<field name="timestamp" class="java.lang.String"/>
+
 	<background splitType="Stretch"/>
 	<title height="60" splitType="Stretch">
 		<element kind="staticText" uuid="e475e3e7-578a-4bf7-b25d-9c438be3310d" positionType="Float" x="63" y="31" width="435" height="29" fontSize="11.0" hTextAlign="Center" vTextAlign="Middle">

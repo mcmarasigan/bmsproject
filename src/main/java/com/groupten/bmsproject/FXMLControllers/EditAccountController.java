@@ -38,7 +38,7 @@ public class EditAccountController {
         this.selectedAccount = account;
         if (account != null) {
             emailField.setText(account.getEmail());
-            unameField.setText(account.getuserName());
+            unameField.setText(account.getUsername());
             fnameField.setText(account.getfirstName());
             lnameField.setText(account.getlastName());
         }
@@ -56,7 +56,7 @@ public class EditAccountController {
         // Save logic here
         if (selectedAccount != null) {
             selectedAccount.setEmail(emailField.getText());
-            selectedAccount.setuserName(unameField.getText());
+            selectedAccount.setUsername(unameField.getText());
             selectedAccount.setfirstName(fnameField.getText());
             selectedAccount.setlastName(lnameField.getText());
             // Call service to save updated account information
