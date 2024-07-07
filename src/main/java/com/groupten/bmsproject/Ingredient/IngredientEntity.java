@@ -32,7 +32,7 @@ public class IngredientEntity {
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
     private String unitType;
-    private String status;  // Add this field
+    private String status = "active";  // Add this field
     private String expiryStatus;
     private Integer numberOfDaysExp;
 

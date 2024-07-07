@@ -33,38 +33,36 @@ public class SalesService {
                                 && order.getorderDeliveryStatus() == OrderEntity.DeliveryStatus.DELIVERED)
                 .collect(Collectors.toList());
 
-        // Convert orders to sales entities
-        List<SalesEntity> salesEntities = convertToSalesEntities(paidAndDeliveredOrders);
+        // Convert orders to sales entities and save them to the database if they don't already exist
+        List<SalesEntity> salesEntities = paidAndDeliveredOrders.stream()
+                .map(this::convertToSalesEntity)
+                .filter(salesEntity -> !salesRepository.existsById(salesEntity.getId())) // Check if sales entity already exists
+                .collect(Collectors.toList());
 
-        // Save sales entities to the database
         salesRepository.saveAll(salesEntities);
 
         return salesEntities;
     }
 
-    private List<SalesEntity> convertToSalesEntities(List<OrderEntity> orders) {
-        return orders.stream()
-                .map(order -> {
-                    SalesEntity salesEntity = new SalesEntity();
-                    salesEntity.setId(order.getID());
-                    salesEntity.setCustomerName(order.getorderCustomerName());
-                    salesEntity.setDatePurchased(order.getorderDateOrder());
-                    salesEntity.setProductOrder(order.getorderProductOrder());
-                    salesEntity.setQuantityOrder(order.getorderQuantityOrder());
-                    salesEntity.setPaymentStatus(order.getorderPaymentStatus());
-                    salesEntity.setDeliveryStatus(order.getorderDeliveryStatus());
+    private SalesEntity convertToSalesEntity(OrderEntity order) {
+        SalesEntity salesEntity = new SalesEntity();
+        salesEntity.setId(order.getID());
+        salesEntity.setCustomerName(order.getorderCustomerName());
+        salesEntity.setDatePurchased(order.getorderDateOrder());
+        salesEntity.setProductOrder(order.getorderProductOrder());
+        salesEntity.setQuantityOrder(order.getorderQuantityOrder());
+        salesEntity.setPaymentStatus(order.getorderPaymentStatus());
+        salesEntity.setDeliveryStatus(order.getorderDeliveryStatus());
 
-                    // Fetch product price from ProductEntity
-                    Double productPrice = getProductPrice(order.getorderProductOrder());
-                    salesEntity.setProductPrice(productPrice);
+        // Fetch product price from ProductEntity
+        Double productPrice = getProductPrice(order.getorderProductOrder());
+        salesEntity.setProductPrice(productPrice);
 
-                    // Calculate total amount
-                    Double totalAmount = productPrice * order.getorderQuantityOrder();
-                    salesEntity.setTotalAmount(totalAmount);
+        // Calculate total amount
+        Double totalAmount = productPrice * order.getorderQuantityOrder();
+        salesEntity.setTotalAmount(totalAmount);
 
-                    return salesEntity;
-                })
-                .collect(Collectors.toList());
+        return salesEntity;
     }
 
     private Double getProductPrice(String productName) {

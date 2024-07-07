@@ -57,6 +57,7 @@ public class SecurityLogsController {
     }
 
     private void loadSecurityLogs() {
+        securityLogsList.clear();
         List<SecurityLogs> logs = securityLogsService.getAllSecurityLogs();
         securityLogsList.addAll(logs);
         securityLogsTable.setItems(securityLogsList);
