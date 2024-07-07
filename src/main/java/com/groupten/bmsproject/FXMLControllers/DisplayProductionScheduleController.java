@@ -199,6 +199,7 @@ public class DisplayProductionScheduleController {
             .collect(Collectors.toList());
 
         LocalDate currentDate = LocalDate.now();
+        boolean hasExpired = false;
 
         for (ProductionScheduleEntity schedule : schedules) {
             if (schedule.getQuantity() == 0) {
@@ -211,12 +212,22 @@ public class DisplayProductionScheduleController {
 
             if (currentDate.isAfter(schedule.getExpdate()) || currentDate.isEqual(schedule.getExpdate())) {
                 schedule.setExpiryStatus("Expired");
+                hasExpired = true;
             } else {
                 schedule.setExpiryStatus("Valid");
             }
 
             // Save the updated schedule back to the database
             productionScheduleService.updateProductionSchedule(schedule);
+        }
+
+        // Show an alert if there are any expired schedules
+        if (hasExpired) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Expired Productions Detected");
+            alert.setHeaderText(null);
+            alert.setContentText("Some production schedules have expired. Please review them.");
+            alert.showAndWait();
         }
     }
 
