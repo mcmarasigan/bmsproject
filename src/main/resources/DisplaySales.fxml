@@ -11,19 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="916.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplaySalesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplaySalesController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="916.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="916.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bar.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="SalesTable" layoutX="21.0" layoutY="155.0" prefHeight="387.0" prefWidth="881.0">
+      <TableView fx:id="SalesTable" layoutX="9.0" layoutY="155.0" prefHeight="387.0" prefWidth="881.0">
         <columns>
           <TableColumn fx:id="SalesIdColumn" prefWidth="65.0" text="Sales ID" />
           <TableColumn fx:id="CustomerNameSalesColumn" prefWidth="191.0" text="Customer Name" />
@@ -37,12 +27,12 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="21.0" layoutY="113.0" prefHeight="25.0" prefWidth="247.0" promptText="Type to Search..." />
-      <Pane prefHeight="40.0" prefWidth="916.0" style="-fx-background-color: #96735b;">
+      <TextField fx:id="SearchTextfield" layoutX="9.0" layoutY="113.0" prefHeight="36.0" prefWidth="264.0" promptText="Type to Search..." />
+      <Pane prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="67.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales">
+            <Text fill="WHITE" layoutX="61.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
             <Button layoutX="12.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="40.0" prefWidth="43.0" style="-fx-background-color: none;">

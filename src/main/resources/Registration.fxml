@@ -8,31 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.RegistrationFXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.RegistrationFXMLController">
    <children>
-      <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
+      <Button fx:id="prdctregButton" layoutX="296.0" layoutY="209.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="111.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/buttons/product_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="invregButton" layoutX="179.0" layoutY="256.0" mnemonicParsing="false" onAction="#proceedtoIngredient" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
+      <Button fx:id="invregButton" layoutX="277.0" layoutY="284.0" mnemonicParsing="false" onAction="#proceedtoIngredient" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="95.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="125.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/buttons/ingredient_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" layoutX="1.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
       <Button fx:id="backButton" layoutX="28.0" layoutY="166.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;" />
-      <Pane layoutY="-1.0" prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
+      <Pane layoutY="-1.0" prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
             <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
                <font>

@@ -14,14 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="802.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayIngredientController">
    <children>
-      <ImageView fitHeight="105.0" fitWidth="810.0" layoutX="-1.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="IngredientTable" layoutX="25.0" layoutY="138.0" prefHeight="257.0" prefWidth="759.0" snapToPixel="false">
+      <TableView fx:id="IngredientTable" layoutX="10.0" layoutY="182.0" prefHeight="257.0" prefWidth="880.0" snapToPixel="false">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="43.0" text="Id" />
           <TableColumn fx:id="IngredientNameColumn" prefWidth="179.20001220703125" text="Ingredient Name" />
@@ -35,17 +30,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="25.0" layoutY="102.0" prefHeight="26.0" prefWidth="225.0" promptText="Type to Search..." />
+      <TextField fx:id="SearchTextfield" layoutX="10.0" layoutY="138.0" prefHeight="36.0" prefWidth="224.0" promptText="Type to Search..." />
       <Button layoutY="-4.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="16.0" prefWidth="28.0" style="-fx-background-color: none;" textFill="WHITE" />
-      <Button layoutX="188.0" layoutY="400.0" mnemonicParsing="false" onAction="#proceedtoIngredientreg" style="-fx-background-color: #96735b;" text="Add new Ingredient" textFill="WHITE">
+      <Button layoutX="177.0" layoutY="455.0" mnemonicParsing="false" onAction="#proceedtoIngredientreg" prefHeight="36.0" style="-fx-background-color: #96735b;" text="Add new Ingredient" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="25.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Archive Row" textFill="WHITE">
+      <Button layoutX="14.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleArchiveButton" prefHeight="36.0" style="-fx-background-color: #96735b;" text="Archive Row" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="119.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditButton" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE">
+      <Button layoutX="108.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="36.0" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -68,9 +63,9 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <Pane layoutX="-1.0" prefHeight="40.0" prefWidth="810.0" style="-fx-background-color: #96735b;">
+      <Pane layoutY="-3.0" prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
-            <Button layoutX="10.0" layoutY="2.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="40.0" prefWidth="41.0" style="-fx-background-color: none;" textFill="#96735b">
+            <Button layoutY="7.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="40.0" prefWidth="41.0" style="-fx-background-color: none;" textFill="#96735b">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -82,9 +77,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="59.0" layoutY="8.0" text="Ingredients List" textFill="WHITE">
+            <Label layoutX="46.0" layoutY="10.0" text="Ingredients" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>

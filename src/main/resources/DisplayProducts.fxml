@@ -14,14 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="794.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayProductController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.DisplayProductController">
    <children>
-      <ImageView fitHeight="103.0" fitWidth="794.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="productTable" layoutX="11.0" layoutY="182.0" prefHeight="262.0" prefWidth="768.0">
+      <TableView fx:id="productTable" layoutX="10.0" layoutY="182.0" prefHeight="262.0" prefWidth="880.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="81.60000419616699" text="Product ID" />
           <TableColumn fx:id="productNameColumn" prefWidth="159.19998931884766" text="Product" />
@@ -33,8 +28,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="SearchTextfield" layoutX="17.0" layoutY="95.0" prefHeight="25.0" prefWidth="222.0" promptText="Type to Search..." />
-      <Button layoutX="171.0" layoutY="449.0" mnemonicParsing="false" onAction="#proceedtoProductreg" style="-fx-background-color: #96735b;" text="Register New Product" textFill="WHITE">
+      <TextField fx:id="SearchTextfield" layoutX="10.0" layoutY="138.0" prefHeight="36.0" prefWidth="224.0" promptText="Type to Search..." />
+      <Button layoutX="171.0" layoutY="455.0" mnemonicParsing="false" onAction="#proceedtoProductreg" prefHeight="36.0" style="-fx-background-color: #96735b;" text="Register New Product" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -46,11 +41,11 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="9.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleArchiveButton" style="-fx-background-color: #96735b;" text="Archive Row" textFill="WHITE">
+      <Button layoutX="9.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleArchiveButton" prefHeight="36.0" style="-fx-background-color: #96735b;" text="Archive Row" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="103.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleEditButton" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE">
+      <Button layoutX="103.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleEditButton" prefHeight="36.0" style="-fx-background-color: #96735b;" text="Edit row" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -80,9 +75,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Pane prefHeight="42.0" prefWidth="794.0" style="-fx-background-color: #96735b;">
+      <Pane prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
-            <Button layoutX="7.0" layoutY="-5.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="48.0" prefWidth="45.0" style="-fx-background-color: none;" textFill="#96735b">
+            <Button layoutY="3.0" mnemonicParsing="false" onAction="#backtoInventory" prefHeight="48.0" prefWidth="45.0" style="-fx-background-color: none;" textFill="#96735b">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -94,9 +89,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="59.0" layoutY="6.0" text="Products" textFill="WHITE">
+            <Label layoutX="52.0" layoutY="11.0" text="Products" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>

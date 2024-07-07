@@ -10,9 +10,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="908.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ReportsTab">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ReportsTab">
    <children>
-      <TabPane layoutY="38.0" prefHeight="547.0" prefWidth="906.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="54.0" prefHeight="517.0" prefWidth="899.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Performance and Analytics">
             <content>
@@ -41,14 +41,14 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Pane layoutX="-4.0" prefHeight="38.0" prefWidth="917.0" style="-fx-background-color: #96735b;">
+      <Pane prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="60.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report Analytics">
+            <Text fill="WHITE" layoutX="57.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reports and Analytics">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="10.0" layoutY="7.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
+            <Button layoutX="8.0" layoutY="12.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>

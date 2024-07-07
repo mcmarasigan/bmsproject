@@ -8,38 +8,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.OrdersFXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.OrdersFXMLController">
    <children>
-      <Button fx:id="prdctregButton" layoutX="179.0" layoutY="176.0" mnemonicParsing="false" onAction="#proceedtoAddOrders" style="-fx-background-color: none;">
+      <Button fx:id="prdctregButton" layoutX="270.0" layoutY="199.0" mnemonicParsing="false" onAction="#proceedtoAddOrders" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="82.0" fitWidth="232.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="142.0" fitWidth="344.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/buttons/addOrder_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="invregButton" layoutX="187.0" layoutY="256.0" mnemonicParsing="false" onAction="#proceedtoManageOrders" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
+      <Button fx:id="invregButton" layoutX="280.0" layoutY="316.0" mnemonicParsing="false" onAction="#proceedtoManageOrders" prefHeight="95.0" prefWidth="230.0" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="77.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="111.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/buttons/OrderHistory_img.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <ImageView fitHeight="150.0" fitWidth="600.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/bms_banner924.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="backButton" layoutX="-8.0" layoutY="-3.0" mnemonicParsing="false" onAction="#backtoDashboard" style="-fx-background-color: none;" />
-      <Pane layoutY="-4.0" prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #96735b;">
+      <Pane layoutY="-4.0" prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
             <Text fill="WHITE" layoutX="60.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Order">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="6.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="60.0" style="-fx-background-color: none;">
+            <Button layoutY="1.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="52.0" prefWidth="60.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -6,62 +6,59 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.IngredientRegController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.IngredientRegController">
    <children>
-      <TextField fx:id="ingredienttxt" layoutX="282.0" layoutY="93.0" prefHeight="25.0" prefWidth="175.0" promptText="Ingredient" />
-      <TextField fx:id="price" layoutX="282.0" layoutY="238.0" prefHeight="25.0" prefWidth="175.0" promptText="Price" />
-      <TextField fx:id="quantity" layoutX="282.0" layoutY="146.0" prefHeight="25.0" prefWidth="175.0" promptText="Quantity" />
-      <DatePicker fx:id="expirydate" layoutX="281.0" layoutY="290.0" prefHeight="25.6" prefWidth="175.0" promptText="Expiry Date" />
-      <Button fx:id="savebutton" layoutX="498.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="16.0" prefWidth="53.0" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
+      <Pane prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="56.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Registration">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="backbutton" layoutY="8.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="8.0" prefWidth="28.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Images/buttons/backbtn.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <TextField fx:id="ingredienttxt" layoutX="201.0" layoutY="194.0" prefHeight="36.0" prefWidth="224.0" promptText="Ingredient" />
+      <TextField fx:id="price" layoutX="475.0" layoutY="193.0" prefHeight="36.0" prefWidth="224.0" promptText="Price" />
+      <TextField fx:id="quantity" layoutX="201.0" layoutY="255.0" prefHeight="36.0" prefWidth="224.0" promptText="Quantity" />
+      <DatePicker fx:id="expirydate" layoutX="474.0" layoutY="256.0" prefHeight="36.0" prefWidth="224.0" promptText="Expiry Date" />
+      <Button fx:id="savebutton" layoutX="338.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="36.0" prefWidth="224.0" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <ImageView fitHeight="400.0" fitWidth="316.0" layoutX="-85.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/image_security.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="backbutton" layoutY="-1.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="8.0" prefWidth="28.0" style="-fx-background-color: none;">
-         <graphic>
-            <ImageView fitHeight="35.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Images/buttons/backbtn.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Text fill="#96735b" layoutX="233.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Registration" wrappingWidth="272.13671875">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font></Text>
-      <Text fill="#96735b" layoutX="282.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name:">
+      <Text fill="#96735b" layoutX="201.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingredient Name:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="282.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
+      <Text fill="#96735b" layoutX="201.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="284.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+      <Text fill="#96735b" layoutX="475.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="283.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiry Date:">
+      <Text fill="#96735b" layoutX="476.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiry Date:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="505.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/logos/logo-removebg-preview.png" />
-         </image>
-      </ImageView>
-      <Text fill="#96735b" layoutX="284.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Type:">
+      <Text fill="#96735b" layoutX="203.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unit Type:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <TextField fx:id="unittype" layoutX="281.0" layoutY="195.0" prefHeight="26.0" prefWidth="175.0" />
+      <TextField fx:id="unittype" layoutX="200.0" layoutY="320.0" prefHeight="36.0" prefWidth="224.0" />
    </children>
 </AnchorPane>

@@ -9,13 +9,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="999.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AboutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.AboutController">
    <children>
       <Text fill="#96735b" layoutX="63.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER" wrappingWidth="100.0">
          <font>
             <Font name="System Bold" size="28.0" />
          </font></Text>
-      <ImageView fitHeight="471.0" fitWidth="457.0" layoutX="6.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="525.0" fitWidth="358.0" layoutX="6.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/banners/image_security.png" />
          </image>
@@ -25,24 +25,24 @@
             <Image url="@Images/logos/logo-removebg-preview.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="370.0" layoutY="78.0" prefHeight="914.0" prefWidth="524.0">
+      <ScrollPane layoutX="370.0" layoutY="78.0" prefHeight="471.0" prefWidth="524.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1101.0" prefWidth="412.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1054.0" prefWidth="412.0">
                <children>
-                  <Text fill="#96735b" layoutX="21.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drew Bakes is a local bakery owned by Kristine Sison and her fiancé, Andrew Simeon. Established in 2021 in Cogeo, Rizal, it operates from their home, offering a variety of pastries, including banana bread and chocolate cake. " wrappingWidth="300.0">
+                  <Text fill="#96735b" layoutX="21.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drew Bakes is a local bakery owned by Kristine Sison and her fiancé, Andrew Simeon. Established in 2021 in Cogeo, Rizal, it operates from their home, offering a variety of pastries, including banana bread and chocolate cake. " wrappingWidth="357.6933898925782">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="152.0" fitWidth="122.0" layoutX="20.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="152.0" fitWidth="122.0" layoutX="50.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/images/img1.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="149.0" fitWidth="149.0" layoutX="153.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="155.0" fitWidth="152.0" layoutX="189.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/images/img2.jpg" />
                      </image>
@@ -62,52 +62,52 @@
                         <Image url="@Images/images/dev2.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="107.0" fitWidth="127.0" layoutX="20.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="112.0" fitWidth="121.0" layoutX="20.0" layoutY="612.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/images/dev3.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alex Wilhelm D. Sison" wrappingWidth="158.4000244140625">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alex Wilhelm D. Sison" wrappingWidth="158.4000244140625">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 912 985 5474" wrappingWidth="177.60003662109375">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maria Clarissa Marasigan" wrappingWidth="185.60003662109375">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maria Clarissa Marasigan" wrappingWidth="185.60003662109375">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="516.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="158.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 961 435 1790" wrappingWidth="177.60003662109375">
+                  <Text fill="#96735b" layoutX="147.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 961 435 1790" wrappingWidth="177.60003662109375">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="619.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krysteen Clare Belen" wrappingWidth="158.4000244140625">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="643.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Krysteen Clare Belen" wrappingWidth="158.4000244140625">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="148.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Engineer" wrappingWidth="107.20001220703125">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="153.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 915 362 0898" wrappingWidth="177.60003662109375">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="678.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact No: 63+ 915 362 0898" wrappingWidth="177.60003662109375">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -117,26 +117,35 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="150.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qawsison@tip.edu.ph" wrappingWidth="206.4000244140625">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qawsison@tip.edu.ph" wrappingWidth="206.4000244140625">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="159.0" layoutY="557.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qmcmarasigan@tip.edu.ph" wrappingWidth="206.4000244140625">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qmcmarasigan@tip.edu.ph" wrappingWidth="206.4000244140625">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="150.0" layoutY="680.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qkcrbelen@tip.edu.ph" wrappingWidth="206.4000244140625">
+                  <Text fill="#96735b" layoutX="148.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email: qkcrbelen@tip.edu.ph" wrappingWidth="206.4000244140625">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#96735b" layoutX="21.0" layoutY="768.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version: 1.0" wrappingWidth="158.4000244140625" />
+                  <Text fill="#96735b" layoutX="21.0" layoutY="768.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Version: 0.0.1" wrappingWidth="158.4000244140625" />
                   <Text fill="#96735b" layoutX="21.0" layoutY="785.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Release Date: -" wrappingWidth="158.4000244140625" />
                   <Text fill="#96735b" layoutX="21.0" layoutY="802.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platform Language: Java" wrappingWidth="158.4000244140625" />
                   <Text fill="#96735b" layoutX="21.0" layoutY="818.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Software Description:" wrappingWidth="158.4000244140625" />
                   <Text fill="#96735b" layoutX="21.0" layoutY="835.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is a Bakery Management System for Drew Bakes. It aims to aid in their business operations and provide a centralized database for all of their operations. It tracks inventories such as products, monitors productions and orders." wrappingWidth="336.00001525878906" />
+                  <Text fill="#96735b" layoutX="20.0" layoutY="916.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tools used in developing the program:" wrappingWidth="302.40003967285156">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#96735b" layoutX="22.0" layoutY="934.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JavaFX 22 (Frontend)" wrappingWidth="116.79999389648435" />
+                  <Text fill="#96735b" layoutX="22.0" layoutY="951.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MySQL 8.0 (Database)" wrappingWidth="116.79999389648435" />
+                  <Text fill="#96735b" layoutX="22.0" layoutY="968.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SceneBuilder" wrappingWidth="116.79999389648435" />
+                  <Text fill="#96735b" layoutX="22.0" layoutY="983.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spring Boot (Framework)" wrappingWidth="144.0000061035156" />
                </children>
             </AnchorPane>
          </content>

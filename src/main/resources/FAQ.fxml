@@ -12,26 +12,26 @@
             <Font name="System Bold" size="41.0" />
          </font>
       </Text>
-      <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#backtoHelp" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE">
+      <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#backtoHelp" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: #96735b;" text="Back" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Text fill="#722e00" layoutX="94.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 1: How to create a new account?" wrappingWidth="300.0">
+      <Text fill="#722e00" layoutX="89.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 1: How to create a new account?" wrappingWidth="300.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="91.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: You can create a new account by registering in the login. You must input all fields first and have a strong password. For verification, An OTP will be sent to your email and if the OTP is correct, the account will be registered." wrappingWidth="300.0">
+      <Text fill="#96735b" layoutX="91.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer: You can create a new account by registering in the login. You must input all fields first and have a strong password. For verification, An OTP will be sent to your email and if the OTP is correct, the account will be registered." wrappingWidth="300.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#722e00" layoutX="79.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 2: How do I reset my password?" wrappingWidth="300.0">
+      <Text fill="#722e00" layoutX="87.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question 2: How do I reset my password?" wrappingWidth="300.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="76.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can reset your password by going into maintenance, account management, and from there you can change your password. You must provide an email for the OTP verification and if the OTP is correct, it can update the password associated with the email provided for OTP verification" wrappingWidth="300.0">
+      <Text fill="#96735b" layoutX="89.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can reset your password by going into maintenance, account management, and from there you can change your password. You must provide an email for the OTP verification and if the OTP is correct, it can update the password associated with the email provided for OTP verification" wrappingWidth="300.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

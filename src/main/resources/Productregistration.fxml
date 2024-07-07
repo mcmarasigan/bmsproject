@@ -6,29 +6,29 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="649.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductRegController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.ProductRegController">
    <children>
+      <Pane layoutY="-3.0" prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
+         <children>
+            <Text fill="WHITE" layoutX="57.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Registration">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
       <Text fx:id="prdctregtext" layoutX="246.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <TextField fx:id="prdctname" layoutX="304.0" layoutY="112.0" prefHeight="26.0" prefWidth="175.0" promptText="Product Name" />
-      <TextField fx:id="description" layoutX="304.0" layoutY="163.0" prefHeight="26.0" prefWidth="175.0" promptText="Short Description" />
-      <TextField fx:id="pricetxt" layoutX="304.0" layoutY="218.0" prefHeight="26.0" prefWidth="175.0" promptText="Price" />
-      <Button fx:id="selectimg" layoutX="303.0" layoutY="258.0" mnemonicParsing="false" onAction="#handleSelectImageButton" style="-fx-background-color: #96735b;" text="Select Image:" textFill="WHITE">
+      <TextField fx:id="prdctname" layoutX="226.0" layoutY="222.0" prefHeight="36.0" prefWidth="224.0" promptText="Product Name" />
+      <TextField fx:id="description" layoutX="226.0" layoutY="286.0" prefHeight="36.0" prefWidth="224.0" promptText="Short Description" />
+      <TextField fx:id="pricetxt" layoutX="487.0" layoutY="221.0" prefHeight="36.0" prefWidth="224.0" promptText="Price" />
+      <Button fx:id="save_btn" layoutX="361.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="36.0" prefWidth="224.0" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField fx:id="imgdirectory" layoutX="304.0" layoutY="292.0" prefHeight="26.0" prefWidth="175.0" promptText="Upload Image" />
-      <Button fx:id="save_btn" layoutX="507.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: #96735b;" text="Save" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <ImageView fitHeight="483.0" fitWidth="358.0" layoutX="-89.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/image_security.png" />
-         </image>
-      </ImageView>
       <Button layoutX="6.0" layoutY="11.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="16.0" prefWidth="29.0" style="-fx-background-color: none;">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -38,31 +38,22 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text fill="#96735b" layoutX="290.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Registration">
+      <Text fill="#96735b" layoutX="226.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="307.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:">
+      <Text fill="#96735b" layoutX="226.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="304.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+      <Text fill="#96735b" layoutX="487.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Text>
-      <Text fill="#96735b" layoutX="304.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+      <ComboBox fx:id="quantityCombobox" layoutX="490.0" layoutY="288.0" prefHeight="36.0" prefWidth="224.0" />
+      <Text fill="#96735b" layoutX="488.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity Type:">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Text>
-      <ImageView fitHeight="100.0" fitWidth="124.0" layoutX="550.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/logos/logo-removebg-preview.png" />
-         </image>
-      </ImageView>
-      <ComboBox fx:id="quantityCombobox" layoutX="307.0" layoutY="354.0" prefHeight="26.0" prefWidth="175.0" />
-      <Text fill="#96735b" layoutX="304.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity Type:">
-         <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
    </children>

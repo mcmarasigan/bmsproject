@@ -8,23 +8,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.InventoryFXMLController">
    <children>
-      <ImageView fitHeight="134.0" fitWidth="640.0" layoutX="-2.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/DrewBakes.png" />
-         </image>
-      </ImageView>
-      <Pane layoutX="-4.0" layoutY="-4.0" prefHeight="36.0" prefWidth="608.0" style="-fx-background-color: #96735b;">
+      <Pane prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="52.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory">
+            <Text fill="WHITE" layoutX="47.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Inventory">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="7.0" layoutY="1.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: none;">
+            <Button layoutY="8.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="19.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>
@@ -32,17 +27,17 @@
                </graphic></Button>
          </children>
       </Pane>
-      <Button fx:id="prdctregButton" layoutX="193.0" layoutY="179.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
+      <Button fx:id="prdctregButton" layoutX="296.0" layoutY="188.0" mnemonicParsing="false" onAction="#proceedtoProduct" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="111.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/buttons/product_btn.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="invregButton" layoutX="182.0" layoutY="248.0" mnemonicParsing="false" onAction="#proceedtoIngredient" prefHeight="101.0" prefWidth="239.0" style="-fx-background-color: none;">
+      <Button fx:id="invregButton" layoutX="280.0" layoutY="269.0" mnemonicParsing="false" onAction="#proceedtoIngredient" prefHeight="101.0" prefWidth="239.0" style="-fx-background-color: none;">
          <graphic>
-            <ImageView fitHeight="83.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="121.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/buttons/ingredient_btn.png" />
                </image>

@@ -10,17 +10,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0" prefWidth="888.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.SalesBarChartController">
    <children>
       <ComboBox fx:id="viewTypeComboBox" layoutX="13.0" layoutY="31.0" prefWidth="100.0" />
       <ComboBox fx:id="monthComboBox" layoutX="119.0" layoutY="31.0" prefWidth="100.0" />
       <ComboBox fx:id="yearComboBox" layoutX="224.0" layoutY="31.0" prefWidth="80.0" />
       <DatePicker fx:id="weekStartDatePicker" layoutX="119.0" layoutY="31.0" prefHeight="26.0" prefWidth="100.0" style="-fx-background-color: #96735b;" />
-      <Button layoutX="802.0" layoutY="31.0" onAction="#updateBarChart" style="-fx-background-color: #96735b;" text="Update" textFill="WHITE">
+      <Button layoutX="314.0" layoutY="31.0" onAction="#updateBarChart" style="-fx-background-color: #96735b;" text="Update" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <BarChart fx:id="salesBarChart" animated="false" layoutX="374.0" layoutY="65.0" legendVisible="false" prefHeight="291.0" prefWidth="487.0">
+      <BarChart fx:id="salesBarChart" animated="false" layoutX="386.0" layoutY="140.0" legendVisible="false" prefHeight="291.0" prefWidth="487.0">
         <xAxis>
           <CategoryAxis label="Products" side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -31,22 +31,22 @@
                </tickLabelFont></NumberAxis>
         </yAxis>
       </BarChart>
-      <Text fill="#96735b" layoutX="19.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most Sold Product:" wrappingWidth="202.13671875">
+      <Text fill="#96735b" layoutX="18.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Most Sold Product:" wrappingWidth="202.13671875">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <Text fx:id="mostsoldProducttxt" layoutX="19.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875">
+      <Text fx:id="mostsoldProducttxt" layoutX="18.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#96735b" layoutX="19.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales:" wrappingWidth="202.13671875">
+      <Text fill="#96735b" layoutX="18.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales:" wrappingWidth="202.13671875">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <Text fx:id="totalSalestxt" layoutX="19.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875">
+      <Text fx:id="totalSalestxt" layoutX="18.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="202.13671875">
          <font>
             <Font size="18.0" />
          </font>

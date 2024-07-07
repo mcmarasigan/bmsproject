@@ -8,31 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="643.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.HelpModuleController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="899.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupten.bmsproject.FXMLControllers.HelpModuleController">
    <children>
-      <ImageView fitHeight="151.0" fitWidth="651.0" layoutX="-4.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/banners/landscape_image.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="229.0" layoutY="172.0" mnemonicParsing="false" onAction="#FAQ" prefHeight="66.0" prefWidth="183.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="FAQs">
+      <Button layoutX="324.0" layoutY="198.0" mnemonicParsing="false" onAction="#FAQ" prefHeight="87.0" prefWidth="250.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="FAQs">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Button fx:id="userManualButton" layoutX="229.0" layoutY="252.0" mnemonicParsing="false" onAction="#openUserManual" prefHeight="66.0" prefWidth="183.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="User's Manual">
+      <Button fx:id="userManualButton" layoutX="324.0" layoutY="300.0" mnemonicParsing="false" onAction="#openUserManual" prefHeight="87.0" prefWidth="250.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="User's Manual">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Pane layoutX="-5.0" prefHeight="34.0" prefWidth="651.0" style="-fx-background-color: #96735b;">
+      <Pane layoutY="-3.0" prefHeight="54.0" prefWidth="899.0" style="-fx-background-color: #96735b;">
          <children>
-            <Text fill="WHITE" layoutX="54.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help">
+            <Text fill="WHITE" layoutX="66.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Help">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="29.0" prefWidth="35.0" style="-fx-background-color: none;">
+            <Button layoutX="6.0" layoutY="3.0" mnemonicParsing="false" onAction="#backtoDashboard" prefHeight="46.0" prefWidth="60.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="31.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Images/buttons/backbtn.png" />
                      </image>
