@@ -23,18 +23,23 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                   <children>
-                    <Button fx:id="GenerateReportbtn" layoutX="312.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleGenerateReportIngredient" prefHeight="66.0" prefWidth="282.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Ingredient Report">
+                    <Button fx:id="GenerateReportbtn" layoutX="309.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleGenerateReportIngredient" prefHeight="66.0" prefWidth="282.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Ingredient Report">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
-                    <Button fx:id="GenerateReportbtn1" layoutX="312.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleGenerateReportSales" prefHeight="66.0" prefWidth="281.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Sales Report">
+                    <Button fx:id="GenerateReportbtn1" layoutX="310.0" layoutY="194.0" mnemonicParsing="false" onAction="#handleGenerateReportSales" prefHeight="66.0" prefWidth="281.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Sales Report">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
-                        <Button fx:id="GenerateReportbtn11" layoutX="312.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleGenerateSecurityLogReport" prefHeight="66.0" prefWidth="282.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Security Log Report">
+                        <Button fx:id="GenerateReportbtn11" layoutX="309.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleGenerateSecurityLogReport" prefHeight="66.0" prefWidth="282.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Security Log Report">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font></Button>
+                        <Button fx:id="GenerateReportbtn1111" layoutX="309.0" layoutY="118.0" mnemonicParsing="false" onAction="#handleGenerateReportProduction" prefHeight="66.0" prefWidth="282.0" style="-fx-background-color: #FFF7EF; -fx-border-color: #96735b; -fx-border-radius: 10;" text="Generate Production Report">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
                   </children>
                 </AnchorPane>
               </content>

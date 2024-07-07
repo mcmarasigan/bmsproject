@@ -37,7 +37,7 @@ public class ProductionScheduleEntity {
     private Integer numberofdaysexp;
     private LocalDate lastUpdate;
     private LocalDate dateAdded;
-    private String status;  // Add this field
+    private String status = "active";  // Add this field
     private String expiryStatus; // Add this field
 
     @Column(name = "product_id", nullable = false)

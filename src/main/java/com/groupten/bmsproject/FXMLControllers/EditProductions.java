@@ -163,7 +163,7 @@ public class EditProductions {
         productionScheduleService.removeIngredientsByProductionScheduleId(productionSchedule.getId());
         RecipeTable.getItems().forEach(row -> {
             ProductionIngredient productionIngredient = new ProductionIngredient();
-            productionIngredient.setProductionschedule(productionSchedule);
+            productionIngredient.setProductionSchedule(productionSchedule);
 
             IngredientEntity ingredient = ingredientService.findByName(row.getIngredientName());
             productionIngredient.setIngredientid(ingredient);

@@ -10,7 +10,7 @@
 </field>
 <field name="unitType" class="java.lang.String">
 </field>
-<field name="productionscheduleid" class="java.lang.Integer">
+<field name="productionSchedule.id" class="java.lang.Integer">
 </field>
 
 	<background splitType="Stretch"/>
@@ -89,7 +89,7 @@ INGREDIENT USED]]></text>
 				</box>
 			</element>
 			<element kind="textField" uuid="4ed865e0-e5e9-4d9f-ab18-9d7b6030efd2" x="429" y="0" width="143" height="30" hTextAlign="Center" vTextAlign="Middle">
-				  <expression><![CDATA[$F{productionscheduleid}]]></expression>
+				  <expression><![CDATA[$F{productionSchedule.id}]]></expression>
 				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1f5f7248-d652-46c8-b7ab-7f5aac8b94c1"/>
 				<box>
 					<pen lineWidth="1.0"/>

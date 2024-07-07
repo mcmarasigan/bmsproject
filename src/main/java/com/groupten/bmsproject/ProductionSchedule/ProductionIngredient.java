@@ -36,14 +36,12 @@ public class ProductionIngredient {
     }
 
 
-    public ProductionScheduleEntity getProductionschedule() {
+    
+    public ProductionScheduleEntity getProductionSchedule() {
         return productionSchedule;
     }
-    public Integer getProductionscheduleid() {
-        return productionSchedule != null ? productionSchedule.getId() : null;
-    }
 
-    public void setProductionschedule(ProductionScheduleEntity productionSchedule) {
+    public void setProductionSchedule(ProductionScheduleEntity productionSchedule) {
         this.productionSchedule = productionSchedule;
     }
 

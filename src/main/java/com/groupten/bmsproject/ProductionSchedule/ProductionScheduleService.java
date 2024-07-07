@@ -51,7 +51,7 @@ public class ProductionScheduleService {
             productionIngredient.setIngredientid(ingredient);
             productionIngredient.setQuantity(row.getQuantity());
             productionIngredient.setUnitType(row.getUnitType());
-            productionIngredient.setProductionschedule(newProductSched);
+            productionIngredient.setProductionSchedule(newProductSched);
             productionIngredients.add(productionIngredient);
         }
 
