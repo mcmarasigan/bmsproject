@@ -94,7 +94,6 @@ public class DisplayProductionScheduleController {
     @FXML
     private ComboBox<String> filterComboBox;
 
-
     private final ProductionScheduleService productionScheduleService;
     private ObservableList<ProductionScheduleEntity> productionScheduleList;
     private ProductionScheduleEntity selectedSchedule;
@@ -108,15 +107,15 @@ public class DisplayProductionScheduleController {
     @FXML
     private void initialize() {
         // Initialize the filter ComboBox
-    ObservableList<String> filterOptions = FXCollections.observableArrayList("All", "Sufficient", "Low", "Empty", "Expired");
-    filterComboBox.setItems(filterOptions);
-    filterComboBox.setValue("All"); // Default selection
+        ObservableList<String> filterOptions = FXCollections.observableArrayList("All", "Sufficient", "Low", "Empty", "Expired");
+        filterComboBox.setItems(filterOptions);
+        filterComboBox.setValue("All"); // Default selection
 
-    // Add listener to filter ComboBox
-    filterComboBox.setOnAction(event -> {
-        String selectedFilter = filterComboBox.getValue();
-        filterProductionSchedules(selectedFilter);
-    });
+        // Add listener to filter ComboBox
+        filterComboBox.setOnAction(event -> {
+            String selectedFilter = filterComboBox.getValue();
+            filterProductionSchedules(selectedFilter);
+        });
 
         idColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         productNameColumn.setCellValueFactory(cellData -> cellData.getValue().productnameProperty());
@@ -124,7 +123,6 @@ public class DisplayProductionScheduleController {
         lvlofStockColumn.setCellValueFactory(cellData -> cellData.getValue().lvlofstockProperty());
         dateofProductionColumn.setCellValueFactory(cellData -> cellData.getValue().dateofproductionProperty());
         expirationDateColumn.setCellValueFactory(cellData -> cellData.getValue().expdateProperty());
-        numberOfDaysExpirationColumn.setCellValueFactory(cellData -> cellData.getValue().numberofdaysexpProperty().asObject());
 
         IngredientNameColumn.setCellValueFactory(cellData -> cellData.getValue().ingredientProperty());
         QuantityColumn.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
@@ -158,28 +156,49 @@ public class DisplayProductionScheduleController {
             }
         });
 
-        populateTable();
-
-        // Add a listener to capture the selected row
+        // Set row factory to highlight expired rows and handle row selection
         productionScheduleTable.setRowFactory(tv -> {
-            TableRow<ProductionScheduleEntity> row = new TableRow<>();
+            TableRow<ProductionScheduleEntity> row = new TableRow<>() {
+                @Override
+                protected void updateItem(ProductionScheduleEntity item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setStyle("");
+                    } else {
+                        if ("Expired".equalsIgnoreCase(item.getExpiryStatus())) {
+                            setStyle("-fx-background-color: red;");
+                        } else {
+                            setStyle("");
+                        }
+                    }
+                }
+            };
+
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
                     selectedSchedule = row.getItem();
                     displayIngredients(selectedSchedule);
                 }
             });
+
             return row;
         });
+
+        // Update expiration status of all schedules
+        updateExpirationStatus();
+
+        populateTable();
 
         // Add a listener to the search field to perform search on text change
         SearchTextfield.textProperty().addListener((observable, oldValue, newValue) -> searchSchedules(newValue));
     }
 
-    private void populateTable() {
+    private void updateExpirationStatus() {
         List<ProductionScheduleEntity> schedules = productionScheduleService.getAllProducts().stream()
             .filter(schedule -> !"archived".equals(schedule.getStatus()))
             .collect(Collectors.toList());
+
+        LocalDate currentDate = LocalDate.now();
 
         for (ProductionScheduleEntity schedule : schedules) {
             if (schedule.getQuantity() == 0) {
@@ -189,8 +208,8 @@ public class DisplayProductionScheduleController {
             } else {
                 schedule.setlvlofstock("Sufficient");
             }
-            
-            if (schedule.getNumberofdaysexp() <= 0) {
+
+            if (currentDate.isAfter(schedule.getExpdate()) || currentDate.isEqual(schedule.getExpdate())) {
                 schedule.setExpiryStatus("Expired");
             } else {
                 schedule.setExpiryStatus("Valid");
@@ -199,11 +218,16 @@ public class DisplayProductionScheduleController {
             // Save the updated schedule back to the database
             productionScheduleService.updateProductionSchedule(schedule);
         }
+    }
+
+    private void populateTable() {
+        List<ProductionScheduleEntity> schedules = productionScheduleService.getAllProducts().stream()
+            .filter(schedule -> !"archived".equals(schedule.getStatus()))
+            .collect(Collectors.toList());
 
         productionScheduleList = FXCollections.observableArrayList(schedules);
         productionScheduleTable.setItems(productionScheduleList);
     }
-    
 
     private void searchSchedules(String query) {
         List<ProductionScheduleEntity> filteredList = productionScheduleList.stream()
@@ -263,7 +287,7 @@ public class DisplayProductionScheduleController {
             String result = productionScheduleService.archiveProductionSchedule(selectedSchedule.getId());
 
             System.out.println(result);
-            
+
             // Remove the schedule from the table
             productionScheduleList.remove(selectedSchedule);
             productionScheduleTable.refresh();
@@ -305,6 +329,7 @@ public class DisplayProductionScheduleController {
 
     @FXML
     private void handleRefreshButton() {
+        updateExpirationStatus();
         populateTable();
         productionScheduleTable.refresh();
 
@@ -337,10 +362,9 @@ public class DisplayProductionScheduleController {
         productionScheduleTable.setItems(FXCollections.observableArrayList(filteredList));
     }
 
-@FXML
-private void handleFilterComboBox() {
-    String selectedFilter = filterComboBox.getValue();
-    filterProductionSchedules(selectedFilter);
-}
-
+    @FXML
+    private void handleFilterComboBox() {
+        String selectedFilter = filterComboBox.getValue();
+        filterProductionSchedules(selectedFilter);
+    }
 }

@@ -104,7 +104,7 @@ private void initialize() {
             } else {
                 String status = newIngredient.getExpiryStatus();
                 if ("Expired".equals(status)) {
-                    row.setStyle("-fx-background-color: #ffcccc;"); // Red background for expired ingredients
+                    row.setStyle("-fx-background-color: red;"); // Red background for expired ingredients
                 } else {
                     row.setStyle("");
                 }
