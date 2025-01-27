@@ -45,5 +45,5 @@ The Bakery Management System (BMS) is an automated software solution designed to
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/bakery-management-system.git
-   cd bakery-management-system
+   https://github.com/mcmarasigan/bmsproject.git
+   cd bmsproject
