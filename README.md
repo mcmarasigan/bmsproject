@@ -37,3 +37,9 @@ The Bakery Management System (BMS) is an automated software solution built for *
 - **Alex Sison** – Lead Developer  
 - Ma. Clarissa Marasigan  
 - Krysteen Clare R. Belen  
+
+---
+
+## 📖 User Manual
+For full instructions and screenshots of the Bakery Management System, please see the  
+[📄 User Manual (PDF)](src/main/resources/UserManual.pdf)
