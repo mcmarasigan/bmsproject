@@ -1,49 +1,39 @@
-# Bakery Management System (BMS) - Drew Bakes
+# Bakery Management System (BMS) – Drew Bakes
 
-The Bakery Management System (BMS) is an automated software solution designed to optimize bakery operations for **Drew Bakes**, a local home-based bakery. This system streamlines order processing, inventory management, production scheduling, and sales tracking, enhancing operational efficiency and decision-making.
+**Software Engineering Project** | Developed using **Java** and **MySQL**  
 
----
-
-## Features
-
-- **Security Module**: Implements user authentication, access control, and data encryption to safeguard sensitive information.
-- **Dashboard**: A centralized interface providing real-time insights, alerts for inventory levels, and streamlined navigation to all system modules.
-- **Inventory Management**: Tracks ingredients and products with low-stock alerts to minimize waste and ensure production readiness.
-- **Order Management**: Manages customer orders, delivery statuses, and payment tracking.
-- **Production Management**: Schedules and monitors production while ensuring ingredient availability.
-- **Sales Tracking**: Logs transactions and generates detailed sales reports.
-- **Reports and Analytics**: Provides insights into inventory levels, sales trends, and product performance.
-- **User Management**: Admins can manage accounts, reset passwords, and configure system settings.
-- **Help Module**: Includes FAQs and a user manual for system guidance.
+The Bakery Management System (BMS) is an automated software solution built for **Drew Bakes**, a local home-based bakery. This project was developed as part of our Software Engineering course to streamline bakery operations such as order processing, inventory management, production scheduling, and sales tracking.
 
 ---
 
-## Technologies Used
-
-### Frontend
-- **Java 21**: Provides cross-platform compatibility and scalability for the system's user interface.
-
-### Backend
-- **MySQL 8.0.33**: Relational database to store customer details, inventory data, financial records, and production logs.
-
-### Development Tools
-- **Visual Studio Code 1.83**: Integrated development environment for efficient coding and debugging.
-
-### Features & Functionalities
-- **Secure Access**: Role-based access control for admins and authorized personnel.
-- **Data Backup**: Supports database backups to prevent data loss.
-- **Real-Time Notifications**: Alerts for low inventory and expiring stock.
+## 📱 Features
+- **Security Module** – User authentication, access control, and data encryption.  
+- **Dashboard** – Real-time insights, inventory alerts, and navigation to system modules.  
+- **Inventory Management** – Tracks ingredients/products with low-stock alerts.  
+- **Order Management** – Monitors customer orders, delivery status, and payment records.  
+- **Production Management** – Schedules production and checks ingredient availability.  
+- **Sales Tracking** – Logs transactions and generates sales reports.  
+- **Reports & Analytics** – Provides insights into inventory levels and sales trends.  
+- **User Management** – Admin account control and system configuration.  
+- **Help Module** – FAQs and user guide.  
 
 ---
 
-## Installation
+## 🛠 Technologies Used
+- **Java 21** – Application frontend and logic.  
+- **MySQL 8.0.33** – Database management for inventory, sales, and orders.  
+- **Visual Studio Code 1.83** – Development environment.  
+
+---
 
 ### Prerequisites
-1. Install **Java 21** and **MySQL 8.0.33** on your system.
-2. Download and install **Visual Studio Code**.
+- Java 21  
+- MySQL 8.0.33  
+- Visual Studio Code (or another Java IDE)
 
-### Steps
-1. Clone the repository:
-   ```bash
-   https://github.com/mcmarasigan/bmsproject.git
-   cd bmsproject
+---
+
+## 👨‍💻 Developers
+- **Alex Sison** – Lead Developer  
+- Ma. Clarissa Marasigan  
+- Krysteen Clare R. Belen  
