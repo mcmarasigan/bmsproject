@@ -20,17 +20,19 @@ The Bakery Management System (BMS) is an automated software solution built for *
 ---
 
 ## 🛠 Technologies Used
-- **Java 21** – Application frontend and logic.  
-- **MySQL 8.0.33** – Database management for inventory, sales, and orders.  
-- **Visual Studio Code 1.83** – Development environment.  
+- **Java 21** – Application frontend and business logic  
+- **Spring Boot** – Backend framework for managing system modules  
+- **MySQL 8.0.33** – Database management for inventory, sales, and orders  
+- **Visual Studio Code 1.83** – Development environment  
 
 ---
 
-### Prerequisites
-- Java 21  
-- MySQL 8.0.33  
-- Visual Studio Code (or another Java IDE)
-
+## ⚙️ Prerequisites
+Before running the project, make sure you have the following installed:
+- [Java 21](https://www.oracle.com/java/technologies/javase/jdk21-archive-downloads.html)  
+- [Spring Boot](https://spring.io/projects/spring-boot)  
+- [MySQL 8.0.33](https://dev.mysql.com/downloads/mysql/)  
+- [Visual Studio Code](https://code.visualstudio.com/) 
 ---
 
 ## 👨‍💻 Developers
