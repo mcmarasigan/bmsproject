@@ -36,9 +36,9 @@ Before running the project, make sure you have the following installed:
 ---
 
 ## 👨‍💻 Developers
-- **Alex Sison** – Lead Developer  
-- Ma. Clarissa Marasigan  
-- Krysteen Clare R. Belen  
+- **Alex Sison** – Lead Developer, system design & documentation  
+- **Ma. Clarissa Marasigan** – Developer, code implementation & documentation  
+- **Krysteen Clare R. Belen** – Developer, code implementation & documentation 
 
 ---
 
